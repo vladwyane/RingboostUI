@@ -7,35 +7,42 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by bigdrop on 3/14/2019.
  */
 public abstract class BasePage {
 
-    protected Header header;
-    protected WebDriver driver;
+    Header header;
+    WebDriver driver;
 
-    protected SoftAssert softAssert = new SoftAssert();
+    SoftAssert softAssert = new SoftAssert();
 
-    public BasePage(WebDriver driver) {
+    BasePage(WebDriver driver) {
         HtmlElementLoader.populatePageObject(this, driver);
         this.driver = driver;
     }
 
     public abstract void open();
 
-    protected void type(TextInput webElement, String text) {
+    @FindBy(css = ".load-more")
+    WebElement buttonMoreNumbers;
+
+    void type(TextInput webElement, String text) {
         webElement.clear();
         webElement.sendKeys(text);
     }
 
-    protected boolean isElementPresent(WebElement element) {
+    boolean isElementPresent(WebElement element) {
         try {
             element.isDisplayed();
             return true;
@@ -44,7 +51,7 @@ public abstract class BasePage {
         }
     }
 
-    protected void waiting2seconds() {
+    void waiting2seconds() {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -62,7 +69,7 @@ public abstract class BasePage {
         }
     }
 
-    protected boolean waitUntilTextInElementAppear(WebElement element, String text) {
+    boolean waitUntilTextInElementAppear(WebElement element, String text) {
         WebDriverWait wait = new WebDriverWait(driver, 2);
         try {
             wait.until(ExpectedConditions.textToBePresentInElement(element, text));
@@ -72,7 +79,7 @@ public abstract class BasePage {
         }
     }
 
-    protected boolean waitUntilElementAppeared(WebElement element) {
+    boolean waitUntilElementAppeared(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
@@ -82,7 +89,7 @@ public abstract class BasePage {
         }
     }
 
-    protected boolean waitUntilElementWillBeClickable(WebElement element) {
+    boolean waitUntilElementWillBeClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -92,9 +99,14 @@ public abstract class BasePage {
         }
     }
 
-    protected boolean scrollToElement(WebElement element) throws InterruptedException {
+    boolean scrollToElement(WebElement element) {
+
+        String scrollElementIntoMiddle = "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
+                + "var elementTop = arguments[0].getBoundingClientRect().top;"
+                + "window.scrollBy(0, elementTop-(viewPortHeight/2));";
+
         try {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            ((JavascriptExecutor) driver).executeScript(scrollElementIntoMiddle, element);
             Thread.sleep(500);
             return true;
         } catch (Exception e) {
@@ -102,15 +114,24 @@ public abstract class BasePage {
         }
     }
 
-    protected boolean isElementContainsAttributeValue(WebElement element, String attribute, String attributeValue) {
-        if (element.getAttribute(attribute).contains(attributeValue) == true)
-            return true;
-        else return false;
+    boolean isElementContainsAttributeValue(WebElement element, String attribute, String attributeValue) {
+        return element.getAttribute(attribute).contains(attributeValue);
     }
 
-    protected void changeAttributeValueWithJS(String elementID, String attribute, String value) {
+    void changeAttributeValueWithJS(WebElement element, String attribute, String value) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("document.getElementById('" + elementID + "').setAttribute('" + attribute + "', '" + value + "')");
+        js.executeScript("arguments[0].setAttribute('" + attribute + "', '" + value + "')", element);
+
+    }
+
+    String getNumbersFromString(String value) {
+        Pattern pat = Pattern.compile("[-]?[0-9]+(.[0-9]+)?");
+        Matcher matcher = pat.matcher(value);
+        while (matcher.find()) {
+            return (matcher.group());
+        }
+
+        return (matcher.group());
     }
 
     public void clickSubNavItemTollFree (String nameOfItem) {

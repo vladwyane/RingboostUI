@@ -26,7 +26,7 @@ public class ApplicationManager {
     private WebDriver driver;
     private String browser;
 
-    public ApplicationManager(String browser) {
+    ApplicationManager(String browser) {
         this.browser = browser;
     }
 
@@ -34,34 +34,43 @@ public class ApplicationManager {
         return driver;
     }
 
-    public void setup() {
-        if (browser.equals(BrowserType.FIREFOX)) {
-            WebDriverManager.firefoxdriver().setup();
-        } else if (browser.equals(BrowserType.GOOGLECHROME)) {
-            WebDriverManager.chromedriver();
-        } else if (browser.equals(BrowserType.IE)) {
-            WebDriverManager.iedriver().setup();
-        } else if (browser.equals(BrowserType.EDGE)) {
-            WebDriverManager.edgedriver().setup();
+    void setup() {
+        switch (browser) {
+            case BrowserType.FIREFOX:
+                WebDriverManager.firefoxdriver().setup();
+                break;
+            case BrowserType.CHROME:
+                WebDriverManager.chromedriver().setup();
+                break;
+            case BrowserType.IE:
+                WebDriverManager.iedriver().setup();
+                break;
+            case BrowserType.EDGE:
+                WebDriverManager.edgedriver().setup();
+                break;
         }
     }
 
-    public WebDriver unit() throws MalformedURLException {
-        if (browser.equals(BrowserType.FIREFOX)) {
-            driver = new FirefoxDriver();
-        } else if (browser.equals(BrowserType.GOOGLECHROME)) {
-            driver = new ChromeDriver();
-        } else if (browser.equals(BrowserType.IE)) {
-            driver = new InternetExplorerDriver();
-        } else if (browser.equals(BrowserType.EDGE)) {
-            driver = new EdgeDriver();
+    void unit() {
+        switch (browser) {
+            case BrowserType.FIREFOX:
+                driver = new FirefoxDriver();
+                break;
+            case BrowserType.CHROME:
+                driver = new ChromeDriver();
+                break;
+            case BrowserType.IE:
+                driver = new InternetExplorerDriver();
+                break;
+            case BrowserType.EDGE:
+                driver = new EdgeDriver();
+                break;
         }
 
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp.wait")), TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        return driver;
     }
 
     public void startRemoteDriver() throws Exception {
@@ -74,7 +83,7 @@ public class ApplicationManager {
         driver.manage().window().setSize(new Dimension(1920, 1080));
     }
 
-    public void stop() {
+    void stop() {
         if (driver != null) {
             driver.quit();
         }
@@ -84,7 +93,7 @@ public class ApplicationManager {
         driver.manage().deleteAllCookies();
     }
 
-    public byte[] takeScreenshot() {
+    byte[] takeScreenshot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

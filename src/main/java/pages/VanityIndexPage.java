@@ -10,8 +10,8 @@ import utils.ConfigProperties;
  */
 public class VanityIndexPage extends BasePage {
 
-    VanityCategoryBlock vanityCategoryBlock;
-    SearchBlock searchBlock;
+    private VanityCategoryBlock vanityCategoryBlock;
+    private SearchBlock searchBlock;
 
     public VanityIndexPage(WebDriver driver) {
         super(driver);
@@ -48,6 +48,7 @@ public class VanityIndexPage extends BasePage {
 
         for (int i = 0; i < vanityCategoryBlock.getListLettersOptions().size(); i++) {
             if (vanityCategoryBlock.getListLettersOptions().get(i).getText().equals(letter)) {
+                scrollToElement(vanityCategoryBlock.getListLettersOptions().get(i));
                 vanityCategoryBlock.getListLettersOptions().get(i).click();
                 break;
             }
@@ -67,6 +68,19 @@ public class VanityIndexPage extends BasePage {
         softAssert.assertTrue(totalCategoriesNot0, "Total categories is 0");
         softAssert.assertTrue(startWithLetter, "Start with letter incorrect");
         softAssert.assertAll();
-
     }
+
+    public void chooseVanityCategory(String nameCategory) {
+        searchBlock.getButtonOpenCatalog().click();
+        for (int i = 0; i < vanityCategoryBlock.getListVanityCategories().size(); i++) {
+            if(vanityCategoryBlock.getListVanityCategories().get(i).getText().equals(nameCategory)) {
+                waitUntilElementWillBeClickable(vanityCategoryBlock.getListVanityCategories().get(i));
+                vanityCategoryBlock.getListVanityCategories().get(i).click();
+                return;
+
+            }
+        }
+    }
+
+
 }

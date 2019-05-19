@@ -9,25 +9,25 @@ import org.openqa.selenium.support.FindBys;
 import ru.yandex.qatools.htmlelements.annotations.Block;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
-import sun.plugin.dom.html.HTMLElement;
 
 import java.util.List;
 
-/**
- * Created by bigdrop on 5/15/2019.
- */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@Block(@FindBy(className = "category-catalog"))
-public class VanityCategoryBlock extends HtmlElement {
+@Block(@FindBy(className = "cards-discount"))
+public class TermLength extends HtmlElement {
 
-    @Name("ArrayList of letters options")
-    @FindBys( {@FindBy(css = ".options li")} )
-    public List<WebElement> listLettersOptions;
+    @Name("ArrayList of plane name")
+    @FindBys( {@FindBy(css = ".plan-name")} )
+    public List<WebElement> listPlaneName;
 
-    @Name("ArrayList of vanity categories")
-    @FindBys( {@FindBy(css = ".categories li a")} )
-    public List<WebElement> listVanityCategories;
+    @Name("ArrayList of card buttons")
+    @FindBys( {@FindBy(css = ".card-button")} )
+    public List<WebElement> listCardButtons;
+
+    @Name("ArrayList of discount")
+    @FindBys( {@FindBy(css = "h3")} )
+    public List<WebElement> listOfDiscount;
 
 }

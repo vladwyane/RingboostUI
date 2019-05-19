@@ -1,6 +1,7 @@
 package blocks;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +13,7 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 /**
  * Created by bigdrop on 3/14/2019.
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @Block(@FindBy(className = "main-search-block"))
@@ -40,6 +42,9 @@ public class SearchBlock extends HtmlElement {
 
     @FindBy(css = ".search-block-helper button")
     private WebElement buttonOpenCatalog;
+
+    @FindBy(css= "h2")
+    private WebElement titleH2;
 
 
 

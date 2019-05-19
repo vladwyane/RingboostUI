@@ -14,7 +14,7 @@ import org.testng.annotations.Listeners;
 @Listeners(MyTestListener.class)
 public class TestBase {
 
-    protected static final ApplicationManager app = new ApplicationManager(BrowserType.GOOGLECHROME);
+    protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
     @BeforeSuite
     public static void setupClass() {

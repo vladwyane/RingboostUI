@@ -21,6 +21,7 @@ public class VanityCategoryDetail extends BasePage {
 
     public void clickButtonClearAllFilters() {
         vanityCategoryDetailBlock.getButtonClearAllFilters().click();
+        waiting2seconds();
     }
 
     public void chooseCategoryInSelect() {

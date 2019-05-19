@@ -4,8 +4,6 @@ import org.testng.annotations.Test;
 import pages.*;
 import testBase.TestBase;
 
-import java.io.IOException;
-
 public class VanityCategoriesTests extends TestBase {
 
     private HomePage homePage;

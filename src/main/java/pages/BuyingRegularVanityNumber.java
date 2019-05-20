@@ -66,9 +66,9 @@ public class BuyingRegularVanityNumber extends BasePage {
         return minute * price;
     }
 
-    public double chooseTermLength(String term) {
+    public int chooseTermLength(String term) {
         waitUntilElementWillBeClickable(termLength.listCardButtons.get(0));
-        double discount;
+        int discount;
         for (int i = 0; i < termLength.listPlaneName.size(); i++) {
             if(termLength.listPlaneName.get(i).getText().equals(term)) {
                 discount = Integer.parseInt(getNumbersFromString(termLength.listOfDiscount.get(i).getText()));
@@ -130,10 +130,10 @@ public class BuyingRegularVanityNumber extends BasePage {
         return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
     }
 
-    public void checkingOrderSummary (double priceMonthlyMinutes, double discountPriceSelectedPlan, double priceNumber) {
+    public void checkingOrderSummary (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {
         waitUntilElementAppeared(orderSummary.getTitleOrderSummary());
-        double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderSummary.getPriceRecurringMonthly().getText()));
-        double actualResult = priceMonthlyMinutes - (priceMonthlyMinutes * discountPriceSelectedPlan / 100) + priceNumber;
+        double priceRecurringMonthly = Math.round(Double.parseDouble(getNumbersFromString(orderSummary.getPriceRecurringMonthly().getText())));
+        double actualResult = Math.round(priceMonthlyMinutes - (priceMonthlyMinutes * discountPriceSelectedPlan / 100) + priceNumber);
         softAssert.assertEquals(priceRecurringMonthly, actualResult);
         softAssert.assertAll();
     }

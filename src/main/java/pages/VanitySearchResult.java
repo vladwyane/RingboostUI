@@ -1,9 +1,11 @@
 package pages;
 
 import blocks.RegularVanityNumbersBlock;
+import blocks.SmallSearchBlock;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.ConfigProperties;
 
 /**
  * Created by bigdrop on 5/15/2019.
@@ -11,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 public class VanitySearchResult extends BasePage {
 
     private RegularVanityNumbersBlock regularVanityNumbersBlock;
+    private SmallSearchBlock smallSearchBlock;
 
     public VanitySearchResult(WebDriver driver) {
         super(driver);
@@ -18,7 +21,13 @@ public class VanitySearchResult extends BasePage {
 
     @Override
     public void open() {
+        driver.get(ConfigProperties.getProperty("searchResults.url"));
+    }
 
+    public void searchTollFreeNumbers(String request) {
+        waitUntilTextInElementAppear(smallSearchBlock.getTitleH1(), "Toll-Free Vanity Numbers");
+        type(smallSearchBlock.getTollFreeSearchField(), request);
+        smallSearchBlock.getButtonFindNumber().click();
     }
 
     public void checkingClickLoadMore () {

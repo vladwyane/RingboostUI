@@ -2,8 +2,6 @@ import org.testng.annotations.*;
 import pages.*;
 import testBase.TestBase;
 
-import java.io.IOException;
-
 /**
  * Created by bigdrop on 3/14/2019.
  */
@@ -27,22 +25,22 @@ public class SearchNumbersTests extends TestBase{
     }
 
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
     public void loadingRegularVanityNumbersOnClickLoadMore() {
-        homePage.open();
-        homePage.clickSubNavItemTollFree("vanity");
-        vanityIndexPage.searchTollFreeNumberFromVanityIndexPage("bug");
+        vanitySearchResult.open();
+        vanitySearchResult.searchTollFreeNumbers("bug");
         vanitySearchResult.checkingClickLoadMore();
     }
 
     @Test
     public void loadMoreIfAllNumbersIsLoaded() {
         homePage.open();
+        homePage.clickSubNavItemTollFree("vanity");
         homePage.searchTollFreeFromHomePage("bug");
         vanitySearchResult.checkingLoadMoreIfAllNumbersIsLoaded();
     }
@@ -55,7 +53,7 @@ public class SearchNumbersTests extends TestBase{
         tollFreeIndexPage.searchTollFreeNumberFromTollFreeIndexPage("error");
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
-        double discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("3 Year");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("3 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.checkingOrderSummary(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
@@ -66,7 +64,7 @@ public class SearchNumbersTests extends TestBase{
         vanityIndexPage.searchTollFreeNumberFromVanityIndexPage("bug");
         vanitySearchResult.chooseLastNumberFromRegularVanityListAfterLoadMore();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
-        double discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.checkingOrderSummary(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
@@ -77,7 +75,7 @@ public class SearchNumbersTests extends TestBase{
         homePage.searchTollFreeFromHomePage("test");
         vanitySearchResult.choose32thNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose20000MonthlyMinutes();
-        double discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumberWithMultipleCheckbox("8332702679");
         buyingRegularVanityNumber.checkingOrderSummary(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }

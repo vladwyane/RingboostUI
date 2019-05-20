@@ -36,9 +36,13 @@ public class VanitySearchResult extends BasePage {
     public void checkingLoadMoreIfAllNumbersIsLoaded() {
         waitUntilTextInElementAppear(regularVanityNumbersBlock.getTitleSection(), "The Following Related Vanity Numbers are Available for");
         while(regularVanityNumbersBlock.getListRegularVanityNumbers().size() % 32 == 0) {
+            int counter = 0;
             waitUntilElementWillBeClickable(buttonMoreNumbers);
             buttonMoreNumbers.click();
             waiting2seconds();
+            counter++;
+            if (counter == 5)
+                break;
         }
         softAssert.assertFalse(isElementPresent(buttonMoreNumbers), "Load More is still present");
         softAssert.assertAll();

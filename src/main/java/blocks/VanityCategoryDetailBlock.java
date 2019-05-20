@@ -40,5 +40,9 @@ public class VanityCategoryDetailBlock extends HtmlElement {
     @FindBys( {@FindBy(css = "div[name='category-select'] .dropdown-menu li")} )
     private List<WebElement> listOfCategoryInSelectDropDown;
 
+    @Name("ArrayList of plane name")
+    @FindBys( {@FindBy(css = "div[name='prefix-select'] .dropdown-menu li")} )
+    private List<WebElement> listOfPrefixInSelectDropDown;
+
 
 }

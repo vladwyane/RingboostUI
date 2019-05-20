@@ -1,5 +1,6 @@
 package testBase;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
@@ -13,8 +14,6 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.ConfigProperties;
-
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -40,7 +39,7 @@ public class ApplicationManager {
                 WebDriverManager.firefoxdriver().setup();
                 break;
             case BrowserType.CHROME:
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().version("2.46").setup();
                 break;
             case BrowserType.IE:
                 WebDriverManager.iedriver().setup();

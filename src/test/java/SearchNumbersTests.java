@@ -47,12 +47,6 @@ public class SearchNumbersTests extends TestBase{
         vanitySearchResult.checkingLoadMoreIfAllNumbersIsLoaded();
     }
 
-    @Test
-    public void filterCategoriesOnVanityIndexPage() throws InterruptedException {
-        vanityIndexPage.open();
-        vanityIndexPage.checkingFilterVanityCatalog("W");
-    }
-
 
     @Test
     public void buying() {

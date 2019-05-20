@@ -29,6 +29,11 @@ public class VanityCategoriesTests extends TestBase {
         app.delleteAllCookies();
     }
 
+    @Test
+    public void testFilterCategoriesOnVanityIndexPage() throws InterruptedException {
+        vanityIndexPage.open();
+        vanityIndexPage.checkingFilterVanityCatalog("W");
+    }
 
     @Test
     public void testSelectedCategoryFromCategoryIndexPage() {
@@ -51,5 +56,28 @@ public class VanityCategoriesTests extends TestBase {
         vanityIndexPage.chooseVanityCategory(nameCategory);
         vanityCategoryDetail.clickButtonClearAllFilters();
         vanityCategoryDetail.checkingCategoriesDetailPageDefaultState();
+    }
+
+    @Test
+    public void testFilterNumbersByCategories() {
+        vanityIndexPage.open();
+        String nameCategoryInSelect = "Accident";
+        String firstNumberInListBefore = vanityIndexPage.chooseVanityCategory("Banking");
+        String firstNumberInListAfter = vanityCategoryDetail.chooseCategoryInSelect(nameCategoryInSelect);
+        vanityCategoryDetail.checkingSelectCategories(firstNumberInListBefore, firstNumberInListAfter, nameCategoryInSelect);
+    }
+
+    @Test
+    public void testFilterNumbersByPrefix() {
+        vanityCategoryDetail.open();
+        String prefix = "866";
+        String firstNumberInListBefore = vanityCategoryDetail.choosePrefixInSelect(prefix);
+        vanityCategoryDetail.checkingSelectPrefix(firstNumberInListBefore, prefix);
+    }
+
+    @Test
+    public void testLoadMoreOnCategoriesDetailPage() {
+        vanityCategoryDetail.open();
+        vanityCategoryDetail.checkingLoadMore();
     }
 }

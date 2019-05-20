@@ -36,7 +36,7 @@ public class BuyingRegularVanityNumber extends BasePage {
     public double choose5000MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutes.getBulletOfSlider());
         Actions move = new Actions(driver);
-        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutes.getBulletOfSlider(), 10000, 0).build();
+        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutes.getBulletOfSlider(), 2000, 0).build();
         actionFirstBull.perform();
         changeAttributeValueWithJS(sliderMonthlyMinutes.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
         double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutes.getTooltipPrice().getText()));

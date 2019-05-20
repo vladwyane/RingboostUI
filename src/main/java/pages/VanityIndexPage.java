@@ -1,7 +1,9 @@
 package pages;
 
+import blocks.RegularVanityNumbersBlock;
 import blocks.SearchBlock;
 import blocks.VanityCategoryBlock;
+import blocks.VanityCategoryDetailBlock;
 import org.openqa.selenium.WebDriver;
 import utils.ConfigProperties;
 
@@ -12,6 +14,8 @@ public class VanityIndexPage extends BasePage {
 
     private VanityCategoryBlock vanityCategoryBlock;
     private SearchBlock searchBlock;
+    private VanityCategoryDetailBlock vanityCategoryDetailBlock;
+    private RegularVanityNumbersBlock regularVanityNumbersBlock;
 
     public VanityIndexPage(WebDriver driver) {
         super(driver);
@@ -70,16 +74,25 @@ public class VanityIndexPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void chooseVanityCategory(String nameCategory) {
+    public String chooseVanityCategory(String nameCategory) {
         searchBlock.getButtonOpenCatalog().click();
         for (int i = 0; i < vanityCategoryBlock.getListVanityCategories().size(); i++) {
             if(vanityCategoryBlock.getListVanityCategories().get(i).getText().equals(nameCategory)) {
                 waitUntilElementWillBeClickable(vanityCategoryBlock.getListVanityCategories().get(i));
                 vanityCategoryBlock.getListVanityCategories().get(i).click();
-                return;
+                break;
 
             }
         }
+
+        for (int i = 0; i < vanityCategoryDetailBlock.getListOfCategoryInSelectDropDown().size(); i++) {
+            if(vanityCategoryDetailBlock.getListOfCategoryInSelectDropDown().get(i).getText().equals(nameCategory)) {
+                vanityCategoryDetailBlock.getListOfCategoryInSelectDropDown().get(i).click();
+                waiting2seconds();
+                return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
+            }
+        }
+        return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
     }
 
 

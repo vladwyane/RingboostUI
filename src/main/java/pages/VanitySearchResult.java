@@ -44,8 +44,8 @@ public class VanitySearchResult extends BasePage {
 
     public void checkingLoadMoreIfAllNumbersIsLoaded() {
         waitUntilTextInElementAppear(regularVanityNumbersBlock.getTitleSection(), "The Following Related Vanity Numbers are Available for");
+        int counter = 0;
         while(regularVanityNumbersBlock.getListRegularVanityNumbers().size() % 32 == 0) {
-            int counter = 0;
             waitUntilElementWillBeClickable(buttonMoreNumbers);
             buttonMoreNumbers.click();
             waiting2seconds();
@@ -64,10 +64,14 @@ public class VanitySearchResult extends BasePage {
 
     public void chooseLastNumberFromRegularVanityListAfterLoadMore() {
         waitUntilTextInElementAppear(regularVanityNumbersBlock.getTitleSection(), "The Following Related Vanity Numbers are Available for");
+        int counter = 0;
         while(regularVanityNumbersBlock.getListRegularVanityNumbers().size() % 32 == 0) {
             waitUntilElementWillBeClickable(buttonMoreNumbers);
             buttonMoreNumbers.click();
             waiting2seconds();
+            counter++;
+            if (counter == 5)
+                break;
         }
         regularVanityNumbersBlock.getListRegularVanityNumbers().get(regularVanityNumbersBlock.getListRegularVanityNumbers().size() - 1).click();
     }

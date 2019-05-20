@@ -41,7 +41,7 @@ public class SearchNumbersTests extends TestBase{
     public void loadMoreIfAllNumbersIsLoaded() {
         homePage.open();
         homePage.clickSubNavItemTollFree("vanity");
-        homePage.searchTollFreeFromHomePage("bug");
+        vanityIndexPage.searchTollFreeNumbers("bug");
         vanitySearchResult.checkingLoadMoreIfAllNumbersIsLoaded();
     }
 
@@ -50,7 +50,7 @@ public class SearchNumbersTests extends TestBase{
     public void buying() {
         homePage.open();
         tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
-        tollFreeIndexPage.searchTollFreeNumberFromTollFreeIndexPage("error");
+        tollFreeIndexPage.searchTollFreeNumber("error");
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("3 Year");
@@ -61,7 +61,7 @@ public class SearchNumbersTests extends TestBase{
     @Test
     public void buying2()  {
         vanityIndexPage.open();
-        vanityIndexPage.searchTollFreeNumberFromVanityIndexPage("bug");
+        vanityIndexPage.searchTollFreeNumbers("bug");
         vanitySearchResult.chooseLastNumberFromRegularVanityListAfterLoadMore();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
@@ -72,7 +72,7 @@ public class SearchNumbersTests extends TestBase{
     @Test
     public void buying3() {
         homePage.open();
-        homePage.searchTollFreeFromHomePage("test");
+        homePage.searchTollFreeNumbers("test");
         vanitySearchResult.choose32thNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose20000MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");

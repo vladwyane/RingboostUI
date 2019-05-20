@@ -20,7 +20,7 @@ public class HomePage extends BasePage{
         driver.get(ConfigProperties.getProperty("home.url"));
     }
 
-    public void searchTollFreeFromHomePage(String request) {
+    public void searchTollFreeNumbers(String request) {
         type(searchBlock.getTollFreeSearchField(), request);
         searchBlock.getButtonFindNumber().click();
     }

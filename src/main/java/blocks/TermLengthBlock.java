@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Block(@FindBy(className = "cards-discount"))
-public class TermLength extends HtmlElement {
+public class TermLengthBlock extends HtmlElement {
 
     @Name("ArrayList of plane name")
     @FindBys( {@FindBy(css = ".plan-name")} )

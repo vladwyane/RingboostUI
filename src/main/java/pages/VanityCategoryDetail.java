@@ -61,7 +61,7 @@ public class VanityCategoryDetail extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingCategoriesDetailPageDefaultState() {
+    public void checkingDefaultState() {
         softAssert.assertEquals(vanityCategoryDetailBlock.getTitleH1().getText(), "Vanity Numbers");
         softAssert.assertTrue(isElementContainsAttributeValue(vanityCategoryDetailBlock.getPlaceholderSelectCategory(), "placeholder", "Category"), "Placeholder Category is absent");
         softAssert.assertTrue(isElementContainsAttributeValue(vanityCategoryDetailBlock.getPlaceholderSelectPrefix(), "placeholder", "Prefix"), "Placeholder Prefix is absent");

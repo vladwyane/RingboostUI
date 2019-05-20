@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Block(@FindBy(className = "rings-to-info"))
-public class RingToNumber extends HtmlElement {
+public class RingToNumberBlock extends HtmlElement {
 
     @Name("ArrayList of input fields RingToNumber")
     @FindBys( {@FindBy(css = ".phone-input input")} )

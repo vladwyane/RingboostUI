@@ -12,7 +12,7 @@ import ru.yandex.qatools.htmlelements.element.HtmlElement;
 @Data
 @NoArgsConstructor
 @Block(@FindBy(className = "slider-wrapper"))
-public class SliderMonthlyMinutes extends HtmlElement {
+public class SliderMonthlyMinutesBlock extends HtmlElement {
 
     @FindBy(css= ".vue-slider-dot-handle")
     private WebElement bulletOfSlider;

@@ -26,7 +26,7 @@ public class VanityIndexPage extends BasePage {
         driver.get(ConfigProperties.getProperty("vanityIndex.url"));
     }
 
-    public void searchTollFreeNumberFromVanityIndexPage(String request) {
+    public void searchTollFreeNumbers(String request) {
         waitUntilTextInElementAppear(searchBlock.getTitleH1(), "Toll-Free Vanity Numbers");
         type(searchBlock.getTollFreeSearchField(), request);
         searchBlock.getButtonFindNumber().click();

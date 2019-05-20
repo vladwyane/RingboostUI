@@ -1,4 +1,4 @@
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
@@ -24,7 +24,7 @@ public class VanityCategoriesTests extends TestBase {
     }
 
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
@@ -46,7 +46,7 @@ public class VanityCategoriesTests extends TestBase {
     @Test
     public void testCategoriesDetailPageDefaultState() {
         vanityCategoryDetail.open();
-        vanityCategoryDetail.checkingCategoriesDetailPageDefaultState();
+        vanityCategoryDetail.checkingDefaultState();
     }
 
     @Test
@@ -55,7 +55,7 @@ public class VanityCategoriesTests extends TestBase {
         String nameCategory = "Accident";
         vanityIndexPage.chooseVanityCategory(nameCategory);
         vanityCategoryDetail.clickButtonClearAllFilters();
-        vanityCategoryDetail.checkingCategoriesDetailPageDefaultState();
+        vanityCategoryDetail.checkingDefaultState();
     }
 
     @Test

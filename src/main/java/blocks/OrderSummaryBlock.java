@@ -12,7 +12,7 @@ import ru.yandex.qatools.htmlelements.element.HtmlElement;
 @Data
 @NoArgsConstructor
 @Block(@FindBy(className = "order-summary"))
-public class OrderSummary extends HtmlElement {
+public class OrderSummaryBlock extends HtmlElement {
 
     @FindBy(xpath= "//*[contains(text(),'Market Areas')]/following::div[1]")
     private WebElement priceNumber;

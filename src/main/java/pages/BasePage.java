@@ -1,7 +1,6 @@
 package pages;
 
-import blocks.Header;
-import blocks.SearchBlock;
+import blocks.HeaderBlock;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +21,7 @@ import java.util.regex.Pattern;
  */
 public abstract class BasePage {
 
-    Header header;
+    HeaderBlock headerBlock;
     WebDriver driver;
 
     SoftAssert softAssert = new SoftAssert();
@@ -136,10 +135,10 @@ public abstract class BasePage {
 
     public void clickSubNavItemTollFree (String nameOfItem) {
         Actions action = new Actions(driver);
-        waitUntilElementWillBeClickable(header.getTollFreeLinInMainNav());
-        action.moveToElement(header.getTollFreeLinInMainNav()).build().perform();
-        waitUntilElementWillBeClickable(header.getListSubMenuTollFree().get(0));
-        header.chooseItemFromSubMenuTollFree(nameOfItem).click();
+        waitUntilElementWillBeClickable(headerBlock.getTollFreeLinInMainNav());
+        action.moveToElement(headerBlock.getTollFreeLinInMainNav()).build().perform();
+        waitUntilElementWillBeClickable(headerBlock.getListSubMenuTollFree().get(0));
+        headerBlock.chooseItemFromSubMenuTollFree(nameOfItem).click();
     }
 
 }

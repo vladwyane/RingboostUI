@@ -1,6 +1,7 @@
 package blocks;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,10 +17,11 @@ import java.util.List;
 /**
  * Created by bigdrop on 5/13/2019.
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @Block(@FindBy(className = "header"))
-public class Header extends HtmlElement {
+public class HeaderBlock extends HtmlElement {
 
     @Name("ArrayList of sub-menu tollfree items")
     @FindBys( {@FindBy(css = ".navigation-numbers .sub-menu a")} )

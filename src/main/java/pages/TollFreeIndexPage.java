@@ -18,11 +18,11 @@ public class TollFreeIndexPage extends BasePage {
     }
 
     public void openTollFreeIndexPageFromMainNav() {
-        waitUntilElementWillBeClickable( header.getTollFreeLinInMainNav());
-        header.getTollFreeLinInMainNav().click();
+        waitUntilElementWillBeClickable( headerBlock.getTollFreeLinInMainNav());
+        headerBlock.getTollFreeLinInMainNav().click();
     }
 
-    public void searchTollFreeNumberFromTollFreeIndexPage(String request) {
+    public void searchTollFreeNumber(String request) {
         waitUntilTextInElementAppear(searchBlock.getTitleH1(), "Toll-Free Vanity Numbers");
         type(searchBlock.getTollFreeSearchField(), request);
         searchBlock.getButtonFindNumber().click();

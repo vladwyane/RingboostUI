@@ -52,7 +52,7 @@ public class VanityCategoriesTests extends TestBase {
     @Test
     public void testButtonsClearAllFilters() {
         vanityIndexPage.open();
-        String nameCategory = "Accident";
+        String nameCategory = "Quality Assurance";
         vanityIndexPage.chooseVanityCategory(nameCategory);
         vanityCategoryDetail.clickButtonClearAllFilters();
         vanityCategoryDetail.checkingDefaultState();
@@ -61,7 +61,7 @@ public class VanityCategoriesTests extends TestBase {
     @Test
     public void testFilterNumbersByCategories() {
         vanityIndexPage.open();
-        String nameCategoryInSelect = "Accident";
+        String nameCategoryInSelect = "VOIP";
         String firstNumberInListBefore = vanityIndexPage.chooseVanityCategory("Banking");
         String firstNumberInListAfter = vanityCategoryDetail.chooseCategoryInSelect(nameCategoryInSelect);
         vanityCategoryDetail.checkingSelectCategories(firstNumberInListBefore, firstNumberInListAfter, nameCategoryInSelect);

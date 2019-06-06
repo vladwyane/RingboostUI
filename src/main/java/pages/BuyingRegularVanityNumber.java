@@ -10,6 +10,9 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 
 public class BuyingRegularVanityNumber extends BasePage {
 
@@ -40,30 +43,27 @@ public class BuyingRegularVanityNumber extends BasePage {
         actionFirstBull.perform();
         changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
         double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
-        int minute = Integer.parseInt(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipMinute().getText()));
         continueButton.click();
-        return minute * price;
+        return price;
     }
 
-    public double choose20000MonthlyMinutes() {
+    public double choose500MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
-        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 509, 0).build();
+        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 500, 0).build();
         actionFirstBull.perform();
         changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
         double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
-        int minute = Integer.parseInt(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipMinute().getText()));
         continueButton.click();
-        return minute * price;
+        return price;
     }
 
     public double choose100MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
         double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
-        int minute = Integer.parseInt(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipMinute().getText()));
         continueButton.click();
-        return minute * price;
+        return price;
     }
 
     public int chooseTermLength(String term) {
@@ -132,8 +132,11 @@ public class BuyingRegularVanityNumber extends BasePage {
 
     public void checkingOrderSummary (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {
         waitUntilElementAppeared(orderSummaryBlock.getTitleOrderSummary());
-        double priceRecurringMonthly = Math.round(Double.parseDouble(getNumbersFromString(orderSummaryBlock.getPriceRecurringMonthly().getText())));
-        double actualResult = Math.round(priceMonthlyMinutes - (priceMonthlyMinutes * discountPriceSelectedPlan / 100) + priceNumber);
+        double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderSummaryBlock.getPriceRecurringMonthly().getText()));
+        double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
+        DecimalFormat df = new DecimalFormat("#.##");
+        String dx = df.format(actualResult);
+        actualResult = Double.valueOf(dx);
         softAssert.assertEquals(priceRecurringMonthly, actualResult);
         softAssert.assertAll();
     }

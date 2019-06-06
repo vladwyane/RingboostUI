@@ -76,22 +76,22 @@ public class VanityIndexPage extends BasePage {
 
     public String chooseVanityCategory(String nameCategory) {
         searchBlock.getButtonOpenCatalog().click();
+        waiting2seconds();
         for (int i = 0; i < vanityCategoryBlock.getListVanityCategories().size(); i++) {
             if(vanityCategoryBlock.getListVanityCategories().get(i).getText().equals(nameCategory)) {
                 waitUntilElementWillBeClickable(vanityCategoryBlock.getListVanityCategories().get(i));
                 vanityCategoryBlock.getListVanityCategories().get(i).click();
                 break;
-
             }
         }
 
-        for (int i = 0; i < vanityCategoryDetailBlock.getListOfCategoryInSelectDropDown().size(); i++) {
+/*        for (int i = 0; i < vanityCategoryDetailBlock.getListOfCategoryInSelectDropDown().size(); i++) {
             if(vanityCategoryDetailBlock.getListOfCategoryInSelectDropDown().get(i).getText().equals(nameCategory)) {
                 vanityCategoryDetailBlock.getListOfCategoryInSelectDropDown().get(i).click();
                 waiting2seconds();
                 return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
             }
-        }
+        } */
         return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
     }
 

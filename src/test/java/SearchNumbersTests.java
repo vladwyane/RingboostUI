@@ -33,7 +33,7 @@ public class SearchNumbersTests extends TestBase{
     @Test
     public void loadingRegularVanityNumbersOnClickLoadMore() {
         vanitySearchResult.open();
-        vanitySearchResult.searchTollFreeNumbers("bug");
+        vanitySearchResult.searchTollFreeNumbers("bu");
         vanitySearchResult.checkingClickLoadMore();
     }
 
@@ -41,7 +41,7 @@ public class SearchNumbersTests extends TestBase{
     public void loadMoreIfAllNumbersIsLoaded() {
         homePage.open();
         homePage.clickSubNavItemTollFree("vanity");
-        vanityIndexPage.searchTollFreeNumbers("bug");
+        vanityIndexPage.searchTollFreeNumbers("bu");
         vanitySearchResult.checkingLoadMoreIfAllNumbersIsLoaded();
     }
 
@@ -50,10 +50,10 @@ public class SearchNumbersTests extends TestBase{
     public void buying() {
         homePage.open();
         tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
-        tollFreeIndexPage.searchTollFreeNumber("error");
+        tollFreeIndexPage.searchTollFreeNumber("er");
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("3 Year");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.checkingOrderSummary(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
@@ -72,9 +72,9 @@ public class SearchNumbersTests extends TestBase{
     @Test
     public void buying3() {
         homePage.open();
-        homePage.searchTollFreeNumbers("test");
+        homePage.searchTollFreeNumbers("te");
         vanitySearchResult.choose32thNumberFromRegularVanityList();
-        double priceMonthlyMinutes = buyingRegularVanityNumber.choose20000MonthlyMinutes();
+        double priceMonthlyMinutes = buyingRegularVanityNumber.choose500MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumberWithMultipleCheckbox("8332702679");
         buyingRegularVanityNumber.checkingOrderSummary(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);

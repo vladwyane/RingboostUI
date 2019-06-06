@@ -58,8 +58,8 @@ public abstract class BasePage {
         }
     }
 
-    protected boolean isElementInvisible(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 0);
+     boolean isElementInvisible(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 2);
         try {
             wait.until(ExpectedConditions.invisibilityOf(element));
             return true;

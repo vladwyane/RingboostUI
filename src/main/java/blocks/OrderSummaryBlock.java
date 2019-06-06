@@ -28,4 +28,7 @@ public class OrderSummaryBlock extends HtmlElement {
 
     @FindBy(css= "h3")
     private WebElement titleOrderSummary;
+
+    @FindBy(css= ".proceed button")
+    private WebElement buttonProceedToCheckout;
 }

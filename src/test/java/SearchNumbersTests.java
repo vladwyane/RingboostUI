@@ -13,6 +13,7 @@ public class SearchNumbersTests extends TestBase{
     private TollFreeIndexPage tollFreeIndexPage;
     private BuyingRegularVanityNumber buyingRegularVanityNumber;
     private VanityCategoryDetail vanityCategoryDetail;
+    private Checkout checkout;
 
     @BeforeMethod
     public void initPageObjects() {
@@ -22,6 +23,7 @@ public class SearchNumbersTests extends TestBase{
         tollFreeIndexPage = new TollFreeIndexPage(app.getDriver());
         buyingRegularVanityNumber = new BuyingRegularVanityNumber(app.getDriver());
         vanityCategoryDetail = new VanityCategoryDetail(app.getDriver());
+        checkout = new Checkout(app.getDriver());
     }
 
 
@@ -78,6 +80,20 @@ public class SearchNumbersTests extends TestBase{
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumberWithMultipleCheckbox("8332702679");
         buyingRegularVanityNumber.checkingOrderSummary(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
+    }
+
+    @Test
+    public void order() {
+        homePage.open();
+        tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
+        tollFreeIndexPage.searchTollFreeNumber("er");
+        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
+        double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Year");
+        double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
+        buyingRegularVanityNumber.goToCheckout();
+        checkout.fillCheckoutInformationForm("Vladyslav", "Chesalov", "vladwyane@gmail.com");
+        checkout.clickCheckboxIAgreeToTheTerms();
     }
 
 

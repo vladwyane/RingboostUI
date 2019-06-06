@@ -141,4 +141,9 @@ public class BuyingRegularVanityNumber extends BasePage {
         softAssert.assertAll();
     }
 
+    public void goToCheckout() {
+        waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
+        orderSummaryBlock.getButtonProceedToCheckout().click();
+    }
+
 }

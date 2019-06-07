@@ -1,3 +1,5 @@
+import data.CreditCards;
+import data.Users;
 import org.testng.annotations.*;
 import pages.*;
 import testBase.TestBase;
@@ -83,7 +85,7 @@ public class SearchNumbersTests extends TestBase{
     }
 
     @Test
-    public void order() {
+    public void order() throws InterruptedException {
         homePage.open();
         tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
         tollFreeIndexPage.searchTollFreeNumber("er");
@@ -92,8 +94,8 @@ public class SearchNumbersTests extends TestBase{
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckoutInformationForm("Vladyslav", "Chesalov", "vladwyane@gmail.com");
-        checkout.clickCheckboxIAgreeToTheTerms();
+        checkout.fillCheckout(Users.VLADYSLAV, CreditCards.VISA_STRIPE, true);
+
     }
 
 

@@ -16,6 +16,8 @@ import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.attributeContains;
+
 /**
  * Created by bigdrop on 3/14/2019.
  */
@@ -39,6 +41,13 @@ public abstract class BasePage {
     void type(TextInput webElement, String text) {
         webElement.clear();
         webElement.sendKeys(text);
+    }
+
+     void sendKeysSlowly(final WebElement element, final String keys) throws InterruptedException {
+        for (int i = 0; i < keys.length(); i++){
+            element.sendKeys(Character.toString(keys.charAt(i)));
+            Thread.sleep(100);
+        }
     }
 
     boolean isElementPresent(WebElement element) {

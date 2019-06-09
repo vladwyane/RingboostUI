@@ -95,7 +95,6 @@ public class SearchNumbersTests extends TestBase{
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV, CreditCards.VISA_STRIPE, true);
-
     }
 
 

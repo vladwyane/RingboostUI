@@ -77,6 +77,21 @@ public class VanitySearchResult extends BasePage {
         regularVanityNumbersBlock.getListRegularVanityNumbers().get(regularVanityNumbersBlock.getListRegularVanityNumbers().size() - 1).click();
     }
 
+    public void chooseFirstNumberFromRegularVanityListAfterLoadMore() {
+        waitUntilTextInElementAppear(regularVanityNumbersBlock.getTitleSection(), "The Following Related Vanity Numbers are Available for");
+        int counter = 0;
+        while(regularVanityNumbersBlock.getListRegularVanityNumbers().size() % 32 == 0) {
+            waitUntilElementWillBeClickable(buttonMoreNumbers);
+            buttonMoreNumbers.click();
+            waiting2seconds();
+            counter++;
+            if (counter == 1)
+                break;
+        }
+        scrollToElement(regularVanityNumbersBlock.getListRegularVanityNumbers().get(0));
+        regularVanityNumbersBlock.getListRegularVanityNumbers().get(0).click();
+    }
+
     public void choose32thNumberFromRegularVanityList() {
         waitUntilTextInElementAppear(regularVanityNumbersBlock.getTitleSection(), "The Following Related Vanity Numbers are Available for");
         scrollToElement(regularVanityNumbersBlock.getListRegularVanityNumbers().get(regularVanityNumbersBlock.getListRegularVanityNumbers().size() - 1));

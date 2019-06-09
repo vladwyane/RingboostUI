@@ -38,6 +38,9 @@ public abstract class BasePage {
     @FindBy(css = ".load-more")
     WebElement buttonMoreNumbers;
 
+    @FindBy(css = "h1")
+    WebElement titleH1;
+
     void type(TextInput webElement, String text) {
         webElement.clear();
         webElement.sendKeys(text);

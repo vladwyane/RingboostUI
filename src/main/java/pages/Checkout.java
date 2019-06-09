@@ -1,5 +1,6 @@
 package pages;
 
+import blocks.CheckoutSidebar;
 import blocks.CheckoutSteps;
 import data.CreditCards;
 import data.Users;
@@ -16,6 +17,7 @@ public class Checkout extends BasePage{
     }
 
     private CheckoutSteps checkoutSteps;
+    private CheckoutSidebar checkoutSidebar;
 
     @Override
     public void open() {
@@ -68,6 +70,23 @@ public class Checkout extends BasePage{
             clickCheckboxIWouldLikeToReceiveEmail();
         waitUntilElementWillBeClickable(checkoutSteps.getButtonPlaceOrder());
         checkoutSteps.getButtonPlaceOrder().click();
+    }
+
+    public void addPromoCode(String promocode) throws InterruptedException {
+        checkoutSidebar.getLinkHavePromoCode().click();
+        waitUntilElementAppeared(checkoutSidebar.getButtonApply());
+        type(checkoutSidebar.getInputPromoCode(), promocode);
+        waitUntilElementWillBeClickable(checkoutSidebar.getButtonApply());
+        checkoutSidebar.getButtonApply().click();
+    }
+
+    public void addPromoCodeAndAfterRemove(String promocode) throws InterruptedException {
+        checkoutSidebar.getLinkHavePromoCode().click();
+        waitUntilElementAppeared(checkoutSidebar.getButtonApply());
+        type(checkoutSidebar.getInputPromoCode(), promocode);
+        waitUntilElementWillBeClickable(checkoutSidebar.getButtonApply());
+        checkoutSidebar.getButtonApply().click();
+        checkoutSidebar.getLinkRemovePromoCode().click();
     }
 
     public void clickCheckboxIAgreeToTheTerms() {

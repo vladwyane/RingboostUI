@@ -65,7 +65,6 @@ public class CheckoutSteps extends HtmlElement {
     @FindBys( {@FindBy(css = ".dropdown-menu li")} )
     private List<WebElement> listStates;
 
-
     @FindBy(xpath= "//*[@class='agreementList']//span[contains(text(),'I agree to the terms')]")
     private WebElement checkboxIAgreeToTheTerms;
 

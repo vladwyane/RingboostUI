@@ -36,6 +36,9 @@ public class CheckoutSteps extends HtmlElement {
     @FindBy(css= "input[name='name_on_card']")
     private TextInput cardNameField;
 
+    @FindBy(xpath= "//span[contains(text(), 'Payment Error')]")
+    private WebElement paymentError;
+
     //Billing Address information form
     @FindBy(css= "input[name='first_name']")
     private TextInput billingFirstNameField;

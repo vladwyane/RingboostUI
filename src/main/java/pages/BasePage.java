@@ -49,7 +49,7 @@ public abstract class BasePage {
      void sendKeysSlowly(final WebElement element, final String keys) throws InterruptedException {
         for (int i = 0; i < keys.length(); i++){
             element.sendKeys(Character.toString(keys.charAt(i)));
-            Thread.sleep(100);
+            Thread.sleep(50);
         }
     }
 

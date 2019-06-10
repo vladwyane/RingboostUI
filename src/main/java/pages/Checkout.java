@@ -86,6 +86,7 @@ public class Checkout extends BasePage{
         type(checkoutSidebar.getInputPromoCode(), promocode);
         waitUntilElementWillBeClickable(checkoutSidebar.getButtonApply());
         checkoutSidebar.getButtonApply().click();
+        waitUntilElementAppeared(checkoutSidebar.getPriceAfterAppliedPromoCode());
         checkoutSidebar.getLinkRemovePromoCode().click();
     }
 
@@ -115,5 +116,10 @@ public class Checkout extends BasePage{
                 return;
             }
         }
+    }
+
+    public void checkingPaymentError() {
+        softAssert.assertTrue(isElementPresent(checkoutSteps.getPaymentError()));
+        softAssert.assertAll();
     }
 }

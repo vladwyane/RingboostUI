@@ -60,8 +60,8 @@ public class LicensingVanityNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV, CreditCards.VISA_STRIPE, false);
         checkout.addPromoCode("springsale");
+        checkout.fillCheckout(Users.VLADYSLAV_2, CreditCards.MASTERCART_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
@@ -74,8 +74,8 @@ public class LicensingVanityNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV, CreditCards.VISA_STRIPE, false);
         checkout.addPromoCode("wintersale");
+        checkout.fillCheckout(Users.VLADYSLAV_1, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
@@ -88,9 +88,21 @@ public class LicensingVanityNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV, CreditCards.VISA_STRIPE, false);
         checkout.addPromoCodeAndAfterRemove("springsale");
+        checkout.fillCheckout(Users.VLADYSLAV_1, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
+    }
+
+    @Test
+    public void orderRegularVanityNumberPaymentError() throws InterruptedException {
+        vanitySearchResult.open();
+        vanitySearchResult.chooseFirstNumberFromRegularVanityListAfterLoadMore();
+        buyingRegularVanityNumber.choose500MonthlyMinutes();
+        buyingRegularVanityNumber.chooseTermLength("Month");
+        buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
+        buyingRegularVanityNumber.goToCheckout();
+        checkout.fillCheckout(Users.VLADYSLAV_1, CreditCards.ERROR_STRIPE, true);
+        checkout.checkingPaymentError();
     }
 
 }

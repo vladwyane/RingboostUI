@@ -23,7 +23,9 @@ public class TestBase {
     }
     @BeforeClass
     public void setupTest(ITestContext context) throws Exception{
-        app.unit();
+        if(getClass().getName().equals("LicensingVanityPremiumNumbers"))
+            app.unitMobileView();
+        else app.unit();
         context.setAttribute("app", app);
     }
 

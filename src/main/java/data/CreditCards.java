@@ -10,6 +10,8 @@ public enum CreditCards {
     REAL_CARD("Visa", "5489221110296465", "0120", "438"),
     DISCOVER_STRIPE("Discover", "6011000990139424", "0121", "438"),
     ERROR_STRIPE("ERROR_CVC", "4000000000000127", "0121", "438"),
+    AMERICAN_EXPRESS_STRIPE("American", "378282246310005", "0121", "438"),
+    JCB("JCB", "3566002020360505", "0121", "438"),
     MASTERCART_STRIPE("Stripe Master", "5555555555554444", "1021", "989");
 
     private String cardName;

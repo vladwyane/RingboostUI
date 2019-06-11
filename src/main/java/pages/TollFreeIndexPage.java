@@ -3,6 +3,7 @@ package pages;
 
 import blocks.SearchBlock;
 import org.openqa.selenium.WebDriver;
+import utils.ConfigProperties;
 
 public class TollFreeIndexPage extends BasePage {
 
@@ -14,7 +15,7 @@ public class TollFreeIndexPage extends BasePage {
 
     @Override
     public void open() {
-
+        driver.get(ConfigProperties.getProperty("tollFreeIndex.url"));
     }
 
     public void openTollFreeIndexPageFromMainNav() {

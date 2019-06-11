@@ -47,10 +47,10 @@ public class BuyingRegularVanityNumber extends BasePage {
         return price;
     }
 
-    public double choose500MonthlyMinutes() {
+    public double choose750MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
-        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 500, 0).build();
+        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 300, 0).build();
         actionFirstBull.perform();
         changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
         double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));

@@ -1,5 +1,6 @@
 package pages;
 
+import blocks.PremiumVanityNumbersBlock;
 import blocks.RegularVanityNumbersBlock;
 import blocks.SmallSearchBlock;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ import utils.ConfigProperties;
 public class VanitySearchResult extends BasePage {
 
     private RegularVanityNumbersBlock regularVanityNumbersBlock;
+    private PremiumVanityNumbersBlock premiumVanityNumbersBlock;
     private SmallSearchBlock smallSearchBlock;
 
     public VanitySearchResult(WebDriver driver) {
@@ -96,6 +98,16 @@ public class VanitySearchResult extends BasePage {
         waitUntilTextInElementAppear(regularVanityNumbersBlock.getTitleSection(), "The Following Related Vanity Numbers are Available for");
         scrollToElement(regularVanityNumbersBlock.getListRegularVanityNumbers().get(regularVanityNumbersBlock.getListRegularVanityNumbers().size() - 1));
         regularVanityNumbersBlock.getListRegularVanityNumbers().get(regularVanityNumbersBlock.getListRegularVanityNumbers().size() - 1).click();
+    }
+
+    public void chooseFirstNumberFromPremiumVanityList() {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0).click();
+    }
+
+    public void chooseLastNumberFromPremiumVanityList() {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(premiumVanityNumbersBlock.getListPremiumVanityNumbers().size() - 1).click();
     }
 
 

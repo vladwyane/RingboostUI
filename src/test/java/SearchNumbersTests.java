@@ -78,7 +78,7 @@ public class SearchNumbersTests extends TestBase{
         homePage.open();
         homePage.searchTollFreeNumbers("te");
         vanitySearchResult.choose32thNumberFromRegularVanityList();
-        double priceMonthlyMinutes = buyingRegularVanityNumber.choose500MonthlyMinutes();
+        double priceMonthlyMinutes = buyingRegularVanityNumber.choose750MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumberWithMultipleCheckbox("8332702679");
         buyingRegularVanityNumber.checkingOrderSummary(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);

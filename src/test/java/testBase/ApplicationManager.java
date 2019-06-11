@@ -7,6 +7,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -15,6 +16,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.ConfigProperties;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -57,6 +60,32 @@ public class ApplicationManager {
                 break;
             case BrowserType.CHROME:
                 driver = new ChromeDriver();
+                break;
+            case BrowserType.IE:
+                driver = new InternetExplorerDriver();
+                break;
+            case BrowserType.EDGE:
+                driver = new EdgeDriver();
+                break;
+        }
+
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigProperties.getProperty("imp.wait")), TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+    }
+
+    void unitMobileView() {
+        switch (browser) {
+            case BrowserType.FIREFOX:
+                driver = new FirefoxDriver();
+                break;
+            case BrowserType.CHROME:
+                Map<String, String> mobileEmulation = new HashMap<>();
+                mobileEmulation.put("deviceName", "Nexus 5");
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+                driver = new ChromeDriver(chromeOptions);
                 break;
             case BrowserType.IE:
                 driver = new InternetExplorerDriver();

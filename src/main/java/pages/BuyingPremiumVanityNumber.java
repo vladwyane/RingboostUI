@@ -1,9 +1,6 @@
 package pages;
 
-import blocks.AvailableAreaCodesBlock;
-import blocks.AvailableByMarketOrNationwide;
-import blocks.DragAndDropBlock;
-import blocks.SelectedAreaCodes;
+import blocks.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.text.DecimalFormat;
 
 public class BuyingPremiumVanityNumber extends BasePage {
 
@@ -27,6 +26,10 @@ public class BuyingPremiumVanityNumber extends BasePage {
     private DragAndDropBlock dragAndDropBlock;
     private AvailableAreaCodesBlock availableAreaCodesBlock;
     private SelectedAreaCodes selectedAreaCodes;
+    private TermLengthBlock termLengthBlock;
+    private SliderMonthlyMinutesBlock sliderMonthlyMinutesBlock;
+    private RingToNumberBlock ringToNumberBlock;
+    private OrderSummaryBlock orderSummaryBlock;
 
     @FindBy(xpath= "//button[contains(text(), 'continue')]")
     private WebElement continueButton;
@@ -63,6 +66,135 @@ public class BuyingPremiumVanityNumber extends BasePage {
         continueButton.click();
         return price;
     }
+
+    public double chooseSeveralAreaCodesFromList(int amount) {
+        waitUntilElementAppeared(availableAreaCodesBlock.getDragBoxTitle());
+        waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
+        double price = 0.0;
+        for (int i = 0; i < availableAreaCodesBlock.getListAreaCodes().size(); i++) {
+            if(i >= amount)
+                break;
+            availableAreaCodesBlock.getListAreaCodes().get(i).click();
+            price = price + Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(i).getText()));
+        }
+        switch (amount) {
+            case 1:
+                price = price * 1;
+                break;
+            case 2:
+                price = price * 0.9;
+                break;
+            case 3:
+                price = price * 0.8;
+                break;
+            case 4:
+                price = price * 0.7;
+                break;
+            default: price = price * 0.6;
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+        String dx = df.format(price).replace(',', '.');
+        waitUntilElementWillBeClickable(continueButton);
+        continueButton.click();
+        return Double.parseDouble(dx);
+    }
+
+    public int chooseTermLength(String term) {
+        waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
+        int discount;
+        for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
+            if(termLengthBlock.listPlaneName.get(i).getText().equals(term)) {
+                discount = Integer.parseInt(getNumbersFromString(termLengthBlock.listOfDiscount.get(i).getText()));
+                termLengthBlock.listCardButtons.get(i).click();
+                return discount;
+            }
+        }
+        termLengthBlock.listCardButtons.get(0).click();
+        discount = 0;
+        return discount;
+    }
+
+    public double choose5000MonthlyMinutes() {
+        waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
+        Actions move = new Actions(driver);
+        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 2000, 0).build();
+        actionFirstBull.perform();
+        changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
+        double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
+        continueButton.click();
+        return price;
+    }
+
+    public double choose750MonthlyMinutes() {
+        waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
+        scrollToElement(sliderMonthlyMinutesBlock.getBulletOfSlider());
+        Actions move = new Actions(driver);
+        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 150, 0).build();
+        actionFirstBull.perform();
+        changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
+        double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
+        continueButton.click();
+        return price;
+    }
+
+    public double choose100MonthlyMinutes() {
+        waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
+        changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
+        double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
+        continueButton.click();
+        return price;
+    }
+
+    public void chooseCheckboxMultipleRingToNumber() {
+        ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
+        waitUntilElementWillBeClickable(continueButton);
+        continueButton.click();
+    }
+
+    public void enterRingToNumber(String number) {
+        char[] array = number.toCharArray();
+        for (int i = 0; i < ringToNumberBlock.listInputRingToNumber.size(); i++) {
+            switch (i) {
+                case 0:
+                    type(ringToNumberBlock.listInputRingToNumber.get(i), array[0] + "" + array[1] + "" + array[2]);
+                    break;
+                case 1:
+                    type(ringToNumberBlock.listInputRingToNumber.get(i), array[3] + "" + array[4] + "" + array[5]);
+                    break;
+                case 2:
+                    type(ringToNumberBlock.listInputRingToNumber.get(i), array[6] + "" + array[7] + "" + array[8] + "" + array[9]);
+                    break;
+            }
+        }
+        waitUntilElementWillBeClickable(continueButton);
+        continueButton.click();
+    }
+
+    public void enterRingToNumberWithMultipleCheckbox(String number) {
+        char[] array = number.toCharArray();
+        for (int i = 0; i < ringToNumberBlock.listInputRingToNumber.size(); i++) {
+            switch (i) {
+                case 0:
+                    type(ringToNumberBlock.listInputRingToNumber.get(i), array[0] + "" + array[1] + "" + array[2]);
+                    break;
+                case 1:
+                    type(ringToNumberBlock.listInputRingToNumber.get(i), array[3] + "" + array[4] + "" + array[5]);
+                    break;
+                case 2:
+                    type(ringToNumberBlock.listInputRingToNumber.get(i), array[6] + "" + array[7] + "" + array[8] + "" + array[9]);
+                    break;
+            }
+        }
+        ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
+        waitUntilElementWillBeClickable(continueButton);
+        continueButton.click();
+    }
+
+    public void goToCheckout() {
+        waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
+        orderSummaryBlock.getButtonProceedToCheckout().click();
+    }
+
 
 
 

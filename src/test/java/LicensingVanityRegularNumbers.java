@@ -47,7 +47,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         tollFreeIndexPage.searchTollFreeNumber("error");
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Year");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV, CreditCards.VISA_STRIPE, false);
@@ -89,7 +89,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         vanitySearchResult.searchTollFreeNumbers("bug");
         vanitySearchResult.chooseFirstNumberFromRegularVanityListAfterLoadMore();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose750MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Year");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode("wintersale");

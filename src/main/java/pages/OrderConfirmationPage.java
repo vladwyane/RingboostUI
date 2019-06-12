@@ -35,6 +35,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
+
     public void checkingYourPurchaseWithFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());

@@ -1,3 +1,5 @@
+import data.CreditCards;
+import data.Users;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -40,11 +42,17 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     @Test
     public void orderPremiumVanityNumber() throws InterruptedException {
         homePage.open();
-        tollFreeIndexPage.searchTollFreeNumber("ring");
+        tollFreeIndexPage.searchTollFreeNumber("235RING");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
-        buyingPremiumVanityNumber.chooseState("Nevada");
-        buyingPremiumVanityNumber.chooseFirstAreaCodeFromList();
+        buyingPremiumVanityNumber.chooseState("Kansas");
+        double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseSeveralAreaCodesFromList(3);
+        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("2 Years");
+        double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
+        buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
+        buyingPremiumVanityNumber.goToCheckout();
+        checkout.fillCheckout(Users.VLADYSLAV, CreditCards.VISA_STRIPE, false);
+        orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodes);
 
     }
 

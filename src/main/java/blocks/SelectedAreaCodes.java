@@ -32,4 +32,7 @@ public class SelectedAreaCodes extends HtmlElement {
     @FindBys( {@FindBy(css = ".drag-box-content .price")} )
     private List<WebElement> listPricesSelectedAreaCodes;
 
+    @FindBy(css = ".quantity-number")
+    private WebElement quantityAreaCodes;
+
 }

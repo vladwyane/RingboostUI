@@ -5,10 +5,12 @@ import blocks.AvailableByMarketOrNationwide;
 import blocks.DragAndDropBlock;
 import blocks.SelectedAreaCodes;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 
 public class BuyingPremiumVanityNumber extends BasePage {
 
@@ -25,6 +27,9 @@ public class BuyingPremiumVanityNumber extends BasePage {
     private DragAndDropBlock dragAndDropBlock;
     private AvailableAreaCodesBlock availableAreaCodesBlock;
     private SelectedAreaCodes selectedAreaCodes;
+
+    @FindBy(xpath= "//button[contains(text(), 'continue')]")
+    private WebElement continueButton;
 
     public void clickButtonChooseMyAreas() {
         waitUntilElementWillBeClickable(availableByMarketOrNationwide.getButtonSelectMyAreas());
@@ -53,24 +58,12 @@ public class BuyingPremiumVanityNumber extends BasePage {
         waitUntilElementAppeared(availableAreaCodesBlock.getDragBoxTitle());
         waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
         availableAreaCodesBlock.getListAreaCodes().get(0).click();
-
-
-
-        /*Actions builder = new Actions(driver);
-        Action dragAndDrop = builder.clickAndHold(element1)
-                .moveToElement(element2)
-                .release(element2)
-                .build();
-        dragAndDrop.perform();
-        (new Actions(app.getDriver())).dragAndDrop(elementA, elementB).perform();
-        Actions actions = new Actions(app.getDriver());
-        actions.dragAndDropBy(elementA, 400, 0).perform();
-        builder.dragAndDrop(element1, element2).build().perform();*/
-
-
         double price = Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(0).getText()));
+        waitUntilElementWillBeClickable(continueButton);
+        continueButton.click();
         return price;
     }
+
 
 
 

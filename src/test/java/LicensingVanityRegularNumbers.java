@@ -1,5 +1,9 @@
 import data.CreditCards;
 import data.Users;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,6 +20,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     private VanityCategoryDetail vanityCategoryDetail;
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
+    private BuyingPremiumVanityNumber buyingPremiumVanityNumber;
 
     @BeforeMethod
     public void initPageObjects() {
@@ -27,6 +32,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         vanityCategoryDetail = new VanityCategoryDetail(app.getDriver());
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
+        buyingPremiumVanityNumber = new BuyingPremiumVanityNumber(app.getDriver());
     }
 
     @AfterMethod
@@ -88,7 +94,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode("wintersale");
         checkout.fillCheckout(Users.VLADYSLAV_1, CreditCards.DISCOVER_STRIPE, false);
-        orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
+         orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
     @Test
@@ -116,4 +122,5 @@ public class LicensingVanityRegularNumbers extends TestBase {
         checkout.fillCheckout(Users.VLADYSLAV, CreditCards.ERROR_STRIPE, true);
         checkout.checkingPaymentError();
     }
+
 }

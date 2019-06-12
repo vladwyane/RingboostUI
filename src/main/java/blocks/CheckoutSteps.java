@@ -40,10 +40,10 @@ public class CheckoutSteps extends HtmlElement {
     private WebElement paymentError;
 
     //Billing Address information form
-    @FindBy(css= "input[name='first_name']")
+    @FindBy(css= ".payment-part input[name='first_name']")
     private TextInput billingFirstNameField;
 
-    @FindBy(css= "input[name='last_name']")
+    @FindBy(css= ".payment-part input[name='last_name']")
     private TextInput billingLastNameField;
 
     @FindBy(css= "input[name='street_address']")

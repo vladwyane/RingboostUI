@@ -116,8 +116,10 @@ public class BuyingPremiumVanityNumber extends BasePage {
             waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
             for (int j = 0; j < quantity[i]; j++) {
                 availableAreaCodesBlock.getListAreaCodes().get(j).click();
-                priceFromAmountAreaCodes = priceFromAmountAreaCodes + Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(j).getText()));
             }
+        }
+        for (int i = 0; i < selectedAreaCodes.getListPricesSelectedAreaCodes().size(); i++) {
+            priceFromAmountAreaCodes = priceFromAmountAreaCodes + Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(i).getText()));
         }
         switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
             case 1:

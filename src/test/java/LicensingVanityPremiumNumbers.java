@@ -1,17 +1,10 @@
 import data.CreditCards;
 import data.Users;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 import testBase.TestBase;
-
-import java.util.HashMap;
 
 public class LicensingVanityPremiumNumbers extends TestBase {
 
@@ -54,7 +47,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_3, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_4, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -72,7 +65,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_3, CreditCards.MASTERCART_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_5, CreditCards.MASTERCART_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -90,7 +83,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCode("summersale");
-        checkout.fillCheckout(Users.VLADYSLAV_3, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_5, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -106,7 +99,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCode("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_3, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_4, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -121,7 +114,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_3, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_5, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -137,7 +130,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_3, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_5, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -149,12 +142,12 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.
                 chooseSeveralAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama", "Vermont"}, new int[] {3, 2, 1});
-        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("1 Year");
-        double priceMonthlyMinutes = buyingPremiumVanityNumber.choose5000MonthlyMinutes();
+        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("3 Years");
+        double priceMonthlyMinutes = buyingPremiumVanityNumber.choose100MonthlyMinutes();
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
-        checkout.addPromoCodeAndAfterRemove("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_2, CreditCards.JCB, false);
+        checkout.addPromoCodeAndAfterRemove("wintersale");
+        checkout.fillCheckout(Users.VLADYSLAV_4, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 

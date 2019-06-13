@@ -120,7 +120,7 @@ public class Checkout extends BasePage{
 
     public void checkingPaymentError() {
         waitUntilElementAppeared(checkoutSteps.getPaymentError());
-        softAssert.assertTrue(isElementPresent(checkoutSteps.getPaymentError()));
+        softAssert.assertTrue(isElementPresent(checkoutSteps.getPaymentError()), "Error message is absent");
         softAssert.assertAll();
     }
 }

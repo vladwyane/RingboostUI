@@ -7,7 +7,8 @@ public enum Users {
 
     VLADYSLAV("Vladyslav", "Chesalov", "vladyslav.chesalov@bigdropinc.com", "3275 NW 24th Street Rd", "apt Suit", "Miami", "FL", "33101", "0123456789"),
     VLADYSLAV_1("Vladyslav1", "Chesalov1", "vladyslav.chesalov+1@bigdropinc.com", "103 North Perry St.", "", "Montgomery", "AL", "36043", "0987654321"),
-    VLADYSLAV_2("Vladyslav2", "Chesalov2", "vladyslav.chesalov+2@bigdropinc.com", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478");
+    VLADYSLAV_2("Vladyslav2", "Chesalov2", "vladyslav.chesalov+2@bigdropinc.com", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478"),
+    VLADYSLAV_3("Vladyslav3", "Chesalov3", "vladyslav.chesalov+3@bigdropinc.com", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478");
 
     private String firstName;
     private String lastName;

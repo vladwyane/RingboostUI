@@ -57,13 +57,95 @@ public class BuyingPremiumVanityNumber extends BasePage {
         }
     }
 
+    public double chooseByOneAreaCodesFromSeveralStates(String[] stateNames) {
+        double priceFromAmountAreaCodes = 0.0;
+        for (int i = 0; i < stateNames.length; i++) {
+            waitUntilElementAppeared(dragAndDropBlock.getSelectState());
+            scrollToElement(dragAndDropBlock.getSelectState());
+            dragAndDropBlock.getSelectState().click();
+            waitUntilElementAppeared(dragAndDropBlock.getListStates().get(0));
+            for(WebElement element : dragAndDropBlock.getListStates()) {
+                if (element.getText().equals(stateNames[i]) || element.equals(dragAndDropBlock.getListStates().get(dragAndDropBlock.getListStates().size() - 1))) {
+                    element.click();
+                    break;
+                }
+            }
+            waiting2seconds();
+            waitUntilElementAppeared(availableAreaCodesBlock.getDragBoxTitle());
+            waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
+            availableAreaCodesBlock.getListAreaCodes().get(0).click();
+            priceFromAmountAreaCodes = priceFromAmountAreaCodes + Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(i).getText()));
+        }
+        switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
+            case 1:
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 1;
+                break;
+            case 2:
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.9;
+                break;
+            case 3:
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.8;
+                break;
+            case 4:
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.7;
+                break;
+            default: priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.6;
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+        String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
+        waitUntilElementWillBeClickable(continueButton);
+        continueButton.click();
+        return Double.parseDouble(dx);
+    }
+
+    public double chooseSeveralAreaCodesFromSeveralStates(String[] stateNames, int[] quantity) {
+        double priceFromAmountAreaCodes = 0.0;
+        for (int i = 0; i < stateNames.length; i++) {
+            waitUntilElementAppeared(dragAndDropBlock.getSelectState());
+            scrollToElement(dragAndDropBlock.getSelectState());
+            dragAndDropBlock.getSelectState().click();
+            waitUntilElementAppeared(dragAndDropBlock.getListStates().get(0));
+            for(WebElement element : dragAndDropBlock.getListStates()) {
+                if (element.getText().equals(stateNames[i]) || element.equals(dragAndDropBlock.getListStates().get(dragAndDropBlock.getListStates().size() - 1))) {
+                    element.click();
+                    break;
+                }
+            }
+            waiting2seconds();
+            waitUntilElementAppeared(availableAreaCodesBlock.getDragBoxTitle());
+            waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
+            for (int j = 0; j < quantity[i]; j++) {
+                availableAreaCodesBlock.getListAreaCodes().get(j).click();
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes + Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(j).getText()));
+            }
+        }
+        switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
+            case 1:
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 1;
+                break;
+            case 2:
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.9;
+                break;
+            case 3:
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.8;
+                break;
+            case 4:
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.7;
+                break;
+            default: priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.6;
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+        String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
+        waitUntilElementWillBeClickable(continueButton);
+        continueButton.click();
+        return Double.parseDouble(dx);
+    }
+
     public double chooseFirstAreaCodeFromList() {
         waitUntilElementAppeared(availableAreaCodesBlock.getDragBoxTitle());
         waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
         availableAreaCodesBlock.getListAreaCodes().get(0).click();
         double price = Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(0).getText()));
-        waitUntilElementWillBeClickable(continueButton);
-        continueButton.click();
         return price;
     }
 
@@ -77,23 +159,28 @@ public class BuyingPremiumVanityNumber extends BasePage {
             availableAreaCodesBlock.getListAreaCodes().get(i).click();
             price = price + Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(i).getText()));
         }
-        switch (amount) {
+
+        return price;
+    }
+
+    public double getPriceFromAmountAreaCodesWithDiscount(double priceFromAmountAreaCodes) {
+        switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
             case 1:
-                price = price * 1;
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 1;
                 break;
             case 2:
-                price = price * 0.9;
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.9;
                 break;
             case 3:
-                price = price * 0.8;
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.8;
                 break;
             case 4:
-                price = price * 0.7;
+                priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.7;
                 break;
-            default: price = price * 0.6;
+            default: priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.6;
         }
         DecimalFormat df = new DecimalFormat("#.##");
-        String dx = df.format(price).replace(',', '.');
+        String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
         return Double.parseDouble(dx);
@@ -116,8 +203,9 @@ public class BuyingPremiumVanityNumber extends BasePage {
 
     public double choose5000MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
+        scrollToElement(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
-        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 2000, 0).build();
+        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 300, 0).build();
         actionFirstBull.perform();
         changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
         double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
@@ -139,6 +227,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
 
     public double choose100MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
+        scrollToElement(sliderMonthlyMinutesBlock.getBulletOfSlider());
         changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
         double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
         continueButton.click();

@@ -70,11 +70,11 @@ public class OrderConfirmationPage extends BasePage {
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
-        softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceRecurringMonthly, actualResult);
-        softAssert.assertEquals(priceTotalDueToday, Math.round(actualResult / 2 * 100.0) / 100.0);
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult / 2 - pricePromoCode) * 100.0) / 100.0);
-        softAssert.assertEquals(pricePromoCode, Math.round(actualResult * 0.1 * 100.0) / 100.0);
+        softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase", "Title incorrect");
+        softAssert.assertEquals(priceRecurringMonthly, actualResult, "PriceRecurringMonthly is incorrect");
+        softAssert.assertEquals(priceTotalDueToday, Math.round(actualResult / 2 * 100.0) / 100.0, "PriceTotalDueToday is incorrect");
+        softAssert.assertEquals(pricePayToday, Math.round((actualResult / 2 - pricePromoCode) * 100.0) / 100.0, "PricePayToday is incorrect");
+        softAssert.assertEquals(pricePromoCode, Math.round(actualResult * 0.1 * 100.0) / 100.0, "PricePromoCode is incorrect");
         softAssert.assertAll();
     }
 

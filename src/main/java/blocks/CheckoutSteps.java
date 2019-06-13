@@ -46,7 +46,7 @@ public class CheckoutSteps extends HtmlElement {
     @FindBy(css= ".payment-part input[name='last_name']")
     private TextInput billingLastNameField;
 
-    @FindBy(css= "input[name='street_address']")
+    @FindBy(css= "input[name='street']")
     private TextInput streetAddressField;
 
     @FindBy(css= "input[name='apt_suite']")
@@ -55,10 +55,10 @@ public class CheckoutSteps extends HtmlElement {
     @FindBy(css= "input[name='city']")
     private TextInput cityField;
 
-    @FindBy(css= "input[name='zip_code']")
+    @FindBy(css= "input[name='zip']")
     private TextInput zipCodeField;
 
-    @FindBy(css= "input[name='phone_number']")
+    @FindBy(css= "input[name='phone']")
     private TextInput phoneNumberField;
 
     @FindBy(css= "div[name='state-select']")

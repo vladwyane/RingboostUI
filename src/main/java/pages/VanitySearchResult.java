@@ -107,6 +107,7 @@ public class VanitySearchResult extends BasePage {
 
     public void chooseLastNumberFromPremiumVanityList() {
         waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(premiumVanityNumbersBlock.getListPremiumVanityNumbers().size() - 1));
         premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(premiumVanityNumbersBlock.getListPremiumVanityNumbers().size() - 1).click();
     }
 

@@ -24,7 +24,7 @@ public class TollFreeIndexPage extends BasePage {
     }
 
     public void searchTollFreeNumber(String request) {
-        waitUntilTextInElementAppear(searchBlock.getTitleH1(), "Toll-Free Vanity Numbers");
+        waitUntilTextInElementAppear(searchBlock.getTitleH1(), "Find Your Toll-Free Number");
         type(searchBlock.getTollFreeSearchField(), request);
         searchBlock.getButtonFindNumber().click();
     }

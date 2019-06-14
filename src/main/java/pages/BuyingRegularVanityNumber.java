@@ -36,6 +36,9 @@ public class BuyingRegularVanityNumber extends BasePage {
     @FindBy(css= ".title-price")
     private WebElement priceNumber;
 
+    @FindBy(css= ".main-number-holder")
+    private WebElement phoneNumber;
+
     public double choose5000MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);

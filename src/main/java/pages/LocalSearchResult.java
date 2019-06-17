@@ -1,6 +1,7 @@
 package pages;
 
 import blocks.LocalNumbersBlock;
+import blocks.RelatedVanityBlock;
 import blocks.SearchBlock;
 import org.openqa.selenium.WebDriver;
 import utils.ConfigProperties;
@@ -21,6 +22,7 @@ public class LocalSearchResult extends BasePage {
 
     private SearchBlock searchBlock;
     private LocalNumbersBlock localNumbersBlock;
+    private RelatedVanityBlock relatedVanityBlock;
 
     public void searchLocalNumbers(String request) {
         type(searchBlock.getLocalSearchField(), request);
@@ -36,5 +38,16 @@ public class LocalSearchResult extends BasePage {
         waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbers().get(0));
         scrollToElement(localNumbersBlock.getListLocalNumbers().get(localNumbersBlock.getListLocalNumbers().size()- 1));
         localNumbersBlock.getListLocalNumbers().get(localNumbersBlock.getListLocalNumbers().size()- 1).click();
+    }
+
+    public void chooseFirstNumberFromRelatedVanityList() {
+        waitUntilElementWillBeClickable(relatedVanityBlock.getLisRelatedVanityNumbers().get(0));
+        relatedVanityBlock.getLisRelatedVanityNumbers().get(0).click();
+    }
+
+    public void chooseLastNumberFromRelatedVanityList() {
+        waitUntilElementWillBeClickable(relatedVanityBlock.getLisRelatedVanityNumbers().get(0));
+        scrollToElement(relatedVanityBlock.getLisRelatedVanityNumbers().get(relatedVanityBlock.getLisRelatedVanityNumbers().size()- 1));
+        relatedVanityBlock.getLisRelatedVanityNumbers().get(relatedVanityBlock.getLisRelatedVanityNumbers().size()- 1).click();
     }
 }

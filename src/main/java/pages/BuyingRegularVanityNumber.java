@@ -82,7 +82,6 @@ public class BuyingRegularVanityNumber extends BasePage {
         termLengthBlock.listCardButtons.get(0).click();
         discount = 0;
         return discount;
-
     }
 
     public double chooseCheckboxMultipleRingToNumber() {

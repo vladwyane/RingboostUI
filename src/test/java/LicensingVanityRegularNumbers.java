@@ -17,6 +17,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
     private BuyingPremiumVanityNumber buyingPremiumVanityNumber;
+    private LocalSearchResult localSearchResult;
 
     @BeforeMethod
     public void initPageObjects() {
@@ -29,6 +30,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
         buyingPremiumVanityNumber = new BuyingPremiumVanityNumber(app.getDriver());
+        localSearchResult = new LocalSearchResult(app.getDriver());
     }
 
     @AfterMethod
@@ -109,13 +111,14 @@ public class LicensingVanityRegularNumbers extends TestBase {
 
     @Test
     public void orderRegularVanityNumberPaymentError() throws InterruptedException {
-        vanitySearchResult.open();
-        vanitySearchResult.chooseFirstNumberFromRegularVanityListAfterLoadMore();
+        homePage.open();
+        homePage.searchLocalNumbers("ERROR");
+        localSearchResult.chooseFirstNumberFromRelatedVanityList();
         buyingRegularVanityNumber.choose5000MonthlyMinutes();
         buyingRegularVanityNumber.chooseTermLength("Month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_4, CreditCards.ERROR_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_4, CreditCards.ERROR_CVC_STRIPE, true);
         checkout.checkingPaymentError();
     }
 

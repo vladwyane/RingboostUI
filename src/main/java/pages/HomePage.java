@@ -25,6 +25,12 @@ public class HomePage extends BasePage{
         searchBlock.getButtonFindNumber().click();
     }
 
+    public void searchLocalNumbers(String request) {
+        searchBlock.getSwitcherLocalPart().click();
+        type(searchBlock.getLocalSearchField(), request);
+        searchBlock.getButtonFindNumber().click();
+    }
+
 
 
     public void switchLocalField() {

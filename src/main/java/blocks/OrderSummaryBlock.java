@@ -26,6 +26,9 @@ public class OrderSummaryBlock extends HtmlElement {
     @FindBy(xpath= "//*[contains(text(),'Recurring Monthly')]/following::div[1]")
     private WebElement priceRecurringMonthly;
 
+    @FindBy(xpath= "//*[contains(text(),'Activation Fee')]/following::div[1]")
+    private WebElement priceActivationFee;
+
     @FindBy(css= "h3")
     private WebElement titleOrderSummary;
 

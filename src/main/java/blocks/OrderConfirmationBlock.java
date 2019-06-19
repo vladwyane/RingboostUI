@@ -20,7 +20,7 @@ public class OrderConfirmationBlock extends HtmlElement {
     @FindBy(xpath= "//*[contains(text(),'Recurring Monthly')]/following::div[1]")
     private WebElement priceRecurringMonthly;
 
-    @FindBy(xpath= "//*[contains(text(),'Total Due Today')]/following::div[1]")
+    @FindBy(xpath= "//*[contains(text(),'Due Today')]/following::div[1]")
     private WebElement priceTotalDueToday;
 
     @FindBy(xpath= "//*[contains(text(),'Pay Today')]/following::div[1]")

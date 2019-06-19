@@ -46,7 +46,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
-        double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
+        double priceNumber = buyingRegularVanityNumber.enterRingToNumber("0668843478");
         buyingRegularVanityNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_5, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);

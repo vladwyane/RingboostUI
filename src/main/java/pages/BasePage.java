@@ -24,7 +24,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.attributeContain
 public abstract class BasePage {
 
     protected static final double fixedPromocode = 5.0;
-    protected static final double highFixedPromocode = 50.0;
+    protected static final double highFixedPromocode = 150.0;
+    protected static final double percentPromocode = 10.0;
 
     HeaderBlock headerBlock;
     WebDriver driver;

@@ -95,7 +95,7 @@ public class SearchNumbersTests extends TestBase{
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_6, CreditCards.VISA_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_9, CreditCards.VISA_STRIPE, true);
     }
 
 

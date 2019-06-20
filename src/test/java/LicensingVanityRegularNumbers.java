@@ -13,10 +13,8 @@ public class LicensingVanityRegularNumbers extends TestBase {
     private VanitySearchResult vanitySearchResult;
     private TollFreeIndexPage tollFreeIndexPage;
     private BuyingRegularVanityNumber buyingRegularVanityNumber;
-    private VanityCategoryDetail vanityCategoryDetail;
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
-    private BuyingPremiumVanityNumber buyingPremiumVanityNumber;
     private LocalSearchResult localSearchResult;
 
     @BeforeMethod
@@ -26,10 +24,8 @@ public class LicensingVanityRegularNumbers extends TestBase {
         vanitySearchResult = new VanitySearchResult(app.getDriver());
         tollFreeIndexPage = new TollFreeIndexPage(app.getDriver());
         buyingRegularVanityNumber = new BuyingRegularVanityNumber(app.getDriver());
-        vanityCategoryDetail = new VanityCategoryDetail(app.getDriver());
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
-        buyingPremiumVanityNumber = new BuyingPremiumVanityNumber(app.getDriver());
         localSearchResult = new LocalSearchResult(app.getDriver());
     }
 
@@ -48,7 +44,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("0668843478");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_5, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_8, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
@@ -63,7 +59,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_6, CreditCards.MASTERCART_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_9, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
@@ -77,7 +73,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode("summersale");
-        checkout.fillCheckout(Users.VLADYSLAV_4, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_7, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
@@ -91,7 +87,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_5, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_8, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
@@ -105,7 +101,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_6, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_9, CreditCards.JCB, true);
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
@@ -118,7 +114,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         buyingRegularVanityNumber.chooseTermLength("Month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_4, CreditCards.ERROR_CVC_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_7, CreditCards.ERROR_CVC_STRIPE, true);
         checkout.checkingPaymentError();
     }
 

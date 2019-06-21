@@ -39,7 +39,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick a Plan");
-        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preffered");
+        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.enterRingToNumber("8722413731");
         buyingLocalNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_7, CreditCards.VISA_STRIPE, true);
@@ -83,7 +83,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick a Plan");
-        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preffered");
+        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("wintersale");

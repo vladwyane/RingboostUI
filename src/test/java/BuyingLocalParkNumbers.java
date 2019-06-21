@@ -105,7 +105,7 @@ public class BuyingLocalParkNumbers extends TestBase {
         buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Park a Number");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_7, CreditCards.ERROR_LOST_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_9, CreditCards.ERROR_LOST_CARD_STRIPE, false);
         checkout.checkingPaymentError();
     }
 }

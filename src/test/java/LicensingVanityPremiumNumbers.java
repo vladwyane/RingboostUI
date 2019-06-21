@@ -147,7 +147,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_7, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_9, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 

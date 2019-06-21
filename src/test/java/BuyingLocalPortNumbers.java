@@ -95,7 +95,7 @@ public class BuyingLocalPortNumbers extends TestBase {
         double pricePlan = buyingLocalNumber.choosePlan("Port a Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_8, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_9, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchasePortNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
 

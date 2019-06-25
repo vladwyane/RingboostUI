@@ -38,9 +38,9 @@ public class BuyingLocalParkNumbers extends TestBase {
         localIndexPage.searchLocalNumbers("");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park a Number");
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_7, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_13, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumber(priceNumber, pricePlan);
     }
 
@@ -50,10 +50,10 @@ public class BuyingLocalParkNumbers extends TestBase {
         homePage.searchLocalNumbers("");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park a Number");
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_8, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_12, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithFixedPromoCode(priceNumber, pricePlan);
     }
 
@@ -63,10 +63,10 @@ public class BuyingLocalParkNumbers extends TestBase {
         localIndexPage.searchLocalNumbers("2413731");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park a Number");
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("summersale");
-        checkout.fillCheckout(Users.VLADYSLAV_9, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_11, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithHighFixedPromoCode(priceNumber, pricePlan);
     }
 
@@ -76,10 +76,10 @@ public class BuyingLocalParkNumbers extends TestBase {
         localIndexPage.searchLocalNumbers("");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park a Number");
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_7, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_13, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(priceNumber, pricePlan);
     }
 
@@ -90,10 +90,10 @@ public class BuyingLocalParkNumbers extends TestBase {
         localIndexPage.searchLocalNumbers("");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park a Number");
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_8, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_12, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
 
@@ -103,9 +103,9 @@ public class BuyingLocalParkNumbers extends TestBase {
         localIndexPage.searchLocalNumbers("");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Park a Number");
+        buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_9, CreditCards.ERROR_LOST_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_11, CreditCards.ERROR_LOST_CARD_STRIPE, false);
         checkout.checkingPaymentError();
     }
 }

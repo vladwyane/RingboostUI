@@ -27,7 +27,7 @@ public class HeaderBlock extends HtmlElement {
     @FindBys( {@FindBy(css = ".navigation-numbers .sub-menu a")} )
     public List<WebElement> listSubMenuTollFree;
 
-    @FindBy(css = ".main-navigation a[href='/toll-free-numbers']")
+    @FindBy(xpath = "//ul[@class='main-navigation navigation-numbers']//a[contains(text(), 'Toll-Free Numbers')]/ancestor::li")
     private WebElement tollFreeLinInMainNav;
 
     public WebElement chooseItemFromSubMenuTollFree(String nameOfItem) {

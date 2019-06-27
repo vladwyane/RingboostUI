@@ -150,11 +150,21 @@ public abstract class BasePage {
     }
 
     public void clickSubNavItemTollFree (String nameOfItem) {
-        Actions action = new Actions(driver);
-        waitUntilElementWillBeClickable(headerBlock.getTollFreeLinInMainNav());
-        action.moveToElement(headerBlock.getTollFreeLinInMainNav()).build().perform();
+        hoverElementUsingJS(headerBlock.getTollFreeLinInMainNav());
         waitUntilElementWillBeClickable(headerBlock.getListSubMenuTollFree().get(0));
         headerBlock.chooseItemFromSubMenuTollFree(nameOfItem).click();
+    }
+
+    boolean hoverElementUsingJS(WebElement element) {
+        String strJavaScript = "var element = arguments[0]; var mouseEventObj = document.createEvent('MouseEvents'); mouseEventObj.initEvent( 'mouseover', true, true ); element.dispatchEvent(mouseEventObj);";
+
+        try {
+            ((JavascriptExecutor) driver).executeScript(strJavaScript, element);
+            Thread.sleep(500);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

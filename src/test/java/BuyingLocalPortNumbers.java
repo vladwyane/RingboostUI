@@ -43,7 +43,7 @@ public class BuyingLocalPortNumbers extends TestBase {
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_13, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_16, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumber(priceNumber, pricePlan);
     }
 
@@ -56,7 +56,7 @@ public class BuyingLocalPortNumbers extends TestBase {
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_12, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_15, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumberWithFixedPromoCode(priceNumber, pricePlan);
     }
 
@@ -69,7 +69,7 @@ public class BuyingLocalPortNumbers extends TestBase {
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("summersale");
-        checkout.fillCheckout(Users.VLADYSLAV_11, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_14, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumberWithHighFixedPromoCode(priceNumber, pricePlan);
     }
 
@@ -82,7 +82,7 @@ public class BuyingLocalPortNumbers extends TestBase {
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_12, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_15, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumberWithPercentPromoCode(priceNumber, pricePlan);
     }
 
@@ -95,7 +95,7 @@ public class BuyingLocalPortNumbers extends TestBase {
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_11, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_14, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchasePortNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
 
@@ -107,7 +107,7 @@ public class BuyingLocalPortNumbers extends TestBase {
         buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_13, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_16, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         checkout.checkingPaymentError();
     }
 

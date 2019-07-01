@@ -76,7 +76,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
             availableAreaCodesBlock.getListAreaCodes().get(0).click();
             priceFromAmountAreaCodes = priceFromAmountAreaCodes + Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(i).getText()));
         }
-        switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
+      /*  switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
             case 1:
                 priceFromAmountAreaCodes = priceFromAmountAreaCodes * 1;
                 break;
@@ -90,7 +90,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
                 priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.7;
                 break;
             default: priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.6;
-        }
+        }*/
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
         waitUntilElementWillBeClickable(continueButton);
@@ -121,7 +121,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         for (int i = 0; i < selectedAreaCodes.getListPricesSelectedAreaCodes().size(); i++) {
             priceFromAmountAreaCodes = priceFromAmountAreaCodes + Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(i).getText()));
         }
-        switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
+       /* switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
             case 1:
                 priceFromAmountAreaCodes = priceFromAmountAreaCodes * 1;
                 break;
@@ -135,7 +135,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
                 priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.7;
                 break;
             default: priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.6;
-        }
+        }*/
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
         waitUntilElementWillBeClickable(continueButton);
@@ -166,7 +166,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
     }
 
     public double getPriceFromAmountAreaCodesWithDiscount(double priceFromAmountAreaCodes) {
-        switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
+   /*     switch (Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText())) {
             case 1:
                 priceFromAmountAreaCodes = priceFromAmountAreaCodes * 1;
                 break;
@@ -180,7 +180,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
                 priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.7;
                 break;
             default: priceFromAmountAreaCodes = priceFromAmountAreaCodes * 0.6;
-        }
+        }*/
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
         waitUntilElementWillBeClickable(continueButton);

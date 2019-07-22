@@ -50,11 +50,12 @@ public class BuyingPremiumVanityNumber extends BasePage {
         dragAndDropBlock.getSelectState().click();
         waitUntilElementAppeared(dragAndDropBlock.getListStates().get(0));
         for(WebElement element : dragAndDropBlock.getListStates()) {
-            if (element.getText().equals(stateName) || element.equals(dragAndDropBlock.getListStates().get(dragAndDropBlock.getListStates().size() - 1))) {
+            if (element.getText().equals(stateName)) {
                 element.click();
                 return;
             }
         }
+        dragAndDropBlock.getListStates().get(0).click();
     }
 
     public double chooseByOneAreaCodesFromSeveralStates(String[] stateNames) {

@@ -24,7 +24,6 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         localSearchResult = new LocalSearchResult(app.getDriver());
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
-
     }
 
     @AfterMethod
@@ -35,21 +34,21 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     @Test
     public void orderLocalNumberPickPlan() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.enterRingToNumber("8722413731");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_16, CreditCards.VISA_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_22, CreditCards.VISA_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseParkNumber(priceNumber, pricePlan);
     }
 
     @Test
     public void orderLocalNumberPickPlanWithFixedPromoCode() throws InterruptedException {
         homePage.open();
-        homePage.searchLocalNumbers("");
+        homePage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");
@@ -57,7 +56,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_15, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithFixedPromoCode(priceNumber, pricePlan);
     }
 
@@ -72,14 +71,14 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.enterRingToNumber("9968843478");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("summersale");
-        checkout.fillCheckout(Users.VLADYSLAV_14, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_20, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithHighFixedPromoCode(priceNumber, pricePlan);
     }
 
     @Test
     public void orderLocalNumberPickPlanWithPercentPromoCode() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");
@@ -87,14 +86,14 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_15, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(priceNumber, pricePlan);
     }
 
     @Test
     public void orderLocalNumberPickPlanAfterRemovePromoCodee() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");
@@ -102,21 +101,21 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_14, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_20, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
 
     @Test
     public void orderLocalNumberPickPlanPaymentError() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");
         buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
         buyingLocalNumber.enterRingToNumber("1368843478");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_16, CreditCards.ERROR_PROCESSING_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_22, CreditCards.ERROR_PROCESSING_STRIPE, false);
         checkout.checkingPaymentError();
     }
 }

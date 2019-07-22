@@ -13,6 +13,8 @@ import org.testng.asserts.SoftAssert;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,7 +26,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.attributeContain
 public abstract class BasePage {
 
     protected static final double fixedPromocode = 5.0;
-    protected static final double highFixedPromocode = 150.0;
+    protected static final double highFixedPromocode = 4000.0;
     protected static final double percentPromocode = 10.0;
 
     HeaderBlock headerBlock;

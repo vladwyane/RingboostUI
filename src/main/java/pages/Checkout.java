@@ -29,6 +29,7 @@ public class Checkout extends BasePage{
         type(checkoutSteps.getFirstNameField(), users.getFirstName());
         type(checkoutSteps.getLastNameField(), users.getLastName());
         type(checkoutSteps.getEmailField(), users.getEmail());
+        type(checkoutSteps.getCompanyField(), users.getCompany());
         waitUntilElementWillBeClickable(checkoutSteps.getButtonProceed());
         checkoutSteps.getButtonProceed().click();
     }

@@ -61,4 +61,5 @@ public class BasicIndexPage extends BasePage {
         basic800NumbersBlock.listBasic800Numbers.get(basic800NumbersBlock.listBasic800Numbers.size() - 1).click();
     }
 
+
 }

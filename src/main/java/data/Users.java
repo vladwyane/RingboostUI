@@ -5,13 +5,14 @@ package data;
  */
 public enum Users {
 
-    VLADYSLAV_14("Vladyslav14", "Chesalov14", "vladyslav.chesalov+14@bigdropinc.com", "3275 NW 24th Street Rd", "apt Suit", "Miami", "FL", "33101", "0123456789"),
-    VLADYSLAV_15("Vladyslav15", "Chesalov15", "vladyslav.chesalov+15@bigdropinc.com", "103 North Perry St.", "", "Montgomery", "AL", "36043", "0987654321"),
-    VLADYSLAV_16("Vladyslav16", "Chesalov16", "vladyslav.chesalov+16@bigdropinc.com", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478");
+    VLADYSLAV_20("Vladyslav20", "Chesalov20", "vladyslav.chesalov+20@bigdropinc.com", "", "3275 NW 24th Street Rd", "apt Suit", "Miami", "FL", "33101", "0123456789"),
+    VLADYSLAV_21("Vladyslav21", "Chesalov21", "vladyslav.chesalov+21@bigdropinc.com", "Bigdrop", "103 North Perry St.", "", "Montgomery", "AL", "36043", "0987654321"),
+    VLADYSLAV_22("Vladyslav22", "Chesalov22", "vladyslav.chesalov+22@bigdropinc.com", "Bigdrop", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478");
 
     private String firstName;
     private String lastName;
     private String email;
+    private String companyName;
     private String streetAddress;
     private String aptSuite;
     private String city;
@@ -19,10 +20,11 @@ public enum Users {
     private String zipCode;
     private String phone;
 
-    Users(String firstName, String lastName, String email, String streetAddress, String aptSuite, String city, String state, String zipCode, String phone) {
+    Users(String firstName, String lastName, String email, String companyName, String streetAddress, String aptSuite, String city, String state, String zipCode, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.companyName = companyName;
         this.streetAddress = streetAddress;
         this.aptSuite = aptSuite;
         this.city = city;
@@ -41,6 +43,10 @@ public enum Users {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getCompany() {
+        return companyName;
     }
 
     public String getStreetAddress() {

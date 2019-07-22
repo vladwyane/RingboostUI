@@ -79,7 +79,7 @@ public class SearchNumbersTests extends TestBase{
         homePage.open();
         homePage.searchTollFreeNumbers("te");
         vanitySearchResult.choose32thNumberFromRegularVanityList();
-        double priceMonthlyMinutes = buyingRegularVanityNumber.choose750MonthlyMinutes();
+        double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumberWithMultipleCheckbox("8332702679");
         buyingRegularVanityNumber.checkingOrderSummary(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
@@ -95,7 +95,7 @@ public class SearchNumbersTests extends TestBase{
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Year");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_14, CreditCards.VISA_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_20, CreditCards.VISA_STRIPE, true);
     }
 
 

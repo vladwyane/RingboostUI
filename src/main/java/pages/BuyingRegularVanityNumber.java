@@ -50,7 +50,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         return price;
     }
 
-    public double choose750MonthlyMinutes() {
+    public double choose250MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
         Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 300, 0).build();

@@ -29,6 +29,9 @@ public class CheckoutSteps extends HtmlElement {
     @FindBy(xpath= "//input[@name='email']")
     private TextInput emailField;
 
+    @FindBy(xpath= "//input[@name='company']")
+    private TextInput companyField;
+
     @FindBy(xpath= "//span[contains(text(),'Step 1')]//ancestor::div[@class='heading']//following-sibling::form//button")
     private WebElement buttonProceed;
 

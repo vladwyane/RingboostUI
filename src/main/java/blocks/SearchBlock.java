@@ -46,6 +46,9 @@ public class SearchBlock extends HtmlElement {
     @FindBy(css= "h2")
     private WebElement titleH2;
 
+    @FindBy(xpath= "//div[@class='main-search-block']//a[contains(text(), 'State')]")
+    private WebElement stateLink;
+
 
 
 }

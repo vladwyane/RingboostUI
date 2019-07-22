@@ -38,7 +38,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumber() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
@@ -50,7 +50,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberWithFixedPromoCode() throws InterruptedException {
         homePage.open();
-        homePage.searchLocalNumbers("");
+        homePage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
@@ -63,7 +63,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberWithHighFixedPromoCode() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("2413731");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
@@ -76,7 +76,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberWithPercentPromoCode() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
@@ -89,7 +89,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberAfterRemovePromoCodee() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
@@ -102,7 +102,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberPaymentError() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Port A Number");

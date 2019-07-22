@@ -63,7 +63,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     @Test
     public void orderLocalNumberPickPlanWithHighFixedPromoCode() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("2413731");
+        localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");

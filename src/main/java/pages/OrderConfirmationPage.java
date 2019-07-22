@@ -32,7 +32,7 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
         //softAssert.assertEquals(priceRecurringMonthly, actualResult, "priceRecurringMonthly is incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
         softAssert.assertAll();
     }
 
@@ -43,8 +43,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
@@ -54,8 +54,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
         //softAssert.assertEquals(priceRecurringMonthly, actualResult, "priceRecurringMonthly is incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0, "pricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0, "pricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, fixedPromocode, "promoCode is incorrect");
         softAssert.assertAll();
     }
@@ -67,8 +67,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
@@ -78,8 +78,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase", "Title incorrect");
         //softAssert.assertEquals(priceRecurringMonthly, actualResult, "PriceRecurringMonthly is incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "PriceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "PriceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, Math.round(actualResult * percentPromocode / 100 * 100.0) / 100.0, "PricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -98,7 +98,7 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
        // softAssert.assertEquals(priceRecurringMonthly, actualResult, "priceRecurringMonthly is incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
         softAssert.assertFalse(isElementPresent(orderConfirmationBlock.getPriceAfterAppliedPromoCode()), "PricePromoCode is present");
         softAssert.assertFalse(isElementPresent(orderConfirmationBlock.getPricePayToday()), "PricePayToday is present");
         softAssert.assertAll();
@@ -111,8 +111,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
        // double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
@@ -122,7 +122,7 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
       //  softAssert.assertEquals(priceRecurringMonthly, actualResult, "priceRecurringMonthly is incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
         softAssert.assertEquals(pricePayToday, 0.0, "PricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, highFixedPromocode, "pricePromoCode is incorrect");
         softAssert.assertAll();
@@ -142,7 +142,7 @@ public class OrderConfirmationPage extends BasePage {
         actualResult = Double.parseDouble(dx);
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
         softAssert.assertAll();
     }
 
@@ -153,8 +153,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -162,8 +162,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0, "pricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0, "pricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, fixedPromocode, "pricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -175,8 +175,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -184,8 +184,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, 0.0, "pricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, 0.0, "pricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, highFixedPromocode, "pricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -197,8 +197,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -206,8 +206,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase", "Title incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "PriceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "PriceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, Math.round(actualResult * percentPromocode / 100 * 100.0) / 100.0, "PricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -224,7 +224,7 @@ public class OrderConfirmationPage extends BasePage {
         actualResult = Double.parseDouble(dx);
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase", "Title incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "PriceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "PriceTotalDueToday is incorrect");
         softAssert.assertFalse(isElementPresent(orderConfirmationBlock.getPriceAfterAppliedPromoCode()), "PricePromoCode is present");
         softAssert.assertFalse(isElementPresent(orderConfirmationBlock.getPricePayToday()), "PricePayToday is present");
         softAssert.assertAll();
@@ -243,7 +243,7 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
      //   softAssert.assertEquals(priceRecurringMonthly, pricePlan, "priceRecurringMonthly is incorrect");
-        softAssert.assertEquals(priceTotalDueToday, priceNumber + Math.round(pricePlan * 100.0) / 100.0, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, priceNumber + Math.round(pricePlan * 100.0) / 100.0, "priceTotalDueToday is incorrect");
         softAssert.assertAll();
     }
 
@@ -254,8 +254,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan * 100.0) / 100.0;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -263,8 +263,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0,"pricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0,"pricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, fixedPromocode, "pricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -276,8 +276,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan  * 100.0) / 100.0;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -285,8 +285,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, 0.0, "pricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, 0.0, "pricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, highFixedPromocode, "pricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -298,8 +298,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan * 100.0) / 100.0;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -307,8 +307,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase", "Title incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "PriceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "PriceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, Math.round(actualResult * percentPromocode / 100 * 100.0) / 100.0, "PricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -326,7 +326,7 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
         softAssert.assertEquals(priceRecurringMonthly, pricePlan, "priceRecurringMonthly is incorrect");
-        softAssert.assertEquals(priceTotalDueToday, priceNumber + Math.round(pricePlan * 100.0) / 100.0, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, priceNumber + Math.round(pricePlan * 100.0) / 100.0, "priceTotalDueToday is incorrect");
         softAssert.assertFalse(isElementPresent(orderConfirmationBlock.getPriceAfterAppliedPromoCode()), "PricePromoCode is present");
         softAssert.assertFalse(isElementPresent(orderConfirmationBlock.getPricePayToday()), "PricePayToday is present");
         softAssert.assertAll();
@@ -338,14 +338,14 @@ public class OrderConfirmationPage extends BasePage {
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
-        double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
+        double priceRecurringMonthly = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(priceNumber).replace(',', '.');
         priceNumber = Double.parseDouble(dx);
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
         softAssert.assertEquals(priceRecurringMonthly, pricePlan, "priceRecurringMonthly is incorrect");
-        softAssert.assertEquals(priceTotalDueToday, priceNumber + Math.round(pricePlan / 2 * 100.0) / 100.0, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, priceNumber + Math.round(pricePlan / 2 * 100.0) / 100.0, "priceTotalDueToday is incorrect");
         softAssert.assertAll();
     }
 
@@ -363,7 +363,7 @@ public class OrderConfirmationPage extends BasePage {
         actualResult = Double.parseDouble(dx);
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
         softAssert.assertAll();
     }
 
@@ -374,8 +374,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan * 100.0) / 100.0;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -383,8 +383,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0,"pricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0,"pricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, fixedPromocode, "pricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -396,8 +396,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan  * 100.0) / 100.0;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -405,8 +405,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, 0.0, "pricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, 0.0, "pricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, highFixedPromocode, "pricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -418,8 +418,8 @@ public class OrderConfirmationPage extends BasePage {
         waiting2seconds();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan * 100.0) / 100.0;
-        double pricePayToday = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPricePayToday().getText()));
-        double pricePromoCode = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText()));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -427,8 +427,8 @@ public class OrderConfirmationPage extends BasePage {
         System.out.println("pricePayToday = " + pricePayToday);
         System.out.println("pricePromoCode = " + pricePromoCode);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase", "Title incorrect");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "PriceTotalDueToday is incorrect");
-        softAssert.assertEquals(pricePayToday, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "PriceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, Math.round(actualResult * percentPromocode / 100 * 100.0) / 100.0, "PricePromoCode is incorrect");
         softAssert.assertAll();
     }
@@ -445,7 +445,7 @@ public class OrderConfirmationPage extends BasePage {
         actualResult = Double.parseDouble(dx);
         System.out.println("priceTotalDueToday = " + priceTotalDueToday);
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
-        softAssert.assertEquals(priceTotalDueToday, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
         softAssert.assertFalse(isElementPresent(orderConfirmationBlock.getPriceAfterAppliedPromoCode()), "PricePromoCode is present");
         softAssert.assertFalse(isElementPresent(orderConfirmationBlock.getPricePayToday()), "PricePayToday is present");
         softAssert.assertAll();

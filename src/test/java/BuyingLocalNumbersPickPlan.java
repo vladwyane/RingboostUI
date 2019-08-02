@@ -15,6 +15,8 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
 
+    private String boughtNumber;
+
 
     @BeforeMethod
     public void initPageObjects() {
@@ -40,9 +42,16 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.enterRingToNumber("8722413731");
-        buyingLocalNumber.goToCheckout();
+        boughtNumber = buyingLocalNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_22, CreditCards.VISA_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseParkNumber(priceNumber, pricePlan);
+    }
+
+    @Test
+    public void orderLocalNumberPickPlanSold() throws InterruptedException {
+        localIndexPage.open();
+        localIndexPage.searchLocalNumbers(boughtNumber);
+        localSearchResult.checkingStatusSold();
     }
 
     @Test

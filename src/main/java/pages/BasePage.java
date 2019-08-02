@@ -29,12 +29,12 @@ public abstract class BasePage {
     protected static final double highFixedPromocode = 4000.0;
     protected static final double percentPromocode = 10.0;
 
-    HeaderBlock headerBlock;
-    WebDriver driver;
+    protected HeaderBlock headerBlock;
+    protected WebDriver driver;
 
-    SoftAssert softAssert = new SoftAssert();
+    protected SoftAssert softAssert = new SoftAssert();
 
-    BasePage(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         HtmlElementLoader.populatePageObject(this, driver);
         this.driver = driver;
     }
@@ -47,19 +47,19 @@ public abstract class BasePage {
     @FindBy(css = "h1")
     WebElement titleH1;
 
-    void type(TextInput webElement, String text) {
+    protected void type(TextInput webElement, String text) {
         webElement.clear();
         webElement.sendKeys(text);
     }
 
-     void sendKeysSlowly(final WebElement element, final String keys) throws InterruptedException {
+    protected void sendKeysSlowly(final WebElement element, final String keys) throws InterruptedException {
         for (int i = 0; i < keys.length(); i++){
             element.sendKeys(Character.toString(keys.charAt(i)));
             Thread.sleep(50);
         }
     }
 
-    boolean isElementPresent(WebElement element) {
+    protected boolean isElementPresent(WebElement element) {
         try {
             element.isDisplayed();
             return true;
@@ -68,7 +68,7 @@ public abstract class BasePage {
         }
     }
 
-    void waiting2seconds() {
+    protected void waiting2seconds() {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -76,7 +76,7 @@ public abstract class BasePage {
         }
     }
 
-     boolean isElementInvisible(WebElement element) {
+    protected boolean isElementInvisible(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 2);
         try {
             wait.until(ExpectedConditions.invisibilityOf(element));
@@ -86,7 +86,7 @@ public abstract class BasePage {
         }
     }
 
-    boolean waitUntilTextInElementAppear(WebElement element, String text) {
+    protected boolean waitUntilTextInElementAppear(WebElement element, String text) {
         WebDriverWait wait = new WebDriverWait(driver, 2);
         try {
             wait.until(ExpectedConditions.textToBePresentInElement(element, text));
@@ -96,7 +96,7 @@ public abstract class BasePage {
         }
     }
 
-    boolean waitUntilElementAppeared(WebElement element) {
+    protected boolean waitUntilElementAppeared(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
@@ -106,7 +106,7 @@ public abstract class BasePage {
         }
     }
 
-    boolean waitUntilElementWillBeClickable(WebElement element) {
+    protected boolean waitUntilElementWillBeClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -116,7 +116,7 @@ public abstract class BasePage {
         }
     }
 
-    boolean scrollToElement(WebElement element) {
+    protected boolean scrollToElement(WebElement element) {
 
         String scrollElementIntoMiddle = "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
                 + "var elementTop = arguments[0].getBoundingClientRect().top;"
@@ -131,17 +131,17 @@ public abstract class BasePage {
         }
     }
 
-    boolean isElementContainsAttributeValue(WebElement element, String attribute, String attributeValue) {
+    protected boolean isElementContainsAttributeValue(WebElement element, String attribute, String attributeValue) {
         return element.getAttribute(attribute).contains(attributeValue);
     }
 
-    void changeAttributeValueWithJS(WebElement element, String attribute, String value) {
+    protected void changeAttributeValueWithJS(WebElement element, String attribute, String value) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].setAttribute('" + attribute + "', '" + value + "')", element);
 
     }
 
-    String getNumbersFromString(String value) {
+    protected String getNumbersFromString(String value) {
         Pattern pat = Pattern.compile("[-]?[0-9]+(.[0-9]+)?");
         Matcher matcher = pat.matcher(value);
         while (matcher.find()) {
@@ -157,7 +157,7 @@ public abstract class BasePage {
         headerBlock.chooseItemFromSubMenuTollFree(nameOfItem).click();
     }
 
-    boolean hoverElementUsingJS(WebElement element) {
+    protected boolean hoverElementUsingJS(WebElement element) {
         String strJavaScript = "var element = arguments[0]; var mouseEventObj = document.createEvent('MouseEvents'); mouseEventObj.initEvent( 'mouseover', true, true ); element.dispatchEvent(mouseEventObj);";
 
         try {

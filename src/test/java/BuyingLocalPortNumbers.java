@@ -18,6 +18,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
 
+    private String boughtNumber;
 
     @BeforeMethod
     public void initPageObjects() {
@@ -42,9 +43,16 @@ public class BuyingLocalPortNumbers extends TestBase {
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
-        buyingLocalNumber.goToCheckout();
+        boughtNumber = buyingLocalNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_22, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumber(priceNumber, pricePlan);
+    }
+
+    @Test
+    public void orderLocalPortNumberSold() throws InterruptedException {
+        localIndexPage.open();
+        localIndexPage.searchLocalNumbers(boughtNumber);
+        localSearchResult.checkingStatusSold();
     }
 
     @Test

@@ -25,6 +25,10 @@ public class LocalNumbersBlock extends HtmlElement {
     @FindBys( {@FindBy(css = ".phone-card")} )
     public List<WebElement> listLocalNumbers;
 
+    @Name("ArrayList of local numbers li")
+    @FindBys( {@FindBy(css = "li")} )
+    public List<WebElement> listLocalNumbersLi;
+
     @Name("ArrayList of price local numbers")
     @FindBys( {@FindBy(css = ".price")} )
     public List<WebElement> listPricesLocalNumbers;

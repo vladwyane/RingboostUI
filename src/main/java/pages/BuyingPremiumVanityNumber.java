@@ -287,8 +287,13 @@ public class BuyingPremiumVanityNumber extends BasePage {
         orderSummaryBlock.getButtonProceedToCheckout().click();
     }
 
-
-
-
+    public void checkingRegionStatus() {
+        waitUntilElementAppeared(availableByMarketOrNationwide.getButtonSelectNationwide());
+        softAssert.assertTrue(isElementContainsAttributeValue(availableByMarketOrNationwide.getButtonSelectNationwide(), "disabled", "disabled"),
+                "Nationwide button is available");
+        softAssert.assertFalse(isElementContainsAttributeValue(availableByMarketOrNationwide.getButtonSelectMyAreas(), "disabled", "disabled"),
+                "My Areas button is disabled");
+        softAssert.assertAll();
+    }
 
 }

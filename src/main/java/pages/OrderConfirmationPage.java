@@ -44,7 +44,7 @@ public class OrderConfirmationPage extends BasePage {
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
@@ -68,7 +68,7 @@ public class OrderConfirmationPage extends BasePage {
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
@@ -112,7 +112,7 @@ public class OrderConfirmationPage extends BasePage {
        // double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
@@ -154,7 +154,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -176,7 +176,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -198,7 +198,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -255,7 +255,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -277,7 +277,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan  * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -299,7 +299,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -375,7 +375,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -397,7 +397,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan  * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);
@@ -419,7 +419,7 @@ public class OrderConfirmationPage extends BasePage {
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
-        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(actualResult).replace(',', '.');
         actualResult = Double.parseDouble(dx);

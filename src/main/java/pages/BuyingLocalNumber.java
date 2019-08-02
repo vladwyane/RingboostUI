@@ -59,9 +59,12 @@ public class BuyingLocalNumber extends BasePage {
     }
 
 
-    public void goToCheckout() {
+    public String goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
+        String boughtNumber = phoneNumber.getText();
+        boughtNumber = boughtNumber.replaceAll("\\D+","").substring(3);
         orderSummaryBlock.getButtonProceedToCheckout().click();
+        return boughtNumber;
     }
 
     public double choosePickYourMonthlyPlan(String planName) {

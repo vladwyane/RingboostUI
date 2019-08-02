@@ -50,4 +50,12 @@ public class LocalSearchResult extends BasePage {
         scrollToElement(relatedVanityBlock.getLisRelatedVanityNumbers().get(relatedVanityBlock.getLisRelatedVanityNumbers().size()- 1));
         relatedVanityBlock.getLisRelatedVanityNumbers().get(relatedVanityBlock.getLisRelatedVanityNumbers().size()- 1).click();
     }
+
+    public void checkingStatusSold () {
+        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbers().get(0));
+        softAssert.assertTrue(isElementContainsAttributeValue(localNumbersBlock.getListLocalNumbersLi().get(0), "class", "sold"),
+                "Number is available");
+        softAssert.assertTrue(waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(0)));
+        softAssert.assertAll();
+    }
 }

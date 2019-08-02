@@ -37,11 +37,11 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     @Test
     public void orderPremiumVanityNumber() throws InterruptedException {
         homePage.open();
-        homePage.searchTollFreeNumbers("461RING");
+        homePage.searchTollFreeNumbers("ERROR");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         buyingPremiumVanityNumber.chooseState("Kansas");
-        double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseSeveralAreaCodesFromList(3);
+        double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseSeveralAreaCodesFromList(1);
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.getPriceFromAmountAreaCodesWithDiscount(priceFromAmountAreaCodes);
         int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("2 Years");
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
@@ -49,6 +49,14 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_22, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
+    }
+
+    @Test
+    public void orderPremiumVanityNumberCheckingRegionStatus() throws InterruptedException {
+        homePage.open();
+        homePage.searchTollFreeNumbers("ERROR");
+        vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
+        buyingPremiumVanityNumber.checkingRegionStatus();
     }
 
     @Test

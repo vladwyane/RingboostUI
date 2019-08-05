@@ -18,20 +18,20 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@Block(@FindBy(css = " "))
+@Block(@FindBy(css = "main"))
 public class ListGeneratedURL extends HtmlElement {
 
-    @FindBy(css = " ")
+    @FindBy(xpath = "//div[contains(text(), 'Create new URL')]")
     private WebElement buttonCreateNewURL;
 
     @FindBy(css = " ")
     private WebElement labelPhoneNumber;
 
     @Name("List of generated URL")
-    @FindBys( {@FindBy(css = " ")} )
+    @FindBys( {@FindBy(css = "tbody tr td button")} )
     private List<WebElement> listOfActionsURL;
 
     @Name("List of generated URL")
-    @FindBys( {@FindBy(css = " ")} )
-    private List<WebElement> listGeneratedURL;
+    @FindBys( {@FindBy(css = "tbody tr td")} )
+    private List<WebElement> listTd;
 }

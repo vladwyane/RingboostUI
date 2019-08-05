@@ -33,11 +33,11 @@ public class priceOverrideForLocal extends TestBase{
 
     @Test
     public void test1CorrectRedirectFromRegularTollFree() throws InterruptedException {
-        admin.clickLocalInventoryLink();
-        inventoryLocal.searchNumber(0, "8335897464");
+        admin.clickToolFreInventoryLink();
+       // inventoryLocal.searchNumber(0, "8335897464");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(0);
-        linksListingPage.generateLinkWithPromocode("23");
         String generatedLink = linksListingPage.getGeneratedLink(0);
+        linksListingPage.generateLinkWithPromoCode("23", "Colorado", 3, "2");
 
     }
 

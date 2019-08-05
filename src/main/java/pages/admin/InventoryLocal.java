@@ -32,6 +32,10 @@ public class InventoryLocal extends BasePage {
     @FindBys( {@FindBy(css = "th form .v-input__icon")} )
     public List<WebElement> listSearchIconTh;
 
+    @Name("ArrayList actions of table")
+    @FindBys( {@FindBy(css = "tbody tr td a")} )
+    public List<WebElement> listActionsOfTable;
+
     @Name("ArrayList td of table")
     @FindBys( {@FindBy(css = "tbody tr td")} )
     public List<WebElement> listTdOfTable;
@@ -44,8 +48,9 @@ public class InventoryLocal extends BasePage {
     }
 
     public String clickCreateNewLinkByNumber(int indexNumber) {
+        waitUntilElementAppeared(listActionsOfTable.get(0));
         String phoneNumber = listTdOfTable.get(indexNumber * 7).getText();
-        listTdOfTable.get(indexNumber * 7 + 6).click();
+        listActionsOfTable.get(indexNumber * 2).click();
         return phoneNumber;
     }
 }

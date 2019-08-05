@@ -451,4 +451,30 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
+    //Generated link in admin panel
+
+    public void checkingGeneratedLinkWithFixedPromoCode() {
+/*        waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
+        waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
+        orderConfirmationBlock.getLinkOrderDetails().click();
+        waiting2seconds();
+        //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
+        double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
+        double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
+        double pricePromoCode = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(2).replaceAll(",", ""));
+        double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
+        DecimalFormat df = new DecimalFormat("#.##");
+        String dx = df.format(actualResult).replace(',', '.');
+        actualResult = Double.parseDouble(dx);
+        System.out.println("priceTotalDueToday = " + priceTotalDueToday);
+        System.out.println("pricePayToday = " + pricePayToday);
+        System.out.println("pricePromoCode = " + pricePromoCode);
+        softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
+        //softAssert.assertEquals(priceRecurringMonthly, actualResult, "priceRecurringMonthly is incorrect");
+        softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0, "pricePayToday is incorrect");
+        softAssert.assertEquals(pricePromoCode, fixedPromocode, "promoCode is incorrect");
+        softAssert.assertAll();*/
+    }
+
 }

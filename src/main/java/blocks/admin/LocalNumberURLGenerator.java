@@ -18,13 +18,13 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 @Block(@FindBy(css = " "))
 public class LocalNumberURLGenerator extends HtmlElement{
 
-    @FindBy(css = " ")
+    @FindBy(xpath = "//div[contains(text(),'Generate link')]")
     private WebElement buttonGenerateLink;
 
     @FindBy(css = " ")
     private WebElement labelPhoneNumber;
 
-    @FindBy(css = " ")
+    @FindBy(css = "//input[@aria-label='Price for area codes']")
     private TextInput priceOverride;
 
     @FindBy(css = " ")

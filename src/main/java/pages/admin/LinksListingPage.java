@@ -3,6 +3,7 @@ package pages.admin;
 import blocks.admin.ListGeneratedURL;
 import blocks.admin.LocalNumberURLGenerator;
 import blocks.admin.PremiumNumberURLGenerator;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -40,6 +41,14 @@ public class LinksListingPage extends BasePage {
         driver.get(link);
     }
 
+    public void goToGeneratedLinkAfterCopyPaste() {
+        listGeneratedURL.getListOfActionsURL().get(0).click();
+        premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "v");
+        String copyPaste = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
+        driver.get(copyPaste);
+    }
+
+
     public void clickEditButton(int indexNumber) {
         waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
         listGeneratedURL.getListOfActionsURL().get(indexNumber * 4).click();
@@ -53,6 +62,14 @@ public class LinksListingPage extends BasePage {
     public void clickDeleteButton(int indexNumber) {
         waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
         listGeneratedURL.getListOfActionsURL().get(indexNumber * 4 + 2).click();
+        waiting2seconds();
+        listGeneratedURL.getButtonCancel().click();
+        waiting2seconds();
+    }
+
+    public void checkingAfterDelete(String linkBefore, String linkAfter) {
+        softAssert.assertNotEquals (linkBefore, linkAfter);
+        softAssert.assertAll();
     }
 
     public void clickCopyButton(int indexNumber) {
@@ -116,6 +133,22 @@ public class LinksListingPage extends BasePage {
         premiumNumberURLGenerator.getShowPromoCodeCheckbox().click();
         waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
         premiumNumberURLGenerator.getButtonGenerateLink().click();
+    }
+
+    public String generateLinkWithoutPromoCode(String priceOverride, String state, int amountAreaCodes, String termLength, String displayedName) {
+        waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
+        listGeneratedURL.getButtonCreateNewURL().click();
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        chooseMonthlyMinutes();
+        chooseState(state);
+        chooseAreaCodes(amountAreaCodes);
+        chooseTermLength(termLength);
+        type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
+        type(premiumNumberURLGenerator.getDisplayedNumberOnFE(), displayedName);
+        String enteredText = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
+        waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
+        premiumNumberURLGenerator.getButtonGenerateLink().click();
+        return enteredText;
     }
 
     public void generateLinkWithChangeDisplayedInfo(String priceOverride, String displayedName) {

@@ -24,7 +24,7 @@ public class ListGeneratedURL extends HtmlElement {
     @FindBy(xpath = "//div[contains(text(), 'Create new URL')]")
     private WebElement buttonCreateNewURL;
 
-    @FindBy(css = " ")
+    @FindBy(css = ".v-toolbar__title")
     private WebElement labelPhoneNumber;
 
     @Name("List of generated URL")
@@ -34,4 +34,7 @@ public class ListGeneratedURL extends HtmlElement {
     @Name("List of generated URL")
     @FindBys( {@FindBy(css = "tbody tr td")} )
     private List<WebElement> listTd;
+
+    @FindBy(xpath = "//div[contains(text(), 'Cancel')]")
+    private WebElement buttonCancel;
 }

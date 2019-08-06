@@ -40,6 +40,19 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     }
 
     @Test
+    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException {
+        admin.clickToolFreInventoryLink();
+        // inventoryTollfree.searchNumber(0, "8335897464");
+        inventoryTollfree.clickCreateNewLinkByNumber(0);
+        String displayedName = linksListingPage.generateLinkWithoutPromoCode("23", "Colorado", 3, "2", "Test");
+        String generatedLink = linksListingPage.getGeneratedLink(0);
+        linksListingPage.goToGeneratedLink(generatedLink);
+        checkout.addPromoCode("springsale");
+        checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.MASTERCART_STRIPE, false);
+        orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCode();
+    }
+
+    @Test
     public void test1GenerateLinkWithPromoCode() throws InterruptedException {
         admin.clickToolFreInventoryLink();
         // inventoryTollfree.searchNumber(0, "8335897464");
@@ -57,5 +70,23 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         admin.clickToolFreInventoryLink();
         inventoryTollfree.clickCreateNewLinkByNumber(0);
         linksListingPage.clickEditButton(1);
+    }
+
+    @Test
+    public void test3CopyLink() throws InterruptedException {
+        admin.clickToolFreInventoryLink();
+        inventoryTollfree.clickCreateNewLinkByNumber(0);
+        linksListingPage.clickCopyButton(1);
+        linksListingPage.goToGeneratedLinkAfterCopyPaste();
+    }
+
+    @Test
+    public void test4DeleteLink() throws InterruptedException {
+        admin.clickToolFreInventoryLink();
+        inventoryTollfree.clickCreateNewLinkByNumber(0);
+        String generatedLink = linksListingPage.getGeneratedLink(0);
+        linksListingPage.clickDeleteButton(0);
+        String linkAfterDelete = linksListingPage.getGeneratedLink(0);
+        linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
 }

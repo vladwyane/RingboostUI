@@ -101,11 +101,17 @@ public class LinksListingPage extends BasePage {
         }
     }
 
-    public void chooseMonthlyMinutes() {
-        waitUntilElementWillBeClickable(premiumNumberURLGenerator.getBulletOfSlider());
-        Actions move = new Actions(driver);
-        Action actionFirstBull = move.dragAndDropBy(premiumNumberURLGenerator.getBulletOfSlider(), 100, 0).build();
-        actionFirstBull.perform();
+    public void chooseMonthlyMinutes(String minutes) {
+        waitUntilElementAppeared(premiumNumberURLGenerator.getSelectMinutes());
+        premiumNumberURLGenerator.getSelectMinutes().click();
+        waiting2seconds();
+        for(WebElement element : premiumNumberURLGenerator.getListOfMinutes()) {
+            if (element.getText().equals(minutes)) {
+                element.click();
+                return;
+            }
+        }
+        premiumNumberURLGenerator.getListOfMinutes().get(0).click();
     }
 
     public void chooseTermLength(String termLength) {
@@ -121,11 +127,11 @@ public class LinksListingPage extends BasePage {
         premiumNumberURLGenerator.getListOTermLength().get(0).click();
     }
 
-    public void generateLinkWithPromoCode(String priceOverride, String state, int amountAreaCodes, String termLength) {
+    public void generateLinkWithPromoCode(String priceOverride, String state, int amountAreaCodes, String termLength, String minutes) {
         waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
         listGeneratedURL.getButtonCreateNewURL().click();
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
-        chooseMonthlyMinutes();
+        chooseMonthlyMinutes(minutes);
         chooseState(state);
         chooseAreaCodes(amountAreaCodes);
         chooseTermLength(termLength);
@@ -135,11 +141,12 @@ public class LinksListingPage extends BasePage {
         premiumNumberURLGenerator.getButtonGenerateLink().click();
     }
 
-    public String generateLinkWithoutPromoCode(String priceOverride, String state, int amountAreaCodes, String termLength, String displayedName) {
+    public String generateLinkWithoutPromoCode(String priceOverride, String state,
+                                               int amountAreaCodes, String termLength, String displayedName, String minutes) {
         waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
         listGeneratedURL.getButtonCreateNewURL().click();
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
-        chooseMonthlyMinutes();
+        chooseMonthlyMinutes(minutes);
         chooseState(state);
         chooseAreaCodes(amountAreaCodes);
         chooseTermLength(termLength);

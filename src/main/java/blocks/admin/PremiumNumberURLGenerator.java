@@ -58,17 +58,12 @@ public class PremiumNumberURLGenerator extends HtmlElement {
     @FindBys( {@FindBy(xpath = "//div[contains(@class, 'menuable__content__active')]//div[@class='v-list__tile__title']")} )
     private List<WebElement> listOTermLength;
 
-    @FindBy(css= ".v-slider__thumb")
-    private WebElement bulletOfSlider;
+    @FindBy(xpath = "//input[@aria-label='Select minutes']/ancestor::div[@class='v-select__selections']")
+    private WebElement selectMinutes;
 
-    @FindBy(css= ".vue-slider-dot-tooltip-text.price")
-    private WebElement tooltipPrice;
-
-    @FindBy(xpath= "//*[@class='vue-slider-dot-tooltip-text'][1]")
-    private WebElement tooltipMinute;
-
-    @FindBy(css= ".vue-slider-dot-tooltip")
-    private WebElement sliderTooltip;
+    @Name("List of minutes")
+    @FindBys( {@FindBy(xpath = "//div[contains(@class, 'menuable__content__active')]//div[@class='v-list__tile__title']")} )
+    private List<WebElement> listOfMinutes;
 
 
 }

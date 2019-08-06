@@ -44,7 +44,9 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         admin.clickToolFreInventoryLink();
         // inventoryTollfree.searchNumber(0, "8335897464");
         inventoryTollfree.clickCreateNewLinkByNumber(0);
-        String displayedName = linksListingPage.generateLinkWithoutPromoCode("23", "Colorado", 3, "2", "Test");
+        String displayedName = linksListingPage
+                .generateLinkWithoutPromoCode("23", "Colorado", 3,
+                        "1 year", "Test", "750");
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode("springsale");
@@ -57,7 +59,9 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         admin.clickToolFreInventoryLink();
         // inventoryTollfree.searchNumber(0, "8335897464");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
-        linksListingPage.generateLinkWithPromoCode("23", "Colorado", 3, "2");
+        linksListingPage
+                .generateLinkWithPromoCode("23", "Colorado",
+                        3, "1 year", "500");
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode("springsale");

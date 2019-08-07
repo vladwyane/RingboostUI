@@ -127,35 +127,67 @@ public class LinksListingPage extends BasePage {
         premiumNumberURLGenerator.getListOTermLength().get(0).click();
     }
 
-    public void generateLinkWithPromoCode(String priceOverride, String state, int amountAreaCodes, String termLength, String minutes) {
+    public void generateLinkWithPromoCodePremiumFlow(String priceOverride, String state, int amountAreaCodes, String termLength, String minutes) {
         waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
         listGeneratedURL.getButtonCreateNewURL().click();
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
         chooseMonthlyMinutes(minutes);
         chooseState(state);
         chooseAreaCodes(amountAreaCodes);
         chooseTermLength(termLength);
-        type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
         premiumNumberURLGenerator.getShowPromoCodeCheckbox().click();
         waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
         premiumNumberURLGenerator.getButtonGenerateLink().click();
     }
 
-    public String generateLinkWithoutPromoCode(String priceOverride, String state,
-                                               int amountAreaCodes, String termLength, String displayedName, String minutes) {
+    public String generateLinkWithoutPromoCodePremiumFlow(String priceOverride, String state,
+                                                          int amountAreaCodes, String termLength, String displayedName, String minutes) {
         waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
         listGeneratedURL.getButtonCreateNewURL().click();
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
         chooseMonthlyMinutes(minutes);
         chooseState(state);
         chooseAreaCodes(amountAreaCodes);
         chooseTermLength(termLength);
-        type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
         type(premiumNumberURLGenerator.getDisplayedNumberOnFE(), displayedName);
         String enteredText = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
+        return enteredText;
+    }
+
+    public void generateLinkWithPromoCodeRegularFlow(String priceOverride) {
+        waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
+        listGeneratedURL.getButtonCreateNewURL().click();
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        type(localNumberURLGenerator.getPriceOverride(), priceOverride);
+
+        premiumNumberURLGenerator.getShowPromoCodeCheckbox().click();
+    }
+
+    public String generateLinkWithoutPromoCodeRegularFlow(String priceOverride, String displayedName) {
+        waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
+        listGeneratedURL.getButtonCreateNewURL().click();
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
+        localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);
+        type(localNumberURLGenerator.getPriceOverride(), priceOverride);
+        type(localNumberURLGenerator.getDisplayedNumberOnFE(), displayedName);
+        String enteredText = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
+        return enteredText;
+    }
+
+    public double clickGenerateLinkButton() {
+        double price;
+        if(isElementPresent(premiumNumberURLGenerator.getPayTodayPrice())) {
+            price = Double.parseDouble(premiumNumberURLGenerator.getPayTodayPrice().getText().replaceAll("\\$", ""));
+            return price;
+        }
         waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
         premiumNumberURLGenerator.getButtonGenerateLink().click();
-        return enteredText;
+        price = Double.parseDouble(localNumberURLGenerator.getPriceOverride().getEnteredText());
+        return price;
+
     }
 
     public void generateLinkWithChangeDisplayedInfo(String priceOverride, String displayedName) {
@@ -169,8 +201,16 @@ public class LinksListingPage extends BasePage {
     }
 
     public String getGeneratedLink(int indexLink) {
-       waitUntilElementAppeared(listGeneratedURL.getListTd().get(0));
-        waiting2seconds();
-        return listGeneratedURL.getListTd().get(indexLink * 2).getText();
+        try {
+            waitUntilElementAppeared(listGeneratedURL.getListTd().get(0));
+            waiting2seconds();
+            return listGeneratedURL.getListTd().get(indexLink * 5).getText();
+        }
+        catch(Exception e) {
+            return null;
+        }
+
     }
+
+
 }

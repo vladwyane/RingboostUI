@@ -73,12 +73,16 @@ public class Checkout extends BasePage{
         checkoutSteps.getButtonPlaceOrder().click();
     }
 
-    public void addPromoCode(String promocode) throws InterruptedException {
-        checkoutSidebar.getLinkHavePromoCode().click();
-        waitUntilElementAppeared(checkoutSidebar.getButtonApply());
-        type(checkoutSidebar.getInputPromoCode(), promocode);
-        waitUntilElementWillBeClickable(checkoutSidebar.getButtonApply());
-        checkoutSidebar.getButtonApply().click();
+    public boolean addPromoCode(String promocode) throws InterruptedException {
+        if(isElementPresent(checkoutSidebar.getLinkHavePromoCode())) {
+            checkoutSidebar.getLinkHavePromoCode().click();
+            waitUntilElementAppeared(checkoutSidebar.getButtonApply());
+            type(checkoutSidebar.getInputPromoCode(), promocode);
+            waitUntilElementWillBeClickable(checkoutSidebar.getButtonApply());
+            checkoutSidebar.getButtonApply().click();
+            return true;
+        }
+        else return false;
     }
 
     public void addPromoCodeAndAfterRemove(String promocode) throws InterruptedException {

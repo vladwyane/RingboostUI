@@ -45,13 +45,14 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         // inventoryTollfree.searchNumber(0, "8335897464");
         inventoryTollfree.clickCreateNewLinkByNumber(0);
         String displayedName = linksListingPage
-                .generateLinkWithoutPromoCode("23", "Colorado", 3,
+                .generateLinkWithoutPromoCodePremiumFlow("23", "Colorado", 3,
                         "1 year", "Test", "750");
+        double payToday = linksListingPage.clickGenerateLinkButton();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.MASTERCART_STRIPE, false);
-        orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCode();
+
     }
 
     @Test
@@ -60,13 +61,13 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         // inventoryTollfree.searchNumber(0, "8335897464");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         linksListingPage
-                .generateLinkWithPromoCode("23", "Colorado",
+                .generateLinkWithPromoCodePremiumFlow("23", "Colorado",
                         3, "1 year", "500");
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.MASTERCART_STRIPE, false);
-        orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCode();
+
     }
 
     @Test

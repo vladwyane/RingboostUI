@@ -37,7 +37,7 @@ public class priceOverrideForLocal extends TestBase{
        // inventoryLocal.searchNumber(0, "8335897464");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(0);
         String generatedLink = linksListingPage.getGeneratedLink(0);
-      //  linksListingPage.generateLinkWithPromoCode("23", "Colorado", 3, "2");
+      //  linksListingPage.generateLinkWithPromoCodePremiumFlow("23", "Colorado", 3, "2");
 
     }
 

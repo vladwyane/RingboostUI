@@ -37,4 +37,7 @@ public class ListGeneratedURL extends HtmlElement {
 
     @FindBy(xpath = "//div[contains(text(), 'Cancel')]")
     private WebElement buttonCancel;
+
+    @FindBy(xpath = "//div[contains(text(), 'Delete')]")
+    private WebElement buttonDelete;
 }

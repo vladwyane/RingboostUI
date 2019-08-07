@@ -32,4 +32,7 @@ public class OrderConfirmationBlock extends HtmlElement {
     @FindBy(css= ".order-title")
     private WebElement orderTitle;
 
+    @FindBy(xpath= "//div[@class='number-type']//preceding::strong")
+    private WebElement phoneNumber;
+
 }

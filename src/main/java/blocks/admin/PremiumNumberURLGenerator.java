@@ -65,5 +65,8 @@ public class PremiumNumberURLGenerator extends HtmlElement {
     @FindBys( {@FindBy(xpath = "//div[contains(@class, 'menuable__content__active')]//div[@class='v-list__tile__title']")} )
     private List<WebElement> listOfMinutes;
 
+    @FindBy(xpath = "//span[contains(text(), 'Pay Today')]//following::span[1]")
+    private WebElement payTodayPrice;
+
 
 }

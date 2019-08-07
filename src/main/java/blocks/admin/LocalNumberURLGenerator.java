@@ -15,7 +15,7 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@Block(@FindBy(css = " "))
+@Block(@FindBy(css = "form"))
 public class LocalNumberURLGenerator extends HtmlElement{
 
     @FindBy(xpath = "//div[contains(text(),'Generate link')]")
@@ -24,12 +24,12 @@ public class LocalNumberURLGenerator extends HtmlElement{
     @FindBy(css = " ")
     private WebElement labelPhoneNumber;
 
-    @FindBy(css = "//input[@aria-label='Price for area codes']")
+    @FindBy(xpath = "//input[@aria-label='Price']")
     private TextInput priceOverride;
 
-    @FindBy(css = " ")
+    @FindBy(xpath = "//input[@aria-label='Displayed phone number']")
     private TextInput displayedNumberOnFE;
 
-    @FindBy(css = " ")
+    @FindBy(xpath = "//label[contains(text(), 'Show promocode on checkout page?')]")
     private WebElement showPromoCodeCheckbox;
 }

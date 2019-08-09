@@ -148,4 +148,5 @@ public class BuyingRegularVanityNumber extends BasePage {
         orderSummaryBlock.getButtonProceedToCheckout().click();
     }
 
+
 }

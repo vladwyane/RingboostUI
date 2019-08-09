@@ -18,7 +18,7 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 @Block(@FindBy(css = "form"))
 public class LocalNumberURLGenerator extends HtmlElement{
 
-    @FindBy(xpath = "//div[contains(text(),'Generate link')]")
+    @FindBy(xpath = "//div[contains(text(),'generate link')]")
     private WebElement buttonGenerateLink;
 
     @FindBy(css = " ")

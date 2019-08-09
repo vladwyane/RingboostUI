@@ -22,13 +22,16 @@ import java.util.List;
 @Block(@FindBy(css = "form"))
 public class PremiumNumberURLGenerator extends HtmlElement {
 
-    @FindBy(xpath = "//div[contains(text(),'Generate link')]")
+    @FindBy(xpath = "//div[contains(text(),'generate link')]")
     private WebElement buttonGenerateLink;
+
+    @FindBy(xpath = "//div[contains(text(),'save')]")
+    private WebElement buttonSave;
 
     @FindBy(css = " ")
     private WebElement labelPhoneNumber;
 
-    @FindBy(xpath = "//input[@aria-label='Price for area codes']")
+    @FindBy(xpath = "//input[@aria-label='Price']")
     private TextInput priceForAreaCodes;
 
     @FindBy(xpath = "//input[@aria-label='Displayed phone number']")
@@ -36,6 +39,9 @@ public class PremiumNumberURLGenerator extends HtmlElement {
 
     @FindBy(xpath = "//label[contains(text(), 'Show promocode on checkout page?')]")
     private WebElement showPromoCodeCheckbox;
+
+    @FindBy(xpath = "//input[@aria-label='Select country']/ancestor::div[@class='v-select__selections']")
+    private WebElement selectOfCounties;
 
     @FindBy(xpath = "//input[@aria-label='Select state']/ancestor::div[@class='v-select__selections']")
     private WebElement selectOfStates;

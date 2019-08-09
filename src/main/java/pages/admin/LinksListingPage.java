@@ -32,17 +32,15 @@ public class LinksListingPage extends BasePage {
 
     }
 
-    public String clickCreateNewURLButton() {
-        String labelPhoneNumbers = null;
-        return labelPhoneNumbers;
-    }
-
     public void goToGeneratedLink(String link) {
         driver.get(link);
     }
 
-    public void goToGeneratedLinkAfterCopyPaste() {
-        listGeneratedURL.getListOfActionsURL().get(0).click();
+    public void goToGeneratedLinkAfterCopyPaste(int index) {
+        waiting2seconds();
+        listGeneratedURL.getListOfActionsURL().get(index * 4).click();
+        localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
+        localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);
         premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "v");
         String copyPaste = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
         driver.get(copyPaste);
@@ -50,7 +48,8 @@ public class LinksListingPage extends BasePage {
 
 
     public void clickEditButton(int indexNumber) {
-        waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
+        waiting2seconds();
+        waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(indexNumber * 4));
         listGeneratedURL.getListOfActionsURL().get(indexNumber * 4).click();
     }
 
@@ -63,7 +62,7 @@ public class LinksListingPage extends BasePage {
         waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
         listGeneratedURL.getListOfActionsURL().get(indexNumber * 4 + 2).click();
         waiting2seconds();
-        listGeneratedURL.getButtonCancel().click();
+        listGeneratedURL.getButtonDelete().click();
         waiting2seconds();
     }
 
@@ -73,6 +72,7 @@ public class LinksListingPage extends BasePage {
     }
 
     public void clickCopyButton(int indexNumber) {
+        waiting2seconds();
         waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
         listGeneratedURL.getListOfActionsURL().get(indexNumber * 4 + 3).click();
     }
@@ -127,52 +127,55 @@ public class LinksListingPage extends BasePage {
         premiumNumberURLGenerator.getListOTermLength().get(0).click();
     }
 
-    public void generateLinkWithPromoCodePremiumFlow(String priceOverride, String state, int amountAreaCodes, String termLength, String minutes) {
+    public void clickCreateNewURLButton() {
         waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
         listGeneratedURL.getButtonCreateNewURL().click();
-        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
-        type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
-        chooseMonthlyMinutes(minutes);
-        chooseState(state);
-        chooseAreaCodes(amountAreaCodes);
-        chooseTermLength(termLength);
-        premiumNumberURLGenerator.getShowPromoCodeCheckbox().click();
-        waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
-        premiumNumberURLGenerator.getButtonGenerateLink().click();
     }
 
-    public String generateLinkWithoutPromoCodePremiumFlow(String priceOverride, String state,
-                                                          int amountAreaCodes, String termLength, String displayedName, String minutes) {
-        waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
-        listGeneratedURL.getButtonCreateNewURL().click();
+    public String generateLinkWithPromoCodePremiumFlow(String priceOverride, String state, int amountAreaCodes,
+                                                       String termLength, String minutes, String displaNamed) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
+        premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);
+        premiumNumberURLGenerator.getPriceForAreaCodes().sendKeys(Keys.CONTROL + "a");
+        premiumNumberURLGenerator.getPriceForAreaCodes().sendKeys(Keys.DELETE);
         type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
+        type(premiumNumberURLGenerator.getDisplayedNumberOnFE(), displaNamed);
         chooseMonthlyMinutes(minutes);
         chooseState(state);
         chooseAreaCodes(amountAreaCodes);
+        premiumNumberURLGenerator.getSelectOfCounties().click();
         chooseTermLength(termLength);
-        type(premiumNumberURLGenerator.getDisplayedNumberOnFE(), displayedName);
+        premiumNumberURLGenerator.getShowPromoCodeCheckbox().click();
         String enteredText = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
         return enteredText;
     }
 
-    public void generateLinkWithPromoCodeRegularFlow(String priceOverride) {
-        waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
-        listGeneratedURL.getButtonCreateNewURL().click();
+    public void generateLinkWithoutPromoCodePremiumFlow(String priceOverride, String state,
+                                                          int amountAreaCodes, String termLength, String minutes) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
-        type(localNumberURLGenerator.getPriceOverride(), priceOverride);
-
-        premiumNumberURLGenerator.getShowPromoCodeCheckbox().click();
+        type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
+        chooseMonthlyMinutes(minutes);
+        chooseState(state);
+        chooseAreaCodes(amountAreaCodes);
+        premiumNumberURLGenerator.getSelectOfCounties().click();
+        chooseTermLength(termLength);
     }
 
-    public String generateLinkWithoutPromoCodeRegularFlow(String priceOverride, String displayedName) {
-        waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
-        listGeneratedURL.getButtonCreateNewURL().click();
+    public void generateLinkWithoutPromoCodeRegularFlow(String priceOverride) {
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        type(localNumberURLGenerator.getPriceOverride(), priceOverride);
+    }
+
+    public String generateLinkWithPromoCodeRegularFlow(String priceOverride, String displayedName) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
         localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
         localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);
+        localNumberURLGenerator.getPriceOverride().sendKeys(Keys.CONTROL + "a");
+        localNumberURLGenerator.getPriceOverride().sendKeys(Keys.DELETE);
         type(localNumberURLGenerator.getPriceOverride(), priceOverride);
         type(localNumberURLGenerator.getDisplayedNumberOnFE(), displayedName);
+        premiumNumberURLGenerator.getShowPromoCodeCheckbox().click();
         String enteredText = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
         return enteredText;
     }
@@ -181,18 +184,24 @@ public class LinksListingPage extends BasePage {
         double price;
         if(isElementPresent(premiumNumberURLGenerator.getPayTodayPrice())) {
             price = Double.parseDouble(premiumNumberURLGenerator.getPayTodayPrice().getText().replaceAll("\\$", ""));
+            waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
+            premiumNumberURLGenerator.getButtonGenerateLink().click();
             return price;
         }
-        waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
-        premiumNumberURLGenerator.getButtonGenerateLink().click();
+        if(isElementPresent(premiumNumberURLGenerator.getButtonGenerateLink())) {
+            waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
+            premiumNumberURLGenerator.getButtonGenerateLink().click();
+        }
+        else {
+            waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonSave());
+            premiumNumberURLGenerator.getButtonSave().click();
+        }
         price = Double.parseDouble(localNumberURLGenerator.getPriceOverride().getEnteredText());
         return price;
 
     }
 
     public void generateLinkWithChangeDisplayedInfo(String priceOverride, String displayedName) {
-        waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
-        listGeneratedURL.getButtonCreateNewURL().click();
         waitUntilElementAppeared(localNumberURLGenerator.getButtonGenerateLink());
         type(localNumberURLGenerator.getPriceOverride(), priceOverride);
         type(localNumberURLGenerator.getDisplayedNumberOnFE(), displayedName);

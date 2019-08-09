@@ -49,19 +49,20 @@ public class priceOverrideForRegularTollFree extends TestBase {
     public void test1GenerateLinkWithoutPromoCode() throws InterruptedException {
         admin.clickToolFreInventoryLink();
         // inventoryTollfree.searchNumber(0, "8335897464");
-        inventoryTollfree.clickCreateNewLinkByNumber(1);
-        String displayedName = linksListingPage
-                .generateLinkWithoutPromoCodeRegularFlow("23", "Colorado");
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
+        System.out.println(phoneNumber);
+        linksListingPage.clickCreateNewURLButton();
+        linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
         double price = linksListingPage.clickGenerateLinkButton();
-        String generatedLink = linksListingPage.getGeneratedLink(1);
+        String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_20, CreditCards.VISA_STRIPE, false);
-        orderConfirmationPage.checkingGeneratedLinkAfterPurchaseRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode, displayedName);
+        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode);
     }
 
     @Test
@@ -70,10 +71,11 @@ public class priceOverrideForRegularTollFree extends TestBase {
         // inventoryTollfree.searchNumber(0, "8335897464");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
-        linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("234");
+        linksListingPage.clickCreateNewURLButton();
+        String displayedName = linksListingPage
+                .generateLinkWithPromoCodeRegularFlow("101", "888-WWW-8709-HI");
         double price = linksListingPage.clickGenerateLinkButton();
-        String generatedLink = linksListingPage.getGeneratedLink(2);
+        String generatedLink = linksListingPage.getGeneratedLink(1);
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
@@ -81,31 +83,61 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.MASTERCART_STRIPE, false);
-        orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, price);
+        orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
 
     @Test
-    public void test2GenerateLinkWithPe() throws InterruptedException {
+    public void test3GenerateLinkAndEdit() throws InterruptedException {
         admin.clickToolFreInventoryLink();
-        inventoryTollfree.clickCreateNewLinkByNumber(0);
-        linksListingPage.clickEditButton(1);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
+        System.out.println(phoneNumber);
+        linksListingPage.clickCreateNewURLButton();
+        linksListingPage
+                .generateLinkWithoutPromoCodeRegularFlow("10.01");
+        linksListingPage.clickGenerateLinkButton();
+        linksListingPage.clickEditButton(2);
+        String displayedName = linksListingPage
+                .generateLinkWithPromoCodeRegularFlow("111.99", "888-WWW-US-0911");
+        double price = linksListingPage.clickGenerateLinkButton();
+        String generatedLink = linksListingPage.getGeneratedLink(2);
+        linksListingPage.goToGeneratedLink(generatedLink);
+        double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
+        buyingRegularVanityNumber.enterRingToNumber("0668843471");
+        buyingRegularVanityNumber.goToCheckout();
+        boolean isPromocode = checkout.addPromoCode("wintersale");
+        checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.DISCOVER_STRIPE, false);
+        orderConfirmationPage.checkingGeneratedLinkWithPercentPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
 
+
     @Test
-    public void test3CopyLink() throws InterruptedException {
+    public void test4CopyLink() throws InterruptedException {
         admin.clickToolFreInventoryLink();
-        inventoryTollfree.clickCreateNewLinkByNumber(0);
-        linksListingPage.clickCopyButton(1);
-        linksListingPage.goToGeneratedLinkAfterCopyPaste();
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
+        System.out.println(phoneNumber);
+        linksListingPage.clickCreateNewURLButton();
+        linksListingPage
+                .generateLinkWithPromoCodeRegularFlow("11.99", "888-WWW-US-09");
+        double price = linksListingPage.clickGenerateLinkButton();
+        linksListingPage.clickCopyButton(3);
+        linksListingPage.goToGeneratedLinkAfterCopyPaste(3);
+        double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
+        buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
+        buyingRegularVanityNumber.goToCheckout();
+        checkout.addPromoCode("summersale");
+        checkout.fillCheckout(Users.VLADYSLAV_22, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, price);
     }
 
     @Test
-    public void test4DeleteLink() throws InterruptedException {
+    public void test5DeleteLink() throws InterruptedException {
         admin.clickToolFreInventoryLink();
         inventoryTollfree.clickCreateNewLinkByNumber(1);
-        String generatedLink = linksListingPage.getGeneratedLink(7);
-        linksListingPage.clickDeleteButton(7);
-        String linkAfterDelete = linksListingPage.getGeneratedLink(7);
+        String generatedLink = linksListingPage.getGeneratedLink(2);
+        linksListingPage.clickDeleteButton(2);
+        String linkAfterDelete = linksListingPage.getGeneratedLink(2);
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
 }

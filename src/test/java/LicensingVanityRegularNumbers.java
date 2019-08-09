@@ -49,7 +49,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void yorderRegularVanityNumberWithFixedPromoCode() throws InterruptedException {
+    public void orderRegularVanityNumberWithFixedPromoCode() throws InterruptedException {
         homePage.open();
         homePage.clickSubNavItemTollFree("vanity-numbers");
         vanityIndexPage.searchTollFreeNumbers("ring");

@@ -49,11 +49,11 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         linksListingPage
                 .generateLinkWithoutPromoCodePremiumFlow("23", "Kansas", 3,
                         "1 year", "750");
-        double payToday = linksListingPage.clickGenerateLinkButton();
+        double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
         boolean isPromocode = checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_20, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePremiumFlow(payToday, isPromocode);
     }
 
@@ -66,11 +66,11 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("890", "Alabama", 2,
                         "Month-To-Month", "5000", "888-999-ZIX0");
-        double payToday = linksListingPage.clickGenerateLinkButton();
+        double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(1);
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_20, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCodePremiumFlow(payToday, displayedName);
 
     }
@@ -82,18 +82,18 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
-                .generateLinkWithoutPromoCodePremiumFlow("10.01", "Texas", 2,
+                .generateLinkWithoutPromoCodePremiumFlow("10.01", "Alabama", 2,
                         "1 years", "750");
-        linksListingPage.clickGenerateLinkButton();
+        linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickEditButton(2);
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("4001.99", "Texas", 2,
                         "2 year", "100", "888-999-ZIX0");
-        double payToday = linksListingPage.clickGenerateLinkButton();
+        double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(2);
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithPercentPromoCodePremiumFlow(payToday, displayedName);
     }
 
@@ -106,11 +106,11 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         linksListingPage
                 .generateLinkWithoutPromoCodePremiumFlow("11.99", "Vermont", 1,
                         "3 years", "250");
-        double payToday = linksListingPage.clickGenerateLinkButton();
+        double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         linksListingPage.clickCopyButton(3);
         linksListingPage.goToGeneratedLinkAfterCopyPaste(3);
         boolean isPromocode = checkout.addPromoCode("summersale");
-        checkout.fillCheckout(Users.VLADYSLAV_22, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(payToday, isPromocode);
     }
 

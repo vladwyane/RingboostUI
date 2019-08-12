@@ -180,14 +180,8 @@ public class LinksListingPage extends BasePage {
         return enteredText;
     }
 
-    public double clickGenerateLinkButton() {
+    public double clickGenerateLinkButtonRegularFlow() {
         double price;
-        if(isElementPresent(premiumNumberURLGenerator.getPayTodayPrice())) {
-            price = Double.parseDouble(premiumNumberURLGenerator.getPayTodayPrice().getText().replaceAll("\\$", ""));
-            waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
-            premiumNumberURLGenerator.getButtonGenerateLink().click();
-            return price;
-        }
         if(isElementPresent(premiumNumberURLGenerator.getButtonGenerateLink())) {
             waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
             premiumNumberURLGenerator.getButtonGenerateLink().click();
@@ -200,6 +194,21 @@ public class LinksListingPage extends BasePage {
         return price;
 
     }
+
+    public double clickGenerateLinkButtonPremiumFlow() {
+        double price;
+        if(isElementPresent(premiumNumberURLGenerator.getButtonGenerateLink())) {
+            waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonGenerateLink());
+            premiumNumberURLGenerator.getButtonGenerateLink().click();
+        }
+        else {
+            waitUntilElementWillBeClickable(premiumNumberURLGenerator.getButtonSave());
+            premiumNumberURLGenerator.getButtonSave().click();
+        }
+        price = Double.parseDouble(premiumNumberURLGenerator.getPayTodayPrice().getText().replaceAll("\\$", ""));
+        return price;
+    }
+
 
     public void generateLinkWithChangeDisplayedInfo(String priceOverride, String displayedName) {
         waitUntilElementAppeared(localNumberURLGenerator.getButtonGenerateLink());

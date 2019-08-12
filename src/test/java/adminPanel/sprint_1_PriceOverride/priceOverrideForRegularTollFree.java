@@ -53,7 +53,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
-        double price = linksListingPage.clickGenerateLinkButton();
+        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
@@ -61,7 +61,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_20, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode);
     }
 
@@ -74,7 +74,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodeRegularFlow("101", "888-WWW-8709-HI");
-        double price = linksListingPage.clickGenerateLinkButton();
+        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(1);
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
@@ -82,7 +82,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
 
@@ -94,19 +94,19 @@ public class priceOverrideForRegularTollFree extends TestBase {
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
                 .generateLinkWithoutPromoCodeRegularFlow("10.01");
-        linksListingPage.clickGenerateLinkButton();
+        linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickEditButton(2);
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodeRegularFlow("111.99", "888-WWW-US-0911");
-        double price = linksListingPage.clickGenerateLinkButton();
+        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(2);
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
-        boolean isPromocode = checkout.addPromoCode("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_21, CreditCards.DISCOVER_STRIPE, false);
+        checkout.addPromoCode("wintersale");
+        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithPercentPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
 
@@ -119,7 +119,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
                 .generateLinkWithPromoCodeRegularFlow("11.99", "888-WWW-US-09");
-        double price = linksListingPage.clickGenerateLinkButton();
+        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickCopyButton(3);
         linksListingPage.goToGeneratedLinkAfterCopyPaste(3);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
@@ -127,7 +127,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode("summersale");
-        checkout.fillCheckout(Users.VLADYSLAV_22, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, price);
     }
 

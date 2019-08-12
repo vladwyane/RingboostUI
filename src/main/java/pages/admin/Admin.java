@@ -26,6 +26,7 @@ public class Admin extends BasePage {
         waitUntilElementAppeared(toolbarPanel.getBurgerButton());
         toolbarPanel.getBurgerButton().click();
         sidebarNavigation.getInventoryLink().click();
+        waitUntilElementAppeared(sidebarNavigation.getTollfreeLink());
         sidebarNavigation.getTollfreeLink().click();
     }
 
@@ -33,6 +34,7 @@ public class Admin extends BasePage {
         waitUntilElementAppeared(toolbarPanel.getBurgerButton());
         toolbarPanel.getBurgerButton().click();
         sidebarNavigation.getInventoryLink().click();
+        waitUntilElementAppeared(sidebarNavigation.getLocalLink());
         sidebarNavigation.getLocalLink().click();
     }
 }

@@ -38,6 +38,7 @@ public class BuyingLocalNumber extends BasePage {
         waiting2seconds();
         double pricePlan = 0;
         for (int i = 0; i < localSupportSolutionBlock.getListTitlesSolutionItems().size(); i++) {
+            String trr = localSupportSolutionBlock.getListTitlesSolutionItems().get(i).getText();
             if(localSupportSolutionBlock.getListTitlesSolutionItems().get(i).getText().equals(planName)) {
                 scrollToElement(localSupportSolutionBlock.getListButtonsSolutionItems().get(i));
                 try {

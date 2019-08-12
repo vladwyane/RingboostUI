@@ -42,7 +42,7 @@ public class ApplicationManager {
                 WebDriverManager.firefoxdriver().setup();
                 break;
             case BrowserType.CHROME:
-                WebDriverManager.chromedriver().version("2.46").setup();
+                WebDriverManager.chromedriver().version("2.38").setup();
                 break;
             case BrowserType.IE:
                 WebDriverManager.iedriver().setup();

@@ -21,7 +21,7 @@ import java.util.List;
 @Block(@FindBy(css = "main"))
 public class ListGeneratedURL extends HtmlElement {
 
-    @FindBy(xpath = "//div[contains(text(), 'Create new URL')]")
+    @FindBy(xpath = "//div[contains(text(), 'Create New Price URL')]")
     private WebElement buttonCreateNewURL;
 
     @FindBy(css = ".v-toolbar__title")

@@ -162,9 +162,11 @@ public class LinksListingPage extends BasePage {
         chooseTermLength(termLength);
     }
 
-    public void generateLinkWithoutPromoCodeRegularFlow(String priceOverride) {
-        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+    public String generateLinkWithoutPromoCodeRegularFlow(String priceOverride) {
+        waitUntilElementAppeared(localNumberURLGenerator.getButtonGenerateLink());
         type(localNumberURLGenerator.getPriceOverride(), priceOverride);
+        String labelNumber = localNumberURLGenerator.getLabelPhoneNumber().getText();
+        return labelNumber;
     }
 
     public String generateLinkWithPromoCodeRegularFlow(String priceOverride, String displayedName) {

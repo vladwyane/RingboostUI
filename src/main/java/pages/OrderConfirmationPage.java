@@ -453,7 +453,8 @@ public class OrderConfirmationPage extends BasePage {
 
     //Generated link in admin panel
 
-    public void checkingGeneratedLinkWithoutPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, boolean isPromocode) {
+    public void checkingGeneratedLinkWithoutPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan,
+                                                                 double priceNumber, boolean isPromocode, String displayedName) {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -469,6 +470,7 @@ public class OrderConfirmationPage extends BasePage {
         //softAssert.assertEquals(priceRecurringMonthly, actualResult, "priceRecurringMonthly is incorrect");
         softAssert.assertFalse(isPromocode, "promocode is still present");
         softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(orderConfirmationBlock.getPhoneNumber().getText(), displayedName, "displayedName is incorrect");
         softAssert.assertAll();
     }
 
@@ -493,7 +495,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
         softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - pricePromoCode) * 100.0) / 100.0, "pricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, fixedPromocode, "promoCode is incorrect");
-        softAssert.assertEquals(orderConfirmationBlock.getPhoneNumber().getText().substring(2),displayedNumber, "displayedName is incorrect");
+        softAssert.assertEquals(orderConfirmationBlock.getPhoneNumber().getText(),displayedNumber, "displayedName is incorrect");
         softAssert.assertAll();
     }
 
@@ -518,7 +520,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "PriceTotalDueToday is incorrect");
         softAssert.assertEquals(Math.round(pricePayToday * 100.0) / 100.0, Math.round((actualResult - (actualResult * percentPromocode / 100)) * 100.0) / 100.0, "PricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, Math.round(actualResult * percentPromocode / 100 * 100.0) / 100.0, "PricePromoCode is incorrect");
-        softAssert.assertEquals(orderConfirmationBlock.getPhoneNumber().getText().substring(2),displayedNumber, "displayedName is incorrect");
+        softAssert.assertEquals(orderConfirmationBlock.getPhoneNumber().getText(),displayedNumber, "displayedName is incorrect");
         softAssert.assertAll();
     }
 

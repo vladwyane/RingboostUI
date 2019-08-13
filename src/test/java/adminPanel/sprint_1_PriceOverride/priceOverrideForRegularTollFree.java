@@ -48,11 +48,11 @@ public class priceOverrideForRegularTollFree extends TestBase {
     @Test
     public void test1GenerateLinkWithoutPromoCode() throws InterruptedException {
         admin.clickToolFreInventoryLink();
-        // inventoryTollfree.searchNumber(0, "8335897464");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
+        inventoryTollfree.searchNumber(0, "WWW8709");
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
-        linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
+        String displayedName = linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -62,13 +62,13 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.VISA_STRIPE, false);
-        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode);
+        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode, displayedName);
     }
 
     @Test
     public void test2GenerateLinkWithPromoCode() throws InterruptedException {
         admin.clickToolFreInventoryLink();
-        // inventoryTollfree.searchNumber(0, "8335897464");
+        inventoryTollfree.searchNumber(0, "9998709");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();

@@ -21,7 +21,7 @@ public class LocalNumberURLGenerator extends HtmlElement{
     @FindBy(xpath = "//div[contains(text(),'generate link')]")
     private WebElement buttonGenerateLink;
 
-    @FindBy(css = " ")
+    @FindBy(css = ".headline")
     private WebElement labelPhoneNumber;
 
     @FindBy(xpath = "//input[@aria-label='Price']")

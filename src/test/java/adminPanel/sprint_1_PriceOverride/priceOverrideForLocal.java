@@ -45,7 +45,7 @@ public class priceOverrideForLocal extends TestBase{
     @Test
     public void test1GenerateLinkWithoutPromoCode() throws InterruptedException {
         admin.clickLocalInventoryLink();
-        // inventoryTollfree.searchNumber(0, "8335897464");
+        inventoryLocal.searchNumber(0,"0ZUPO");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
@@ -63,12 +63,12 @@ public class priceOverrideForLocal extends TestBase{
     @Test
     public void test2GenerateLinkWithPromoCode() throws InterruptedException {
         admin.clickLocalInventoryLink();
-        // inventoryTollfree.searchNumber(0, "8335897464");
+        inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("601", "989ZZZ8963");
+                .generateLinkWithPromoCodeRegularFlow("601", "2125170ZUP");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -82,6 +82,7 @@ public class priceOverrideForLocal extends TestBase{
     @Test
     public void test3GenerateLinkAndEdit() throws InterruptedException {
         admin.clickLocalInventoryLink();
+        inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(2);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
@@ -90,7 +91,7 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickEditButton(0);
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("111.99", "98-WW-WW-8953");
+                .generateLinkWithPromoCodeRegularFlow("1110.99", "ADYL-000-987");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -106,11 +107,12 @@ public class priceOverrideForLocal extends TestBase{
     @Test
     public void test4CopyLink() throws InterruptedException {
         admin.clickLocalInventoryLink();
+        inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(3);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("210.99", "98-YYYY-8894");
+                .generateLinkWithPromoCodeRegularFlow("210.99", "AMSY-300-ZUP");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickCopyButton(0);
         linksListingPage.goToGeneratedLinkAfterCopyPaste(0);
@@ -126,6 +128,7 @@ public class priceOverrideForLocal extends TestBase{
     @Test
     public void test5DeleteLink() throws InterruptedException {
         admin.clickLocalInventoryLink();
+        inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(4);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
@@ -137,11 +140,4 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
 
-
-    public static void main(String[] args) {
-        String number = "1-800-234-5642";
-        String result = number.substring(2).replaceAll("-", "");
-        System.out.println(result);
-
-    }
 }

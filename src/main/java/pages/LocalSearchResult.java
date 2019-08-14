@@ -30,6 +30,7 @@ public class LocalSearchResult extends BasePage {
     }
 
     public void chooseFirstNumberFromLocalNumbersList() {
+        waitUntilElementAppeared(localNumbersBlock.getListLocalNumbers().get(0));
         waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbers().get(0));
         localNumbersBlock.getListLocalNumbers().get(0).click();
     }

@@ -27,8 +27,8 @@ public class ListGeneratedURL extends HtmlElement {
     @FindBy(css = ".v-toolbar__title")
     private WebElement labelPhoneNumber;
 
-    @Name("List of generated URL")
-    @FindBys( {@FindBy(css = "tbody tr td button")} )
+    @Name("List of active actions")
+    @FindBys( {@FindBy(xpath = "//td/button[contains(@class, 'v-btn--icon') and not(contains(@disabled, 'disabled'))]")} )
     private List<WebElement> listOfActionsURL;
 
     @Name("List of generated URL")

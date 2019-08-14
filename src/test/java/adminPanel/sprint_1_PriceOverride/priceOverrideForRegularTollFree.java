@@ -3,6 +3,7 @@ package adminPanel.sprint_1_PriceOverride;
 import data.CreditCards;
 import data.Users;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BuyingRegularVanityNumber;
@@ -61,7 +62,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.ERROR_EXPIRED_CARD_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode, displayedName);
     }
 
@@ -69,11 +70,11 @@ public class priceOverrideForRegularTollFree extends TestBase {
     public void test2GenerateLinkWithPromoCode() throws InterruptedException {
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("101", "888-WWW-8709-HI");
+                .generateLinkWithPromoCodeRegularFlow("101", "1-888-WWW-8709-Z");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(1);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -89,7 +90,8 @@ public class priceOverrideForRegularTollFree extends TestBase {
     @Test
     public void test3GenerateLinkAndEdit() throws InterruptedException {
         admin.clickToolFreInventoryLink();
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
+        inventoryTollfree.searchNumber(0, "9998709");
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
@@ -97,7 +99,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickEditButton(2);
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("111.99", "888-WWW-US-0911");
+                .generateLinkWithPromoCodeRegularFlow("111.99", "1888-WWW-US-0911");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(2);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -114,11 +116,12 @@ public class priceOverrideForRegularTollFree extends TestBase {
     @Test
     public void test4CopyLink() throws InterruptedException {
         admin.clickToolFreInventoryLink();
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
+        inventoryTollfree.searchNumber(0, "9998709");
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("11.99", "888-WWW-US-09");
+                .generateLinkWithPromoCodeRegularFlow("11.99", "1-888-WWW-US-09");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickCopyButton(3);
         linksListingPage.goToGeneratedLinkAfterCopyPaste(3);
@@ -134,7 +137,8 @@ public class priceOverrideForRegularTollFree extends TestBase {
     @Test
     public void test5DeleteLink() throws InterruptedException {
         admin.clickToolFreInventoryLink();
-        inventoryTollfree.clickCreateNewLinkByNumber(1);
+        inventoryTollfree.searchNumber(0, "9998709");
+        inventoryTollfree.clickCreateNewLinkByNumber(0);
         String generatedLink = linksListingPage.getGeneratedLink(2);
         linksListingPage.clickDeleteButton(2);
         String linkAfterDelete = linksListingPage.getGeneratedLink(2);

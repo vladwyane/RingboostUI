@@ -524,7 +524,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithoutPromoCodePremiumFlow(double pricePayToday, boolean isPromocode) {
+    public void checkingGeneratedLinkWithoutPromoCodePremiumFlow(double pricePayToday, boolean isPromocode, String displayedNumber) {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -540,6 +540,7 @@ public class OrderConfirmationPage extends BasePage {
         //softAssert.assertEquals(priceRecurringMonthly, actualResult, "priceRecurringMonthly is incorrect");
         softAssert.assertFalse(isPromocode, "promocode is still present");
         softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
+        softAssert.assertEquals(orderConfirmationBlock.getPhoneNumber().getText(),displayedNumber, "displayedName is incorrect");
         softAssert.assertAll();
     }
 

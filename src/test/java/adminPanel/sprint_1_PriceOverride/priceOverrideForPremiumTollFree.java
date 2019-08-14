@@ -42,11 +42,11 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     @Test
     public void test1GenerateLinkWithoutPromoCode() throws InterruptedException {
         admin.clickToolFreInventoryLink();
-        // inventoryTollfree.searchNumber(0, "8335897464");
+        inventoryTollfree.searchNumber(0, "999ZIX0");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
-        linksListingPage
+        String displayedName = linksListingPage
                 .generateLinkWithoutPromoCodePremiumFlow("23", "Kansas", 3,
                         "1 year", "750");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
@@ -54,18 +54,19 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         linksListingPage.goToGeneratedLink(generatedLink);
         boolean isPromocode = checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
-        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePremiumFlow(payToday, isPromocode);
+        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePremiumFlow(payToday, isPromocode, displayedName);
     }
 
     @Test
     public void test2GenerateLinkWithPromoCode() throws InterruptedException {
         admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "9999490");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("890", "Alabama", 2,
-                        "Month-To-Month", "5000", "888-999-ZIX0");
+                        "Month-To-Month", "5000", "1-888-999-ZIX0");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(1);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -78,6 +79,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     @Test
     public void test3GenerateLinkAndEdit() throws InterruptedException {
         admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "9999490");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
@@ -88,7 +90,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         linksListingPage.clickEditButton(2);
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("4001.99", "Texas", 2,
-                        "2 year", "100", "888-999-ZIX0");
+                        "2 year", "100", "1-888-999-ZIX0");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(2);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -100,6 +102,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     @Test
     public void test4CopyLink() throws InterruptedException {
         admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "9999490");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();

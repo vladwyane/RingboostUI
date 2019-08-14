@@ -28,7 +28,7 @@ public class PremiumNumberURLGenerator extends HtmlElement {
     @FindBy(xpath = "//div[contains(text(),'save')]")
     private WebElement buttonSave;
 
-    @FindBy(css = " ")
+    @FindBy(css = ".headline")
     private WebElement labelPhoneNumber;
 
     @FindBy(xpath = "//input[@aria-label='Price']")

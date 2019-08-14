@@ -38,7 +38,7 @@ public class LinksListingPage extends BasePage {
 
     public void goToGeneratedLinkAfterCopyPaste(int index) {
         waiting2seconds();
-        listGeneratedURL.getListOfActionsURL().get(index * 4).click();
+        listGeneratedURL.getListOfActionsURL().get(index * 3).click();
         localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
         localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);
         premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "v");
@@ -49,8 +49,8 @@ public class LinksListingPage extends BasePage {
 
     public void clickEditButton(int indexNumber) {
         waiting2seconds();
-        waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(indexNumber * 4));
-        listGeneratedURL.getListOfActionsURL().get(indexNumber * 4).click();
+        waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(indexNumber * 3));
+        listGeneratedURL.getListOfActionsURL().get(indexNumber * 3).click();
     }
 
     public void clickRenewButton(int indexNumber) {
@@ -60,21 +60,21 @@ public class LinksListingPage extends BasePage {
 
     public void clickDeleteButton(int indexNumber) {
         waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
-        listGeneratedURL.getListOfActionsURL().get(indexNumber * 4 + 2).click();
+        listGeneratedURL.getListOfActionsURL().get(indexNumber * 3 + 1).click();
         waiting2seconds();
         listGeneratedURL.getButtonDelete().click();
         waiting2seconds();
     }
 
     public void checkingAfterDelete(String linkBefore, String linkAfter) {
-        softAssert.assertNotEquals (linkBefore, linkAfter);
+        softAssert.assertEquals (linkBefore, linkAfter);
         softAssert.assertAll();
     }
 
     public void clickCopyButton(int indexNumber) {
         waiting2seconds();
         waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
-        listGeneratedURL.getListOfActionsURL().get(indexNumber * 4 + 3).click();
+        listGeneratedURL.getListOfActionsURL().get(indexNumber * 3 + 2).click();
     }
 
     public void chooseState(String stateName) {
@@ -151,7 +151,7 @@ public class LinksListingPage extends BasePage {
         return enteredText;
     }
 
-    public void generateLinkWithoutPromoCodePremiumFlow(String priceOverride, String state,
+    public String generateLinkWithoutPromoCodePremiumFlow(String priceOverride, String state,
                                                           int amountAreaCodes, String termLength, String minutes) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
         type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
@@ -160,6 +160,8 @@ public class LinksListingPage extends BasePage {
         chooseAreaCodes(amountAreaCodes);
         premiumNumberURLGenerator.getSelectOfCounties().click();
         chooseTermLength(termLength);
+        String labelNumber = premiumNumberURLGenerator.getLabelPhoneNumber().getText();
+        return labelNumber;
     }
 
     public String generateLinkWithoutPromoCodeRegularFlow(String priceOverride) {
@@ -229,7 +231,6 @@ public class LinksListingPage extends BasePage {
         catch(Exception e) {
             return null;
         }
-
     }
 
 

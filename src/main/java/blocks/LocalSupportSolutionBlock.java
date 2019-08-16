@@ -32,4 +32,7 @@ public class LocalSupportSolutionBlock extends HtmlElement {
     @Name("ArrayList of Prices Support Solution Items")
     @FindBys( {@FindBy(css = ".support-solutions-item .price")} )
     public List<WebElement> listPricesSolutionItems;
+
+    @FindBy(css = ".to-checkout a")
+    private WebElement linkToCheckout;
 }

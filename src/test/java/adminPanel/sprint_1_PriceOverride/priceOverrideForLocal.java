@@ -53,7 +53,7 @@ public class priceOverrideForLocal extends TestBase{
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
-        buyingLocalNumber.choosePlan("Port a Number");
+        buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
@@ -72,7 +72,7 @@ public class priceOverrideForLocal extends TestBase{
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
-        double pricePlan = buyingLocalNumber.choosePlan("Park a Number");
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
@@ -95,7 +95,7 @@ public class priceOverrideForLocal extends TestBase{
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
-        buyingLocalNumber.choosePlan("Pick a Plan");
+        buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
@@ -116,7 +116,7 @@ public class priceOverrideForLocal extends TestBase{
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickCopyButton(0);
         linksListingPage.goToGeneratedLinkAfterCopyPaste(0);
-        buyingLocalNumber.choosePlan("Pick a Plan");
+        buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
         buyingLocalNumber.enterRingToNumber("9968843478");
         buyingLocalNumber.goToCheckout();
@@ -135,9 +135,41 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.generateLinkWithoutPromoCodeRegularFlow("1123");
         linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
-        linksListingPage.clickDeleteButton(0);
+        linksListingPage.deleteAllLink();
         String linkAfterDelete = linksListingPage.getGeneratedLink(0);
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
+    }
+
+    @Test
+    public void test6inVisibleCreateNewURL() throws InterruptedException {
+        admin.clickLocalInventoryLink();
+        inventoryLocal.searchNumber(0,"0987");
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(5);
+        System.out.println(phoneNumber);
+        linksListingPage.clickCreateNewURLButton();
+        linksListingPage.generateLinkWithoutPromoCodeRegularFlow("1123");
+        linksListingPage.clickGenerateLinkButtonRegularFlow();
+        linksListingPage.clickBreadcrunbsLink("Local");
+        inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.clickCreateNewLinkByNumber(5);
+        linksListingPage.checkingInvisibleCreateNewURL();
+    }
+
+    @Test
+    public void test7GenerateLinkWithoutPickPlan() throws InterruptedException {
+        admin.clickLocalInventoryLink();
+        inventoryLocal.searchNumber(0,"0ZUP");
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(6);
+        System.out.println(phoneNumber);
+        linksListingPage.clickCreateNewURLButton();
+        linksListingPage.generateLinkWithoutPromoCodeRegularFlow("4520.11");
+        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
+        String generatedLink = linksListingPage.getGeneratedLink(0);
+        linksListingPage.goToGeneratedLink(generatedLink);
+        buyingLocalNumber.clickLinkContinueToCheckout();
+        boolean isPromocode = checkout.addPromoCode("springsale");
+        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
+        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
     }
 
 }

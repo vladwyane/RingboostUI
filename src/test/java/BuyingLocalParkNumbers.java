@@ -109,7 +109,7 @@ public class BuyingLocalParkNumbers extends TestBase {
     @Test
     public void orderLocalParkNumberPaymentError() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers("0987");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Park A Number");

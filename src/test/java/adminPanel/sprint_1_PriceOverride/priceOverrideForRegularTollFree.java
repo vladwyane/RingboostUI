@@ -62,7 +62,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode("springsale");
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.ERROR_EXPIRED_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode, displayedName);
     }
 
@@ -139,9 +139,9 @@ public class priceOverrideForRegularTollFree extends TestBase {
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
         inventoryTollfree.clickCreateNewLinkByNumber(0);
-        String generatedLink = linksListingPage.getGeneratedLink(2);
-        linksListingPage.clickDeleteButton(2);
-        String linkAfterDelete = linksListingPage.getGeneratedLink(2);
+        String generatedLink = linksListingPage.getGeneratedLink(0);
+        linksListingPage.deleteAllLink();
+        String linkAfterDelete = linksListingPage.getGeneratedLink(0);
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
 }

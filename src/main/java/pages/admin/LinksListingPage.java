@@ -1,5 +1,6 @@
 package pages.admin;
 
+import blocks.admin.Breadcrumbs;
 import blocks.admin.ListGeneratedURL;
 import blocks.admin.LocalNumberURLGenerator;
 import blocks.admin.PremiumNumberURLGenerator;
@@ -27,9 +28,19 @@ public class LinksListingPage extends BasePage {
     ListGeneratedURL listGeneratedURL;
     LocalNumberURLGenerator localNumberURLGenerator;
     PremiumNumberURLGenerator premiumNumberURLGenerator;
+    Breadcrumbs breadcrumbs;
 
     public void checkingCorrectRedirect() {
 
+    }
+
+    public void clickBreadcrunbsLink(String nameLink) {
+        waitUntilElementAppeared(breadcrumbs.getListOfBreadcrumbsLink().get(0));
+        for(WebElement element : breadcrumbs.getListOfBreadcrumbsLink()) {
+            if (element.getText().equals(nameLink)) {
+                element.click();
+            }
+        }
     }
 
     public void goToGeneratedLink(String link) {
@@ -66,8 +77,19 @@ public class LinksListingPage extends BasePage {
         waiting2seconds();
     }
 
+    public void deleteAllLink() {
+        waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
+        while (listGeneratedURL.getListOfActionsURL().size() > 0) {
+            listGeneratedURL.getListOfActionsURL().get(1).click();
+            waiting2seconds();
+            listGeneratedURL.getButtonDelete().click();
+            waiting2seconds();
+        }
+
+    }
+
     public void checkingAfterDelete(String linkBefore, String linkAfter) {
-        softAssert.assertEquals (linkBefore, linkAfter);
+        softAssert.assertNotEquals (linkBefore, linkAfter);
         softAssert.assertAll();
     }
 
@@ -231,6 +253,11 @@ public class LinksListingPage extends BasePage {
         catch(Exception e) {
             return null;
         }
+    }
+
+    public void checkingInvisibleCreateNewURL() {
+        softAssert.assertTrue(isElementInvisible(listGeneratedURL.getButtonCreateNewURL()));
+        softAssert.assertAll();
     }
 
 

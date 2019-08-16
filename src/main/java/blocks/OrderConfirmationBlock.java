@@ -26,7 +26,7 @@ public class OrderConfirmationBlock extends HtmlElement {
     @FindBy(xpath= "//*[contains(text(),'Pay Today')]/following::div[1]")
     private WebElement pricePayToday;
 
-    @FindBy(css= ".discount")
+    @FindBy(xpath= "//*[contains(text(),'Promo')]/following::div[1]")
     private WebElement priceAfterAppliedPromoCode;
 
     @FindBy(css= ".order-title")

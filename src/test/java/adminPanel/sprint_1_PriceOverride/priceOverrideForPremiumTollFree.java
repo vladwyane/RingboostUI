@@ -121,9 +121,9 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     public void test5DeleteLink() throws InterruptedException {
         admin.clickToolFreInventoryLink();
         inventoryTollfree.clickCreateNewLinkByNumber(0);
-        String generatedLink = linksListingPage.getGeneratedLink(2);
-        linksListingPage.clickDeleteButton(2);
-        String linkAfterDelete = linksListingPage.getGeneratedLink(2);
+        String generatedLink = linksListingPage.getGeneratedLink(0);
+        linksListingPage.deleteAllLink();
+        String linkAfterDelete = linksListingPage.getGeneratedLink(0);
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
 }

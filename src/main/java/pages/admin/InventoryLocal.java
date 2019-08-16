@@ -1,5 +1,6 @@
 package pages.admin;
 
+import blocks.admin.ListGeneratedURL;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,6 +24,8 @@ public class InventoryLocal extends BasePage {
     public void open() {
 
     }
+
+    ListGeneratedURL listGeneratedURL;
 
     @Name("ArrayList of search input in th")
     @FindBys( {@FindBy(css = "th form input")} )
@@ -51,6 +54,7 @@ public class InventoryLocal extends BasePage {
         waitUntilElementAppeared(listActionsOfTable.get(0));
         String phoneNumber = listTdOfTable.get(indexNumber * 7).getText();
         listActionsOfTable.get(indexNumber * 2).click();
+        waitUntilElementAppeared(listGeneratedURL.getButtonCreateNewURL());
         return phoneNumber;
     }
 }

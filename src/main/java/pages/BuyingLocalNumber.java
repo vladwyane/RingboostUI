@@ -89,7 +89,7 @@ public class BuyingLocalNumber extends BasePage {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
-        return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
+        return Double.parseDouble(getNumbersFromString(priceNumber.getText().replaceAll(",", "")));
     }
 
     public double enterRingToNumber(String number) {
@@ -131,5 +131,10 @@ public class BuyingLocalNumber extends BasePage {
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
         return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
+    }
+
+    public void clickLinkContinueToCheckout() {
+        waitUntilElementWillBeClickable(localSupportSolutionBlock.getLinkToCheckout());
+        localSupportSolutionBlock.getLinkToCheckout().click();
     }
 }

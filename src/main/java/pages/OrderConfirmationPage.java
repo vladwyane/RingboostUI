@@ -1,8 +1,10 @@
 package pages;
 
 import blocks.OrderConfirmationBlock;
+import org.json.JSONException;
 import org.openqa.selenium.WebDriver;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class OrderConfirmationPage extends BasePage {
@@ -230,11 +232,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumber (double priceNumber, double pricePlan) {
+    public void checkingYourPurchaseParkNumber (double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
        // double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         DecimalFormat df = new DecimalFormat("#.##");
@@ -247,11 +250,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumberWithFixedPromoCode(double priceNumber, double pricePlan) {
+    public void checkingYourPurchaseParkNumberWithFixedPromoCode(double priceNumber, double pricePlan) throws JSONException, IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));

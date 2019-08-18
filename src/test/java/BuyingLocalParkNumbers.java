@@ -1,10 +1,13 @@
 import data.CreditCards;
 import data.Users;
+import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 import testBase.TestBase;
+
+import java.io.IOException;
 
 public class BuyingLocalParkNumbers extends TestBase {
 
@@ -35,7 +38,7 @@ public class BuyingLocalParkNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalParkNumber() throws InterruptedException {
+    public void orderLocalParkNumber() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -54,7 +57,7 @@ public class BuyingLocalParkNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalParkNumberWithFixedPromoCode() throws InterruptedException {
+    public void orderLocalParkNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();

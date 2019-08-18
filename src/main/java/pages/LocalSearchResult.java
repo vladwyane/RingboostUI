@@ -41,6 +41,13 @@ public class LocalSearchResult extends BasePage {
         localNumbersBlock.getListLocalNumbers().get(localNumbersBlock.getListLocalNumbers().size()- 1).click();
     }
 
+    public void chooseNumberFromLocalNumbersList(int numberOrder) {
+        waitUntilElementAppeared(localNumbersBlock.getListLocalNumbers().get(0));
+        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbers().get(numberOrder - 1));
+        scrollToElement(localNumbersBlock.getListLocalNumbers().get(numberOrder - 1));
+        localNumbersBlock.getListLocalNumbers().get(numberOrder - 1).click();
+    }
+
     public void chooseFirstNumberFromRelatedVanityList() {
         waitUntilElementWillBeClickable(relatedVanityBlock.getLisRelatedVanityNumbers().get(0));
         relatedVanityBlock.getLisRelatedVanityNumbers().get(0).click();

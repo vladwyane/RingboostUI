@@ -1,10 +1,13 @@
 import data.CreditCards;
 import data.Users;
+import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 import testBase.TestBase;
+
+import java.io.IOException;
 
 public class BuyingLocalNumbersPickPlan extends TestBase {
 
@@ -34,10 +37,10 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     }
 
     @Test
-    public void orderLocalNumberPickPlan() throws InterruptedException {
+    public void orderLocalNumberPickPlan() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
-        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        localIndexPage.searchLocalNumbers("0987");
+        localSearchResult.chooseNumberFromLocalNumbersList(10);
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
@@ -55,12 +58,12 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     }
 
     @Test
-    public void orderLocalNumberPickPlanWithFixedPromoCode() throws InterruptedException {
+    public void orderLocalNumberPickPlanWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchLocalNumbers("12345");
-        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        homePage.searchLocalNumbers("0987");
+        localSearchResult.chooseNumberFromLocalNumbersList(5);
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick a Plan");
+        buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Premium");
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
@@ -75,7 +78,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick a Plan");
+        buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
         buyingLocalNumber.enterRingToNumber("9968843478");
         buyingLocalNumber.goToCheckout();
@@ -90,7 +93,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick a Plan");
+        buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();

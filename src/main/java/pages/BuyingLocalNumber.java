@@ -56,7 +56,7 @@ public class BuyingLocalNumber extends BasePage {
 
     public double getPriceNumber() {
         waitUntilElementAppeared(priceNumber);
-        return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
+        return Double.parseDouble(getNumbersFromString(priceNumber.getText().replaceAll(",","")));
     }
 
 
@@ -109,7 +109,7 @@ public class BuyingLocalNumber extends BasePage {
         }
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
-        return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
+        return Double.parseDouble(getNumbersFromString(priceNumber.getText().replaceAll("\\D+","")));
     }
 
     public double enterRingToNumberWithMultipleCheckbox(String number) {

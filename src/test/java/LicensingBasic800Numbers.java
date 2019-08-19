@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import pages.*;
 import testBase.TestBase;
 
+import java.io.IOException;
+
 /**
  * Created by bigdrop on 6/19/2019.
  */
@@ -33,7 +35,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800Number() throws InterruptedException {
+    public void orderBasic800Number() throws InterruptedException, IOException {
         basicIndexPage.open();
         basicIndexPage.choose32thNumberFromBasic800List();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Business Pro");
@@ -45,7 +47,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800NumberWithFixedPromoCode() throws InterruptedException {
+    public void orderBasic800NumberWithFixedPromoCode() throws InterruptedException, IOException {
         homePage.open();
         homePage.clickSubNavItemTollFree("basic-numbers");
         basicIndexPage.open();
@@ -60,7 +62,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800NumberWithHighFixedPromoCode() throws InterruptedException {
+    public void orderBasic800NumberWithHighFixedPromoCode() throws InterruptedException, IOException {
         basicIndexPage.open();
         basicIndexPage.chooseFirstNumberFromBasic800ListAfterLoadMore();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Starter");
@@ -73,7 +75,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800NumberWithPercentPromoCode() throws InterruptedException {
+    public void orderBasic800NumberWithPercentPromoCode() throws InterruptedException, IOException {
         homePage.open();
         homePage.clickSubNavItemTollFree("basic-numbers");
         basicIndexPage.chooseLastNumberFromBasic800ListAfterLoadMore();
@@ -87,7 +89,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800NumberAfterRemovePromoCodee() throws InterruptedException {
+    public void orderBasic800NumberAfterRemovePromoCodee() throws InterruptedException, IOException {
         basicIndexPage.open();
         basicIndexPage.chooseFirstNumberFromBasic800ListAfterLoadMore();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Starter");

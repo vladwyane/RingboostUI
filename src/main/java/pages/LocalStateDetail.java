@@ -73,7 +73,6 @@ public class LocalStateDetail extends BasePage {
 
     public void checkingSelectedStateFromStateIndexPage(String nameState) {
         waitUntilElementAppeared(localNumbersBlock);
-        String fdsf = titleH1.getText();
         softAssert.assertTrue(titleH1.getText().contains(nameState), "Title incorrect");
         softAssert.assertTrue(filtersBlock.getSelectStates().getText().contains(nameState), "Category in select incorrect");
         softAssert.assertNotEquals(localNumbersBlock.getListPricesLocalNumbers(), 0, "Numbers are null");
@@ -89,7 +88,7 @@ public class LocalStateDetail extends BasePage {
         softAssert.assertTrue(isElementPresent(filtersBlock.getButtonClearAllFilters()), "Clear All is absent");
         softAssert.assertEquals(filtersBlock.getSelectSortBy().getText(), "Featured");
         softAssert.assertEquals(filtersBlock.getRangeTooltipStart().getText(), "1");
-        softAssert.assertEquals(filtersBlock.getRangeTooltipFinish().getText(), "2000");
+        softAssert.assertEquals(filtersBlock.getRangeTooltipFinish().getText(), "10000");
         softAssert.assertAll();
     }
 

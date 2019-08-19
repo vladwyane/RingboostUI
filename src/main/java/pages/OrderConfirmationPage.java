@@ -20,11 +20,12 @@ public class OrderConfirmationPage extends BasePage {
 
     }
 
-    public void checkingYourPurchase (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {
+    public void checkingYourPurchase (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
@@ -38,11 +39,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseWithFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {
+    public void checkingYourPurchaseWithFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -62,11 +64,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseWithPercentPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {
+    public void checkingYourPurchaseWithPercentPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -86,11 +89,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseAfterRemovePromoCode (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {
+    public void checkingYourPurchaseAfterRemovePromoCode (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
        // double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
@@ -106,11 +110,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseWithHighFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {
+    public void checkingYourPurchaseWithHighFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
        // double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -132,11 +137,12 @@ public class OrderConfirmationPage extends BasePage {
 
     //Checking for Local Numbers
 
-    public void checkingYourPurchasePortNumber (double priceNumber, double pricePlan) {
+    public void checkingYourPurchasePortNumber (double priceNumber, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
         DecimalFormat df = new DecimalFormat("#.##");
@@ -148,11 +154,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchasePortNumberWithFixedPromoCode(double priceNumber, double pricePlan) {
+    public void checkingYourPurchasePortNumberWithFixedPromoCode(double priceNumber, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -170,11 +177,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchasePortNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) {
+    public void checkingYourPurchasePortNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -192,11 +200,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchasePortNumberWithPercentPromoCode(double priceNumber, double pricePlan) {
+    public void checkingYourPurchasePortNumberWithPercentPromoCode(double priceNumber, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -214,11 +223,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchasePortNumberAfterRemovePromoCode (double priceNumber, double pricePlan) {
+    public void checkingYourPurchasePortNumberAfterRemovePromoCode (double priceNumber, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber  + pricePlan;
         DecimalFormat df = new DecimalFormat("#.##");
@@ -232,7 +242,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumber (double priceNumber, double pricePlan) throws IOException, JSONException {
+    public void checkingYourPurchaseParkNumber (double priceNumber, double pricePlan) throws IOException, JSONException{
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -273,11 +283,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) {
+    public void checkingYourPurchaseParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan  * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -295,11 +306,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumberWithPercentPromoCode(double priceNumber, double pricePlan) {
+    public void checkingYourPurchaseParkNumberWithPercentPromoCode(double priceNumber, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -317,11 +329,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumberAfterRemovePromoCode (double priceNumber, double pricePlan) {
+    public void checkingYourPurchaseParkNumberAfterRemovePromoCode (double priceNumber, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         DecimalFormat df = new DecimalFormat("#.##");
@@ -336,11 +349,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseLocalNumbersPickPlan (double priceNumber, double pricePlan, double perMonthPrice) {
+    public void checkingYourPurchaseLocalNumbersPickPlan (double priceNumber, double pricePlan, double perMonthPrice) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double priceRecurringMonthly = Double.parseDouble(orderConfirmationBlock.getPriceAfterAppliedPromoCode().getText().substring(1).replaceAll(",", ""));
         DecimalFormat df = new DecimalFormat("#.##");
@@ -355,11 +369,12 @@ public class OrderConfirmationPage extends BasePage {
 
     //Checking for Basic800 Numbers
 
-    public void checkingYourPurchaseBasic800Number (double priceActivationFee, double pricePlan) {
+    public void checkingYourPurchaseBasic800Number (double priceActivationFee, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan * 100.0) / 100.0;
         DecimalFormat df = new DecimalFormat("#.##");
@@ -371,11 +386,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseBasic800NumberWithFixedPromoCode(double priceActivationFee, double pricePlan) {
+    public void checkingYourPurchaseBasic800NumberWithFixedPromoCode(double priceActivationFee, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -393,11 +409,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseBasic800NumberWithHighFixedPromoCode(double priceActivationFee, double pricePlan) {
+    public void checkingYourPurchaseBasic800NumberWithHighFixedPromoCode(double priceActivationFee, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan  * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -415,11 +432,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseBasic800NumberWithPercentPromoCode(double priceActivationFee, double pricePlan) {
+    public void checkingYourPurchaseBasic800NumberWithPercentPromoCode(double priceActivationFee, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -437,11 +455,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseBasic800NumberAfterRemovePromoCode (double priceActivationFee, double pricePlan) {
+    public void checkingYourPurchaseBasic800NumberAfterRemovePromoCode (double priceActivationFee, double pricePlan) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceActivationFee + Math.round(pricePlan * 100.0) / 100.0;
         DecimalFormat df = new DecimalFormat("#.##");
@@ -458,11 +477,12 @@ public class OrderConfirmationPage extends BasePage {
     //Generated link in admin panel
 
     public void checkingGeneratedLinkWithoutPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan,
-                                                                 double priceNumber, boolean isPromocode, String displayedName) {
+                                                                 double priceNumber, boolean isPromocode, String displayedName) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
@@ -478,11 +498,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithFixedPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, String displayedNumber) {
+    public void checkingGeneratedLinkWithFixedPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -503,11 +524,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithPercentPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, String displayedNumber) {
+    public void checkingGeneratedLinkWithPercentPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -528,11 +550,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithoutPromoCodePremiumFlow(double pricePayToday, boolean isPromocode, String displayedNumber) {
+    public void checkingGeneratedLinkWithoutPromoCodePremiumFlow(double pricePayToday, boolean isPromocode, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = pricePayToday;
@@ -548,11 +571,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithFixedPromoCodePremiumFlow(double price, String displayedNumber) {
+    public void checkingGeneratedLinkWithFixedPromoCodePremiumFlow(double price, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -573,11 +597,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithPercentPromoCodePremiumFlow(double price, String displayedNumber) {
+    public void checkingGeneratedLinkWithPercentPromoCodePremiumFlow(double price, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         //double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -598,11 +623,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(double price, boolean isPromocode) {
+    public void checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(double price, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         // double priceRecurringMonthly = Double.parseDouble(getNumbersFromString(orderConfirmationBlock.getPriceRecurringMonthly().getText()));
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -617,17 +643,18 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertEquals(titleH1.getText(), "Thank You for Your Purchase");
         //  softAssert.assertEquals(priceRecurringMonthly, actualResult, "priceRecurringMonthly is incorrect");
         softAssert.assertEquals(Math.round(priceTotalDueToday * 100.0) / 100.0, actualResult, "priceTotalDueToday is incorrect");
-        softAssert.assertFalse(isPromocode, "promocode is still present");
         softAssert.assertEquals(pricePayToday, 0.0, "PricePayToday is incorrect");
         softAssert.assertEquals(pricePromoCode, highFixedPromocode, "pricePromoCode is incorrect");
+        softAssert.assertEquals(orderConfirmationBlock.getPhoneNumber().getText(),displayedNumber, "displayedName is incorrect");
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithoutPromoCodePortNumber(double priceNumber, boolean isPromocode) {
+    public void checkingGeneratedLinkWithoutPromoCodePortNumber(double priceNumber, boolean isPromocode) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFile();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber;
         DecimalFormat df = new DecimalFormat("#.##");
@@ -640,11 +667,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinParkNumberWithFixedPromoCode(double priceNumber, double pricePlan, String displayedNumber) {
+    public void checkingGeneratedLinParkNumberWithFixedPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -662,11 +690,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinParkNumberWithPercentPromoCode(double priceNumber, double pricePlan, String displayedNumber) {
+    public void checkingGeneratedLinParkNumberWithPercentPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));
@@ -685,11 +714,12 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan, String displayedNumber) {
+    public void checkingGeneratedLinParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
         waiting2seconds();
+        orderConfirmationBlock.generateOrdersDetailFileWthPromo();
         double priceTotalDueToday = Double.parseDouble(orderConfirmationBlock.getPriceTotalDueToday().getText().substring(1).replaceAll(",", ""));
         double actualResult = priceNumber + Math.round(pricePlan  * 100.0) / 100.0;
         double pricePayToday = Double.parseDouble(orderConfirmationBlock.getPricePayToday().getText().substring(1).replaceAll(",", ""));

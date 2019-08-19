@@ -70,7 +70,7 @@ public class BuyingLocalParkNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalParkNumberWithHighFixedPromoCode() throws InterruptedException {
+    public void orderLocalParkNumberWithHighFixedPromoCode() throws InterruptedException, IOException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -83,7 +83,7 @@ public class BuyingLocalParkNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalParkNumberWithPercentPromoCode() throws InterruptedException {
+    public void orderLocalParkNumberWithPercentPromoCode() throws InterruptedException, IOException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -97,7 +97,7 @@ public class BuyingLocalParkNumbers extends TestBase {
 
 
     @Test
-    public void orderLocalParkNumberAfterRemovePromoCodee() throws InterruptedException {
+    public void orderLocalParkNumberAfterRemovePromoCodee() throws InterruptedException, IOException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();

@@ -2,10 +2,7 @@ package adminPanel.sprint_1_PriceOverride;
 
 import data.CreditCards;
 import data.Users;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.BuyingRegularVanityNumber;
 import pages.Checkout;
 import pages.OrderConfirmationPage;
@@ -14,6 +11,8 @@ import pages.admin.InventoryTollfree;
 import pages.admin.LinksListingPage;
 import pages.admin.Login;
 import testBase.TestBase;
+
+import java.io.IOException;
 
 /**
  * Created by bigdrop on 8/2/2019.
@@ -28,7 +27,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
     private BuyingRegularVanityNumber buyingRegularVanityNumber;
 
-    @BeforeMethod
+    @BeforeClass
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -41,13 +40,14 @@ public class priceOverrideForRegularTollFree extends TestBase {
         login.fillLoginForm();
     }
 
-    @AfterMethod
+    @AfterClass
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
-    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException {
+    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException, IOException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "WWW8709");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
@@ -67,7 +67,8 @@ public class priceOverrideForRegularTollFree extends TestBase {
     }
 
     @Test
-    public void test2GenerateLinkWithPromoCode() throws InterruptedException {
+    public void test2GenerateLinkWithPromoCode() throws InterruptedException, IOException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
@@ -88,7 +89,8 @@ public class priceOverrideForRegularTollFree extends TestBase {
     }
 
     @Test
-    public void test3GenerateLinkAndEdit() throws InterruptedException {
+    public void test3GenerateLinkAndEdit() throws InterruptedException, IOException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
@@ -114,7 +116,8 @@ public class priceOverrideForRegularTollFree extends TestBase {
 
 
     @Test
-    public void test4CopyLink() throws InterruptedException {
+    public void test4CopyLink() throws InterruptedException, IOException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
@@ -136,6 +139,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
 
     @Test
     public void test5DeleteLink() throws InterruptedException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
         inventoryTollfree.clickCreateNewLinkByNumber(0);

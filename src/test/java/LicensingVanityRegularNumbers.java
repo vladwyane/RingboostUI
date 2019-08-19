@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import pages.*;
 import testBase.TestBase;
 
+import java.io.IOException;
+
 public class LicensingVanityRegularNumbers extends TestBase {
 
     private HomePage homePage;
@@ -35,7 +37,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumber() throws InterruptedException {
+    public void orderRegularVanityNumber() throws InterruptedException, IOException {
         homePage.open();
         tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
         tollFreeIndexPage.searchTollFreeNumber("error");
@@ -49,7 +51,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumberWithFixedPromoCode() throws InterruptedException {
+    public void orderRegularVanityNumberWithFixedPromoCode() throws InterruptedException, IOException {
         homePage.open();
         homePage.clickSubNavItemTollFree("vanity-numbers");
         vanityIndexPage.searchTollFreeNumbers("ring");
@@ -64,7 +66,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumberWithHighFixedPromoCode() throws InterruptedException {
+    public void orderRegularVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException {
         tollFreeIndexPage.open();
         tollFreeIndexPage.searchTollFreeNumber("!@#$%^&*");
         vanitySearchResult.chooseLastNumberFromRegularVanityListAfterLoadMore();
@@ -78,7 +80,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumberWithPercentPromoCode() throws InterruptedException {
+    public void orderRegularVanityNumberWithPercentPromoCode() throws InterruptedException, IOException {
         vanitySearchResult.open();
         vanitySearchResult.searchTollFreeNumbers("bug");
         vanitySearchResult.chooseFirstNumberFromRegularVanityListAfterLoadMore();
@@ -92,7 +94,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumberAfterRemovePromoCode() throws InterruptedException {
+    public void orderRegularVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException {
         homePage.open();
         homePage.searchTollFreeNumbers("ring");
         vanitySearchResult.choose32thNumberFromRegularVanityList();

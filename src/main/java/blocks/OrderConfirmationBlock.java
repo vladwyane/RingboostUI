@@ -117,20 +117,5 @@ public class OrderConfirmationBlock extends HtmlElement {
     }
 
 
-    public static void main( String[] args ) throws JSONException, IOException {
-        //First Employee
-        JSONObject employeeDetails = new JSONObject();
-        employeeDetails.put("firstName", "Lokesh");
-        employeeDetails.put("lastName", "Gupta");
-        employeeDetails.put("website", "howtodoinjava.com");
-
-        File file = new File("src/main/resources/ordersDetail.json");
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(employeeDetails);
-        Writer writer = new BufferedWriter(new FileWriter(file, true));
-        writer.write(json);
-        writer.close();
-
-    }
 
 }

@@ -63,7 +63,7 @@ public class VanityCategoriesTests extends TestBase {
     @Test
     public void testFilterNumbersByCategories() {
         vanityIndexPage.open();
-        String nameCategoryInSelect = "VOIP";
+        String nameCategoryInSelect = "Sports Related";
         String firstNumberInListBefore = vanityIndexPage.chooseVanityCategory("Banking");
         String firstNumberInListAfter = vanityCategoryDetail.chooseCategoryInSelect(nameCategoryInSelect);
         vanityCategoryDetail.checkingSelectCategories(firstNumberInListBefore, firstNumberInListAfter, nameCategoryInSelect);

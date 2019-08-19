@@ -20,4 +20,7 @@ public class ToolbarPanel extends HtmlElement{
 
     @FindBy(css = ".v-toolbar__side-icon")
     private WebElement burgerButton;
+
+    @FindBy(xpath = "//div[contains(text(), 'logout')]")
+    private WebElement logoutButton;
 }

@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import pages.*;
 import testBase.TestBase;
 
+import java.io.IOException;
+
 /**
  * Created by bigdrop on 6/14/2019.
  */
@@ -37,7 +39,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumber() throws InterruptedException {
+    public void orderLocalPortNumber() throws InterruptedException, IOException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -56,7 +58,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumberWithFixedPromoCode() throws InterruptedException {
+    public void orderLocalPortNumberWithFixedPromoCode() throws InterruptedException, IOException {
         homePage.open();
         homePage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -69,7 +71,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumberWithHighFixedPromoCode() throws InterruptedException {
+    public void orderLocalPortNumberWithHighFixedPromoCode() throws InterruptedException, IOException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -82,7 +84,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumberWithPercentPromoCode() throws InterruptedException {
+    public void orderLocalPortNumberWithPercentPromoCode() throws InterruptedException, IOException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -95,7 +97,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumberAfterRemovePromoCodee() throws InterruptedException {
+    public void orderLocalPortNumberAfterRemovePromoCodee() throws InterruptedException, IOException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();

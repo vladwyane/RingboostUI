@@ -2,14 +2,14 @@ package adminPanel.sprint_1_PriceOverride;
 
 import data.CreditCards;
 import data.Users;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.BuyingLocalNumber;
 import pages.Checkout;
 import pages.OrderConfirmationPage;
 import pages.admin.*;
 import testBase.TestBase;
+
+import java.io.IOException;
 
 /**
  * Created by bigdrop on 8/2/2019.
@@ -24,7 +24,7 @@ public class priceOverrideForLocal extends TestBase{
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
 
-    @BeforeMethod
+    @BeforeClass
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -37,13 +37,14 @@ public class priceOverrideForLocal extends TestBase{
         login.fillLoginForm();
     }
 
-    @AfterMethod
+    @AfterClass
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
-    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException {
+    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException, IOException {
+        login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0ZUPO");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(0);
@@ -61,7 +62,8 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test2GenerateLinkWithPromoCode() throws InterruptedException {
+    public void test2GenerateLinkWithPromoCode() throws InterruptedException, IOException {
+        login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
@@ -80,7 +82,8 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test3GenerateLinkAndEdit() throws InterruptedException {
+    public void test3GenerateLinkAndEdit() throws InterruptedException, IOException {
+        login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(2);
@@ -105,7 +108,8 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test4CopyLink() throws InterruptedException {
+    public void test4CopyLink() throws InterruptedException, IOException {
+        login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(3);
@@ -127,6 +131,7 @@ public class priceOverrideForLocal extends TestBase{
 
     @Test
     public void test5DeleteLink() throws InterruptedException {
+        login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(4);
@@ -142,6 +147,7 @@ public class priceOverrideForLocal extends TestBase{
 
     @Test
     public void test6inVisibleCreateNewURL() throws InterruptedException {
+        login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(5);
@@ -156,7 +162,8 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test7GenerateLinkWithoutPickPlan() throws InterruptedException {
+    public void test7GenerateLinkWithoutPickPlan() throws InterruptedException, IOException {
+        login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0ZUP");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(6);

@@ -2,13 +2,13 @@ package adminPanel.sprint_1_PriceOverride;
 
 import data.CreditCards;
 import data.Users;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.Checkout;
 import pages.OrderConfirmationPage;
 import pages.admin.*;
 import testBase.TestBase;
+
+import java.io.IOException;
 
 /**
  * Created by bigdrop on 8/2/2019.
@@ -22,7 +22,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
 
-    @BeforeMethod
+    @BeforeClass
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -34,13 +34,14 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         login.fillLoginForm();
     }
 
-    @AfterMethod
+    @AfterClass
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
-    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException {
+    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException, IOException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "999ZIX0");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
@@ -58,7 +59,8 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     }
 
     @Test
-    public void test2GenerateLinkWithPromoCode() throws InterruptedException {
+    public void test2GenerateLinkWithPromoCode() throws InterruptedException, IOException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9999490");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
@@ -77,7 +79,8 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     }
 
     @Test
-    public void test3GenerateLinkAndEdit() throws InterruptedException {
+    public void test3GenerateLinkAndEdit() throws InterruptedException, IOException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9999490");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
@@ -100,26 +103,29 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     }
 
     @Test
-    public void test4CopyLink() throws InterruptedException {
+    public void test4CopyLink() throws InterruptedException, IOException {
+        login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9999490");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
-        linksListingPage
-                .generateLinkWithoutPromoCodePremiumFlow("11.99", "Vermont", 1,
-                        "3 years", "250");
+        String displayedName = linksListingPage
+                .generateLinkWithPromoCodePremiumFlow("11.99", "Vermont", 1,
+                        "3 years", "250", "1-888-9999-490");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         linksListingPage.clickCopyButton(3);
         linksListingPage.goToGeneratedLinkAfterCopyPaste(3);
-        boolean isPromocode = checkout.addPromoCode("summersale");
+        checkout.addPromoCode("summersale");
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
-        orderConfirmationPage.checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(payToday, isPromocode);
+        orderConfirmationPage.checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(payToday, displayedName);
     }
 
     @Test
     public void test5DeleteLink() throws InterruptedException {
+        login.open();
         admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "9999490");
         inventoryTollfree.clickCreateNewLinkByNumber(0);
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.deleteAllLink();

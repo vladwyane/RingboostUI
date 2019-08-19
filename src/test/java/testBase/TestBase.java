@@ -23,7 +23,7 @@ public class TestBase {
     }
     @BeforeClass
     public void setupTest(ITestContext context) throws Exception{
-        if(getClass().getName().equals("LicensingVanityPremiumNumbers"))
+        if(getClass().getName().equals("tollFreeFlow.LicensingVanityPremiumNumbers"))
             app.unitMobileView();
         else app.unit();
         context.setAttribute("app", app);

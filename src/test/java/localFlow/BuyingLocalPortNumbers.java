@@ -1,5 +1,8 @@
+package localFlow;
+
 import data.CreditCards;
 import data.Users;
+import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -39,7 +42,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumber() throws InterruptedException, IOException {
+    public void orderLocalPortNumber() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -58,7 +61,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumberWithFixedPromoCode() throws InterruptedException, IOException {
+    public void orderLocalPortNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -71,7 +74,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumberWithHighFixedPromoCode() throws InterruptedException, IOException {
+    public void orderLocalPortNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -84,7 +87,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumberWithPercentPromoCode() throws InterruptedException, IOException {
+    public void orderLocalPortNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
@@ -97,7 +100,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
-    public void orderLocalPortNumberAfterRemovePromoCodee() throws InterruptedException, IOException {
+    public void orderLocalPortNumberAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();

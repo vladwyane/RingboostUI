@@ -2,6 +2,7 @@ package adminPanel.sprint_1_PriceOverride;
 
 import data.CreditCards;
 import data.Users;
+import org.json.JSONException;
 import org.testng.annotations.*;
 import pages.BuyingLocalNumber;
 import pages.Checkout;
@@ -43,7 +44,7 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException, IOException {
+    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0ZUPO");
@@ -62,7 +63,7 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test2GenerateLinkWithPromoCode() throws InterruptedException, IOException {
+    public void test2GenerateLinkWithPromoCode() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0987");
@@ -82,7 +83,7 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test3GenerateLinkAndEdit() throws InterruptedException, IOException {
+    public void test3GenerateLinkAndEdit() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0987");
@@ -108,7 +109,7 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test4CopyLink() throws InterruptedException, IOException {
+    public void test4CopyLink() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0987");
@@ -162,7 +163,7 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test7GenerateLinkWithoutPickPlan() throws InterruptedException, IOException {
+    public void test7GenerateLinkWithoutPickPlan() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0ZUP");

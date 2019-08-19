@@ -1,5 +1,8 @@
+package tollFreeFlow;
+
 import data.CreditCards;
 import data.Users;
+import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,7 +40,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumber() throws InterruptedException, IOException {
+    public void orderRegularVanityNumber() throws InterruptedException, IOException, JSONException {
         homePage.open();
         tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
         tollFreeIndexPage.searchTollFreeNumber("error");
@@ -51,7 +54,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumberWithFixedPromoCode() throws InterruptedException, IOException {
+    public void orderRegularVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("vanity-numbers");
         vanityIndexPage.searchTollFreeNumbers("ring");
@@ -66,7 +69,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException {
+    public void orderRegularVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
         tollFreeIndexPage.searchTollFreeNumber("!@#$%^&*");
         vanitySearchResult.chooseLastNumberFromRegularVanityListAfterLoadMore();
@@ -80,7 +83,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumberWithPercentPromoCode() throws InterruptedException, IOException {
+    public void orderRegularVanityNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         vanitySearchResult.open();
         vanitySearchResult.searchTollFreeNumbers("bug");
         vanitySearchResult.chooseFirstNumberFromRegularVanityListAfterLoadMore();
@@ -94,7 +97,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     }
 
     @Test
-    public void orderRegularVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException {
+    public void orderRegularVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers("ring");
         vanitySearchResult.choose32thNumberFromRegularVanityList();

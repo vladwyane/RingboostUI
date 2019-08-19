@@ -1,5 +1,8 @@
+package tollFreeFlow;
+
 import data.CreditCards;
 import data.Users;
+import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -35,7 +38,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800Number() throws InterruptedException, IOException {
+    public void orderBasic800Number() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
         basicIndexPage.choose32thNumberFromBasic800List();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Business Pro");
@@ -47,7 +50,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800NumberWithFixedPromoCode() throws InterruptedException, IOException {
+    public void orderBasic800NumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("basic-numbers");
         basicIndexPage.open();
@@ -62,7 +65,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800NumberWithHighFixedPromoCode() throws InterruptedException, IOException {
+    public void orderBasic800NumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
         basicIndexPage.chooseFirstNumberFromBasic800ListAfterLoadMore();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Starter");
@@ -75,7 +78,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800NumberWithPercentPromoCode() throws InterruptedException, IOException {
+    public void orderBasic800NumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("basic-numbers");
         basicIndexPage.chooseLastNumberFromBasic800ListAfterLoadMore();
@@ -89,7 +92,7 @@ public class LicensingBasic800Numbers extends TestBase {
     }
 
     @Test
-    public void orderBasic800NumberAfterRemovePromoCodee() throws InterruptedException, IOException {
+    public void orderBasic800NumberAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
         basicIndexPage.chooseFirstNumberFromBasic800ListAfterLoadMore();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Starter");

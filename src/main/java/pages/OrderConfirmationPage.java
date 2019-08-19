@@ -20,7 +20,7 @@ public class OrderConfirmationPage extends BasePage {
 
     }
 
-    public void checkingYourPurchase (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
+    public void checkingYourPurchase (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -39,7 +39,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseWithFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
+    public void checkingYourPurchaseWithFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -64,7 +64,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseWithPercentPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
+    public void checkingYourPurchaseWithPercentPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -89,7 +89,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseAfterRemovePromoCode (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
+    public void checkingYourPurchaseAfterRemovePromoCode (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -110,7 +110,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseWithHighFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException {
+    public void checkingYourPurchaseWithHighFixedPromoCode(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -137,7 +137,7 @@ public class OrderConfirmationPage extends BasePage {
 
     //Checking for Local Numbers
 
-    public void checkingYourPurchasePortNumber (double priceNumber, double pricePlan) throws IOException {
+    public void checkingYourPurchasePortNumber (double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -154,7 +154,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchasePortNumberWithFixedPromoCode(double priceNumber, double pricePlan) throws IOException {
+    public void checkingYourPurchasePortNumberWithFixedPromoCode(double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -177,7 +177,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchasePortNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) throws IOException {
+    public void checkingYourPurchasePortNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -200,7 +200,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchasePortNumberWithPercentPromoCode(double priceNumber, double pricePlan) throws IOException {
+    public void checkingYourPurchasePortNumberWithPercentPromoCode(double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -223,7 +223,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchasePortNumberAfterRemovePromoCode (double priceNumber, double pricePlan) throws IOException {
+    public void checkingYourPurchasePortNumberAfterRemovePromoCode (double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -283,7 +283,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) throws IOException {
+    public void checkingYourPurchaseParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -306,7 +306,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumberWithPercentPromoCode(double priceNumber, double pricePlan) throws IOException {
+    public void checkingYourPurchaseParkNumberWithPercentPromoCode(double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -329,7 +329,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseParkNumberAfterRemovePromoCode (double priceNumber, double pricePlan) throws IOException {
+    public void checkingYourPurchaseParkNumberAfterRemovePromoCode (double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -349,7 +349,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseLocalNumbersPickPlan (double priceNumber, double pricePlan, double perMonthPrice) throws IOException {
+    public void checkingYourPurchaseLocalNumbersPickPlan (double priceNumber, double pricePlan, double perMonthPrice) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -369,7 +369,7 @@ public class OrderConfirmationPage extends BasePage {
 
     //Checking for Basic800 Numbers
 
-    public void checkingYourPurchaseBasic800Number (double priceActivationFee, double pricePlan) throws IOException {
+    public void checkingYourPurchaseBasic800Number (double priceActivationFee, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -386,7 +386,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseBasic800NumberWithFixedPromoCode(double priceActivationFee, double pricePlan) throws IOException {
+    public void checkingYourPurchaseBasic800NumberWithFixedPromoCode(double priceActivationFee, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -409,7 +409,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseBasic800NumberWithHighFixedPromoCode(double priceActivationFee, double pricePlan) throws IOException {
+    public void checkingYourPurchaseBasic800NumberWithHighFixedPromoCode(double priceActivationFee, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -432,7 +432,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseBasic800NumberWithPercentPromoCode(double priceActivationFee, double pricePlan) throws IOException {
+    public void checkingYourPurchaseBasic800NumberWithPercentPromoCode(double priceActivationFee, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -455,7 +455,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingYourPurchaseBasic800NumberAfterRemovePromoCode (double priceActivationFee, double pricePlan) throws IOException {
+    public void checkingYourPurchaseBasic800NumberAfterRemovePromoCode (double priceActivationFee, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -477,7 +477,7 @@ public class OrderConfirmationPage extends BasePage {
     //Generated link in admin panel
 
     public void checkingGeneratedLinkWithoutPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan,
-                                                                 double priceNumber, boolean isPromocode, String displayedName) throws IOException {
+                                                                 double priceNumber, boolean isPromocode, String displayedName) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -498,7 +498,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithFixedPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinkWithFixedPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -524,7 +524,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithPercentPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinkWithPercentPromoCodeRegularFlow(double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -550,7 +550,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithoutPromoCodePremiumFlow(double pricePayToday, boolean isPromocode, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinkWithoutPromoCodePremiumFlow(double pricePayToday, boolean isPromocode, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -571,7 +571,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithFixedPromoCodePremiumFlow(double price, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinkWithFixedPromoCodePremiumFlow(double price, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -597,7 +597,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithPercentPromoCodePremiumFlow(double price, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinkWithPercentPromoCodePremiumFlow(double price, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -623,7 +623,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(double price, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(double price, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -649,7 +649,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinkWithoutPromoCodePortNumber(double priceNumber, boolean isPromocode) throws IOException {
+    public void checkingGeneratedLinkWithoutPromoCodePortNumber(double priceNumber, boolean isPromocode) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -667,7 +667,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinParkNumberWithFixedPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinParkNumberWithFixedPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -690,7 +690,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinParkNumberWithPercentPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinParkNumberWithPercentPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();
@@ -714,7 +714,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingGeneratedLinParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException {
+    public void checkingGeneratedLinParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan, String displayedNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
         orderConfirmationBlock.getLinkOrderDetails().click();

@@ -1,3 +1,5 @@
+package localFlow;
+
 import data.CreditCards;
 import data.Users;
 import org.json.JSONException;
@@ -9,7 +11,7 @@ import testBase.TestBase;
 
 import java.io.IOException;
 
-public class BuyingLocalNumbersPickPlan extends TestBase {
+public class BuyingLocalParkNumbers extends TestBase {
 
     private HomePage homePage;
     private LocalIndexPage localIndexPage;
@@ -29,6 +31,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         localSearchResult = new LocalSearchResult(app.getDriver());
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
+
     }
 
     @AfterMethod
@@ -37,35 +40,31 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     }
 
     @Test
-    public void orderLocalNumberPickPlan() throws InterruptedException, IOException, JSONException {
+    public void orderLocalParkNumber() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("0987");
-        localSearchResult.chooseNumberFromLocalNumbersList(10);
+        localIndexPage.searchLocalNumbers("12345");
+        localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
-        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
-        buyingLocalNumber.enterRingToNumber("8722413731");
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         boughtNumber = buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumber(priceNumber, pricePlan);
     }
 
     @Test
-    public void orderLocalNumberPickPlanSold() throws InterruptedException {
+    public void orderLocalParkNumberSold() throws InterruptedException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers(boughtNumber);
         localSearchResult.checkingStatusSold();
     }
 
     @Test
-    public void orderLocalNumberPickPlanWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
+    public void orderLocalParkNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchLocalNumbers("0987");
-        localSearchResult.chooseNumberFromLocalNumbersList(5);
+        homePage.searchLocalNumbers("12345");
+        localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
-        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Premium");
-        buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
@@ -73,14 +72,12 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     }
 
     @Test
-    public void orderLocalNumberPickPlanWithHighFixedPromoCode() throws InterruptedException, IOException {
+    public void orderLocalParkNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
-        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
-        buyingLocalNumber.enterRingToNumber("9968843478");
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("summersale");
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
@@ -88,46 +85,41 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     }
 
     @Test
-    public void orderLocalNumberPickPlanWithPercentPromoCode() throws InterruptedException, IOException {
+    public void orderLocalParkNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
-        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
-        buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(priceNumber, pricePlan);
     }
 
+
     @Test
-    public void orderLocalNumberPickPlanAfterRemovePromoCodee() throws InterruptedException, IOException {
+    public void orderLocalParkNumberAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
-        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Premium");
-        buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
+        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove("wintersale");
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
 
     @Test
-    public void orderLocalNumberPickPlanPaymentError() throws InterruptedException {
+    public void orderLocalParkNumberPaymentError() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers("0987");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
-        buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
-        buyingLocalNumber.enterRingToNumber("1368843478");
+        buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.ERROR_PROCESSING_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.ERROR_LOST_CARD_STRIPE, false);
         checkout.checkingPaymentError();
     }
 }

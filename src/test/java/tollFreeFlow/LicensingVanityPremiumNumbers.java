@@ -1,5 +1,8 @@
+package tollFreeFlow;
+
 import data.CreditCards;
 import data.Users;
+import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,7 +40,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     }
 
     @Test
-    public void orderPremiumVanityNumber() throws InterruptedException, IOException {
+    public void orderPremiumVanityNumber() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers("ERROR");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -62,7 +65,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     }
 
     @Test
-    public void orderPremiumVanityNumberWithFixedPromoCode() throws InterruptedException, IOException {
+    public void orderPremiumVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         vanityIndexPage.open();
         vanityIndexPage.searchTollFreeNumbers("ring");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -80,7 +83,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     }
 
     @Test
-    public void orderPremiumVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException {
+    public void orderPremiumVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
         tollFreeIndexPage.searchTollFreeNumber("461ring");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -98,7 +101,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     }
 
     @Test
-    public void orderPremiumVanityNumberWithPercentPromoCode() throws InterruptedException, IOException {
+    public void orderPremiumVanityNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
         tollFreeIndexPage.searchTollFreeNumber("RING");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -114,7 +117,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     }
 
     @Test
-    public void orderPremiumVanityNumberFromSeveralStates() throws InterruptedException, IOException {
+    public void orderPremiumVanityNumberFromSeveralStates() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers("461RING");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -129,7 +132,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     }
 
     @Test
-    public void orderPremiumVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException {
+    public void orderPremiumVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers("461RING");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -145,7 +148,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     }
 
     @Test
-    public void orderPremiumVanityNumberFromSeveralStatesWithDifferentQuantity() throws InterruptedException, IOException {
+    public void orderPremiumVanityNumberFromSeveralStatesWithDifferentQuantity() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers("461RING");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();

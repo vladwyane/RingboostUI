@@ -88,7 +88,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
-        return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
+        return Double.parseDouble(getNumbersFromString(priceNumber.getText().replaceAll("\\D+","")));
     }
 
     public double enterRingToNumber(String number) {
@@ -108,7 +108,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         }
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
-        return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
+        return Double.parseDouble(getNumbersFromString(priceNumber.getText().replaceAll("\\D+","")));
     }
 
     public double enterRingToNumberWithMultipleCheckbox(String number) {
@@ -129,7 +129,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
-        return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
+        return Double.parseDouble(getNumbersFromString(priceNumber.getText().replaceAll("\\D+","")));
     }
 
     public void checkingOrderSummary (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) {

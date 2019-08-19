@@ -21,7 +21,9 @@ public class PremiumVanityNumbersBlock extends HtmlElement {
     @FindBy(css= "h2")
     private WebElement titleSection;
 
-    @Name("ArrayList of regular vanity numbers")
-    @FindBys( {@FindBy(css = "li")} )
+    @Name("ArrayList of premium vanity numbers")
+    @FindBys( {@FindBy(css = "li .number")} )
     public List<WebElement> listPremiumVanityNumbers;
+
+
 }

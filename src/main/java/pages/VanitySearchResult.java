@@ -108,5 +108,24 @@ public class VanitySearchResult extends BasePage {
         premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(premiumVanityNumbersBlock.getListPremiumVanityNumbers().size() - 1).click();
     }
 
+    public void checkingSearchResultSevenSymbols(String request) {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0));
+        boolean searchResult = false;
+        String ewrw = null;
+        for (int i = 0; i < premiumVanityNumbersBlock.getListPremiumVanityNumbers().size(); i++) {
+            if (premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                    .replaceAll("\\D+","").substring(4).equals(request) ||
+                    premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                    .replaceAll("\\D+","").substring(7).equals(request)) {
+                searchResult = true;
+            } else {
+                searchResult = false;
+                return;
+            }
+        }
+        premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(premiumVanityNumbersBlock.getListPremiumVanityNumbers().size() - 1).click();
+    }
+
 
 }

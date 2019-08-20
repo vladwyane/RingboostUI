@@ -34,12 +34,41 @@ public class Sprint_2_Carriers extends TestBase {
     }
 
     @Test
-    public void test1CreateNewCarrier() throws InterruptedException, IOException, JSONException {
+    public void test1SuccessCreateNewCarrier() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickCarriersLink();
         carriersListingPage.clickAddCarrierButton();
         carriersListingPage.createNewCarrier(Carriers.VODAFONE);
         carriersListingPage.checkingSuccessAlertMessage();
+    }
+
+    @Test
+    public void test2ErrorCreateNewCarrierAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickCarriersLink();
+        carriersListingPage.clickAddCarrierButton();
+        carriersListingPage.clickSaveButton();
+        carriersListingPage.checkingErrorMessages();
+    }
+
+    @Test
+    public void test3SearchField() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickCarriersLink();
+        carriersListingPage.clickAddCarrierButton();
+        carriersListingPage.clickSaveButton();
+        carriersListingPage.checkingErrorMessages();
+    }
+
+    @Test
+    public void test4SErrorMessageNotVisibleWhenCreateNewCarrier() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickCarriersLink();
+        carriersListingPage.clickAddCarrierButton();
+        carriersListingPage.clickSaveButton();
+        carriersListingPage.clickCancelButton();
+        carriersListingPage.clickAddCarrierButton();
+        carriersListingPage.checkingErrorMessagesIsAbsent();
     }
 
 }

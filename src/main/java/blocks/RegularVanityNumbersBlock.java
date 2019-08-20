@@ -25,7 +25,7 @@ public class RegularVanityNumbersBlock extends HtmlElement {
     private WebElement titleSection;
 
     @Name("ArrayList of regular vanity numbers")
-    @FindBys( {@FindBy(css = "li")} )
+    @FindBys( {@FindBy(css = "li .number")} )
     public List<WebElement> listRegularVanityNumbers;
 
 }

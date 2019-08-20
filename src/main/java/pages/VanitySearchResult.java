@@ -26,7 +26,13 @@ public class VanitySearchResult extends BasePage {
 
     public void searchTollFreeNumbers(String request) {
         type(smallSearchBlock.getTollFreeSearchField(), request);
-        smallSearchBlock.getButtonFindNumber().click();
+        waiting2seconds();
+    }
+
+    public void clickButtonLoadMore() {
+        waiting2seconds();
+        buttonMoreNumbers.click();
+        waiting2seconds();
     }
 
     public void checkingClickLoadMore () {
@@ -108,23 +114,113 @@ public class VanitySearchResult extends BasePage {
         premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(premiumVanityNumbersBlock.getListPremiumVanityNumbers().size() - 1).click();
     }
 
-    public void checkingSearchResultSevenSymbols(String request) {
+    public void checkingSearchResultSevenOrEightSymbols(String request) {
         waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
         scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0));
         boolean searchResult = false;
-        String ewrw = null;
         for (int i = 0; i < premiumVanityNumbersBlock.getListPremiumVanityNumbers().size(); i++) {
-            if (premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
-                    .replaceAll("\\D+","").substring(4).equals(request) ||
+            if ( premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                    .replaceAll("-","").substring(7).equals(request) ||
                     premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
-                    .replaceAll("\\D+","").substring(7).equals(request)) {
+                    .replaceAll("-","").substring(4).equals(request)) {
                 searchResult = true;
             } else {
                 searchResult = false;
-                return;
+                break;
             }
         }
-        premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(premiumVanityNumbersBlock.getListPremiumVanityNumbers().size() - 1).click();
+        softAssert.assertTrue(searchResult);
+        softAssert.assertAll();
+    }
+
+    public void checkingSearchResultFourAndMoreSymbols(String request) {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0));
+        boolean searchResult = false;
+        for (int i = 0; i < premiumVanityNumbersBlock.getListPremiumVanityNumbers().size(); i++) {
+            if ( premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                    .replaceAll("-","").substring(7).equals(request) ||
+                    premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                            .replaceAll("-","").substring(4).contains(request)) {
+                searchResult = true;
+            } else {
+                searchResult = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(searchResult);
+        softAssert.assertAll();
+    }
+
+    public void checkingSearchResultMoreThen14Symbols(String request) {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0));
+        boolean searchResult = false;
+        for (int i = 0; i < premiumVanityNumbersBlock.getListPremiumVanityNumbers().size(); i++) {
+            if (premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                    .replaceAll("-","").substring(7).equals(request.substring(0, 14)) ||
+                    premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                            .replaceAll("-","").substring(4).equals(request.substring(0, 14))) {
+                searchResult = true;
+            } else {
+                searchResult = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(searchResult);
+        softAssert.assertAll();
+    }
+
+    public void checkingSearchResult3Symbols(String request) {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0));
+        boolean searchResult = false;
+        for (int i = 0; i < premiumVanityNumbersBlock.getListPremiumVanityNumbers().size(); i++) {
+            if (premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                            .replaceAll("-","").substring(4).contains(request)) {
+                searchResult = true;
+            } else {
+                searchResult = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(searchResult);
+        softAssert.assertAll();
+    }
+
+    public void checkingSearchResultSpecialSymbols(String request) {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0));
+        boolean searchResult = true;
+        for (int i = 0; i < premiumVanityNumbersBlock.getListPremiumVanityNumbers().size(); i++) {
+            if (premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(i).getText()
+                    .replaceAll("-","").substring(4).contains(request)) {
+                searchResult = true;
+                break;
+            } else {
+                searchResult = false;
+            }
+        }
+        softAssert.assertFalse(searchResult);
+        softAssert.assertAll();
+    }
+
+    public void checkingSearchResultFourAndMoreSymbolsFromCategoryDetailPage(String request) {
+        waitUntilElementAppeared(regularVanityNumbersBlock.getListRegularVanityNumbers().get(0));
+        boolean searchResult = false;
+        for (int i = 0; i < regularVanityNumbersBlock.getListRegularVanityNumbers().size(); i++) {
+            if (regularVanityNumbersBlock.getListRegularVanityNumbers().get(i).getText()
+                    .replaceAll("-","").substring(7).equals(request) ||
+                    regularVanityNumbersBlock.getListRegularVanityNumbers().get(i).getText()
+                            .replaceAll("-","").substring(4).contains(request)) {
+                searchResult = true;
+            } else {
+                searchResult = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(searchResult);
+        softAssert.assertAll();
     }
 
 

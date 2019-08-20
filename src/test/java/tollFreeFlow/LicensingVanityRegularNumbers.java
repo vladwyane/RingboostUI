@@ -43,7 +43,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     public void orderRegularVanityNumber() throws InterruptedException, IOException, JSONException {
         homePage.open();
         tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
-        tollFreeIndexPage.searchTollFreeNumber("error");
+        tollFreeIndexPage.searchTollFreeNumbers("error");
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
@@ -71,7 +71,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
     @Test
     public void orderRegularVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
-        tollFreeIndexPage.searchTollFreeNumber("!@#$%^&*");
+        tollFreeIndexPage.searchTollFreeNumbers("!@#$%^&*");
         vanitySearchResult.chooseLastNumberFromRegularVanityListAfterLoadMore();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");

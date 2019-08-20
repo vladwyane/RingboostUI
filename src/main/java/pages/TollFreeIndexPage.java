@@ -23,7 +23,7 @@ public class TollFreeIndexPage extends BasePage {
         headerBlock.getTollFreeLinInMainNav().click();
     }
 
-    public void searchTollFreeNumber(String request) {
+    public void searchTollFreeNumbers(String request) {
         waitUntilTextInElementAppear(searchBlock.getTitleH1(), "Find Your Toll-Free Number");
         type(searchBlock.getTollFreeSearchField(), request);
         searchBlock.getButtonFindNumber().click();

@@ -1,6 +1,8 @@
 package pages;
 
 import blocks.RegularVanityNumbersBlock;
+import blocks.SearchBlock;
+import blocks.SmallSearchBlock;
 import blocks.VanityCategoryDetailBlock;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +23,12 @@ public class VanityCategoryDetail extends BasePage {
 
     private VanityCategoryDetailBlock vanityCategoryDetailBlock;
     private RegularVanityNumbersBlock regularVanityNumbersBlock;
+    private SmallSearchBlock smallSearchBlock;
+
+    public void searchTollFreeNumbers(String request) {
+        type(smallSearchBlock.getTollFreeSearchField(), request);
+        smallSearchBlock.getButtonFindNumber().click();
+    }
 
     public void clickButtonClearAllFilters() {
         vanityCategoryDetailBlock.getButtonClearAllFilters().click();

@@ -85,7 +85,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     @Test
     public void orderPremiumVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
-        tollFreeIndexPage.searchTollFreeNumber("461ring");
+        tollFreeIndexPage.searchTollFreeNumbers("461ring");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         buyingPremiumVanityNumber.chooseState("Alabama");
@@ -103,7 +103,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     @Test
     public void orderPremiumVanityNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
-        tollFreeIndexPage.searchTollFreeNumber("RING");
+        tollFreeIndexPage.searchTollFreeNumbers("RING");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.chooseByOneAreaCodesFromSeveralStates(new String[] {"Guam", "Alberta"});

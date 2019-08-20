@@ -26,4 +26,10 @@ public class SidebarNavigation extends HtmlElement{
 
     @FindBy(xpath = "//div[contains(text(), 'Local')]")
     private WebElement localLink;
+
+    @FindBy(xpath = "//div[contains(text(), 'Extras')]")
+    private WebElement ExtraslLink;
+
+    @FindBy(xpath = "//div[contains(text(), 'Carriers')]")
+    private WebElement CarriersLink;
 }

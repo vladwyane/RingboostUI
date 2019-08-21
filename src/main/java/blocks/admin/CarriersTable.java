@@ -32,7 +32,7 @@ public class CarriersTable extends HtmlElement {
     private List<WebElement> listOfActionsCarriers;
 
     @Name("List of column header")
-    @FindBys( {@FindBy(css = "//th[@role='columnheader']")} )
+    @FindBys( {@FindBy(xpath = "//th[@role='columnheader']")} )
     private List<WebElement> listColumnHeader;
 
     @Name("List of generated URL")

@@ -56,8 +56,9 @@ public class Sprint_2_Carriers extends TestBase {
         login.open();
         admin.clickCarriersLink();
         carriersListingPage.clickAddCarrierButton();
-        carriersListingPage.clickSaveButton();
-        carriersListingPage.checkingErrorMessages();
+        carriersListingPage.createNewCarrier(Carriers.ALPHABET);
+        carriersListingPage.searchCarrier(Carriers.ALPHABET);
+        carriersListingPage.checkingTitleFirstCarrier(Carriers.ALPHABET);
     }
 
     @Test
@@ -69,6 +70,42 @@ public class Sprint_2_Carriers extends TestBase {
         carriersListingPage.clickCancelButton();
         carriersListingPage.clickAddCarrierButton();
         carriersListingPage.checkingErrorMessagesIsAbsent();
+    }
+
+    @Test
+    public void test5EditButton() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickCarriersLink();
+        carriersListingPage.searchCarrier(Carriers.ALPHABET);
+        carriersListingPage.clickEditIconFirstCarriers();
+        carriersListingPage.editCarrierInfo(Carriers.ABC);
+        carriersListingPage.searchCarrier(Carriers.ABC);
+        carriersListingPage.checkingTitleFirstCarrier(Carriers.ABC);
+    }
+
+    @Test
+    public void test6ErrorEditWithSameCarriersName() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickCarriersLink();
+        carriersListingPage.clickAddCarrierButton();
+        carriersListingPage.editCarrierInfo(Carriers.VODAFONE);
+        carriersListingPage.checkingErrorMessagesTitleHasBeenUsed();
+    }
+
+    @Test
+    public void test7SortingByMRCColumn() throws InterruptedException, IOException, JSONException {
+        carriersListingPage.open();
+        carriersListingPage.clickColumnheaderOfTable("Per-Minute Usage");
+        carriersListingPage.clickColumnheaderOfTable("Per-Minute Usage");
+        carriersListingPage.checkingCorrectSorting("Per-Minute Usage");
+    }
+
+    @Test
+    public void test8SDeleteButton() throws InterruptedException, IOException, JSONException {
+        carriersListingPage.open();
+        carriersListingPage.searchCarrier(Carriers.ABC);
+        carriersListingPage.clickDeleteIconFirstCarriers();
+        carriersListingPage.checkingSuccessDeleted();
     }
 
 }

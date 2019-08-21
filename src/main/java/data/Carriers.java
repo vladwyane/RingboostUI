@@ -5,7 +5,10 @@ package data;
  */
 public enum Carriers {
 
-    VODAFONE ("Vodafone", "12", "13", "56", "23", "34", "Comments");
+    VODAFONE ("Vodafone", "123", "135", "569", "2334", "3423", "Comments"),
+    ALPHABET ("alphabet", "1", "1", "1", "1", "1", ""),
+    ABC ("ABC", "0.01", "0.01", "0.01", "0.01", "0.01", "Comments Comments Comments CommentsComments " +
+            "CommentsCommentsComments Comments Comments Comments CommentsComments Comments Comments Comments");
 
     private String carriers;
     private String mrc;

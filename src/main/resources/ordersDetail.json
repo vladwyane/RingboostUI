@@ -72,4 +72,16 @@
     "priceAfterAppliedPromoCode": "-$320.16",
     "priceTotalDueToday": "$3,201.59"
   }
+}{
+  "map": {
+    "phoneNumber": "305-800-0ZUP",
+    "currentDate": "Mon Sep 02 16:11:58 EEST 2019",
+    "priceTotalDueToday": "$12.00"
+  }
+}{
+  "map": {
+    "phoneNumber": "305-800-0ZUP",
+    "currentDate": "Mon Sep 02 16:26:19 EEST 2019",
+    "priceTotalDueToday": "$4,520.11"
+  }
 }

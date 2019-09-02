@@ -150,19 +150,21 @@ public class LinksListingPage extends BasePage {
     }
 
     public void clickCreateNewURLButton() {
+        isElementInvisible(listGeneratedURL.getOverlay());
         waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
         listGeneratedURL.getButtonCreateNewURL().click();
     }
 
     public String generateLinkWithPromoCodePremiumFlow(String priceOverride, String state, int amountAreaCodes,
-                                                       String termLength, String minutes, String displaNamed) {
+                                                       String termLength, String minutes, String displayNamed) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        String filledDisplayName = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
         premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
         premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);
         premiumNumberURLGenerator.getPriceForAreaCodes().sendKeys(Keys.CONTROL + "a");
         premiumNumberURLGenerator.getPriceForAreaCodes().sendKeys(Keys.DELETE);
         type(premiumNumberURLGenerator.getPriceForAreaCodes(), priceOverride);
-        type(premiumNumberURLGenerator.getDisplayedNumberOnFE(), displaNamed);
+        type(premiumNumberURLGenerator.getDisplayedNumberOnFE(), replaceDisplayNameFieldToLetters(filledDisplayName) + displayNamed);
         chooseMonthlyMinutes(minutes);
         chooseState(state);
         chooseAreaCodes(amountAreaCodes);
@@ -195,12 +197,13 @@ public class LinksListingPage extends BasePage {
 
     public String generateLinkWithPromoCodeRegularFlow(String priceOverride, String displayedName) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        String filledDisplayName = localNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
         localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
         localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);
         localNumberURLGenerator.getPriceOverride().sendKeys(Keys.CONTROL + "a");
         localNumberURLGenerator.getPriceOverride().sendKeys(Keys.DELETE);
         type(localNumberURLGenerator.getPriceOverride(), priceOverride);
-        type(localNumberURLGenerator.getDisplayedNumberOnFE(), displayedName);
+        type(localNumberURLGenerator.getDisplayedNumberOnFE(), replaceDisplayNameFieldToLetters(filledDisplayName) + displayedName);
         premiumNumberURLGenerator.getShowPromoCodeCheckbox().click();
         String enteredText = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
         return enteredText;
@@ -256,9 +259,55 @@ public class LinksListingPage extends BasePage {
     }
 
     public void checkingInvisibleCreateNewURL() {
-        softAssert.assertTrue(isElementInvisible(listGeneratedURL.getButtonCreateNewURL()));
+        softAssert.assertFalse(isElementInvisible(listGeneratedURL.getButtonCreateNewURL()));
         softAssert.assertAll();
     }
+
+    public String replaceDisplayNameFieldToLetters(String displayName) {
+        String newName = displayName.replace("2", "A").replaceAll("5", "k").replaceAll("9","Z");
+        return newName;
+    }
+
+    public int returnIndexLastGeneratedLink() {
+        waiting2seconds();
+        int index = listGeneratedURL.getListOfActionsURL().size() / 3;
+        if (index == 0)
+            return 0;
+        else return index - 1;
+    }
+
+    public String returnCellOfTable(String headingColumn, int indexOfListLinks) {
+        int indexColumn = 0;
+        for (int i = 0; i < listGeneratedURL.getListColumnHeader().size(); i++) {
+            if(listGeneratedURL.getListColumnHeader().get(i).getText().equals(headingColumn)){
+                indexColumn = i;
+                break;
+            }
+        }
+        int counter = 0;
+        for (int i = indexColumn; i < listGeneratedURL.getListTd().size(); i += listGeneratedURL.getListColumnHeader().size()) {
+            if(counter == indexOfListLinks) {
+                return listGeneratedURL.getListTd().get(i).getText();
+            }
+            counter ++;
+        }
+        return listGeneratedURL.getListTd().get(indexColumn).getText();
+    }
+
+    public void checkingStatusComplete(String headingColumn, int indexOfListLinks) {
+        softAssert.assertEquals(returnCellOfTable(headingColumn, indexOfListLinks), "Completed");
+        softAssert.assertAll();
+    }
+
+    public void checkingStatusDeactivate(String headingColumn, int indexOfListLinks) {
+        softAssert.assertEquals(returnCellOfTable(headingColumn, indexOfListLinks), "Deactivate");
+        softAssert.assertAll();
+    }
+
+
+
+
+
 
 
 }

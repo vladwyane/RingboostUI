@@ -35,9 +35,17 @@ public class ListGeneratedURL extends HtmlElement {
     @FindBys( {@FindBy(css = "tbody tr td")} )
     private List<WebElement> listTd;
 
+    @Name("List of column header")
+    @FindBys( {@FindBy(xpath = "//th[@role='columnheader']")} )
+    private List<WebElement> listColumnHeader;
+
     @FindBy(xpath = "//div[contains(text(), 'Cancel')]")
     private WebElement buttonCancel;
 
     @FindBy(xpath = "//div[contains(text(), 'Delete')]")
     private WebElement buttonDelete;
+
+    @FindBy(css = ".v-overlay")
+    private WebElement overlay;
+
 }

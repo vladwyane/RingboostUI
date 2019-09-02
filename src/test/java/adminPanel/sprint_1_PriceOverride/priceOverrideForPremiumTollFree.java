@@ -52,7 +52,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
                 .generateLinkWithoutPromoCodePremiumFlow("23", "Kansas", 3,
                         "1 year", "750");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         boolean isPromocode = checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
@@ -69,9 +69,9 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("890", "Alabama", 2,
-                        "Month-To-Month", "5000", "1-888-999-ZIX0");
+                        "Month-To-Month", "5000", "-TEST");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(1);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.MASTERCART_STRIPE, false);
@@ -91,10 +91,10 @@ public class priceOverrideForPremiumTollFree extends TestBase {
                 .generateLinkWithoutPromoCodePremiumFlow("10.01", "Alabama", 2,
                         "1 years", "750");
         linksListingPage.clickGenerateLinkButtonRegularFlow();
-        linksListingPage.clickEditButton(2);
+        linksListingPage.clickEditButton(linksListingPage.returnIndexLastGeneratedLink());
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("4001.99", "Texas", 2,
-                        "2 year", "100", "1-888-999-ZIX0");
+                        "2 year", "100", "1234567");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(2);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -113,10 +113,10 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("11.99", "Vermont", 1,
-                        "3 years", "250", "1-888-9999-490");
+                        "3 years", "250", "-ABCDEF");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
-        linksListingPage.clickCopyButton(3);
-        linksListingPage.goToGeneratedLinkAfterCopyPaste(3);
+        linksListingPage.clickCopyButton(linksListingPage.returnIndexLastGeneratedLink());
+        linksListingPage.goToGeneratedLinkAfterCopyPaste(linksListingPage.returnIndexLastGeneratedLink());
         checkout.addPromoCode("summersale");
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(payToday, displayedName);
@@ -128,9 +128,9 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9999490");
         inventoryTollfree.clickCreateNewLinkByNumber(0);
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.deleteAllLink();
-        String linkAfterDelete = linksListingPage.getGeneratedLink(0);
+        String linkAfterDelete = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
 }

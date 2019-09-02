@@ -71,7 +71,7 @@ public class priceOverrideForLocal extends TestBase{
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("601", "2125170ZUP");
+                .generateLinkWithPromoCodeRegularFlow("601", "-TEST");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -95,7 +95,7 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickEditButton(0);
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("1110.99", "ADYL-000-987");
+                .generateLinkWithPromoCodeRegularFlow("1110.99", "123456789");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -117,7 +117,7 @@ public class priceOverrideForLocal extends TestBase{
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("210.99", "AMSY-300-ZUP");
+                .generateLinkWithPromoCodeRegularFlow("210.99", "-ABCD-EFG");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickCopyButton(0);
         linksListingPage.goToGeneratedLinkAfterCopyPaste(0);
@@ -169,15 +169,28 @@ public class priceOverrideForLocal extends TestBase{
         inventoryLocal.searchNumber(0,"0ZUP");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(6);
         System.out.println(phoneNumber);
-        linksListingPage.clickCreateNewURLButton();
-        linksListingPage.generateLinkWithoutPromoCodeRegularFlow("4520.11");
-        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
+        double price = 0;
+        for (int i = 0; i < 3; i++) {
+            linksListingPage.clickCreateNewURLButton();
+            linksListingPage.generateLinkWithoutPromoCodeRegularFlow("4520.11");
+            price = linksListingPage.clickGenerateLinkButtonRegularFlow();
+        }
         String generatedLink = linksListingPage.getGeneratedLink(0);
         linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.clickLinkContinueToCheckout();
         boolean isPromocode = checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
+    }
+
+    @Test
+    public void test8CheckingCompleteStatus() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickLocalInventoryLink();
+        inventoryLocal.searchNumber(0,"0ZUP");
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(6);
+        System.out.println(phoneNumber);
+        linksListingPage.checkingStatusComplete("Status", 0);
     }
 
 }

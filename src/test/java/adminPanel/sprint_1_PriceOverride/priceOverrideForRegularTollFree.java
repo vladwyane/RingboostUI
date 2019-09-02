@@ -56,7 +56,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
@@ -76,9 +76,9 @@ public class priceOverrideForRegularTollFree extends TestBase {
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("101", "1-888-WWW-8709-Z");
+                .generateLinkWithPromoCodeRegularFlow("101", "-TEST");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(1);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
@@ -100,11 +100,11 @@ public class priceOverrideForRegularTollFree extends TestBase {
         linksListingPage
                 .generateLinkWithoutPromoCodeRegularFlow("10.01");
         linksListingPage.clickGenerateLinkButtonRegularFlow();
-        linksListingPage.clickEditButton(2);
+        linksListingPage.clickEditButton(linksListingPage.returnIndexLastGeneratedLink());
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("111.99", "1888-WWW-US-0911");
+                .generateLinkWithPromoCodeRegularFlow("111.99", "1234567");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(2);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
@@ -125,10 +125,10 @@ public class priceOverrideForRegularTollFree extends TestBase {
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("11.99", "1-888-WWW-US-09");
+                .generateLinkWithPromoCodeRegularFlow("11.99", "-ABCDEF");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        linksListingPage.clickCopyButton(3);
-        linksListingPage.goToGeneratedLinkAfterCopyPaste(3);
+        linksListingPage.clickCopyButton(linksListingPage.returnIndexLastGeneratedLink());
+        linksListingPage.goToGeneratedLinkAfterCopyPaste(linksListingPage.returnIndexLastGeneratedLink());
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
@@ -144,9 +144,9 @@ public class priceOverrideForRegularTollFree extends TestBase {
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
         inventoryTollfree.clickCreateNewLinkByNumber(0);
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.deleteAllLink();
-        String linkAfterDelete = linksListingPage.getGeneratedLink(0);
+        String linkAfterDelete = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
 }

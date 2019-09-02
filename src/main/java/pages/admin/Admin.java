@@ -44,4 +44,11 @@ public class Admin extends BasePage {
         waitUntilElementAppeared(sidebarNavigation.getCarriersLink());
         sidebarNavigation.getCarriersLink().click();
     }
+
+    public void clickApiLink() {
+        waitUntilElementAppeared(sidebarNavigation.getSettingsLink());
+        sidebarNavigation.getSettingsLink().click();
+        waitUntilElementAppeared(sidebarNavigation.getApiLink());
+        sidebarNavigation.getApiLink().click();
+    }
 }

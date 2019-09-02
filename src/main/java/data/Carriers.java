@@ -5,8 +5,8 @@ package data;
  */
 public enum Carriers {
 
-    VODAFONE ("Vodafone", "123", "135", "569", "2334", "3423", "Comments"),
-    ALPHABET ("alphabet", "1", "1", "1", "1", "1", ""),
+    VODAFONE ("Vodafone", "1", "135", "2", "2334", "3.14", "Comments"),
+    ALPHABET ("alphabet", "123", "1", "569", "1", "256.01", ""),
     ABC ("ABC", "0.01", "0.01", "0.01", "0.01", "0.01", "Comments Comments Comments CommentsComments " +
             "CommentsCommentsComments Comments Comments Comments CommentsComments Comments Comments Comments");
 

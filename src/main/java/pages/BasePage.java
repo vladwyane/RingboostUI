@@ -116,6 +116,7 @@ public abstract class BasePage {
         }
     }
 
+
     protected boolean scrollToElement(WebElement element) {
 
         String scrollElementIntoMiddle = "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"

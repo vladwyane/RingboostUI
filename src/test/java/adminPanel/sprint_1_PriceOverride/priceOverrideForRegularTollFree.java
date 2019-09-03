@@ -139,7 +139,17 @@ public class priceOverrideForRegularTollFree extends TestBase {
     }
 
     @Test
-    public void test5DeleteLink() throws InterruptedException {
+    public void test5CheckingStatusCompleteAllLinks() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "9998709");
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
+        System.out.println(phoneNumber);
+        linksListingPage.checkingStatusCompleteOfAllLinks("Status");
+    }
+
+    @Test
+    public void test6DeleteLink() throws InterruptedException {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");

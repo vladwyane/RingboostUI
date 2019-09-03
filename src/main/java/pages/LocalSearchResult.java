@@ -30,22 +30,22 @@ public class LocalSearchResult extends BasePage {
     }
 
     public void chooseFirstNumberFromLocalNumbersList() {
-        waitUntilElementAppeared(localNumbersBlock.getListLocalNumbers().get(0));
-        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbers().get(0));
-        localNumbersBlock.getListLocalNumbers().get(0).click();
+        waitUntilElementAppeared(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        waitUntilElementWillBeClickable(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        localNumbersBlock.getListOfAvailableLocalNumbers().get(0).click();
     }
 
     public void chooseLastNumberFromLocalNumbersList() {
-        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbers().get(0));
-        scrollToElement(localNumbersBlock.getListLocalNumbers().get(localNumbersBlock.getListLocalNumbers().size()- 1));
-        localNumbersBlock.getListLocalNumbers().get(localNumbersBlock.getListLocalNumbers().size()- 1).click();
+        waitUntilElementWillBeClickable(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        scrollToElement(localNumbersBlock.getListOfAvailableLocalNumbers().get(localNumbersBlock.getListOfAvailableLocalNumbers().size()- 1));
+        localNumbersBlock.getListOfAvailableLocalNumbers().get(localNumbersBlock.getListOfAvailableLocalNumbers().size()- 1).click();
     }
 
     public void chooseNumberFromLocalNumbersList(int numberOrder) {
-        waitUntilElementAppeared(localNumbersBlock.getListLocalNumbers().get(0));
-        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbers().get(numberOrder - 1));
-        scrollToElement(localNumbersBlock.getListLocalNumbers().get(numberOrder - 1));
-        localNumbersBlock.getListLocalNumbers().get(numberOrder - 1).click();
+        waitUntilElementAppeared(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        waitUntilElementWillBeClickable(localNumbersBlock.getListOfAvailableLocalNumbers().get(numberOrder - 1));
+        scrollToElement(localNumbersBlock.getListOfAvailableLocalNumbers().get(numberOrder - 1));
+        localNumbersBlock.getListOfAvailableLocalNumbers().get(numberOrder - 1).click();
     }
 
     public void chooseFirstNumberFromRelatedVanityList() {
@@ -60,7 +60,7 @@ public class LocalSearchResult extends BasePage {
     }
 
     public void checkingStatusSold () {
-        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbers().get(0));
+        waitUntilElementWillBeClickable(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
         softAssert.assertTrue(isElementContainsAttributeValue(localNumbersBlock.getListLocalNumbersLi().get(0), "class", "sold"),
                 "Number is available");
         softAssert.assertTrue(waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(0)));

@@ -113,6 +113,20 @@ public class BuyingLocalPortNumbers extends TestBase {
     }
 
     @Test
+    public void orderLocalPortNumberWithoutPickPlan() throws InterruptedException, IOException, JSONException {
+        localIndexPage.open();
+        localIndexPage.searchLocalNumbers("12345");
+        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        double priceNumber = buyingLocalNumber.getPriceNumber();
+        double pricePlan = 0.0;
+        buyingLocalNumber.clickLinkContinueToCheckout();
+        buyingLocalNumber.goToCheckout();
+        checkout.addPromoCodeAndAfterRemove("springsale");
+        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
+        orderConfirmationPage.checkingYourPurchasePortNumber(priceNumber, pricePlan);
+    }
+
+    @Test
     public void orderLocalPortNumberPaymentError() throws InterruptedException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("12345");

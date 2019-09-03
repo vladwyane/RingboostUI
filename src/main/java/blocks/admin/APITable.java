@@ -23,10 +23,10 @@ public class APITable extends HtmlElement {
 
     @Name("List of active actions")
     @FindBys( {@FindBy(xpath = "//td/button[contains(@class, 'v-btn') and not(contains(@disabled, 'disabled'))]")} )
-    private List<WebElement> listOfActionsCarriers;
+    private List<WebElement> listOfActions;
 
     @Name("List of column header")
-    @FindBys( {@FindBy(xpath = "//th[@role='columnheader']")} )
+    @FindBys( {@FindBy(xpath = "//th")} )
     private List<WebElement> listColumnHeader;
 
     @Name("List of cells")

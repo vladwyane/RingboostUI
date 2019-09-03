@@ -35,6 +35,7 @@ public class LinksListingPage extends BasePage {
     }
 
     public void clickBreadcrunbsLink(String nameLink) {
+        isElementInvisible(listGeneratedURL.getOverlay());
         waitUntilElementAppeared(breadcrumbs.getListOfBreadcrumbsLink().get(0));
         for(WebElement element : breadcrumbs.getListOfBreadcrumbsLink()) {
             if (element.getText().equals(nameLink)) {
@@ -295,12 +296,28 @@ public class LinksListingPage extends BasePage {
     }
 
     public void checkingStatusComplete(String headingColumn, int indexOfListLinks) {
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
         softAssert.assertEquals(returnCellOfTable(headingColumn, indexOfListLinks), "Completed");
         softAssert.assertAll();
     }
 
+    public void checkingStatusCompleteOfAllLinks(String headingColumn) {
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        for (int i = listGeneratedURL.getListOfLinks().size() - 1; i >= 0 ; i--) {
+            softAssert.assertEquals(returnCellOfTable(headingColumn, i), "Completed");
+        }
+        softAssert.assertAll();
+    }
+
     public void checkingStatusDeactivate(String headingColumn, int indexOfListLinks) {
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
         softAssert.assertEquals(returnCellOfTable(headingColumn, indexOfListLinks), "Deactivate");
+        softAssert.assertAll();
+    }
+
+    public void checkingDisabledGenerateLinkButtonPremiumFlow() {
+        softAssert.assertTrue(isElementContainsAttributeValue(premiumNumberURLGenerator.getButtonGenerateLink(), "class", "v-btn--disabled"),
+                "button is clickable");
         softAssert.assertAll();
     }
 

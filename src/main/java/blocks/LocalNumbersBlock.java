@@ -21,9 +21,9 @@ import java.util.List;
 @Block(@FindBy(className = "all-numbers-wrapper"))
 public class LocalNumbersBlock extends HtmlElement {
 
-    @Name("ArrayList of local numbers")
-    @FindBys( {@FindBy(css = ".phone-card")} )
-    public List<WebElement> listLocalNumbers;
+    @Name("ArrayList of available local numbers")
+    @FindBys( {@FindBy(xpath = "//li[@class='available']/a[@class='phone-card']")} )
+    public List<WebElement> listOfAvailableLocalNumbers;
 
     @Name("ArrayList of local numbers li")
     @FindBys( {@FindBy(css = "li")} )

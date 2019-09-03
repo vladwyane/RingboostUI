@@ -22,7 +22,7 @@ import java.util.List;
 @Block(@FindBy(css = "form"))
 public class PremiumNumberURLGenerator extends HtmlElement {
 
-    @FindBy(xpath = "//div[contains(text(),'generate link')]")
+    @FindBy(xpath = "//div[contains(text(),'generate link')]/ancestor::button")
     private WebElement buttonGenerateLink;
 
     @FindBy(xpath = "//div[contains(text(),'save')]")

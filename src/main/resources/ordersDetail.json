@@ -84,4 +84,28 @@
     "currentDate": "Mon Sep 02 16:26:19 EEST 2019",
     "priceTotalDueToday": "$4,520.11"
   }
+}{
+  "map": {
+    "phoneNumber": "A1A-k17-0Z87-TEST",
+    "pricePayToday": "$600.99",
+    "currentDate": "Tue Sep 03 09:34:23 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$605.99"
+  }
+}{
+  "map": {
+    "phoneNumber": "A3Z-k00-0Z87123456789",
+    "pricePayToday": "$1,022.38",
+    "currentDate": "Tue Sep 03 09:35:13 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$113.60",
+    "priceTotalDueToday": "$1,135.98"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-888-ZZZ-Z4Z0-ABCDEF",
+    "pricePayToday": "$0.00",
+    "currentDate": "Tue Sep 03 11:13:55 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$21.59"
+  }
 }

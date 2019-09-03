@@ -42,7 +42,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     public void orderLocalNumberPickPlan() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("0987");
-        localSearchResult.chooseNumberFromLocalNumbersList(10);
+        localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
@@ -63,7 +63,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     public void orderLocalNumberPickPlanWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchLocalNumbers("0987");
-        localSearchResult.chooseNumberFromLocalNumbersList(5);
+        localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Premium");

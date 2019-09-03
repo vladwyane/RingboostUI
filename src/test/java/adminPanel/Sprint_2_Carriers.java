@@ -18,12 +18,14 @@ public class Sprint_2_Carriers extends TestBase {
     private Login login;
     private Admin admin;
     private CarriersListingPage carriersListingPage;
+    private APIListingPage apiListingPage;
 
     @BeforeClass
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
         carriersListingPage = new CarriersListingPage(app.getDriver());
+        apiListingPage = new APIListingPage(app.getDriver());
         login.open();
         login.fillLoginForm();
     }
@@ -106,6 +108,12 @@ public class Sprint_2_Carriers extends TestBase {
         carriersListingPage.searchCarrier(Carriers.ABC);
         carriersListingPage.clickDeleteIconFirstCarriers();
         carriersListingPage.checkingSuccessDeleted();
+    }
+
+    @Test
+    public void test9EditAPI() throws InterruptedException, IOException, JSONException {
+        apiListingPage.open();
+        apiListingPage.clickEditApi("west");
     }
 
 }

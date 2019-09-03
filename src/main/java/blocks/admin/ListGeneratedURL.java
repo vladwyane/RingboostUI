@@ -31,9 +31,13 @@ public class ListGeneratedURL extends HtmlElement {
     @FindBys( {@FindBy(xpath = "//td/button[contains(@class, 'v-btn--icon') and not(contains(@disabled, 'disabled'))]")} )
     private List<WebElement> listOfActionsURL;
 
-    @Name("List of generated URL")
+    @Name("List of cell in the table")
     @FindBys( {@FindBy(css = "tbody tr td")} )
     private List<WebElement> listTd;
+
+    @Name("List of generated URL")
+    @FindBys( {@FindBy(css = "tbody tr")} )
+    private List<WebElement> listOfLinks;
 
     @Name("List of column header")
     @FindBys( {@FindBy(xpath = "//th[@role='columnheader']")} )

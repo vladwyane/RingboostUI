@@ -11,6 +11,8 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import pages.BasePage;
 
+import java.util.List;
+
 /**
  * Created by bigdrop on 8/2/2019.
  */
@@ -59,10 +61,10 @@ public class LinksListingPage extends BasePage {
     }
 
 
-    public void clickEditButton(int indexNumber) {
+    public void clickEditButton(int indexOfLink) {
         waiting2seconds();
-        waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(indexNumber * 3));
-        listGeneratedURL.getListOfActionsURL().get(indexNumber * 3).click();
+        waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(indexOfLink * 3));
+        listGeneratedURL.getListOfActionsURL().get(indexOfLink * 3).click();
     }
 
     public void clickRenewButton(int indexNumber) {
@@ -271,7 +273,7 @@ public class LinksListingPage extends BasePage {
 
     public int returnIndexLastGeneratedLink() {
         waiting2seconds();
-        int index = listGeneratedURL.getListOfActionsURL().size() / 3;
+        int index = listGeneratedURL.getListOfLinks().size();
         if (index == 0)
             return 0;
         else return index - 1;

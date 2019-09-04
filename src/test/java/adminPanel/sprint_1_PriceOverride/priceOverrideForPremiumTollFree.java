@@ -96,7 +96,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
                 .generateLinkWithPromoCodePremiumFlow("4001.99", "Texas", 2,
                         "2 year", "100", "1234567");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(2);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode("wintersale");
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
@@ -157,4 +157,5 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         String linkAfterDelete = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
+
 }

@@ -53,7 +53,7 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.clickCreateNewURLButton();
         linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
@@ -73,7 +73,7 @@ public class priceOverrideForLocal extends TestBase{
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodeRegularFlow("601", "-TEST");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
@@ -93,11 +93,11 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage
                 .generateLinkWithoutPromoCodeRegularFlow("10.01");
         linksListingPage.clickGenerateLinkButtonRegularFlow();
-        linksListingPage.clickEditButton(0);
+        linksListingPage.clickEditButton(linksListingPage.returnIndexLastGeneratedLink());
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodeRegularFlow("1110.99", "123456789");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
@@ -119,8 +119,8 @@ public class priceOverrideForLocal extends TestBase{
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodeRegularFlow("210.99", "-ABCD-EFG");
         double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        linksListingPage.clickCopyButton(0);
-        linksListingPage.goToGeneratedLinkAfterCopyPaste(0);
+        linksListingPage.clickCopyButton(linksListingPage.returnIndexLastGeneratedLink());
+        linksListingPage.goToGeneratedLinkAfterCopyPaste(linksListingPage.returnIndexLastGeneratedLink());
         buyingLocalNumber.choosePlan("Pick A Plan");
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
         buyingLocalNumber.enterRingToNumber("9968843478");
@@ -140,9 +140,9 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.clickCreateNewURLButton();
         linksListingPage.generateLinkWithoutPromoCodeRegularFlow("1123");
         linksListingPage.clickGenerateLinkButtonRegularFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.deleteAllLink();
-        String linkAfterDelete = linksListingPage.getGeneratedLink(0);
+        String linkAfterDelete = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
     }
 
@@ -175,7 +175,7 @@ public class priceOverrideForLocal extends TestBase{
             linksListingPage.generateLinkWithoutPromoCodeRegularFlow("4520.11");
             price = linksListingPage.clickGenerateLinkButtonRegularFlow();
         }
-        String generatedLink = linksListingPage.getGeneratedLink(0);
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.clickLinkContinueToCheckout();
         boolean isPromocode = checkout.addPromoCode("springsale");
@@ -188,9 +188,9 @@ public class priceOverrideForLocal extends TestBase{
         login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0ZUP");
-        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(6);
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(7);
         System.out.println(phoneNumber);
-        linksListingPage.checkingStatusComplete("Status", 0);
+        linksListingPage.checkingStatusComplete("Status", linksListingPage.returnIndexLastGeneratedLink());
     }
 
 }

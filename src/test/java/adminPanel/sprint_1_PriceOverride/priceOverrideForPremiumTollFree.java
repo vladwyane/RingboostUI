@@ -47,16 +47,41 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         inventoryTollfree.searchNumber(0, "999ZIX0");
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
-        linksListingPage.clickCreateNewURLButton();
-        String displayedName = linksListingPage
-                .generateLinkWithoutPromoCodePremiumFlow("23", "Kansas", 3,
-                        "1 year", "750");
-        double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
+        double payToday = 0;
+        String displayedName = null;
+        for (int i = 0; i < 3; i++) {
+            linksListingPage.clickCreateNewURLButton();
+            displayedName = linksListingPage
+                    .generateLinkWithoutPromoCodePremiumFlow("23", "Kansas", i + 1,
+                            "1 year", "750");
+            payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
+        }
+
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         boolean isPromocode = checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePremiumFlow(payToday, isPromocode, displayedName);
+    }
+
+    @Test
+    public void test2CheckingCompleteStatus() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "999ZIX0");
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
+        System.out.println(phoneNumber);
+        linksListingPage.checkingStatusComplete("Status", linksListingPage.returnIndexLastGeneratedLink());
+    }
+
+    @Test
+    public void test2CheckingDeactivatedStatus() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "999ZIX0");
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
+        System.out.println(phoneNumber);
+        linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
     }
 
     @Test

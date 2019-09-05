@@ -74,5 +74,9 @@ public class PremiumNumberURLGenerator extends HtmlElement {
     @FindBy(xpath = "//span[contains(text(), 'Pay Today')]//following::span[1]")
     private WebElement payTodayPrice;
 
+    @Name("List of error message")
+    @FindBys( {@FindBy(css = ".error-message")} )
+    private List<WebElement> listOfErrorMessage;
+
 
 }

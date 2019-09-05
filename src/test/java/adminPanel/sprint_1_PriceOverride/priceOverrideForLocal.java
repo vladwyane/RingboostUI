@@ -69,10 +69,14 @@ public class priceOverrideForLocal extends TestBase{
         inventoryLocal.searchNumber(0,"0987");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
-        linksListingPage.clickCreateNewURLButton();
-        String displayedName = linksListingPage
-                .generateLinkWithPromoCodeRegularFlow("601", "-TEST");
-        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
+        double price = 0;
+        String displayedName = null;
+        for (int i = 0; i < 3; i++) {
+            linksListingPage.clickCreateNewURLButton();
+            displayedName = linksListingPage
+                    .generateLinkWithPromoCodeRegularFlow("601", "-TEST");
+            price = linksListingPage.clickGenerateLinkButtonRegularFlow();
+        }
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
@@ -80,6 +84,17 @@ public class priceOverrideForLocal extends TestBase{
         checkout.addPromoCode("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithFixedPromoCode(price, pricePlan, displayedName);
+    }
+
+
+    @Test
+    public void test3CheckingDeactivatedStatus() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickLocalInventoryLink();
+        inventoryLocal.searchNumber(0,"0ZUP");
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
+        System.out.println(phoneNumber);
+        linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
     }
 
     @Test
@@ -128,6 +143,19 @@ public class priceOverrideForLocal extends TestBase{
         checkout.addPromoCode("summersale");
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithHighFixedPromoCode(price, pricePlan, displayedName);
+    }
+
+    @Test
+    public void test5CheckingErrorMessageIsSold() throws InterruptedException {
+        login.open();
+        admin.clickLocalInventoryLink();
+        inventoryLocal.searchNumber(0,"0987");
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(3);
+        System.out.println(phoneNumber);
+        linksListingPage.clickCreateNewURLButton();
+        linksListingPage.generateLinkWithoutPromoCodeRegularFlow("1123");
+        linksListingPage.clickGenerateLinkButtonRegularFlow();
+        linksListingPage.checkingErrorMessageNumberIsSold();
     }
 
     @Test
@@ -188,7 +216,7 @@ public class priceOverrideForLocal extends TestBase{
         login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0ZUP");
-        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(7);
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
         linksListingPage.checkingStatusComplete("Status", linksListingPage.returnIndexLastGeneratedLink());
     }

@@ -317,9 +317,24 @@ public class LinksListingPage extends BasePage {
         softAssert.assertAll();
     }
 
+    public void checkingStatusDeactivateOfAllLinks(String headingColumn) {
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        for (int i = listGeneratedURL.getListOfLinks().size() - 2; i >= 0 ; i--) {
+            softAssert.assertEquals(returnCellOfTable(headingColumn, i), "Deactivate");
+        }
+        softAssert.assertAll();
+    }
+
     public void checkingDisabledGenerateLinkButtonPremiumFlow() {
         softAssert.assertTrue(isElementContainsAttributeValue(premiumNumberURLGenerator.getButtonGenerateLink(), "class", "v-btn--disabled"),
                 "button is clickable");
+        softAssert.assertAll();
+    }
+
+    public void checkingErrorMessageNumberIsSold() {
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        waiting2seconds();
+        softAssert.assertEquals(premiumNumberURLGenerator.getListOfErrorMessage().get(0).getText(), "The title has already been taken.");
         softAssert.assertAll();
     }
 

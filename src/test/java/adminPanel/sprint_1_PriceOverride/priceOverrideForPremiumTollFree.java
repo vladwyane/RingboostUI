@@ -89,12 +89,12 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9999490");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("890", "Alabama", 2,
-                        "Month-To-Month", "5000", "-TEST");
+                        "Month-To-Month", "5000", "-BUG");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -109,7 +109,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9999490");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(2);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
@@ -119,7 +119,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         linksListingPage.clickEditButton(linksListingPage.returnIndexLastGeneratedLink());
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("4001.99", "Texas", 2,
-                        "2 year", "100", "1234567");
+                        "2 year", "100", "1234");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -133,12 +133,12 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9999490");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(3);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodePremiumFlow("11.99", "Vermont", 1,
-                        "3 years", "250", "-ABCDEF");
+                        "3 years", "250", "-ABC");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         linksListingPage.clickCopyButton(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLinkAfterCopyPaste(linksListingPage.returnIndexLastGeneratedLink());
@@ -148,35 +148,17 @@ public class priceOverrideForPremiumTollFree extends TestBase {
     }
 
     @Test
-    public void test5CheckingLicensedAreaCodes() throws InterruptedException, IOException, JSONException {
+    public void test5DeleteLink() throws InterruptedException {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9999490");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(4);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
-                .generateLinkWithPromoCodePremiumFlow("11.99", "Vermont", 1,
-                        "3 years", "250", "-ABCDEF");
-        linksListingPage.checkingDisabledGenerateLinkButtonPremiumFlow();
-    }
-
-    @Test
-    public void test5CheckingStatusCompleteAllLinks() throws InterruptedException, IOException, JSONException {
-        login.open();
-        admin.clickToolFreInventoryLink();
-        inventoryTollfree.searchNumber(0, "9999490");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
-        System.out.println(phoneNumber);
-        linksListingPage.checkingStatusCompleteOfAllLinks("Status");
-    }
-
-    @Test
-    public void test6DeleteLink() throws InterruptedException {
-        login.open();
-        admin.clickToolFreInventoryLink();
-        inventoryTollfree.searchNumber(0, "9999490");
-        inventoryTollfree.clickCreateNewLinkByNumber(0);
+                .generateLinkWithoutPromoCodePremiumFlow("10.01", "Alabama", 1,
+                        "1 years", "750");
+        linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.deleteAllLink();
         String linkAfterDelete = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());

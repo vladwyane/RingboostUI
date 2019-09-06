@@ -216,7 +216,7 @@ public class priceOverrideForLocal extends TestBase{
         login.open();
         admin.clickLocalInventoryLink();
         inventoryLocal.searchNumber(0,"0ZUP");
-        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(6);
         System.out.println(phoneNumber);
         linksListingPage.checkingStatusComplete("Status", linksListingPage.returnIndexLastGeneratedLink());
     }

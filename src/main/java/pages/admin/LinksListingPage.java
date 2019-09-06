@@ -153,7 +153,8 @@ public class LinksListingPage extends BasePage {
     }
 
     public void clickCreateNewURLButton() {
-        isElementInvisible(listGeneratedURL.getOverlay());
+        //isElementInvisible(listGeneratedURL.getOverlay());
+        waiting2seconds();
         waitUntilElementWillBeClickable(listGeneratedURL.getButtonCreateNewURL());
         listGeneratedURL.getButtonCreateNewURL().click();
     }
@@ -334,7 +335,14 @@ public class LinksListingPage extends BasePage {
     public void checkingErrorMessageNumberIsSold() {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
         waiting2seconds();
-        softAssert.assertEquals(premiumNumberURLGenerator.getListOfErrorMessage().get(0).getText(), "The title has already been taken.");
+        softAssert.assertEquals(premiumNumberURLGenerator.getListOfErrorMessage().get(0).getText(), "Phone already sold");
+        softAssert.assertAll();
+    }
+
+    public void checkingErrorMessageNumberIsLicenced() {
+        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+        waiting2seconds();
+        softAssert.assertEquals(premiumNumberURLGenerator.getListOfErrorMessage().get(0).getText(), "Phone already licenced");
         softAssert.assertAll();
     }
 

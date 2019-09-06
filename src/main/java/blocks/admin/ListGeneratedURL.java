@@ -52,8 +52,6 @@ public class ListGeneratedURL extends HtmlElement {
     @FindBy(css = ".v-overlay")
     private WebElement overlay;
 
-    public void getButton() {
 
-    }
 
 }

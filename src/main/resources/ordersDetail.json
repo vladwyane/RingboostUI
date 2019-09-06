@@ -144,4 +144,100 @@
     "currentDate": "Thu Sep 05 17:20:37 EEST 2019",
     "priceTotalDueToday": "$61.20"
   }
+}{
+  "map": {
+    "phoneNumber": "206-900-0ZUPO",
+    "currentDate": "Fri Sep 06 09:13:26 EEST 2019",
+    "priceTotalDueToday": "$10.00"
+  }
+}{
+  "map": {
+    "phoneNumber": "A1A-k17-0Z87-TEST",
+    "pricePayToday": "$600.99",
+    "currentDate": "Fri Sep 06 09:24:34 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$605.99"
+  }
+}{
+  "map": {
+    "phoneNumber": "A3Z-k00-0Z87123456789",
+    "pricePayToday": "$1,022.38",
+    "currentDate": "Fri Sep 06 09:26:39 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$113.60",
+    "priceTotalDueToday": "$1,135.98"
+  }
+}{
+  "map": {
+    "phoneNumber": "A67-Z30-0Z87-ABCD-EFG",
+    "pricePayToday": "$0.00",
+    "currentDate": "Fri Sep 06 09:31:25 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$223.98"
+  }
+}{
+  "map": {
+    "phoneNumber": "305-800-0ZUP",
+    "currentDate": "Fri Sep 06 09:36:19 EEST 2019",
+    "priceTotalDueToday": "$4,520.11"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-888-999-9490",
+    "currentDate": "Fri Sep 06 09:38:24 EEST 2019",
+    "priceTotalDueToday": "$61.20"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-333-ZZZZ4Z0-BUG",
+    "pricePayToday": "$1,135.00",
+    "currentDate": "Fri Sep 06 09:41:57 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$1,140.00"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-4A7-ZZZZ4Z01234",
+    "pricePayToday": "$2,881.43",
+    "currentDate": "Fri Sep 06 09:46:26 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$320.16",
+    "priceTotalDueToday": "$3,201.59"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-4ZZ-ZZZZ-ABC",
+    "pricePayToday": "$0.00",
+    "currentDate": "Fri Sep 06 09:58:18 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$21.59"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-888-WWW-8709",
+    "currentDate": "Fri Sep 06 10:33:22 EEST 2019",
+    "priceTotalDueToday": "$208.00"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-717-ZZZ870Z-EST",
+    "pricePayToday": "$93.25",
+    "currentDate": "Fri Sep 06 10:38:51 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$98.25"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-Z37-ZZZ870Z1234",
+    "pricePayToday": "$100.79",
+    "currentDate": "Fri Sep 06 10:41:01 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$11.20",
+    "priceTotalDueToday": "$111.99"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-A03-ZZZ870Z-ABC",
+    "pricePayToday": "$0.00",
+    "currentDate": "Fri Sep 06 10:48:20 EEST 2019",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$11.99"
+  }
 }

@@ -1,6 +1,7 @@
 package adminPanel.sprint_1_PriceOverride;
 
 import data.CreditCards;
+import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.*;
@@ -57,7 +58,7 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
-        boolean isPromocode = checkout.addPromoCode("springsale");
+        boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
     }
@@ -81,7 +82,7 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.goToGeneratedLink(generatedLink);
         double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("springsale");
+        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithFixedPromoCode(price, pricePlan, displayedName);
     }
@@ -118,7 +119,7 @@ public class priceOverrideForLocal extends TestBase{
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("wintersale");
+        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithPercentPromoCode(price, pricePlan, displayedName);
     }
@@ -140,7 +141,7 @@ public class priceOverrideForLocal extends TestBase{
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
         buyingLocalNumber.enterRingToNumber("9968843478");
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("summersale");
+        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithHighFixedPromoCode(price, pricePlan, displayedName);
     }
@@ -206,7 +207,7 @@ public class priceOverrideForLocal extends TestBase{
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.clickLinkContinueToCheckout();
-        boolean isPromocode = checkout.addPromoCode("springsale");
+        boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
     }

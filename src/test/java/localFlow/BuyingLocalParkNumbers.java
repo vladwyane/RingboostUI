@@ -1,6 +1,7 @@
 package localFlow;
 
 import data.CreditCards;
+import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
@@ -21,6 +22,8 @@ public class BuyingLocalParkNumbers extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
 
     private String boughtNumber;
+    private String searchRequest = "0987";
+    private String planName = "Park A Number";
 
 
     @BeforeMethod
@@ -42,10 +45,10 @@ public class BuyingLocalParkNumbers extends TestBase {
     @Test
     public void orderLocalParkNumber() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         boughtNumber = buyingLocalNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumber(priceNumber, pricePlan);
@@ -61,12 +64,12 @@ public class BuyingLocalParkNumbers extends TestBase {
     @Test
     public void orderLocalParkNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchLocalNumbers("12345");
+        homePage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("springsale");
+        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithFixedPromoCode(priceNumber, pricePlan);
     }
@@ -74,12 +77,12 @@ public class BuyingLocalParkNumbers extends TestBase {
     @Test
     public void orderLocalParkNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("summersale");
+        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithHighFixedPromoCode(priceNumber, pricePlan);
     }
@@ -87,12 +90,12 @@ public class BuyingLocalParkNumbers extends TestBase {
     @Test
     public void orderLocalParkNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("wintersale");
+        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(priceNumber, pricePlan);
     }
@@ -101,12 +104,12 @@ public class BuyingLocalParkNumbers extends TestBase {
     @Test
     public void orderLocalParkNumberAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCodeAndAfterRemove("wintersale");
+        checkout.addPromoCodeAndAfterRemove(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
@@ -114,10 +117,10 @@ public class BuyingLocalParkNumbers extends TestBase {
     @Test
     public void orderLocalParkNumberPaymentError() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("0987");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Park A Number");
+        buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.ERROR_LOST_CARD_STRIPE, false);
         checkout.checkingPaymentError();

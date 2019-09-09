@@ -1,6 +1,7 @@
 package localFlow;
 
 import data.CreditCards;
+import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
@@ -24,6 +25,8 @@ public class BuyingLocalPortNumbers extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
 
     private String boughtNumber;
+    private String searchRequest = "0987";
+    private String planName = "Port A Number";
 
     @BeforeMethod
     public void initPageObjects() {
@@ -44,10 +47,10 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumber() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         boughtNumber = buyingLocalNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumber(priceNumber, pricePlan);
@@ -63,12 +66,12 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchLocalNumbers("12345");
+        homePage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("springsale");
+        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumberWithFixedPromoCode(priceNumber, pricePlan);
     }
@@ -76,12 +79,12 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("summersale");
+        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumberWithHighFixedPromoCode(priceNumber, pricePlan);
     }
@@ -89,12 +92,12 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("wintersale");
+        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumberWithPercentPromoCode(priceNumber, pricePlan);
     }
@@ -102,12 +105,12 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        double pricePlan = buyingLocalNumber.choosePlan("Port A Number");
+        double pricePlan = buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCodeAndAfterRemove("springsale");
+        checkout.addPromoCodeAndAfterRemove(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchasePortNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
@@ -115,13 +118,11 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberWithoutPickPlan() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = 0.0;
         buyingLocalNumber.clickLinkContinueToCheckout();
-        buyingLocalNumber.goToCheckout();
-        checkout.addPromoCodeAndAfterRemove("springsale");
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumber(priceNumber, pricePlan);
     }
@@ -129,10 +130,10 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberPaymentError() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Port A Number");
+        buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         checkout.checkingPaymentError();

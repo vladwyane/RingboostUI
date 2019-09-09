@@ -1,6 +1,7 @@
 package tollFreeFlow;
 
 import data.CreditCards;
+import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
@@ -59,7 +60,7 @@ public class LicensingBasic800Numbers extends TestBase {
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.addPromoCode("springsale");
+        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberWithFixedPromoCode(priceActivationFee, pricePlan);
     }
@@ -72,7 +73,7 @@ public class LicensingBasic800Numbers extends TestBase {
         buyingBasic800Number.enterRingToNumber("0668843478");
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.addPromoCode("summersale");
+        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberWithHighFixedPromoCode(priceActivationFee, pricePlan);
     }
@@ -86,7 +87,7 @@ public class LicensingBasic800Numbers extends TestBase {
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.addPromoCode("wintersale");
+        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberWithPercentPromoCode(priceActivationFee, pricePlan);
     }
@@ -99,7 +100,7 @@ public class LicensingBasic800Numbers extends TestBase {
         buyingBasic800Number.enterRingToNumber("0668843478");
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.addPromoCodeAndAfterRemove("summersale");
+        checkout.addPromoCodeAndAfterRemove(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberAfterRemovePromoCode(priceActivationFee, pricePlan);
     }

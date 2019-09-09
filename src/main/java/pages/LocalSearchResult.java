@@ -32,6 +32,7 @@ public class LocalSearchResult extends BasePage {
     public void chooseFirstNumberFromLocalNumbersList() {
         waitUntilElementAppeared(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
         waitUntilElementWillBeClickable(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        scrollToElement(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
         localNumbersBlock.getListOfAvailableLocalNumbers().get(0).click();
     }
 
@@ -60,7 +61,7 @@ public class LocalSearchResult extends BasePage {
     }
 
     public void checkingStatusSold () {
-        waitUntilElementWillBeClickable(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(0));
         softAssert.assertTrue(isElementContainsAttributeValue(localNumbersBlock.getListLocalNumbersLi().get(0), "class", "sold"),
                 "Number is available");
         softAssert.assertTrue(waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(0)));

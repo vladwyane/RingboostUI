@@ -1,6 +1,7 @@
 package tollFreeFlow;
 
 import data.CreditCards;
+import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
@@ -63,7 +64,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.addPromoCode("springsale");
+        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
@@ -77,7 +78,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.addPromoCode("summersale");
+        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
@@ -91,7 +92,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.addPromoCode("wintersale");
+        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
@@ -105,7 +106,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.addPromoCodeAndAfterRemove("springsale");
+        checkout.addPromoCodeAndAfterRemove(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.JCB, true);
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }

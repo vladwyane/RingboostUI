@@ -1,6 +1,7 @@
 package adminPanel.sprint_1_PriceOverride;
 
 import data.CreditCards;
+import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.*;
@@ -59,7 +60,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
 
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
-        boolean isPromocode = checkout.addPromoCode("springsale");
+        boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePremiumFlow(payToday, isPromocode, displayedName);
     }
@@ -98,7 +99,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
-        checkout.addPromoCode("springsale");
+        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCodePremiumFlow(payToday, displayedName);
 
@@ -123,7 +124,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
-        checkout.addPromoCode("wintersale");
+        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithPercentPromoCodePremiumFlow(payToday, displayedName);
     }
@@ -142,7 +143,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         linksListingPage.clickCopyButton(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLinkAfterCopyPaste(linksListingPage.returnIndexLastGeneratedLink());
-        checkout.addPromoCode("summersale");
+        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(payToday, displayedName);
     }

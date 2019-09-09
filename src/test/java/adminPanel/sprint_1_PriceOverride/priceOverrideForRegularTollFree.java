@@ -1,6 +1,7 @@
 package adminPanel.sprint_1_PriceOverride;
 
 import data.CreditCards;
+import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.*;
@@ -66,7 +67,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
-        boolean isPromocode = checkout.addPromoCode("springsale");
+        boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode, displayedName);
     }
@@ -102,7 +103,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.addPromoCode("springsale");
+        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
@@ -138,7 +139,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.addPromoCode("wintersale");
+        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithPercentPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
@@ -173,7 +174,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.addPromoCode("summersale");
+        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, price);
     }

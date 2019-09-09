@@ -1,6 +1,7 @@
 package localFlow;
 
 import data.CreditCards;
+import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
@@ -21,6 +22,8 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
 
     private String boughtNumber;
+    private String searchRequest = "0987";
+    private String planName = "Pick A Plan";
 
 
     @BeforeMethod
@@ -41,10 +44,10 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     @Test
     public void orderLocalNumberPickPlan() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("0987");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
+        buyingLocalNumber.choosePlan(planName);
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.enterRingToNumber("8722413731");
         boughtNumber = buyingLocalNumber.goToCheckout();
@@ -62,14 +65,14 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     @Test
     public void orderLocalNumberPickPlanWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchLocalNumbers("0987");
+        homePage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
+        buyingLocalNumber.choosePlan(planName);
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Premium");
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("springsale");
+        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithFixedPromoCode(priceNumber, pricePlan);
     }
@@ -77,14 +80,14 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     @Test
     public void orderLocalNumberPickPlanWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
+        buyingLocalNumber.choosePlan(planName);
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
         buyingLocalNumber.enterRingToNumber("9968843478");
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("summersale");
+        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithHighFixedPromoCode(priceNumber, pricePlan);
     }
@@ -92,14 +95,14 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     @Test
     public void orderLocalNumberPickPlanWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
+        buyingLocalNumber.choosePlan(planName);
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCode("wintersale");
+        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(priceNumber, pricePlan);
     }
@@ -107,14 +110,14 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     @Test
     public void orderLocalNumberPickPlanAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
+        buyingLocalNumber.choosePlan(planName);
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Premium");
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
-        checkout.addPromoCodeAndAfterRemove("wintersale");
+        checkout.addPromoCodeAndAfterRemove(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
@@ -122,10 +125,10 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
     @Test
     public void orderLocalNumberPickPlanPaymentError() throws InterruptedException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers("12345");
+        localIndexPage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         buyingLocalNumber.getPriceNumber();
-        buyingLocalNumber.choosePlan("Pick A Plan");
+        buyingLocalNumber.choosePlan(planName);
         buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
         buyingLocalNumber.enterRingToNumber("1368843478");
         buyingLocalNumber.goToCheckout();

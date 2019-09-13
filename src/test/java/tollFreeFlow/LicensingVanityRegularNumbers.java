@@ -23,6 +23,8 @@ public class LicensingVanityRegularNumbers extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
     private LocalSearchResult localSearchResult;
 
+    private String searchRequest = "error";
+
     @BeforeMethod
     public void initPageObjects() {
         homePage = new HomePage(app.getDriver());
@@ -44,13 +46,13 @@ public class LicensingVanityRegularNumbers extends TestBase {
     public void orderRegularVanityNumber() throws InterruptedException, IOException, JSONException {
         homePage.open();
         tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
-        tollFreeIndexPage.searchTollFreeNumbers("error");
+        tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
@@ -58,69 +60,69 @@ public class LicensingVanityRegularNumbers extends TestBase {
     public void orderRegularVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("vanity-numbers");
-        vanityIndexPage.searchTollFreeNumbers("ring");
-        vanitySearchResult.chooseLastNumberFromRegularVanityListAfterLoadMore();
+        vanityIndexPage.searchTollFreeNumbers(searchRequest);
+        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
     @Test
     public void orderRegularVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
-        tollFreeIndexPage.searchTollFreeNumbers("!@#$%^&*");
-        vanitySearchResult.chooseLastNumberFromRegularVanityListAfterLoadMore();
+        tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
+        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
     @Test
     public void orderRegularVanityNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         vanitySearchResult.open();
-        vanitySearchResult.searchTollFreeNumbers("bug");
-        vanitySearchResult.chooseFirstNumberFromRegularVanityListAfterLoadMore();
+        vanitySearchResult.searchTollFreeNumbers(searchRequest);
+        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
     @Test
     public void orderRegularVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchTollFreeNumbers("ring");
-        vanitySearchResult.choose32thNumberFromRegularVanityList();
+        homePage.searchTollFreeNumbers(searchRequest);
+        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.JCB, true);
+        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.JCB, true);
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
     @Test
     public void orderRegularVanityNumberPaymentError() throws InterruptedException {
         homePage.open();
-        homePage.searchLocalNumbers("ERROR");
-        localSearchResult.chooseFirstNumberFromRelatedVanityList();
+        homePage.searchTollFreeNumbers(searchRequest);
+        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         buyingRegularVanityNumber.choose5000MonthlyMinutes();
         buyingRegularVanityNumber.chooseTermLength("Month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.ERROR_CVC_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.ERROR_CVC_STRIPE, true);
         checkout.checkingPaymentError();
     }
 

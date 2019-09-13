@@ -51,7 +51,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan("Preferred");
         buyingLocalNumber.enterRingToNumber("8722413731");
         boughtNumber = buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.VISA_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.VISA_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseParkNumber(priceNumber, pricePlan);
     }
 
@@ -73,7 +73,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithFixedPromoCode(priceNumber, pricePlan);
     }
 
@@ -88,7 +88,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.enterRingToNumber("9968843478");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithHighFixedPromoCode(priceNumber, pricePlan);
     }
 
@@ -103,7 +103,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(priceNumber, pricePlan);
     }
 
@@ -118,7 +118,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseParkNumberAfterRemovePromoCode(priceNumber, pricePlan);
     }
 
@@ -132,7 +132,7 @@ public class BuyingLocalNumbersPickPlan extends TestBase {
         buyingLocalNumber.choosePickYourMonthlyPlan("Starter");
         buyingLocalNumber.enterRingToNumber("1368843478");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.ERROR_PROCESSING_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.ERROR_PROCESSING_STRIPE, false);
         checkout.checkingPaymentError();
     }
 }

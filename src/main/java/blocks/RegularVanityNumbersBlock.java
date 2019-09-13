@@ -18,14 +18,15 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@Block(@FindBy(className = "all-numbers-wrapper"))
+@Block(@FindBy(css = ".all-numbers-wrapper"))
 public class RegularVanityNumbersBlock extends HtmlElement {
 
     @FindBy(css= "h2")
     private WebElement titleSection;
 
     @Name("ArrayList of regular vanity numbers")
-    @FindBys( {@FindBy(css = "li .number")} )
+    @FindBys( {@FindBy(xpath = "//div[@class='all-numbers-wrapper']//span[contains(@class, 'status') " +
+            "and (text()) = 'Available']/ancestor::li//div[@class='number']")} )
     public List<WebElement> listRegularVanityNumbers;
 
 }

@@ -5,9 +5,9 @@ package data;
  */
 public enum Users {
 
-    VLADYSLAV_23("Vladyslav23", "Chesalov23", "vladyslav.chesalov+23@bigdropinc.com", "", "3275 NW 24th Street Rd", "apt Suit", "Miami", "FL", "33101", "0123456789"),
-    VLADYSLAV_24("Vladyslav24", "Chesalov24", "vladyslav.chesalov+24@bigdropinc.com", "Bigdrop", "103 North Perry St.", "", "Montgomery", "AL", "36043", "0987654321"),
-    VLADYSLAV_25("Vladyslav25", "Chesalov25", "vladyslav.chesalov+25@bigdropinc.com", "Bigdrop", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478");
+    VLADYSLAV_26("Vladyslav26", "Chesalov26", "vladyslav.chesalov+26@bigdropinc.com", "", "3275 NW 24th Street Rd", "apt Suit", "Miami", "FL", "33101", "0123456789"),
+    VLADYSLAV_27("Vladyslav27", "Chesalov27", "vladyslav.chesalov+27@bigdropinc.com", "Bigdrop", "103 North Perry St.", "", "Montgomery", "AL", "36043", "0987654321"),
+    VLADYSLAV_28("Vladyslav28", "Chesalov28", "vladyslav.chesalov+28@bigdropinc.com", "Bigdrop", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478");
 
     private String firstName;
     private String lastName;

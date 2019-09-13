@@ -5,9 +5,7 @@ import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.*;
-import pages.BuyingRegularVanityNumber;
-import pages.Checkout;
-import pages.OrderConfirmationPage;
+import pages.*;
 import pages.admin.Admin;
 import pages.admin.InventoryTollfree;
 import pages.admin.LinksListingPage;
@@ -28,6 +26,8 @@ public class priceOverrideForRegularTollFree extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
     private BuyingRegularVanityNumber buyingRegularVanityNumber;
+    private HomePage homePage;
+    private VanitySearchResult vanitySearchResult;
 
     @BeforeClass
     public void initPageObjects() {
@@ -38,6 +38,8 @@ public class priceOverrideForRegularTollFree extends TestBase {
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
         buyingRegularVanityNumber = new BuyingRegularVanityNumber(app.getDriver());
+        homePage = new HomePage(app.getDriver());
+        vanitySearchResult = new VanitySearchResult(app.getDriver());
         login.open();
         login.fillLoginForm();
     }
@@ -68,7 +70,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode, displayedName);
     }
 
@@ -104,7 +106,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
 
@@ -140,7 +142,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithPercentPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
 
@@ -175,7 +177,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, price);
     }
 
@@ -193,5 +195,34 @@ public class priceOverrideForRegularTollFree extends TestBase {
         linksListingPage.deleteAllLink();
         String linkAfterDelete = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.checkingAfterDelete(generatedLink, linkAfterDelete);
+    }
+
+
+    @Test
+    public void test6CheckingDeactivateStatusIfNumberLicensedFromSite() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "9998709");
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(4).substring(3, 10);
+        System.out.println(phoneNumber);
+        for (int i = 0; i < 3; i++) {
+            linksListingPage.clickCreateNewURLButton();
+            linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
+            linksListingPage.clickGenerateLinkButtonRegularFlow();
+        }
+        homePage.open();
+        homePage.searchTollFreeNumbers(phoneNumber);
+        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
+        buyingRegularVanityNumber.choose5000MonthlyMinutes();
+        buyingRegularVanityNumber.chooseTermLength("2 Years");
+        buyingRegularVanityNumber.enterRingToNumber("0668843471");
+        buyingRegularVanityNumber.goToCheckout();
+        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.VISA_STRIPE, false);
+        login.open();
+        admin.clickToolFreInventoryLink();
+        inventoryTollfree.searchNumber(0, "9998709");
+        inventoryTollfree.clickCreateNewLinkByNumber(4);
+        linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
+
     }
 }

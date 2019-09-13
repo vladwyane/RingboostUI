@@ -61,7 +61,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_23, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePremiumFlow(payToday, isPromocode, displayedName);
     }
 
@@ -100,7 +100,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCodePremiumFlow(payToday, displayedName);
 
     }
@@ -125,7 +125,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_24, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithPercentPromoCodePremiumFlow(payToday, displayedName);
     }
 
@@ -144,7 +144,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         linksListingPage.clickCopyButton(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLinkAfterCopyPaste(linksListingPage.returnIndexLastGeneratedLink());
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_25, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingGeneratedLinkWithHighFixedPromoCodePremiumFlow(payToday, displayedName);
     }
 

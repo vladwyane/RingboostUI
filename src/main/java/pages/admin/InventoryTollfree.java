@@ -40,6 +40,10 @@ public class InventoryTollfree extends BasePage{
     @FindBys( {@FindBy(css = "tbody tr td")} )
     public List<WebElement> listTdOfTable;
 
+    @Name("List of column header")
+    @FindBys( {@FindBy(xpath = "//th [not (contains(@class, 'column'))]")} )
+    public List<WebElement> listColumnHeader;
+
     public void searchNumber(int index, String text) {
         waitUntilElementAppeared(listSearchIconTh.get(0));
         type(listSearchFieldTh.get(index),text);
@@ -49,7 +53,7 @@ public class InventoryTollfree extends BasePage{
 
     public String clickCreateNewLinkByNumber(int indexNumber) {
         waitUntilElementAppeared(listActionsOfTable.get(0));
-        String phoneNumber = listTdOfTable.get(indexNumber * 7).getText();
+        String phoneNumber = listTdOfTable.get(indexNumber * listColumnHeader.size()).getText();
         listActionsOfTable.get(indexNumber * 2).click();
         return phoneNumber;
     }

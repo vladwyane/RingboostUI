@@ -82,7 +82,7 @@ public class ApplicationManager {
                 break;
             case BrowserType.CHROME:
                 Map<String, String> mobileEmulation = new HashMap<>();
-                mobileEmulation.put("deviceName", "Nexus 5");
+                mobileEmulation.put("deviceName", "iPad");
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
                 driver = new ChromeDriver(chromeOptions);

@@ -98,4 +98,11 @@ public class SearchVanityNumber extends TestBase {
         vanitySearchResult.checkingSearchResultSpecialSymbols(request.toUpperCase());
     }
 
+    @Test
+    public void testLoadMoreInSearchResult() {
+        homePage.open();
+        homePage.searchTollFreeNumbers("");
+        vanitySearchResult.checkingLoadMore();
+    }
+
 }

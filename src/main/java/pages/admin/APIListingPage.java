@@ -1,6 +1,7 @@
 package pages.admin;
 
 import blocks.admin.APITable;
+import blocks.admin.EditApiPopup;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
@@ -21,6 +22,7 @@ public class APIListingPage extends BasePage {
     }
 
     APITable apiTable;
+    EditApiPopup editApiPopup;
 
     public void clickEditApi(String apiName) {
         int indexColumn = 0;
@@ -43,7 +45,7 @@ public class APIListingPage extends BasePage {
 
     public void fillEditPopup(String carrier, boolean calculateDIDs,
                               boolean idPremium, boolean isNationwide, boolean isRegional, String typeTollFree) {
-/*        waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
+       /* waitUntilElementAppeared(editApiPopup.getButtonSave());
         String filledDisplayName = premiumNumberURLGenerator.getDisplayedNumberOnFE().getEnteredText();
         premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
         premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);

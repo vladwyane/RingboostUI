@@ -51,4 +51,11 @@ public class Admin extends BasePage {
         waitUntilElementAppeared(sidebarNavigation.getApiLink());
         sidebarNavigation.getApiLink().click();
     }
+
+    public void clickExtrasTFNumbersLink() {
+        waitUntilElementAppeared(sidebarNavigation.getExtraslLink());
+        sidebarNavigation.getExtraslLink().click();
+        waitUntilElementAppeared(sidebarNavigation.getTollFreeNumbersLink());
+        sidebarNavigation.getTollFreeNumbersLink().click();
+    }
 }

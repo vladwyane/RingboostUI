@@ -64,6 +64,7 @@ public class VanitySearchResult extends BasePage {
 
     public void chooseFirstNumberFromRegularVanityList() {
         waitUntilTextInElementAppear(regularVanityNumbersBlock.getTitleSection(), "The Following Related Vanity Numbers are Available for");
+        scrollToElement(regularVanityNumbersBlock.getListRegularVanityNumbers().get(0));
         regularVanityNumbersBlock.getListRegularVanityNumbers().get(0).click();
     }
 
@@ -105,7 +106,14 @@ public class VanitySearchResult extends BasePage {
 
     public void chooseFirstNumberFromPremiumVanityList() {
         waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0));
         premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0).click();
+    }
+
+    public void chooseIndexNumberFromPremiumVanityList(int index) {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(index));
+        premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(index).click();
     }
 
     public void chooseLastNumberFromPremiumVanityList() {
@@ -220,6 +228,21 @@ public class VanitySearchResult extends BasePage {
             }
         }
         softAssert.assertTrue(searchResult);
+        softAssert.assertAll();
+    }
+
+    public void checkingLoadMore () {
+        waitUntilElementWillBeClickable(buttonMoreNumbers);
+        scrollToElement(buttonMoreNumbers);
+        buttonMoreNumbers.click();
+        waiting2seconds();
+        softAssert.assertTrue(regularVanityNumbersBlock.getListRegularVanityNumbers().size() > 32, "Load More is not working");
+        softAssert.assertAll();
+    }
+
+    public void checkingStatusLicensedByImdex (int index) {
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getListStatusPremiumVanityNumbers().get(index));
+        softAssert.assertEquals(premiumVanityNumbersBlock.getListStatusPremiumVanityNumbers().get(index).getText(), "Licensed");
         softAssert.assertAll();
     }
 

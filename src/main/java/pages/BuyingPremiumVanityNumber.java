@@ -147,6 +147,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
     public double chooseFirstAreaCodeFromList() {
         waitUntilElementAppeared(availableAreaCodesBlock.getDragBoxTitle());
         waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
+        waiting2seconds();
         availableAreaCodesBlock.getListAreaCodes().get(0).click();
         double price = Double.parseDouble(getNumbersFromString(selectedAreaCodes.getListPricesSelectedAreaCodes().get(0).getText()));
         return price;
@@ -155,6 +156,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
     public double chooseSeveralAreaCodesFromList(int amount) {
         waitUntilElementAppeared(availableAreaCodesBlock.getDragBoxTitle());
         waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
+        waiting2seconds();
         double price = 0.0;
         for (int i = 0; i < availableAreaCodesBlock.getListAreaCodes().size(); i++) {
             if(i >= amount)
@@ -289,10 +291,12 @@ public class BuyingPremiumVanityNumber extends BasePage {
 
     public void checkingRegionStatus() {
         waitUntilElementAppeared(availableByMarketOrNationwide.getButtonSelectNationwide());
-        softAssert.assertTrue(isElementContainsAttributeValue(availableByMarketOrNationwide.getButtonSelectNationwide(), "disabled", "disabled"),
-                "Nationwide button is available");
-        softAssert.assertFalse(isElementContainsAttributeValue(availableByMarketOrNationwide.getButtonSelectMyAreas(), "disabled", "disabled"),
+        scrollToElement(availableByMarketOrNationwide.getButtonSelectMyAreas());
+        softAssert.assertTrue(waitUntilElementWillBeClickable(availableByMarketOrNationwide.getButtonSelectMyAreas()),
                 "My Areas button is disabled");
+        scrollToElement(availableByMarketOrNationwide.getButtonSelectNationwide());
+        softAssert.assertFalse(waitUntilElementWillBeClickable(availableByMarketOrNationwide.getButtonSelectNationwide()),
+                "Nationwide button is available");
         softAssert.assertAll();
     }
 

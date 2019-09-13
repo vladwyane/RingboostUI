@@ -25,5 +25,9 @@ public class PremiumVanityNumbersBlock extends HtmlElement {
     @FindBys( {@FindBy(css = "li .number")} )
     public List<WebElement> listPremiumVanityNumbers;
 
+    @Name("ArrayList of premium status")
+    @FindBys( {@FindBy(xpath = "//span[contains(@class, 'status')]")} )
+    private List<WebElement> listStatusPremiumVanityNumbers;
+
 
 }

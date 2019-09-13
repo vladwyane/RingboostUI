@@ -91,7 +91,7 @@ public class Checkout extends BasePage{
         type(checkoutSidebar.getInputPromoCode(), promocode);
         waitUntilElementWillBeClickable(checkoutSidebar.getButtonApply());
         checkoutSidebar.getButtonApply().click();
-        waitUntilElementAppeared(checkoutSidebar.getPriceAfterAppliedPromoCode());
+        waitUntilElementAppeared(checkoutSidebar.getLinkRemovePromoCode());
         checkoutSidebar.getLinkRemovePromoCode().click();
     }
 

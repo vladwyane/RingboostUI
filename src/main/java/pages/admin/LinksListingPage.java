@@ -52,7 +52,7 @@ public class LinksListingPage extends BasePage {
 
     public void goToGeneratedLinkAfterCopyPaste(int index) {
         waiting2seconds();
-        listGeneratedURL.getListOfActionsURL().get(index * 3).click();
+        listGeneratedURL.getListOfActionsURL().get(index * 4).click();
         localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "a");
         localNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.DELETE);
         premiumNumberURLGenerator.getDisplayedNumberOnFE().sendKeys(Keys.CONTROL + "v");
@@ -83,7 +83,7 @@ public class LinksListingPage extends BasePage {
     public void deleteAllLink() {
         waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
         while (listGeneratedURL.getListOfActionsURL().size() > 0) {
-            listGeneratedURL.getListOfActionsURL().get(1).click();
+            listGeneratedURL.getListOfActionsURL().get(2).click();
             waiting2seconds();
             listGeneratedURL.getButtonDelete().click();
             waiting2seconds();
@@ -99,7 +99,7 @@ public class LinksListingPage extends BasePage {
     public void clickCopyButton(int indexNumber) {
         waiting2seconds();
         waitUntilElementAppeared(listGeneratedURL.getListOfActionsURL().get(0));
-        listGeneratedURL.getListOfActionsURL().get(indexNumber * 3 + 2).click();
+        listGeneratedURL.getListOfActionsURL().get(indexNumber * 4 + 3).click();
     }
 
     public void chooseState(String stateName) {
@@ -314,14 +314,14 @@ public class LinksListingPage extends BasePage {
 
     public void checkingStatusDeactivate(String headingColumn, int indexOfListLinks) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
-        softAssert.assertEquals(returnCellOfTable(headingColumn, indexOfListLinks), "Deactivate");
+        softAssert.assertEquals(returnCellOfTable(headingColumn, indexOfListLinks), "Deactivated");
         softAssert.assertAll();
     }
 
     public void checkingStatusDeactivateOfAllLinks(String headingColumn) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
         for (int i = listGeneratedURL.getListOfLinks().size() - 2; i >= 0 ; i--) {
-            softAssert.assertEquals(returnCellOfTable(headingColumn, i), "Deactivate");
+            softAssert.assertEquals(returnCellOfTable(headingColumn, i), "Deactivated");
         }
         softAssert.assertAll();
     }
@@ -335,14 +335,14 @@ public class LinksListingPage extends BasePage {
     public void checkingErrorMessageNumberIsSold() {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
         waiting2seconds();
-        softAssert.assertEquals(premiumNumberURLGenerator.getListOfErrorMessage().get(0).getText(), "Phone already sold");
+        softAssert.assertEquals(premiumNumberURLGenerator.getListOfErrorMessage().get(1).getText(), "Phone already sold!");
         softAssert.assertAll();
     }
 
     public void checkingErrorMessageNumberIsLicenced() {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
         waiting2seconds();
-        softAssert.assertEquals(premiumNumberURLGenerator.getListOfErrorMessage().get(0).getText(), "Phone already licenced");
+        softAssert.assertEquals(premiumNumberURLGenerator.getListOfErrorMessage().get(1).getText(), "Phone already licensed!");
         softAssert.assertAll();
     }
 

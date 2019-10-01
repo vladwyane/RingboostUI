@@ -75,6 +75,9 @@ public class ExtrasTFNumbers extends BasePage {
             premiumNumberURLGenerator.getListOfAreaCodes().get(i).click();
         }
     }*/
+public void clickSave() {
+    addTierPopup.getButtonSave().click();
+}
 
 
 }

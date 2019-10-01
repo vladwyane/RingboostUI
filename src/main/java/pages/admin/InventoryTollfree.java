@@ -58,5 +58,29 @@ public class InventoryTollfree extends BasePage{
         return phoneNumber;
     }
 
+    public String returnCellOfTable(String headingColumn, int indexOfListLinks) {
+        int indexColumn = 0;
+        for (int i = 0; i < listColumnHeader.size(); i++) {
+            if(listColumnHeader.get(i).getText().equals(headingColumn)){
+                indexColumn = i;
+                break;
+            }
+        }
+        int counter = 0;
+        for (int i = indexColumn; i < listTdOfTable.size(); i += listColumnHeader.size()) {
+            if(counter == indexOfListLinks) {
+                return listTdOfTable.get(i).getText();
+            }
+            counter ++;
+        }
+        return listTdOfTable.get(indexColumn).getText();
+    }
+
+    public void checkingStatusLicensed(String headingColumn, int indexOfListLinks) {
+        waitUntilElementAppeared(listSearchIconTh.get(0));
+        softAssert.assertEquals(returnCellOfTable(headingColumn, indexOfListLinks), "Licensed");
+        softAssert.assertAll();
+    }
+
 
 }

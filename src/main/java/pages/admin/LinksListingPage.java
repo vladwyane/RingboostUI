@@ -128,6 +128,7 @@ public class LinksListingPage extends BasePage {
 
     public void chooseMonthlyMinutes(String minutes) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getSelectMinutes());
+        waiting2seconds();
         premiumNumberURLGenerator.getSelectMinutes().click();
         waiting2seconds();
         for(WebElement element : premiumNumberURLGenerator.getListOfMinutes()) {
@@ -320,9 +321,14 @@ public class LinksListingPage extends BasePage {
 
     public void checkingStatusDeactivateOfAllLinks(String headingColumn) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
-        for (int i = listGeneratedURL.getListOfLinks().size() - 2; i >= 0 ; i--) {
-            softAssert.assertEquals(returnCellOfTable(headingColumn, i), "Deactivated");
+        if (listGeneratedURL.getListOfLinks().size() > 1) {
+            for (int i = listGeneratedURL.getListOfLinks().size() - 2; i >= 0; i--) {
+                softAssert.assertEquals(returnCellOfTable(headingColumn, i), "Deactivated");
+            }
+            softAssert.assertAll();
+            return;
         }
+        softAssert.assertTrue(listGeneratedURL.getListOfLinks().size() > 1, "error");
         softAssert.assertAll();
     }
 

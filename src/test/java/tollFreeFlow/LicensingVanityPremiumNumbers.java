@@ -23,7 +23,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
     private LocalSearchResult localSearchResult;
 
-    private String searchRequest = "error";
+    private String searchRequest = "9999";
 
     @BeforeMethod
     public void initPageObjects() {

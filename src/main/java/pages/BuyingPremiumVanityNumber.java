@@ -95,6 +95,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
         waitUntilElementWillBeClickable(continueButton);
+        scrollToElement(continueButton);
         continueButton.click();
         return Double.parseDouble(dx);
     }
@@ -140,6 +141,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
         waitUntilElementWillBeClickable(continueButton);
+        scrollToElement(continueButton);
         continueButton.click();
         return Double.parseDouble(dx);
     }
@@ -187,6 +189,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         DecimalFormat df = new DecimalFormat("#.##");
         String dx = df.format(priceFromAmountAreaCodes).replace(',', '.');
         waitUntilElementWillBeClickable(continueButton);
+        scrollToElement(continueButton);
         continueButton.click();
         return Double.parseDouble(dx);
     }
@@ -197,10 +200,12 @@ public class BuyingPremiumVanityNumber extends BasePage {
         for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
             if(termLengthBlock.listPlaneName.get(i).getText().equals(term)) {
                 discount = Integer.parseInt(getNumbersFromString(termLengthBlock.listOfDiscount.get(i).getText()));
+                scrollToElement(termLengthBlock.listCardButtons.get(i));
                 termLengthBlock.listCardButtons.get(i).click();
                 return discount;
             }
         }
+        scrollToElement(termLengthBlock.listCardButtons.get(0));
         termLengthBlock.listCardButtons.get(0).click();
         discount = 0;
         return discount;

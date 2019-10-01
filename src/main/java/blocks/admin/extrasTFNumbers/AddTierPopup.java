@@ -18,13 +18,13 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 @Block(@FindBy(css = "form"))
 public class AddTierPopup extends HtmlElement {
 
-    @FindBy(xpath = "//div[contains(text(),'Save')]")
+    @FindBy(xpath = "//span[contains(text(),'New Price Tier')]/ancestor::form//div[contains(text(),'Save')]")
     private WebElement buttonSave;
 
-    @FindBy(css = "input[name='']")
+    @FindBy(xpath = "//span[contains(text(),'New Price Tier')]/ancestor::form//input[@name='name']")
     private TextInput tierName;
 
-    @FindBy(css = "input[name='']")
+    @FindBy(xpath= "//span[contains(text(),'New Price Tier')]/ancestor::form//input[@name='value']")
     private TextInput tierValue;
 
 }

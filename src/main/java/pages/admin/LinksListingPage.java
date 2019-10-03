@@ -1,17 +1,13 @@
 package pages.admin;
 
 import blocks.admin.Breadcrumbs;
-import blocks.admin.ListGeneratedURL;
-import blocks.admin.LocalNumberURLGenerator;
-import blocks.admin.PremiumNumberURLGenerator;
+import blocks.admin.generatorLinks.ListGeneratedURL;
+import blocks.admin.generatorLinks.LocalNumberURLGenerator;
+import blocks.admin.generatorLinks.PremiumNumberURLGenerator;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import pages.BasePage;
-
-import java.util.List;
 
 /**
  * Created by bigdrop on 8/2/2019.

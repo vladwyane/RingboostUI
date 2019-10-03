@@ -39,7 +39,7 @@ public class SidebarNavigation extends HtmlElement{
     @FindBy(xpath = "//div[contains(text(), 'API')]")
     private WebElement apiLink;
 
-    @FindBy(xpath = "//div[contains(text(), 'Carriers')]")
+    @FindBy(xpath = "//div[contains(text(), 'Tollfree phone numbers')]")
     private WebElement tollFreeNumbersLink;
 
     

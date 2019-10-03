@@ -1,6 +1,6 @@
 package pages.admin;
 
-import blocks.admin.ListGeneratedURL;
+import blocks.admin.generatorLinks.ListGeneratedURL;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

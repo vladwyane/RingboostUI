@@ -22,7 +22,7 @@ public class SearchBlock extends HtmlElement {
     @FindBy(css = ".tollfree .search-input")
     private TextInput tollFreeSearchField;
 
-    @FindBy(css= "input.button.filled")
+    @FindBy(css= "button.filled")
     private Button buttonFindNumber;
 
     @FindBy(id= "area-code")

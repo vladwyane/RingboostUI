@@ -1,7 +1,7 @@
 package pages.admin;
 
-import blocks.admin.CarriersTable;
-import blocks.admin.NewCarrierPopup;
+import blocks.admin.carriers.CarriersTable;
+import blocks.admin.carriers.NewCarrierPopup;
 import data.Carriers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

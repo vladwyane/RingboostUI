@@ -1,4 +1,4 @@
-package blocks.admin;
+package blocks.admin.api;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

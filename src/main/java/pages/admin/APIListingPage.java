@@ -1,8 +1,7 @@
 package pages.admin;
 
-import blocks.admin.APITable;
-import blocks.admin.EditApiPopup;
-import org.openqa.selenium.Keys;
+import blocks.admin.api.APITable;
+import blocks.admin.api.EditApiPopup;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
 import utils.ConfigProperties;

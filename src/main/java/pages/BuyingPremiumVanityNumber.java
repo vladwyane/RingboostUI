@@ -1,6 +1,7 @@
 package pages;
 
 import blocks.*;
+import data.TFNumberSettings;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -209,6 +210,19 @@ public class BuyingPremiumVanityNumber extends BasePage {
         termLengthBlock.listCardButtons.get(0).click();
         discount = 0;
         return discount;
+    }
+
+    public void checkingCreatedTermFromAdmin(TFNumberSettings tfNumberSettings) {
+        waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
+        boolean termPresent = false;
+        for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
+            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(tfNumberSettings.getName())) {
+                termPresent = true;
+                break;
+            }
+        }
+        softAssert.assertTrue(termPresent, "Term not found");
+        softAssert.assertAll();
     }
 
     public double choose5000MonthlyMinutes() {

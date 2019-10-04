@@ -3,15 +3,25 @@ package data;
 /**
  * Created by bigdrop on 10/2/2019.
  */
-public enum TFNumberSettings {
+public enum PricingTollFreeSettings {
 
-    TERMS_TEST("5 years", "59.99", "Description text", "50", "48", "Ad text", "US", "0.15",
+    TERM_PREMIUM_TEST("5 years", "59.99", "50%", "50", "48", "Ad text", "US", "0.15",
             "500", "300", "0.1", "7", true, false, false),
-    TERMS_UPDATE("5 years update", "59.99", "Description text", "50", "48", "Ad text", "US", "0.15",
+    TERM_PREMIUM_UPDATE("5 years update", "59.99", "50%", "50", "48", "Ad text", "US", "0.15",
             "500", "300", "0.1", "7", true, false, false),
-    MINUTES_TEST("300 minutes", "10", "Description text", "50", "48", "Ad text", "US", "0.15",
+    TERM_SPARE_TEST("4 years", "49.99", "40%", "40", "48", "Ad text", "US", "0.15",
+            "500", "300", "0.1", "7", true, false, false),
+    TERM_SPARE_UPDATE("4 years update", "49.99", "40%", "40", "48", "Ad text", "US", "0.15",
+            "500", "300", "0.1", "7", true, false, false),
+    TERM_BASIC800_TEST("Independence", "49.99", "40%", "40", "48", "Ad text", "US", "0.15",
+            "500", "300", "0.1", "7", true, false, false),
+    TERM_BASIC800_UPDATE("Independence update", "49.99", "40%", "40", "48", "Ad text", "US", "0.15",
+            "500", "300", "0.1", "7", true, false, false),
+    MINUTES_TEST("6000 minutes", "6000", "Description text", "50", "48", "Ad text", "US", "0.15",
             "500", "300", "0.1", "7", false, false, false),
-    MULTIPLE_AREA_TEST("Area", "10", "Description text", "50", "48", "Ad text", "US", "0.15",
+    MINUTES_UPDATE("6000 minutes update", "6000", "Description text", "50", "48", "Ad text", "US", "0.15",
+            "500", "300", "0.1", "7", false, true, false),
+    MULTIPLE_AREA_TEST("6000 minutes update", "6000", "Description text", "50", "48", "Ad text", "US", "0.15",
             "500", "300", "0.1", "7", false, true, false),
     PRICE_TIER_TEST("Tier $501", "501", "Description text", "50", "48", "Ad text", "US", "0.15",
             "500", "300", "0.1", "7", false, false, false),
@@ -94,9 +104,9 @@ public enum TFNumberSettings {
         return contactUsCheckbox;
     }
 
-    TFNumberSettings(String name, String value, String description, String discount, String duration, String additionalText,
-                     String country, String additionalCoast, String activationFee, String price,
-                     String pricePerMinute, String number, boolean isPopularCheckbox, boolean isActiveCheckbox, boolean contactUsCheckbox) {
+    PricingTollFreeSettings(String name, String value, String description, String discount, String duration, String additionalText,
+                            String country, String additionalCoast, String activationFee, String price,
+                            String pricePerMinute, String number, boolean isPopularCheckbox, boolean isActiveCheckbox, boolean contactUsCheckbox) {
         this.name = name;
         this.value = value;
         this.description = description;

@@ -4,6 +4,7 @@ import blocks.OrderSummaryBlock;
 import blocks.RingToNumberBlock;
 import blocks.SliderMonthlyMinutesBlock;
 import blocks.TermLengthBlock;
+import data.PricingTollFreeSettings;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -11,7 +12,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 
 public class BuyingRegularVanityNumber extends BasePage {
@@ -69,11 +69,22 @@ public class BuyingRegularVanityNumber extends BasePage {
         return price;
     }
 
+    public void checkingCreatedPriceMinuteFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {
+        waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
+        Actions move = new Actions(driver);
+        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 2000, 0).build();
+        actionFirstBull.perform();
+        changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
+        double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));
+        softAssert.assertEquals(Double.parseDouble(pricingTollFreeSettings.getPrice()), price);
+        softAssert.assertAll();
+    }
+
     public int chooseTermLength(String term) {
         waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
         int discount;
         for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
-            if(termLengthBlock.listPlaneName.get(i).getText().equals(term)) {
+            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(term)) {
                 discount = Integer.parseInt(getNumbersFromString(termLengthBlock.listOfDiscount.get(i).getText()));
                 termLengthBlock.listCardButtons.get(i).click();
                 return discount;
@@ -82,6 +93,22 @@ public class BuyingRegularVanityNumber extends BasePage {
         termLengthBlock.listCardButtons.get(0).click();
         discount = 0;
         return discount;
+    }
+
+    public void checkingCreatedTermFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {
+        waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
+        String discount = null;
+        boolean termPresent = false;
+        for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
+            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(pricingTollFreeSettings.getName())) {
+                discount = getNumbersFromString(termLengthBlock.listOfDiscount.get(i).getText());
+                termPresent = true;
+                break;
+            }
+        }
+        softAssert.assertEquals(pricingTollFreeSettings.getDiscount(), discount);
+        softAssert.assertTrue(termPresent, "Term not found");
+        softAssert.assertAll();
     }
 
     public double chooseCheckboxMultipleRingToNumber() {

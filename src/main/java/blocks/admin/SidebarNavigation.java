@@ -21,7 +21,7 @@ public class SidebarNavigation extends HtmlElement{
     @FindBy(xpath = "//div[contains(text(), 'Inventory')]")
     private WebElement inventoryLink;
 
-    @FindBy(xpath = "//div[contains(text(), 'Tollfree')]")
+    @FindBy(xpath = "//a[@href='/admin/inventory/toll-free']")
     private WebElement tollfreeLink;
 
     @FindBy(xpath = "//div[contains(text(), 'Local')]")
@@ -39,8 +39,11 @@ public class SidebarNavigation extends HtmlElement{
     @FindBy(xpath = "//div[contains(text(), 'API')]")
     private WebElement apiLink;
 
-    @FindBy(xpath = "//div[contains(text(), 'Tollfree phone numbers')]")
-    private WebElement tollFreeNumbersLink;
+    @FindBy(xpath = "//div[contains(text(), 'Pricing(Global)')]")
+    private WebElement pricingGlobalLink;
+
+    @FindBy(xpath = "//a[@href='/admin/pricing/toll-free']")
+    private WebElement tollFreePriceLink;
 
     
 }

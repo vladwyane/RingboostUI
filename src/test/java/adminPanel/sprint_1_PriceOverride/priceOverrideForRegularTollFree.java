@@ -66,7 +66,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 year");
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
@@ -102,7 +102,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 years");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
@@ -138,7 +138,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("month");
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
@@ -173,7 +173,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         linksListingPage.clickCopyButton(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLinkAfterCopyPaste(linksListingPage.returnIndexLastGeneratedLink());
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
@@ -214,7 +214,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         homePage.searchTollFreeNumbers(phoneNumber);
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         buyingRegularVanityNumber.choose5000MonthlyMinutes();
-        buyingRegularVanityNumber.chooseTermLength("2 Years");
+        buyingRegularVanityNumber.chooseTermLength("1 year");
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.VISA_STRIPE, false);

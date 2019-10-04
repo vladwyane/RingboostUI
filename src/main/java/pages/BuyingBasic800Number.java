@@ -3,6 +3,7 @@ package pages;
 import blocks.OrderSummaryBlock;
 import blocks.PickYourMonthlyPlanBlock;
 import blocks.RingToNumberBlock;
+import data.PricingTollFreeSettings;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,6 +52,22 @@ public class BuyingBasic800Number extends BasePage {
         pickYourMonthlyPlanBlock.listCardButtons.get(0).click();
         perMonthPrice = 0.0;
         return perMonthPrice;
+    }
+
+    public void checkingCreatedTermFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {
+        waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
+        String perMonthPrice = null;
+        boolean termPresent = false;
+        for (int i = 0; i < pickYourMonthlyPlanBlock.listPlaneName.size(); i++) {
+            if(pickYourMonthlyPlanBlock.listPlaneName.get(i).getText().toLowerCase().equals(pricingTollFreeSettings.getName().toLowerCase())) {
+                perMonthPrice = getNumbersFromString(pickYourMonthlyPlanBlock.listOfPerMonthPrice.get(i).getText());
+                termPresent = true;
+                break;
+            }
+        }
+        softAssert.assertEquals(pricingTollFreeSettings.getValue(), perMonthPrice);
+        softAssert.assertTrue(termPresent, "Term not found");
+        softAssert.assertAll();
     }
 
     public void chooseCheckboxMultipleRingToNumber() {

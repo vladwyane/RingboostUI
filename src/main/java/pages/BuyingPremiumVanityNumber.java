@@ -1,9 +1,7 @@
 package pages;
 
 import blocks.*;
-import data.TFNumberSettings;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import data.PricingTollFreeSettings;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -199,7 +197,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
         int discount;
         for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
-            if(termLengthBlock.listPlaneName.get(i).getText().equals(term)) {
+            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(term)) {
                 discount = Integer.parseInt(getNumbersFromString(termLengthBlock.listOfDiscount.get(i).getText()));
                 scrollToElement(termLengthBlock.listCardButtons.get(i));
                 termLengthBlock.listCardButtons.get(i).click();
@@ -212,15 +210,18 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return discount;
     }
 
-    public void checkingCreatedTermFromAdmin(TFNumberSettings tfNumberSettings) {
+    public void checkingCreatedTermFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {
         waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
+        String discount = null;
         boolean termPresent = false;
         for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
-            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(tfNumberSettings.getName())) {
+            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(pricingTollFreeSettings.getName())) {
+                discount = getNumbersFromString(termLengthBlock.listOfDiscount.get(i).getText());
                 termPresent = true;
                 break;
             }
         }
+        softAssert.assertEquals(pricingTollFreeSettings.getDiscount(), discount);
         softAssert.assertTrue(termPresent, "Term not found");
         softAssert.assertAll();
     }
@@ -229,7 +230,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         scrollToElement(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
-        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 300, 0).build();
+        Action actionFirstBull = move.dragAndDropBy(sliderMonthlyMinutesBlock.getBulletOfSlider(), 1000, 0).build();
         actionFirstBull.perform();
         changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
         double price = Double.parseDouble(getNumbersFromString(sliderMonthlyMinutesBlock.getTooltipPrice().getText()));

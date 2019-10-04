@@ -49,7 +49,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.VISA_STRIPE, false);
@@ -63,7 +63,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         vanityIndexPage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
@@ -77,7 +77,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("Month");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
@@ -91,7 +91,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         vanitySearchResult.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 Year");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 year");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
@@ -105,7 +105,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         homePage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 Years");
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.FIXED_PROMOCODE.getName());
@@ -119,7 +119,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         homePage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromRegularVanityList();
         buyingRegularVanityNumber.choose5000MonthlyMinutes();
-        buyingRegularVanityNumber.chooseTermLength("Month");
+        buyingRegularVanityNumber.chooseTermLength("month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.ERROR_CVC_STRIPE, true);

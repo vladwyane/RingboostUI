@@ -52,10 +52,10 @@ public class Admin extends BasePage {
         sidebarNavigation.getApiLink().click();
     }
 
-    public void clickExtrasTFNumbersLink() {
-        waitUntilElementAppeared(sidebarNavigation.getExtraslLink());
-        sidebarNavigation.getExtraslLink().click();
-        waitUntilElementAppeared(sidebarNavigation.getTollFreeNumbersLink());
-        sidebarNavigation.getTollFreeNumbersLink().click();
+    public void clickPricingTollFreeLink() {
+        waitUntilElementAppeared(sidebarNavigation.getPricingGlobalLink());
+        sidebarNavigation.getPricingGlobalLink().click();
+        waitUntilElementAppeared(sidebarNavigation.getTollFreePriceLink());
+        sidebarNavigation.getTollFreePriceLink().click();
     }
 }

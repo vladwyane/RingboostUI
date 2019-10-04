@@ -1,4 +1,4 @@
-package blocks.admin.extrasTFNumbers;
+package blocks.admin.pricingTollFree;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,7 +31,7 @@ public class AddRulePopups extends HtmlElement {
     @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//input[@name='description']")
     private TextInput descriptionField;
 
-    @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//input[@aria-label='Discount']")
+    @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//input[@name='discount']")
     private TextInput discountField;
 
     @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//input[@name='duration']")
@@ -63,7 +63,7 @@ public class AddRulePopups extends HtmlElement {
     @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//input[@name='number']")
     private TextInput numberField;
 
-    @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//label[contains(text(), 'Is popular')]")
+    @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//label[contains(text(), 'Featured')]")
     private WebElement isPopularCheckbox;
 
     @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//label[contains(text(), 'Is active')]")

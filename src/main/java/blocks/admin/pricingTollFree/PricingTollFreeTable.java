@@ -1,4 +1,4 @@
-package blocks.admin.extrasTFNumbers;
+package blocks.admin.pricingTollFree;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,7 +20,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Block(@FindBy(css = "main"))
-public class ExtrasTFNumbersTable extends HtmlElement {
+public class PricingTollFreeTable extends HtmlElement {
 
     @Name("List of tabs")
     @FindBys( {@FindBy(css = ".v-tabs__div a")} )
@@ -48,7 +48,7 @@ public class ExtrasTFNumbersTable extends HtmlElement {
             "and not(contains(@style,'display: none'))]//div[contains(text(),'Add Term')]")
     private WebElement addTermButton;
 
-    @FindBy(xpath = "//div[contains(text(),'Add price minutes')]")
+    @FindBy(xpath = "//div[contains(text(),'Add CPM')]")
     private WebElement addPriceMinutesButton;
 
     @FindBy(xpath = "//div[contains(text(),'Add price multiple areas')]")

@@ -51,7 +51,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.chooseState("Kansas");
         double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseSeveralAreaCodesFromList(1);
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.getPriceFromAmountAreaCodesWithDiscount(priceFromAmountAreaCodes);
-        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("2 Years");
+        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("2 years");
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
@@ -76,7 +76,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.chooseState("Texas");
         double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseSeveralAreaCodesFromList(2);
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.getPriceFromAmountAreaCodesWithDiscount(priceFromAmountAreaCodes);
-        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("Month");
+        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("month");
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose5000MonthlyMinutes();
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
@@ -93,7 +93,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseByOneAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama"});
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.getPriceFromAmountAreaCodesWithDiscount(priceFromAmountAreaCodes);
-        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("3 Years");
+        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("3 years");
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose100MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
@@ -109,7 +109,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.chooseByOneAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama", "Vermont"});
-        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("1 Year");
+        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("1 year");
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
@@ -126,7 +126,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.
                 chooseSeveralAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama", "Vermont"}, new int[] {3, 2, 1});
-        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("2 Years");
+        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("2 years");
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
@@ -151,7 +151,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.chooseState("Alabama");
         double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseFirstAreaCodeFromList();
         buyingPremiumVanityNumber.getPriceFromAmountAreaCodesWithDiscount(priceFromAmountAreaCodes);
-        buyingPremiumVanityNumber.chooseTermLength("Month");
+        buyingPremiumVanityNumber.chooseTermLength("month");
         buyingPremiumVanityNumber.choose5000MonthlyMinutes();
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();

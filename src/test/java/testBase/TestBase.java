@@ -24,7 +24,8 @@ public class TestBase {
     @BeforeClass
     public void setupTest(ITestContext context) throws Exception{
         if(getClass().getName().equals("tollFreeFlow.LicensingVanityPremiumNumbers") ||
-                getClass().getName().equals("adminPanel.sprint_3_TFPnoneNumberExtras.TermPremium"))
+                getClass().getName().equals("adminPanel.sprint_3_PricingTollFree.TermPremium") ||
+                getClass().getName().equals("adminPanel.sprint_3_PricingTollFree.CostPerMinute"))
             app.unitMobileView();
         else app.unit();
         context.setAttribute("app", app);

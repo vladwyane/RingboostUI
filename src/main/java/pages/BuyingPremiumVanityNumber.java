@@ -226,6 +226,12 @@ public class BuyingPremiumVanityNumber extends BasePage {
         softAssert.assertAll();
     }
 
+    public void checkingFirstTermLength() {
+        waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
+        softAssert.assertEquals(termLengthBlock.listPlaneName.get(0).getText().toLowerCase(), "month-to-month");
+        softAssert.assertAll();
+    }
+
     public double choose5000MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         scrollToElement(sliderMonthlyMinutesBlock.getBulletOfSlider());

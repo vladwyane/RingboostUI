@@ -151,6 +151,29 @@ public class PricingTollFreePage extends BasePage {
         addRulePopups.getButtonSave().click();
     }
 
+    public void clickAddPriceMultipleAreasButton() {
+        waitUntilElementAppeared(pricingTollFreeTable.getAddPriceMultipleAreasButton());
+        pricingTollFreeTable.getAddPriceMultipleAreasButton().click();
+    }
+
+    public void createNewPriceMultipleAreas(PricingTollFreeSettings pricingTollFreeSettings) {
+        waitUntilElementAppeared(addRulePopups.getButtonSave());
+        type(addRulePopups.getNumberField(), pricingTollFreeSettings.getNumber());
+        type(addRulePopups.getDescriptionField(), pricingTollFreeSettings.getDescription());
+        type(addRulePopups.getValueField(), pricingTollFreeSettings.getValue());
+        addRulePopups.getIsActiveCheckbox().click();
+        addRulePopups.getButtonSave().click();
+    }
+
+    public void editMultipleAreas(PricingTollFreeSettings pricingTollFreeSettings) {
+        waitUntilElementAppeared(addRulePopups.getButtonSave());
+        addRulePopups.getNumberField().sendKeys(Keys.CONTROL + "a");
+        addRulePopups.getNumberField().sendKeys(Keys.DELETE);
+        type(addRulePopups.getNumberField(), pricingTollFreeSettings.getNumber());
+        addRulePopups.getContactUsCheckbox().click();
+        addRulePopups.getButtonSave().click();
+    }
+
     public void checkingSuccessCreatingNewRule(PricingTollFreeSettings pricingTollFreeSettings) {
         waitUntilElementAppeared(pricingTollFreeTable.getSuccessAlert());
         boolean successAlert = isElementPresent(pricingTollFreeTable.getSuccessAlert());
@@ -198,7 +221,7 @@ public class PricingTollFreePage extends BasePage {
     public void checkingErrorMessagesCreatingPremiumTermEmptyFields() {
         waitUntilElementAppeared(addRulePopups.getListOfErrorMessage().get(0));
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(0).getText(), "The name must be a string.The name field is required.");
-        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(1).getText(), "The value must be a number.The value field is required.");
+        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(1).getText(), "The value must be a number.Value can`t be decimalThe value field is required.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(7).getText(), "The duration must be a number.The duration field is required.");
         softAssert.assertAll();
     }
@@ -206,7 +229,7 @@ public class PricingTollFreePage extends BasePage {
     public void checkingErrorMessagesCreatingBasic800TermEmptyFields() {
         waitUntilElementAppeared(addRulePopups.getListOfErrorMessage().get(0));
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(0).getText(), "The name must be a string.The name field is required.");
-        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(1).getText(), "The value must be a number.The value field is required.");
+        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(1).getText(), "The value must be a number.Value can`t be decimalThe value field is required.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(4).getText(), "The additional cost must be a number.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(6).getText(), "The activation fee must be a number.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(7).getText(), "The duration must be a number.The duration field is required.");
@@ -219,6 +242,20 @@ public class PricingTollFreePage extends BasePage {
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(1).getText(), "The value must be an integer.The value field is required.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(2).getText(), "The price must be a number.The price field is required.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(3).getText(), "The price per minute must be a number.The price per minute field is required.");
+        softAssert.assertAll();
+    }
+
+    public void checkingErrorMessagesCreatingMultipleAreasEmptyFields() {
+        waitUntilElementAppeared(addRulePopups.getListOfErrorMessage().get(0));
+        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(0).getText(), "The number field is required.");
+        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(1).getText(), "The value must be a number.The value field is required.");
+        softAssert.assertAll();
+    }
+
+    public void checkingErrorMessagesCreatingMultipleAreasNameHasBeenUsed() {
+        waitUntilElementAppeared(addRulePopups.getButtonSave());
+        waiting2seconds();
+        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(0).getText(), "The number has already been taken.");
         softAssert.assertAll();
     }
 

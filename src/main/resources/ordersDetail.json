@@ -680,4 +680,22 @@
     "currentDate": "Fri Oct 04 12:19:34 EEST 2019",
     "priceTotalDueToday": "$164.97"
   }
+}{
+  "map": {
+    "phoneNumber": "1-833-4204ER5",
+    "currentDate": "Mon Oct 07 10:41:35 EEST 2019",
+    "priceTotalDueToday": "$160.00"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-205-4204ER5",
+    "currentDate": "Mon Oct 07 10:56:18 EEST 2019",
+    "priceTotalDueToday": "$164.97"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-100-1004",
+    "currentDate": "Mon Oct 07 10:59:35 EEST 2019",
+    "priceTotalDueToday": "$549.00"
+  }
 }

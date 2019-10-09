@@ -84,7 +84,7 @@ public class SearchVanityNumber extends TestBase {
     @Test
     public void testSearchEnterMoreThan14Symbols() throws InterruptedException {
         vanitySearchResult.open();
-        String request = "Test More Than 14 Symbols";
+        String request = "TestBallet More Than 14 Symbols";
         vanitySearchResult.searchTollFreeNumbers(request);
         vanitySearchResult.checkingSearchResultMoreThen14Symbols(request.toUpperCase());
     }

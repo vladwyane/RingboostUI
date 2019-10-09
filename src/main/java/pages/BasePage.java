@@ -47,6 +47,12 @@ public abstract class BasePage {
     @FindBy(css = "h1")
     WebElement titleH1;
 
+    public void checkingCorrectlyHeadingH1(String headingH1) {
+        waitUntilElementAppeared(titleH1);
+        softAssert.assertEquals(titleH1.getText(), headingH1);
+        softAssert.assertAll();
+    }
+
     protected void type(TextInput webElement, String text) {
         webElement.clear();
         webElement.sendKeys(text);
@@ -117,7 +123,7 @@ public abstract class BasePage {
     }
 
 
-    protected boolean scrollToElement(WebElement element) {
+    public boolean scrollToElement(WebElement element) {
 
         String scrollElementIntoMiddle = "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);"
                 + "var elementTop = arguments[0].getBoundingClientRect().top;"

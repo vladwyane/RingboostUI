@@ -58,4 +58,11 @@ public class Admin extends BasePage {
         waitUntilElementAppeared(sidebarNavigation.getTollFreePriceLink());
         sidebarNavigation.getTollFreePriceLink().click();
     }
+
+    public void clickAreaCodesLink() {
+        waitUntilElementAppeared(sidebarNavigation.getPricingGlobalLink());
+        sidebarNavigation.getPricingGlobalLink().click();
+        waitUntilElementAppeared(sidebarNavigation.getAreaCodesLink());
+        sidebarNavigation.getAreaCodesLink().click();
+    }
 }

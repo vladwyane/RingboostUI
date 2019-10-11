@@ -92,7 +92,7 @@ public class VanityIndexPage extends BasePage {
                 return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
             }
         } */
-        return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
+        return regularVanityNumbersBlock.getFullListRegularVanityNumbers().get(0).getText();
     }
 
 

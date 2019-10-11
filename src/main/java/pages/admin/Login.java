@@ -24,6 +24,7 @@ public class Login extends BasePage {
     ToolbarPanel toolbarPanel;
 
     public void fillLoginForm() {
+        waiting2seconds();
         waitUntilElementAppeared(loginForm.getLoginButton());
         type(loginForm.getLoginField(), "admin@admin.com");
         type(loginForm.getPasswordField(), "adminadmin");

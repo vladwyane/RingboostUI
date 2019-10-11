@@ -4,9 +4,7 @@ import data.CreditCards;
 import data.PricingTollFreeSettings;
 import data.Users;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.*;
 import pages.admin.Admin;
 import pages.admin.PricingTollFreePage;
@@ -38,18 +36,22 @@ public class TermBasic800 extends TestBase {
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
         basicIndexPage = new BasicIndexPage(app.getDriver());
         buyingBasic800Number = new BuyingBasic800Number(app.getDriver());
+    }
+
+    @BeforeMethod
+    public void login() {
         login.open();
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
     public void test1SuccessCreatingNewBasic800Term() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Term - Basic 800");
         pricingTollFreePage.clickAddTermButton();
@@ -58,8 +60,8 @@ public class TermBasic800 extends TestBase {
     }
 
     @Test
-    public void test1ErrorCreatingNewBasic800TermAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
-        login.open();
+    public void test2ErrorCreatingNewBasic800TermAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
+    //    login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Term - Basic 800");
         pricingTollFreePage.clickAddTermButton();
@@ -70,7 +72,7 @@ public class TermBasic800 extends TestBase {
     @Test
     public void test2CheckingCreatedTermFromAdmin() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
-        basicIndexPage.choose32thNumberFromBasic800List();
+        basicIndexPage.chooseFirstNumberFromBasic800List();
         buyingBasic800Number.checkingCreatedTermFromAdmin(PricingTollFreeSettings.TERM_BASIC800_TEST);
     }
 
@@ -88,7 +90,7 @@ public class TermBasic800 extends TestBase {
 
     @Test
     public void test3EditBasic800Term() throws InterruptedException, IOException, JSONException {
-        login.open();
+   //     login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Term - Basic 800");
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.TERM_BASIC800_TEST);
@@ -98,7 +100,7 @@ public class TermBasic800 extends TestBase {
 
     @Test
     public void test4DeleteBasic800Term() throws InterruptedException, IOException, JSONException {
-        login.open();
+     //   login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Term - Basic 800");
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.TERM_BASIC800_UPDATE);

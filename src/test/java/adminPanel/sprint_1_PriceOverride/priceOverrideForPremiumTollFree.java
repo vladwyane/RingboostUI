@@ -134,11 +134,11 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "4204375");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(3);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(4);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodePremiumFlow("11.99", "Vermont", 1,
+                .generateLinkWithPromoCodePremiumFlow("11.99", "Alabama", 1,
                         "3 years", "250", "-ABC");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         linksListingPage.clickCopyButton(linksListingPage.returnIndexLastGeneratedLink());
@@ -171,21 +171,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "4204375");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(4);
-        System.out.println(phoneNumber);
-        linksListingPage.clickCreateNewURLButton();
-        linksListingPage
-                .generateLinkWithoutPromoCodePremiumFlow("10.01", "Alabama", 1,
-                        "1 years", "750");
-        linksListingPage.clickGenerateLinkButtonPremiumFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
-        linksListingPage.goToGeneratedLink(generatedLink);
-        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.MASTERCART_STRIPE, false);
-        login.open();
-        admin.clickToolFreInventoryLink();
-        inventoryTollfree.searchNumber(0, "4204375");
         inventoryTollfree.checkingStatusLicensed("Status", 4);
-
     }
 
 }

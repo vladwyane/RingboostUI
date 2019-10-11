@@ -23,7 +23,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
     private LocalSearchResult localSearchResult;
 
-    private String searchRequest = "9999";
+    private String searchRequest = "error";
 
     @BeforeMethod
     public void initPageObjects() {
@@ -91,8 +91,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
-        double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseByOneAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama"});
-        double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.getPriceFromAmountAreaCodesWithDiscount(priceFromAmountAreaCodes);
+        double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.chooseByOneAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama"});
         int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("3 years");
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose100MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
@@ -139,7 +138,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     public void test4checkingStatusLicensed() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.checkingStatusLicensedByImdex(1);
+        vanitySearchResult.checkingStatusLicensedByIndex(1);
     }
 
     @Test

@@ -2,9 +2,7 @@ package adminPanel.sprint_3_PricingTollFree;
 
 import data.PricingTollFreeSettings;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.admin.*;
 import testBase.TestBase;
 
@@ -19,24 +17,27 @@ public class PriceTiers extends TestBase {
     private Admin admin;
     private PricingTollFreePage pricingTollFreePage;
 
-
     @BeforeClass
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
         pricingTollFreePage = new PricingTollFreePage(app.getDriver());
+    }
+
+    @BeforeMethod
+    public void login() {
         login.open();
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
     public void test1SuccessCreatingNewPriceTier() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickAddNewTierButton();
         pricingTollFreePage.createNewTier(PricingTollFreeSettings.PRICE_TIER_TEST);
@@ -45,7 +46,7 @@ public class PriceTiers extends TestBase {
 
     @Test
     public void test1ErrorCreatingNewPriceTierAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
-        login.open();
+    //    login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickAddNewTierButton();
         pricingTollFreePage.clickSaveButton();
@@ -54,7 +55,7 @@ public class PriceTiers extends TestBase {
 
     @Test
     public void test2ErrorCreatingNewPriceTierSameName() throws InterruptedException, IOException, JSONException {
-        login.open();
+  //      login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickAddNewTierButton();
         pricingTollFreePage.createNewTier(PricingTollFreeSettings.PRICE_TIER_TEST);
@@ -63,7 +64,7 @@ public class PriceTiers extends TestBase {
 
     @Test
     public void test3EditPriceTier() throws InterruptedException, IOException, JSONException {
-        login.open();
+   //     login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.PRICE_TIER_TEST);
         pricingTollFreePage.editRule(PricingTollFreeSettings.PRICE_TIER_UPDATE);
@@ -72,7 +73,7 @@ public class PriceTiers extends TestBase {
 
     @Test
     public void test4DeletePriceTier() throws InterruptedException, IOException, JSONException {
-        login.open();
+ //       login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.PRICE_TIER_UPDATE);
         pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.PRICE_TIER_UPDATE);

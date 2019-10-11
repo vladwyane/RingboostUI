@@ -94,29 +94,24 @@ public class PricingTollFreePage extends BasePage {
     }
 
     public void clickEditIcon(PricingTollFreeSettings pricingTollFreeSettings) {
-        int indexTd = 0;
         for (int i = 0; i < pricingTollFreeTable.getListTd().size(); i++) {
             if(pricingTollFreeTable.getListTd().get(i).getText().equals(pricingTollFreeSettings.getName())){
-                indexTd = i;
+                int index = Math.round(i/ pricingTollFreeTable.getListColumnHeader().size()) * 2;
+                pricingTollFreeTable.getListOfActions().get(index).click();
                 break;
             }
         }
-        int index = Math.round(indexTd/ pricingTollFreeTable.getListColumnHeader().size()) * 2;
-        pricingTollFreeTable.getListOfActions().get(index).click();
-
     }
 
     public void clickDeleteIcon(PricingTollFreeSettings pricingTollFreeSettings) {
-        int indexTd = 0;
         for (int i = 0; i < pricingTollFreeTable.getListTd().size(); i++) {
             if(pricingTollFreeTable.getListTd().get(i).getText().equals(pricingTollFreeSettings.getName())){
-                indexTd = i;
+                int index = (Math.round(i/ pricingTollFreeTable.getListColumnHeader().size()) * 2) + 1;
+                scrollToElement(pricingTollFreeTable.getListOfActions().get(index));
+                pricingTollFreeTable.getListOfActions().get(index).click();
                 break;
             }
         }
-        int index = (Math.round(indexTd/ pricingTollFreeTable.getListColumnHeader().size()) * 2) + 1;
-        scrollToElement(pricingTollFreeTable.getListOfActions().get(index));
-        pricingTollFreeTable.getListOfActions().get(index).click();
         waiting2seconds();
         pricingTollFreeTable.getButtonDelete().click();
         waiting2seconds();
@@ -229,7 +224,7 @@ public class PricingTollFreePage extends BasePage {
     public void checkingErrorMessagesCreatingBasic800TermEmptyFields() {
         waitUntilElementAppeared(addRulePopups.getListOfErrorMessage().get(0));
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(0).getText(), "The name must be a string.The name field is required.");
-        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(1).getText(), "The value must be a number.Value can`t be decimalThe value field is required.");
+        softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(1).getText(), "The value must be a number.The value field is required.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(4).getText(), "The additional cost must be a number.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(6).getText(), "The activation fee must be a number.");
         softAssert.assertEquals(addRulePopups.getListOfErrorMessage().get(7).getText(), "The duration must be a number.The duration field is required.");

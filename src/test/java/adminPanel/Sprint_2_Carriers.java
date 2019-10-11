@@ -40,7 +40,7 @@ public class Sprint_2_Carriers extends TestBase {
         login.open();
         admin.clickCarriersLink();
         carriersListingPage.clickAddCarrierButton();
-        carriersListingPage.createNewCarrier(Carriers.VODAFONE);
+        carriersListingPage.createNewCarrier(Carriers.TELEPHONE);
         carriersListingPage.checkingSuccessAlertMessage();
     }
 
@@ -58,9 +58,9 @@ public class Sprint_2_Carriers extends TestBase {
         login.open();
         admin.clickCarriersLink();
         carriersListingPage.clickAddCarrierButton();
-        carriersListingPage.createNewCarrier(Carriers.ALPHABET);
-        carriersListingPage.searchCarrier(Carriers.ALPHABET);
-        carriersListingPage.checkingTitleFirstCarrier(Carriers.ALPHABET);
+        carriersListingPage.createNewCarrier(Carriers.RINGTONE);
+        carriersListingPage.searchCarrier(Carriers.RINGTONE);
+        carriersListingPage.checkingTitleFirstCarrier(Carriers.RINGTONE);
     }
 
     @Test
@@ -78,11 +78,11 @@ public class Sprint_2_Carriers extends TestBase {
     public void test5EditButton() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickCarriersLink();
-        carriersListingPage.searchCarrier(Carriers.ALPHABET);
+        carriersListingPage.searchCarrier(Carriers.RINGTONE);
         carriersListingPage.clickEditIconFirstCarriers();
-        carriersListingPage.editCarrierInfo(Carriers.ABC);
-        carriersListingPage.searchCarrier(Carriers.ABC);
-        carriersListingPage.checkingTitleFirstCarrier(Carriers.ABC);
+        carriersListingPage.editCarrierInfo(Carriers.WEEK);
+        carriersListingPage.searchCarrier(Carriers.WEEK);
+        carriersListingPage.checkingTitleFirstCarrier(Carriers.WEEK);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class Sprint_2_Carriers extends TestBase {
         login.open();
         admin.clickCarriersLink();
         carriersListingPage.clickAddCarrierButton();
-        carriersListingPage.editCarrierInfo(Carriers.VODAFONE);
+        carriersListingPage.editCarrierInfo(Carriers.TELEPHONE);
         carriersListingPage.checkingErrorMessagesTitleHasBeenUsed();
     }
 
@@ -105,7 +105,9 @@ public class Sprint_2_Carriers extends TestBase {
     @Test
     public void test8SDeleteButton() throws InterruptedException, IOException, JSONException {
         carriersListingPage.open();
-        carriersListingPage.searchCarrier(Carriers.ABC);
+        carriersListingPage.searchCarrier(Carriers.WEEK);
+        carriersListingPage.clickDeleteIconFirstCarriers();
+        carriersListingPage.searchCarrier(Carriers.TELEPHONE);
         carriersListingPage.clickDeleteIconFirstCarriers();
         carriersListingPage.checkingSuccessDeleted();
     }

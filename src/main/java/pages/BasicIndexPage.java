@@ -21,8 +21,8 @@ public class BasicIndexPage extends BasePage {
     private Basic800NumbersBlock basic800NumbersBlock;
 
     public void chooseFirstNumberFromBasic800List() {
-        waitUntilElementAppeared(basic800NumbersBlock.listBasic800Numbers.get(0));
-        basic800NumbersBlock.listBasic800Numbers.get(0).click();
+        waitUntilElementAppeared(basic800NumbersBlock.listAvailableBasic800Numbers.get(0));
+        basic800NumbersBlock.listAvailableBasic800Numbers.get(0).click();
     }
 
     public void chooseLastNumberFromBasic800ListAfterLoadMore() {

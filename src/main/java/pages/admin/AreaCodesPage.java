@@ -121,13 +121,6 @@ public class AreaCodesPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingErrorMessagesEditBundleWithUsedAreaCode(AreaCodesData areaCodesData) {
-        waitUntilElementAppeared(areaCodePopup.getListOfErrorMessage().get(0));
-        softAssert.assertEquals(areaCodePopup.getListOfErrorMessage().get(1).getText(),
-                "The area code " + areaCodesData.getAreaCode2() +" is already in use.The area code " + areaCodesData.getAreaCode3() + " is already in use.");
-        softAssert.assertAll();
-    }
-
     public void checkingSuccessAddingNewBundle(AreaCodesData areaCodesData) {
         waitUntilElementAppeared(areaCodesTable.getSuccessAlert());
         boolean successAlert = isElementPresent(areaCodesTable.getSuccessAlert());
@@ -193,30 +186,25 @@ public class AreaCodesPage extends BasePage {
     }
 
     public void clickEditIcon(AreaCodesData areaCodesData) {
-        int indexTd = 0;
         waiting2seconds();
         for (int i = 0; i < areaCodesTable.getListTd().size(); i++) {
             if(areaCodesTable.getListTd().get(i).getText().equals(areaCodesData.getGroupName())){
-                indexTd = i;
+                int index = Math.round(i/ areaCodesTable.getListColumnHeader().size()) * 2;
+                areaCodesTable.getListOfActions().get(index).click();
                 break;
             }
         }
-        int index = Math.round(indexTd/ areaCodesTable.getListColumnHeader().size()) * 2;
-        areaCodesTable.getListOfActions().get(index).click();
-
     }
 
     public void clickDeleteIcon(AreaCodesData areaCodesData) {
-        int indexTd = 0;
         for (int i = 0; i < areaCodesTable.getListTd().size(); i++) {
             if(areaCodesTable.getListTd().get(i).getText().equals(areaCodesData.getGroupName())){
-                indexTd = i;
+                int index = (Math.round(i/ areaCodesTable.getListColumnHeader().size()) * 2) + 1;
+                scrollToElement(areaCodesTable.getListOfActions().get(index));
+                areaCodesTable.getListOfActions().get(index).click();
                 break;
             }
         }
-        int index = (Math.round(indexTd/ areaCodesTable.getListColumnHeader().size()) * 2) + 1;
-        scrollToElement(areaCodesTable.getListOfActions().get(index));
-        areaCodesTable.getListOfActions().get(index).click();
         waiting2seconds();
         areaCodesTable.getButtonDelete().click();
         waiting2seconds();

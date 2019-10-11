@@ -37,7 +37,7 @@ public class LocalStatesTests extends TestBase {
     @Test
     public void testSelectedStatesFromLocalIndexPage() {
         localIndexPage.open();
-        String nameState = "Florida";
+        String nameState = "Alabama";
         localIndexPage.chooseLocalState(nameState);
         localStateDetail.checkingSelectedStateFromStateIndexPage(nameState);
     }

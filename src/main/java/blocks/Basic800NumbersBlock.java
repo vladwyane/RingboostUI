@@ -22,8 +22,13 @@ import java.util.List;
 @Block(@FindBy(className = "without-status"))
 public class Basic800NumbersBlock extends HtmlElement {
 
-    @Name("ArrayList of local numbers")
+    @Name("ArrayList of numbers basic 800")
     @FindBys( {@FindBy(css = "li")} )
     public List<WebElement> listBasic800Numbers;
+
+    @Name("ArrayList of available numbers basic 800")
+    @FindBys( {@FindBy(xpath = "//ul[contains(@class, 'without-status')]//span[contains(@class, 'status') " +
+            "and (text()) = 'Available']/ancestor::li//div[@class='number']")} )
+    public List<WebElement> listAvailableBasic800Numbers;
 
 }

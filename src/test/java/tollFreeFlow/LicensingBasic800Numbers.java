@@ -41,7 +41,7 @@ public class LicensingBasic800Numbers extends TestBase {
     @Test
     public void orderBasic800Number() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
-        basicIndexPage.choose32thNumberFromBasic800List();
+        basicIndexPage.chooseFirstNumberFromBasic800List();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Business Pro");
         buyingBasic800Number.enterRingToNumber("8722413731");
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
@@ -68,7 +68,7 @@ public class LicensingBasic800Numbers extends TestBase {
     @Test
     public void orderBasic800NumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
-        basicIndexPage.chooseFirstNumberFromBasic800ListAfterLoadMore();
+        basicIndexPage.chooseFirstNumberFromBasic800List();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Starter");
         buyingBasic800Number.enterRingToNumber("0668843478");
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
@@ -82,7 +82,7 @@ public class LicensingBasic800Numbers extends TestBase {
     public void orderBasic800NumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("basic-numbers");
-        basicIndexPage.chooseLastNumberFromBasic800ListAfterLoadMore();
+        basicIndexPage.chooseFirstNumberFromBasic800List();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Business Pro");
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
@@ -95,7 +95,7 @@ public class LicensingBasic800Numbers extends TestBase {
     @Test
     public void orderBasic800NumberAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
-        basicIndexPage.chooseFirstNumberFromBasic800ListAfterLoadMore();
+        basicIndexPage.chooseFirstNumberFromBasic800List();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Starter");
         buyingBasic800Number.enterRingToNumber("0668843478");
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
@@ -108,7 +108,7 @@ public class LicensingBasic800Numbers extends TestBase {
     @Test
     public void orderBasic800NumberPaymentError() throws InterruptedException {
         basicIndexPage.open();
-        basicIndexPage.chooseFirstNumberFromBasic800ListAfterLoadMore();
+        basicIndexPage.chooseFirstNumberFromBasic800List();
         buyingBasic800Number.choosePickYourMonthlyPlan("Premium");
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
         buyingBasic800Number.getPriceActivationFee();

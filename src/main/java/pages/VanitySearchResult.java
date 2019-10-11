@@ -234,13 +234,15 @@ public class VanitySearchResult extends BasePage {
     public void checkingLoadMore () {
         waitUntilElementWillBeClickable(buttonMoreNumbers);
         scrollToElement(buttonMoreNumbers);
+        int before = regularVanityNumbersBlock.getListStatusNumbers().size();
         buttonMoreNumbers.click();
         waiting2seconds();
-        softAssert.assertTrue(regularVanityNumbersBlock.getListRegularVanityNumbers().size() > 32, "Load More is not working");
+        int after = regularVanityNumbersBlock.getListStatusNumbers().size();
+        softAssert.assertTrue( after > before, "Load More is not working");
         softAssert.assertAll();
     }
 
-    public void checkingStatusLicensedByImdex (int index) {
+    public void checkingStatusLicensedByIndex(int index) {
         waitUntilElementAppeared(premiumVanityNumbersBlock.getListStatusPremiumVanityNumbers().get(index));
         softAssert.assertEquals(premiumVanityNumbersBlock.getListStatusPremiumVanityNumbers().get(index).getText(), "Licensed");
         softAssert.assertAll();

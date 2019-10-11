@@ -2,9 +2,7 @@ package adminPanel.sprint_3_PricingTollFree;
 
 import data.PricingTollFreeSettings;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.*;
 import pages.admin.Admin;
 import pages.admin.Login;
@@ -40,18 +38,22 @@ public class CostPerMinute extends TestBase {
         buyingPremiumVanityNumber = new BuyingPremiumVanityNumber(app.getDriver());
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
+    }
+
+    @BeforeMethod
+    public void login() {
         login.open();
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
     public void test1SuccessCreatingNewCostPerMinute() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Cost Per Minute");
         pricingTollFreePage.clickAddPriceMinutesButton();
@@ -61,7 +63,7 @@ public class CostPerMinute extends TestBase {
 
     @Test
     public void test1ErrorCreatingNewCostPerMinuteAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Cost Per Minute");
         pricingTollFreePage.clickAddPriceMinutesButton();
@@ -92,7 +94,7 @@ public class CostPerMinute extends TestBase {
 
     @Test
     public void test3EditCostPerMinute() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Cost Per Minute");
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MINUTES_TEST);
@@ -102,7 +104,7 @@ public class CostPerMinute extends TestBase {
 
     @Test
     public void test4DeleteCostPerMinute() throws InterruptedException, IOException, JSONException {
-        login.open();
+       // login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Cost Per Minute");
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.MINUTES_UPDATE);

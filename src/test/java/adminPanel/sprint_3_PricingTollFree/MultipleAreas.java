@@ -2,9 +2,7 @@ package adminPanel.sprint_3_PricingTollFree;
 
 import data.PricingTollFreeSettings;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.*;
 import pages.admin.Admin;
 import pages.admin.Login;
@@ -17,7 +15,6 @@ import java.io.IOException;
  * Created by bigdrop on 10/7/2019.
  */
 public class MultipleAreas extends TestBase {
-
 
     private Login login;
     private Admin admin;
@@ -41,18 +38,22 @@ public class MultipleAreas extends TestBase {
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
         contactUsPage = new ContactUsPage(app.getDriver());
+    }
+
+    @BeforeMethod
+    public void login() {
         login.open();
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
     public void test1SuccessCreatingNewMultipleAreas() throws InterruptedException, IOException, JSONException {
-        login.open();
+       // login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Multiple Areas");
         pricingTollFreePage.clickAddPriceMultipleAreasButton();
@@ -62,7 +63,7 @@ public class MultipleAreas extends TestBase {
 
     @Test
     public void test1ErrorCreatingNewMultipleAreasAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
-        login.open();
+       // login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Multiple Areas");
         pricingTollFreePage.clickAddPriceMultipleAreasButton();
@@ -72,7 +73,7 @@ public class MultipleAreas extends TestBase {
 
     @Test
     public void test2ErrorCreatingNewMultipleAreasSameName() throws InterruptedException, IOException, JSONException {
-        login.open();
+       // login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Multiple Areas");
         pricingTollFreePage.clickAddPriceMultipleAreasButton();
@@ -81,27 +82,8 @@ public class MultipleAreas extends TestBase {
     }
 
     @Test
-    public void test3EditMultipleAreas() throws InterruptedException, IOException, JSONException {
-        login.open();
-        admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
-        pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MULTIPLE_AREA_TEST);
-        pricingTollFreePage.editMultipleAreas(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
-        pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
-    }
-
-    @Test
-    public void test4DeleteMultipleAreas() throws InterruptedException, IOException, JSONException {
-        login.open();
-        admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
-        pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
-        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
-    }
-
-    @Test
-    public void test5CheckingChosen3AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
-        login.open();
+    public void test3CheckingChosen3AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
+       // login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Multiple Areas");
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MULTIPLE_3_AREA);
@@ -117,7 +99,7 @@ public class MultipleAreas extends TestBase {
     }
 
     @Test
-    public void test6CheckingChosen4AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
+    public void test4CheckingChosen4AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers("4204ER5");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -129,7 +111,7 @@ public class MultipleAreas extends TestBase {
     }
 
     @Test
-    public void test6CheckingChosen2AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
+    public void test4CheckingChosen2AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers("4204ER5");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -141,12 +123,31 @@ public class MultipleAreas extends TestBase {
     }
 
     @Test
-    public void test7ReturnToDefaultState() throws InterruptedException, IOException, JSONException {
-        login.open();
+    public void test5ReturnToDefaultState() throws InterruptedException, IOException, JSONException {
+      //  login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickTab("Multiple Areas");
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MULTIPLE_3_AREA);
         pricingTollFreePage.editMultipleAreas(PricingTollFreeSettings.MULTIPLE_3_AREA);
+    }
+
+    @Test
+    public void test6EditMultipleAreas() throws InterruptedException, IOException, JSONException {
+        // login.open();
+        admin.clickPricingTollFreeLink();
+        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MULTIPLE_AREA_TEST);
+        pricingTollFreePage.editMultipleAreas(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
+        pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
+    }
+
+    @Test
+    public void test7DeleteMultipleAreas() throws InterruptedException, IOException, JSONException {
+        // login.open();
+        admin.clickPricingTollFreeLink();
+        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
+        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
     }
 
 }

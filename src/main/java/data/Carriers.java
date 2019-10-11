@@ -5,9 +5,9 @@ package data;
  */
 public enum Carriers {
 
-    VODAFONE ("Vodafone", "1", "135", "2", "2334", "3.14", "Comments"),
-    ALPHABET ("alphabet", "123", "1", "569", "1", "256.01", ""),
-    ABC ("ABC", "0.01", "0.01", "0.01", "0.01", "0.01", "Comments Comments Comments CommentsComments " +
+    TELEPHONE("Telephone", "1", "135", "2", "2334", "3.14", "Comments"),
+    RINGTONE("ringtone", "123", "1", "569", "1", "256.01", ""),
+    WEEK("WEEK", "0.01", "0.01", "0.01", "0.01", "0.01", "Comments Comments Comments CommentsComments " +
             "CommentsCommentsComments Comments Comments Comments CommentsComments Comments Comments Comments");
 
     private String carriers;

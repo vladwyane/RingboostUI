@@ -2,9 +2,7 @@ package adminPanel.sprint_3_PricingTollFree;
 
 import data.AreaCodesData;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.admin.Admin;
 import pages.admin.AreaCodesPage;
 import pages.admin.Login;
@@ -21,24 +19,27 @@ public class AreaCodes extends TestBase {
     private Admin admin;
     private AreaCodesPage areaCodesPage;
 
-
     @BeforeClass
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
         areaCodesPage = new AreaCodesPage(app.getDriver());
+    }
+
+    @BeforeMethod
+    public void login() {
         login.open();
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
 
     @Test
     public void test1SuccessAddingNewAreaCode() throws InterruptedException, IOException, JSONException {
-        login.open();
+  //      login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickAddAreaCodesButton();
@@ -48,7 +49,7 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test1ErrorAddingNewAreaCodeAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
-        login.open();
+ //       login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickAddAreaCodesButton();
@@ -58,7 +59,7 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test1ErrorAddingNewAreaCodeLessThan200() throws InterruptedException, IOException, JSONException {
-        login.open();
+       // login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickAddAreaCodesButton();
@@ -68,7 +69,7 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test1ErrorAddingNewAreaCodeMoreThan999() throws InterruptedException, IOException, JSONException {
-        login.open();
+     //   login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickAddAreaCodesButton();
@@ -78,7 +79,7 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test2ErrorAddingNewAreaCodeAlreadyUsed() throws InterruptedException, IOException, JSONException {
-        login.open();
+     //   login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickAddAreaCodesButton();
@@ -88,7 +89,7 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test3SuccessAddingNewBundleAreaCodes() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickAddAreaCodesButton();
@@ -98,7 +99,7 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test3SuccessEditAreaCodes() throws InterruptedException, IOException, JSONException {
-        login.open();
+       // login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickEditIcon(AreaCodesData.AREA_CODES_239);
@@ -108,7 +109,7 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test4ErrorAddingUsedBundleAreaCodes() throws InterruptedException, IOException, JSONException {
-        login.open();
+       // login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickAddAreaCodesButton();
@@ -118,7 +119,7 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test4ErrorEditBundleWithUsedAreaCodes() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickEditIcon(AreaCodesData.AREA_CODES_FLORIDA);
@@ -128,12 +129,11 @@ public class AreaCodes extends TestBase {
 
     @Test
     public void test5SuccessDeleteBundle() throws InterruptedException, IOException, JSONException {
-        areaCodesPage.open();
+        //  login.open();
+        admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Florida");
         areaCodesPage.clickDeleteIcon(AreaCodesData.AREA_CODES_FLORIDA);
         areaCodesPage.clickDeleteIcon(AreaCodesData.AREA_CODES_FLORIDA_UPDATE);
         areaCodesPage.checkingSuccessDeleted(AreaCodesData.AREA_CODES_FLORIDA_UPDATE);
     }
-
-
 }

@@ -45,7 +45,7 @@ public class VanityCategoryDetail extends BasePage {
                 return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
             }
         }
-        return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
+        return regularVanityNumbersBlock.getFullListRegularVanityNumbers().get(0).getText();
     }
 
     public String choosePrefixInSelect(String prefix) {
@@ -55,17 +55,17 @@ public class VanityCategoryDetail extends BasePage {
             if(vanityCategoryDetailBlock.getListOfPrefixInSelectDropDown().get(i).getText().equals(prefix)) {
                 vanityCategoryDetailBlock.getListOfPrefixInSelectDropDown().get(i).click();
                 waiting2seconds();
-                return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
+                return regularVanityNumbersBlock.getFullListRegularVanityNumbers().get(0).getText();
             }
         }
-        return regularVanityNumbersBlock.listRegularVanityNumbers.get(0).getText();
+        return regularVanityNumbersBlock.getFullListRegularVanityNumbers().get(0).getText();
     }
 
     public void checkingSelectedCategoryFromCategoryIndexPage(String nameCategory) {
         waitUntilElementAppeared(vanityCategoryDetailBlock.getTitleH1());
         softAssert.assertTrue(vanityCategoryDetailBlock.getTitleH1().getText().contains(nameCategory), "Title incorrect");
         softAssert.assertTrue(vanityCategoryDetailBlock.getSelectCategory().getText().toLowerCase().contains(nameCategory.toLowerCase()), "Category in select incorrect");
-        softAssert.assertNotEquals(regularVanityNumbersBlock.listRegularVanityNumbers.size(), 0, "Numbers are null");
+        softAssert.assertNotEquals(regularVanityNumbersBlock.getFullListRegularVanityNumbers().size(), 0, "Numbers are null");
         softAssert.assertAll();
     }
 
@@ -73,7 +73,7 @@ public class VanityCategoryDetail extends BasePage {
         softAssert.assertEquals(vanityCategoryDetailBlock.getTitleH1().getText(), "Vanity Phone Numbers");
         softAssert.assertTrue(isElementContainsAttributeValue(vanityCategoryDetailBlock.getPlaceholderSelectCategory(), "placeholder", "Category"), "Placeholder Category is absent");
         softAssert.assertTrue(isElementContainsAttributeValue(vanityCategoryDetailBlock.getPlaceholderSelectPrefix(), "placeholder", "Prefix"), "Placeholder Prefix is absent");
-        softAssert.assertNotEquals(regularVanityNumbersBlock.listRegularVanityNumbers.size(), 0, "Numbers are null");
+        softAssert.assertNotEquals(regularVanityNumbersBlock.getFullListRegularVanityNumbers().size(), 0, "Numbers are null");
         softAssert.assertTrue(isElementPresent(buttonMoreNumbers), "Load More is absent");
         softAssert.assertTrue(isElementPresent(vanityCategoryDetailBlock.getButtonClearAllFilters()), "Clear All is absent");
         softAssert.assertAll();
@@ -96,7 +96,7 @@ public class VanityCategoryDetail extends BasePage {
         waitUntilElementWillBeClickable(buttonMoreNumbers);
         buttonMoreNumbers.click();
         waiting2seconds();
-        softAssert.assertTrue(regularVanityNumbersBlock.getListRegularVanityNumbers().size() > 32, "Load More is not working");
+        softAssert.assertTrue(regularVanityNumbersBlock.getFullListRegularVanityNumbers().size() > 32, "Load More is not working");
         softAssert.assertAll();
     }
 

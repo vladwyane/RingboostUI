@@ -75,7 +75,7 @@ public class LocalStateDetail extends BasePage {
         waitUntilElementAppeared(localNumbersBlock);
         softAssert.assertTrue(titleH1.getText().contains(nameState), "Title incorrect");
         softAssert.assertTrue(filtersBlock.getSelectStates().getText().contains(nameState), "Category in select incorrect");
-        softAssert.assertNotEquals(localNumbersBlock.getListPricesLocalNumbers(), 0, "Numbers are null");
+        softAssert.assertNotEquals(localNumbersBlock.getListPricesLocalNumbers().size(), 0, "Numbers are null");
         softAssert.assertAll();
     }
 

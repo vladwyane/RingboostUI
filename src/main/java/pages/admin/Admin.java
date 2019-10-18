@@ -65,4 +65,9 @@ public class Admin extends BasePage {
         waitUntilElementAppeared(sidebarNavigation.getAreaCodesLink());
         sidebarNavigation.getAreaCodesLink().click();
     }
+
+    public void clickOwnersLink() {
+        waitUntilElementAppeared(sidebarNavigation.getOwnersLink());
+        sidebarNavigation.getOwnersLink().click();
+    }
 }

@@ -4,6 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
+import pages.admin.Login;
 import testBase.TestBase;
 
 import java.io.IOException;
@@ -14,11 +15,12 @@ import java.io.IOException;
 public class TestBallet extends TestBase {
 
     private HomePage homePage;
-
+    private Login login;
 
     @BeforeMethod
     public void initPageObjects() {
         homePage = new HomePage(app.getDriver());
+        login = new Login(app.getDriver());
     }
 
 
@@ -62,6 +64,22 @@ public class TestBallet extends TestBase {
         app.getDriver().findElement(By.id("manufacturer")).sendKeys("1");
         app.getDriver().findElement(By.id("model_number")).sendKeys("1");
         app.getDriver().findElement(By.xpath("//button[contains(text(), 'Send Your Request')]")).click();
+
+    }
+
+    @Test
+    public void test4() throws InterruptedException, IOException, JSONException {
+        app.getDriver().navigate().to("http://www.toledorocket.com/perftest/uploadtest/fileselect.asp");
+        app.getDriver().findElement(By.name("FILE1")).sendKeys("F:\\projects\\RingboostUI\\src\\main\\resources\\ordersDetail.json");
+
+    }
+
+    @Test
+    public void test5() throws InterruptedException, IOException, JSONException {
+        login.open();
+        login.fillLoginForm();
+        app.getDriver().navigate().to("https://ringboost-dev.bigdropinc.net/admin/owners/5");
+        app.getDriver().findElement(By.xpath("//input[@type='file']")).sendKeys("F:\\projects\\RingboostUI\\src\\main\\resources\\ordersDetail.json");
 
     }
 }

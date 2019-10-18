@@ -96,7 +96,7 @@ public class TermPremium extends TestBase {
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose5000MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 

@@ -197,6 +197,7 @@ public class AreaCodesPage extends BasePage {
     }
 
     public void clickDeleteIcon(AreaCodesData areaCodesData) {
+        waiting2seconds();
         for (int i = 0; i < areaCodesTable.getListTd().size(); i++) {
             if(areaCodesTable.getListTd().get(i).getText().equals(areaCodesData.getGroupName())){
                 int index = (Math.round(i/ areaCodesTable.getListColumnHeader().size()) * 2) + 1;

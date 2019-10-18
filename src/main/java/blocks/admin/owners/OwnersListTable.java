@@ -25,12 +25,12 @@ public class OwnersListTable extends HtmlElement {
     @FindBy(xpath = "//input[@aria-label='Search']")
     private TextInput searchField;
 
-    @FindBy(xpath = "//div[contains(text(), 'Add Carrier')]")
-    private WebElement buttonAddCarrier;
+    @FindBy(xpath = "//div[contains(text(), 'Add a New Owner')]")
+    private WebElement buttonAddNewOwner;
 
     @Name("List of active actions")
-    @FindBys( {@FindBy(xpath = "//td/button[contains(@class, 'v-btn--icon') and not(contains(@disabled, 'disabled'))]")} )
-    private List<WebElement> listOfActionsCarriers;
+    @FindBys( {@FindBy(css = "td .v-btn--icon")} )
+    private List<WebElement> listOfActionsOwners;
 
     @Name("List of column header")
     @FindBys( {@FindBy(xpath = "//th[@role='columnheader']")} )

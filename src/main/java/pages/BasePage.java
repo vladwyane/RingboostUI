@@ -47,6 +47,10 @@ public abstract class BasePage {
     @FindBy(css = "h1")
     WebElement titleH1;
 
+    public void refreshPage() {
+        driver.navigate().refresh();
+    }
+
     public void checkingCorrectlyHeadingH1(String headingH1) {
         waitUntilElementAppeared(titleH1);
         softAssert.assertEquals(titleH1.getText(), headingH1);

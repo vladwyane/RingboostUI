@@ -118,13 +118,28 @@ public class BuyingLocalPortNumbers extends TestBase {
     @Test
     public void orderLocalPortNumberWithoutPickPlan() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers(searchRequest);
+        localIndexPage.searchLocalNumbers("");
         localSearchResult.chooseFirstNumberFromLocalNumbersList();
         double priceNumber = buyingLocalNumber.getPriceNumber();
         double pricePlan = 0.0;
         buyingLocalNumber.clickLinkContinueToCheckout();
         checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchasePortNumber(priceNumber, pricePlan);
+    }
+
+    @Test
+    public void checkingCorrectInfoOnCheckoutSidebarLocalPortNumberWithoutPickPlan() throws InterruptedException, IOException, JSONException {
+        localIndexPage.open();
+        localIndexPage.searchLocalNumbers("");
+        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        double priceNumberFirst = buyingLocalNumber.getPriceNumber();
+        buyingLocalNumber.clickLinkContinueToCheckout();
+        localIndexPage.open();
+        localIndexPage.searchLocalNumbers("");
+        localSearchResult.chooseLastNumberFromLocalNumbersList();
+        double priceNumberLast = buyingLocalNumber.getPriceNumber();
+        buyingLocalNumber.clickLinkContinueToCheckout();
+        checkout.checkingCorrectInfoInSidebar(priceNumberFirst, priceNumberLast);
     }
 
     @Test

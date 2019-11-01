@@ -5,8 +5,9 @@ package data;
  */
 public enum OwnersData {
 
-    VLADYSLAV("bigdrop", "Vladyslav Chesalov", "0669948723", "vladyslav.chesalov+2@bigdropinc.com", "20"),
-    JAMES("company", "Lebron James", "0669948721", "vladyslav.chesalov+1@bigdropinc.com", "1");
+    VLADYSLAV("bigdrop", "Vladyslav Chesalov", "0669948723", "vladyslav.chesalov+1@bigdropinc.com", "20"),
+    JAMES("Lakers", "Lebron James", "0669948721", "lebron.james+1@bigdropinc.com", "1"),
+    RAY("Sony", "Ray Allen", "0669948712", "ray.allen+1@bigdropinc.com", "99");
 
     private String company;
     private String contactName;

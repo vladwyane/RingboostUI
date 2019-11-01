@@ -2,6 +2,7 @@ package pages;
 
 import blocks.CheckoutSidebar;
 import blocks.CheckoutSteps;
+import blocks.ModalTextAgreement;
 import data.CreditCards;
 import data.Users;
 import org.openqa.selenium.By;
@@ -18,6 +19,7 @@ public class Checkout extends BasePage{
 
     private CheckoutSteps checkoutSteps;
     private CheckoutSidebar checkoutSidebar;
+    private ModalTextAgreement modalTextAgreement;
 
     @Override
     public void open() {
@@ -126,6 +128,20 @@ public class Checkout extends BasePage{
     public void checkingPaymentError() {
         waitUntilElementAppeared(checkoutSteps.getPaymentError());
         softAssert.assertTrue(isElementPresent(checkoutSteps.getPaymentError()), "Error message is absent");
+        softAssert.assertAll();
+    }
+
+    public void checkingCorrectTollfreeAgreement(String customAgreement) {
+        waitUntilElementAppeared(modalTextAgreement.getModalContent());
+        softAssert.assertEquals(modalTextAgreement.getModalContent(), customAgreement);
+        softAssert.assertAll();
+    }
+
+    public void checkingCorrectInfoInSidebar(double priceNumberFirst, double priceNumberLast) {
+        waitUntilElementAppeared(checkoutSidebar.getPriceTotalDueToday());
+        double priceInSidebar = Double.parseDouble(getNumbersFromString(checkoutSidebar.getPriceTotalDueToday().getText().replaceAll(",","")));
+        softAssert.assertNotEquals(priceNumberFirst, priceNumberLast);
+        softAssert.assertEquals(priceNumberLast, priceInSidebar);
         softAssert.assertAll();
     }
 }

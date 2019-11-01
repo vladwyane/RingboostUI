@@ -67,12 +67,47 @@ public class Owners extends TestBase {
         admin.clickOwnersLink();
         ownersListingPage.searchOwner(OwnersData.JAMES.getEmail());
         ownersListingPage.clickEditIconFirstOwner();
-        ownerDetailPage.fillNotes("NotesText");
-        ownerDetailPage.clickCheckboxActiveAgreement();
-        ownerDetailPage.fillAgreementText("Agreement text");
+        ownerDetailPage.clickTab("Files");
         ownerDetailPage.clickAddFileButton();
-        ownerDetailPage.addFile("17");
-        ownerDetailPage.clickSaveButton();
+        ownerDetailPage.addFile1("17");
+        ownerDetailPage.clickAddFileButton();
+        ownerDetailPage.addFile2("21");
+        ownerDetailPage.checkingAddedMoreThan2Files();
+    }
+
+    @Test
+    public void test4CheckingCorrectNameFileOnListingPage() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickOwnersLink();
+        ownersListingPage.searchOwner(OwnersData.JAMES.getEmail());
+        ownersListingPage.clickEditIconFirstOwner();
+        ownerDetailPage.clickTab("Files");
+        String nameLastAddedFile = ownerDetailPage.getNameLastFile();
+        admin.clickOwnersLink();
+        ownersListingPage.searchOwner(OwnersData.JAMES.getEmail());
+        ownersListingPage.checkingCorrectNameFile(nameLastAddedFile);
+    }
+
+    @Test
+    public void test4CorrectFilledNotesField() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickOwnersLink();
+        ownersListingPage.searchOwner(OwnersData.JAMES.getEmail());
+        ownersListingPage.clickEditIconFirstOwner();
+        ownerDetailPage.fillNotes("New comment");
+        ownerDetailPage.checkingSuccessAlertMessage();
+    }
+
+    @Test
+    public void test4ActivateCustomAgreement() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickOwnersLink();
+        ownersListingPage.searchOwner(OwnersData.JAMES.getEmail());
+        ownersListingPage.clickEditIconFirstOwner();
+        ownerDetailPage.clickCheckboxActiveAgreement();
+        ownerDetailPage.fillAgreementText("Custom Agreement");
+        ownerDetailPage.refreshPage();
+        ownerDetailPage.checkingCorrectFilledCustomAgreement("Custom Agreement");
     }
 
     @Test
@@ -87,12 +122,13 @@ public class Owners extends TestBase {
     }
 
     @Test
-    public void test5EditButton() throws InterruptedException, IOException, JSONException {
+    public void test5EditSaveFunctional() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickOwnersLink();
         ownersListingPage.searchOwner(OwnersData.JAMES.getEmail());
         ownersListingPage.clickEditIconFirstOwner();
-        ownersListingPage.editOwnerInfo(OwnersData.VLADYSLAV);
+        ownerDetailPage.editOwnerInfo(OwnersData.VLADYSLAV);
+        admin.clickOwnersLink();
         ownersListingPage.searchOwner(OwnersData.VLADYSLAV.getEmail());
         ownersListingPage.checkingEmailFirstOwner(OwnersData.VLADYSLAV);
     }
@@ -105,7 +141,5 @@ public class Owners extends TestBase {
         ownersListingPage.clickDeleteIconFirstOwner();
         ownersListingPage.checkingSuccessDeleted();
     }
-
-
 
 }

@@ -74,6 +74,9 @@ public class CheckoutSteps extends HtmlElement {
     @FindBy(xpath= "//*[@class='agreementList']//span[contains(text(),'I agree to the terms')]")
     private WebElement checkboxIAgreeToTheTerms;
 
+    @FindBy(xpath= "//*[@class='agreementList']//span[contains(text(),'I agree to the terms')]/a")
+    private WebElement linkTollFreeAgreement;
+
     @FindBy(xpath= "//*[@class='agreementList']//span[contains(text(),'I would like to receive email')]")
     private WebElement checkboxIWouldLikeReceiveEmail;
 

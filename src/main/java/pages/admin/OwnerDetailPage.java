@@ -2,6 +2,8 @@ package pages.admin;
 
 import blocks.admin.owners.AddFilePopup;
 import blocks.admin.owners.NewOwnerPopup;
+import data.OwnersData;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,8 +41,8 @@ public class OwnerDetailPage extends BasePage {
     @FindBy(xpath = "//div[@data-placeholder='Insert text here ...']")
     private WebElement editorAgreement;
 
-    @FindBy(xpath = "//input[@aria-label='Default agreement']//following-sibling::div[1]")
-    private WebElement checkboxActiveAgreement;
+    @FindBy(xpath = "//form//input[@type='checkbox']/ancestor::div[1]/following-sibling::label")
+    private WebElement labelCheckboxAgreement;
 
     @FindBy(xpath = "//div[contains(text(), 'Add file')]")
     private WebElement buttonAddFile;
@@ -48,18 +50,72 @@ public class OwnerDetailPage extends BasePage {
     @FindBy(xpath = "//div[contains(text(), 'Save')]")
     private WebElement buttonSave;
 
+    @FindBy(css = ".v-alert.success")
+    private WebElement successAlert;
+
+    @Name("List of tabs")
+    @FindBys( {@FindBy(css = ".v-tabs__div a")} )
+    private List<WebElement> listOfTabs;
+
+    public void clickTab(String tabName) {
+        waitUntilElementAppeared(listOfTabs.get(0));
+        for(WebElement element : listOfTabs) {
+            if (element.getText().equals(tabName.toUpperCase())) {
+                element.click();
+                return;
+            }
+        }
+        listOfTabs.get(0).click();
+    }
+
+    public void editOwnerInfo(OwnersData ownersData) {
+        fillEditOwnerForm(ownersData);
+        waitUntilElementWillBeClickable(buttonSave);
+        scrollToElement(buttonSave);
+        buttonSave.click();
+    }
+
+    public void fillEditOwnerForm(OwnersData ownersData) {
+        waitUntilElementAppeared(newOwnerPopup.getButtonSave());
+        newOwnerPopup.getCompanyField().sendKeys(Keys.CONTROL + "a");
+        newOwnerPopup.getCompanyField().sendKeys(Keys.DELETE);
+        newOwnerPopup.getContactNameField().sendKeys(Keys.CONTROL + "a");
+        newOwnerPopup.getContactNameField().sendKeys(Keys.DELETE);
+        newOwnerPopup.getPhoneField().sendKeys(Keys.CONTROL + "a");
+        newOwnerPopup.getPhoneField().sendKeys(Keys.DELETE);
+        newOwnerPopup.getEmailField().sendKeys(Keys.CONTROL + "a");
+        newOwnerPopup.getEmailField().sendKeys(Keys.DELETE);
+        newOwnerPopup.getCommissionField().sendKeys(Keys.CONTROL + "a");
+        newOwnerPopup.getCommissionField().sendKeys(Keys.DELETE);
+        type(newOwnerPopup.getCompanyField(), ownersData.getCompany());
+        type(newOwnerPopup.getContactNameField(), ownersData.getContactName());
+        type(newOwnerPopup.getPhoneField(), ownersData.getPhone());
+        type(newOwnerPopup.getEmailField(), ownersData.getEmail());
+        type(newOwnerPopup.getCommissionField(), ownersData.getCommission());
+    }
+
     public void clickAddFileButton() {
         waitUntilElementAppeared(buttonAddFile);
         scrollToElement(buttonAddFile);
         buttonAddFile.click();
     }
 
-    public void addFile(String contractDate) {
+    public void addFile1(String contractDate) {
         waitUntilElementAppeared(addFilePopup.getButtonSaveFile());
         addFilePopup.getUploadFile().sendKeys("F:\\projects\\RingboostUI\\src\\main\\resources\\ordersDetail.json");
         chooseDateFromDatePicker(contractDate);
         waitUntilElementWillBeClickable(addFilePopup.getButtonSaveFile());
         addFilePopup.getButtonSaveFile().click();
+        waiting2seconds();
+    }
+
+    public void addFile2(String contractDate) {
+        waitUntilElementAppeared(addFilePopup.getButtonSaveFile());
+        addFilePopup.getUploadFile().sendKeys("F:\\projects\\RingboostUI\\src\\main\\resources\\TestAgreement");
+        chooseDateFromDatePicker(contractDate);
+        waitUntilElementWillBeClickable(addFilePopup.getButtonSaveFile());
+        addFilePopup.getButtonSaveFile().click();
+        waiting2seconds();
     }
 
     public void chooseDateFromDatePicker(String data) {
@@ -73,21 +129,24 @@ public class OwnerDetailPage extends BasePage {
     }
 
     public void clickCheckboxActiveAgreement() {
-        waitUntilElementAppeared(checkboxActiveAgreement);
-        waitUntilElementWillBeClickable(checkboxActiveAgreement);
-        checkboxActiveAgreement.click();
+        waitUntilElementAppeared(labelCheckboxAgreement);
+        waitUntilElementWillBeClickable(labelCheckboxAgreement);
+        labelCheckboxAgreement.click();
     }
 
     public void fillNotes(String text) {
         waiting2seconds();
         type(notes, text);
+        scrollToElement(buttonSave);
+        buttonSave.click();
     }
 
     public void fillAgreementText(String agreementText) throws InterruptedException {
         waiting2seconds();
         scrollToElement(editorAgreement);
         sendKeysSlowly(editorAgreement, agreementText);
-        waitUntilElementAppeared(newOwnerPopup.getButtonSave());
+        scrollToElement(buttonSave);
+        buttonSave.click();
     }
 
     public void clickSaveButton() {
@@ -97,5 +156,34 @@ public class OwnerDetailPage extends BasePage {
         newOwnerPopup.getButtonSave().click();
         waiting2seconds();
     }
+
+    public String getNameLastFile() {
+        waitUntilElementAppeared(buttonAddFile);
+        waitUntilElementWillBeClickable(buttonAddFile);
+        return listTdFile.get(listTdFile.size() - 3).getText();
+    }
+
+    public void checkingAddedMoreThan2Files() {
+        waitUntilElementAppeared(buttonAddFile);
+        waitUntilElementWillBeClickable(buttonAddFile);
+        softAssert.assertTrue(listTdFile.size() > 3, "Amount of files less 2");
+        softAssert.assertAll();
+    }
+
+    public void checkingCorrectFilledCustomAgreement(String agreement) {
+        waitUntilElementAppeared(buttonAddFile);
+        waitUntilElementWillBeClickable(buttonAddFile);
+        softAssert.assertEquals(editorAgreement.getText(), agreement);
+        softAssert.assertEquals("Owner's agreement", labelCheckboxAgreement.getText());
+        softAssert.assertAll();
+    }
+
+    public void checkingSuccessAlertMessage() {
+        waitUntilElementAppeared(successAlert);
+        boolean result = isElementContainsAttributeValue(successAlert, "style", "display");
+        softAssert.assertFalse(result);
+        softAssert.assertAll();
+    }
+
 
 }

@@ -53,35 +53,9 @@ public class OwnersListingPage extends BasePage {
         type(newOwnerPopup.getCommissionField(), ownersData.getCommission());
     }
 
-    public void fillEditOwnerForm(OwnersData ownersData) {
-        waitUntilElementAppeared(newOwnerPopup.getButtonSave());
-        newOwnerPopup.getCompanyField().sendKeys(Keys.CONTROL + "a");
-        newOwnerPopup.getCompanyField().sendKeys(Keys.DELETE);
-        newOwnerPopup.getContactNameField().sendKeys(Keys.CONTROL + "a");
-        newOwnerPopup.getContactNameField().sendKeys(Keys.DELETE);
-        newOwnerPopup.getPhoneField().sendKeys(Keys.CONTROL + "a");
-        newOwnerPopup.getPhoneField().sendKeys(Keys.DELETE);
-        newOwnerPopup.getEmailField().sendKeys(Keys.CONTROL + "a");
-        newOwnerPopup.getEmailField().sendKeys(Keys.DELETE);
-        newOwnerPopup.getCommissionField().sendKeys(Keys.CONTROL + "a");
-        newOwnerPopup.getCommissionField().sendKeys(Keys.DELETE);
-        type(newOwnerPopup.getCompanyField(), ownersData.getCompany());
-        type(newOwnerPopup.getContactNameField(), ownersData.getContactName());
-        type(newOwnerPopup.getPhoneField(), ownersData.getPhone());
-        type(newOwnerPopup.getEmailField(), ownersData.getEmail());
-        type(newOwnerPopup.getCommissionField(), ownersData.getCommission());
-    }
-
     public void createNewOwner(OwnersData ownersData) {
         fillNewOwnerForm(ownersData);
         waitUntilElementWillBeClickable(newOwnerPopup.getButtonSave());
-        newOwnerPopup.getButtonSave().click();
-    }
-
-    public void editOwnerInfo(OwnersData ownersData) {
-        fillEditOwnerForm(ownersData);
-        waitUntilElementWillBeClickable(newOwnerPopup.getButtonSave());
-        scrollToElement(newOwnerPopup.getButtonSave());
         newOwnerPopup.getButtonSave().click();
     }
 
@@ -160,6 +134,20 @@ public class OwnersListingPage extends BasePage {
         boolean result = isElementContainsAttributeValue(ownersListTable.getSuccessAlert(), "style", "display");;
         softAssert.assertFalse(result);
         softAssert.assertEquals(ownersListTable.getListTd().get(0).getText(), "No matching records found");
+        softAssert.assertAll();
+    }
+
+    public void checkingCorrectNameFile(String nameLastAddedFile) {
+        waitUntilElementAppeared(ownersListTable.getButtonAddNewOwner());
+        waitUntilElementWillBeClickable(ownersListTable.getButtonAddNewOwner());
+        int index = 0;
+        for (int i = 0; i < ownersListTable.getListColumnHeader().size(); i++) {
+            if(ownersListTable.getListColumnHeader().get(i).getText().contains("Files")){
+                index = i;
+                break;
+            }
+        }
+        softAssert.assertEquals(ownersListTable.getListTd().get(index).getText(), nameLastAddedFile);
         softAssert.assertAll();
     }
 

@@ -51,5 +51,9 @@ public class SidebarNavigation extends HtmlElement{
     @FindBy(xpath = "//a[@href='/admin/owners']")
     private WebElement ownersLink;
 
+    @FindBy(xpath = "//a[@href='/admin/pricing/price-matrix']")
+    private WebElement priceMatrixLink;
+
+
     
 }

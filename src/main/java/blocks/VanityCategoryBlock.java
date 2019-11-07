@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBys;
 import ru.yandex.qatools.htmlelements.annotations.Block;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
-import sun.plugin.dom.html.HTMLElement;
 
 import java.util.List;
 

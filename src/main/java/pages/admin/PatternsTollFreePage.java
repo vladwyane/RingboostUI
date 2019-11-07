@@ -93,6 +93,11 @@ public class PatternsTollFreePage extends BasePage {
         chooseCategory(patternsData.getCategory());
     }
 
+    public void fillNewPatternFormOnlyName(PatternsData patternsData) {
+        waitUntilElementAppeared(newPatternsPopup.getButtonAddPattern());
+        type(newPatternsPopup.getPatternNameField(), patternsData.getNamePatterns());
+    }
+
     public void createNewPattern(PatternsData patternsData) {
         fillNewPatternForm(patternsData);
         waitUntilElementWillBeClickable(newPatternsPopup.getButtonAddPattern());
@@ -116,7 +121,7 @@ public class PatternsTollFreePage extends BasePage {
     public void clickDeleteIconFirstPattern() {
         waitUntilElementAppeared(patternsTable.getListOfActions().get(1));
         waitUntilElementWillBeClickable(patternsTable.getListOfActions().get(1));
-        patternsTable.getListOfActions().get(1).click();
+        patternsTable.getListOfActions().get(0).click();
         waiting2seconds();
         patternsTable.getButtonDelete().click();
         waiting2seconds();
@@ -151,7 +156,14 @@ public class PatternsTollFreePage extends BasePage {
     public void checkingErrorMessagesNameHasBeenUsed() {
         waitUntilElementAppeared(newPatternsPopup.getButtonAddPattern());
         waiting2seconds();
-        softAssert.assertEquals(newPatternsPopup.getListOfErrorMessage().get(0).getText(), "The category id has already been taken.");
+        softAssert.assertEquals(newPatternsPopup.getListOfErrorMessage().get(1).getText(), "The pattern has already been taken.");
+        softAssert.assertAll();
+    }
+
+    public void checkingErrorMessagesCategoryFieldIsRequired() {
+        waitUntilElementAppeared(newPatternsPopup.getButtonAddPattern());
+        waiting2seconds();
+        softAssert.assertEquals(newPatternsPopup.getListOfErrorMessage().get(0).getText(), "The category id field is required.");
         softAssert.assertAll();
     }
 

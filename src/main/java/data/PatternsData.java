@@ -6,7 +6,10 @@ package data;
 public enum PatternsData {
 
     QUALITY("Vladik", "word", "vanity", "Top 6 Digit"),
-    VANITY("Vanity", "word", "vanity", "Vanity");
+    RED_BULL_BASIC800("Red-Bull", "word", "basic800", "Top 6 Digit"),
+    RED_BULL_EASY_DIAL("Red-Bull", "word", "easy_dial", "Top 6 Digit"),
+    RED_BULL_ACCIDENT("Red-Bull", "word", "vanity", "Accident"),
+    RED_BULL_MUSIC("Red-Bull", "word", "vanity", "Music");
 
     private String namePatterns;
     private String typePattern;

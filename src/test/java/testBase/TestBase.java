@@ -3,10 +3,7 @@ package testBase;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.ITestContext;
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 
 /**
  * Created by bigdrop on 3/14/2019.

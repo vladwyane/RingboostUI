@@ -25,20 +25,27 @@ public class NewLocalTierPopup extends HtmlElement {
     @FindBy(xpath = "//input[@name='tier']")
     private TextInput tierField;
 
-    @FindBy(xpath = "//input[@name='level']")
-    private TextInput levelField;
+    @FindBy(xpath = "//input[@aria-label='Premium']")
+    private TextInput premiumPriceField;
 
-    @FindBy(xpath = "//input[@name='price']")
-    private TextInput priceField;
+    @FindBy(xpath = "//input[@aria-label='Pattern']")
+    private TextInput patternPriceField;
 
-    @FindBy(xpath = "//div[contains(@class, 'v-dialog--active')]//label[contains(text(), 'Call For Price')]")
-    private WebElement callForPriceCheckbox;
+    @FindBy(xpath = "//input[@aria-label='Random']")
+    private TextInput randomPriceField;
+
+    @Name("List of call for price checkbox")
+    @FindBys( {@FindBy(xpath = "//label[contains(text(), 'call for price')]")} )
+    private List<WebElement> listCallForPriceCheckbox;
 
     @FindBy(xpath = "//div[contains(text(), 'Cancel')]")
     private WebElement buttonCancel;
 
     @FindBy(xpath = "//div[contains(text(), 'Save')]")
     private WebElement buttonSave;
+
+    @FindBy(xpath = "//div[contains(text(), 'Phone categories')]/ancestor::div[@class='v-input__control']//div[@class='v-select__slot']")
+    private WebElement selectCategory;
 
     @Name("List of error message")
     @FindBys( {@FindBy(css = ".error-message")} )

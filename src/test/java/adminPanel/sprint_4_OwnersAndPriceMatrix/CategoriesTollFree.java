@@ -2,9 +2,7 @@ package adminPanel.sprint_4_OwnersAndPriceMatrix;
 
 import data.CategoriesData;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.admin.CategoryTollFree;
 import pages.admin.Login;
 import testBase.TestBase;
@@ -20,7 +18,7 @@ public class CategoriesTollFree extends TestBase {
     private CategoryTollFree categoryTollFree;
 
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         categoryTollFree = new CategoryTollFree(app.getDriver());
@@ -28,7 +26,7 @@ public class CategoriesTollFree extends TestBase {
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }

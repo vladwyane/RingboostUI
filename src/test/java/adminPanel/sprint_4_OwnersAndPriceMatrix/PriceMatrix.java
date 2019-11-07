@@ -38,7 +38,7 @@ public class PriceMatrix extends TestBase {
         login.open();
         admin.clickPriceMatrixLink();
         priceMatrixPage.clickAddPhoneTierButton();
-        priceMatrixPage.createNewLocalTier("V", "1", "99.9", true);
+        priceMatrixPage.createNewLocalTier("V", "1000", "99.9", "11", false);
         priceMatrixPage.checkingSuccessAlertMessage();
     }
 
@@ -52,11 +52,19 @@ public class PriceMatrix extends TestBase {
     }
 
     @Test
-    public void test2ErrorCreatingNewLocalTierSameLevel() throws InterruptedException, IOException, JSONException {
+    public void test1AbsentSelectCategoryInNewLocalTierPopup() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickPriceMatrixLink();
         priceMatrixPage.clickAddPhoneTierButton();
-        priceMatrixPage.createNewLocalTier("V", "1", "99.9", false);
+        priceMatrixPage.checkingAbsentCategorySelect();
+    }
+
+    @Test
+    public void test2ErrorCreatingNewLocalTierSameName() throws InterruptedException, IOException, JSONException {
+        login.open();
+        admin.clickPriceMatrixLink();
+        priceMatrixPage.clickAddPhoneTierButton();
+        priceMatrixPage.createNewLocalTier("V", "1000", "99.9", "11", false);
         priceMatrixPage.checkingErrorMessagesLevelAlreadyUsed();
     }
 
@@ -64,24 +72,24 @@ public class PriceMatrix extends TestBase {
     public void test3EditLocalTier() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickPriceMatrixLink();
-        priceMatrixPage.clickEditIcon("V", "1");
-        priceMatrixPage.editTier("P", "2");
-        priceMatrixPage.checkingSuccessEditNewTier("P", "2");
+        priceMatrixPage.clickEditIcon("V");
+        priceMatrixPage.editTier("Vlad", true);
+        priceMatrixPage.checkingSuccessEditNewTier("Vlad");
     }
 
     @Test
-    public void test4CheckingCallForPriceYesForLocalTier() throws InterruptedException, IOException, JSONException {
+    public void test4PresentSelectCategoryInEditTierPopup() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickPriceMatrixLink();
-        priceMatrixPage.clickTierOpenClose("P");
-        priceMatrixPage.checkingSuccessChangingCallForPrice("yes");
+        priceMatrixPage.clickEditIcon("Vlad");
+        priceMatrixPage.checkingPresentCategorySelect();
     }
 
     @Test
     public void test5DeleteLocalTier() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickPriceMatrixLink();
-        priceMatrixPage.clickDeleteIcon("P", "2");
+        priceMatrixPage.clickDeleteIcon("Vlad");
         priceMatrixPage.checkingSuccessDeleted();
     }
 }

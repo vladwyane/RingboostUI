@@ -1,12 +1,8 @@
 package adminPanel.sprint_4_OwnersAndPriceMatrix;
 
-import data.CategoriesData;
 import data.PatternsData;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import pages.admin.CategoryLocal;
+import org.testng.annotations.*;
 import pages.admin.Login;
 import pages.admin.PatternsLocalPage;
 import testBase.TestBase;
@@ -22,7 +18,7 @@ public class PatternsLocal extends TestBase{
     private PatternsLocalPage patternsLocalPage;
 
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         patternsLocalPage = new PatternsLocalPage(app.getDriver());
@@ -30,7 +26,7 @@ public class PatternsLocal extends TestBase{
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
@@ -57,6 +53,15 @@ public class PatternsLocal extends TestBase{
         patternsLocalPage.clickAddNewPatternButton();
         patternsLocalPage.createNewPattern(PatternsData.QUALITY);
         patternsLocalPage.checkingErrorMessagesNameHasBeenUsed();
+    }
+
+    @Test
+    public void test2ErrorCreateNewPatternOnlyName() throws InterruptedException, IOException, JSONException {
+        patternsLocalPage.open();
+        patternsLocalPage.clickAddNewPatternButton();
+        patternsLocalPage.fillNewPatternFormOnlyName(PatternsData.RED_BULL_ACCIDENT);
+        patternsLocalPage.clickAddPatternButton();
+        patternsLocalPage.checkingErrorMessagesCategoryFieldIsRequired();
     }
 
     @Test
@@ -121,7 +126,6 @@ public class PatternsLocal extends TestBase{
         patternsLocalPage.open();
         patternsLocalPage.searchPattern(PatternsData.QUALITY.getNamePatterns());
         patternsLocalPage.clickDeleteIconFirstPattern();
-        patternsLocalPage.checkingNameFirstPattern(PatternsData.QUALITY);
         patternsLocalPage.checkingSuccessDeleted();
     }
 }

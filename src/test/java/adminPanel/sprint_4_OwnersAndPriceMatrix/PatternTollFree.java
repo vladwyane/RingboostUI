@@ -2,11 +2,8 @@ package adminPanel.sprint_4_OwnersAndPriceMatrix;
 
 import data.PatternsData;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.admin.Login;
-import pages.admin.PatternsLocalPage;
 import pages.admin.PatternsTollFreePage;
 import testBase.TestBase;
 
@@ -20,7 +17,7 @@ public class PatternTollFree extends TestBase {
     private Login login;
     private PatternsTollFreePage patternsTollFreePage;
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         patternsTollFreePage = new PatternsTollFreePage(app.getDriver());
@@ -28,7 +25,7 @@ public class PatternTollFree extends TestBase {
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
@@ -37,7 +34,7 @@ public class PatternTollFree extends TestBase {
     public void test1SuccessCreateNewPattern() throws InterruptedException, IOException, JSONException {
         patternsTollFreePage.open();
         patternsTollFreePage.clickAddNewPatternButton();
-        patternsTollFreePage.createNewPattern(PatternsData.VANITY);
+        patternsTollFreePage.createNewPattern(PatternsData.RED_BULL_MUSIC);
         patternsTollFreePage.checkingSuccessAlertMessage();
     }
 
@@ -53,15 +50,32 @@ public class PatternTollFree extends TestBase {
     public void test2ErrorCreateNewPatternSameName() throws InterruptedException, IOException, JSONException {
         patternsTollFreePage.open();
         patternsTollFreePage.clickAddNewPatternButton();
-        patternsTollFreePage.createNewPattern(PatternsData.VANITY);
+        patternsTollFreePage.createNewPattern(PatternsData.RED_BULL_ACCIDENT);
         patternsTollFreePage.checkingErrorMessagesNameHasBeenUsed();
+    }
+
+    @Test
+    public void test2ErrorCreateNewPatternOnlyName() throws InterruptedException, IOException, JSONException {
+        patternsTollFreePage.open();
+        patternsTollFreePage.clickAddNewPatternButton();
+        patternsTollFreePage.fillNewPatternFormOnlyName(PatternsData.RED_BULL_ACCIDENT);
+        patternsTollFreePage.clickAddPatternButton();
+        patternsTollFreePage.checkingErrorMessagesCategoryFieldIsRequired();
+    }
+
+    @Test
+    public void test2SuccessCreateNewPatternSameNameButDifferentType() throws InterruptedException, IOException, JSONException {
+        patternsTollFreePage.open();
+        patternsTollFreePage.clickAddNewPatternButton();
+        patternsTollFreePage.createNewPattern(PatternsData.RED_BULL_EASY_DIAL);
+        patternsTollFreePage.checkingSuccessAlertMessage();
     }
 
     @Test
     public void test3SearchField() throws InterruptedException, IOException, JSONException {
         patternsTollFreePage.open();
-        patternsTollFreePage.searchPattern(PatternsData.VANITY.getNamePatterns());
-        patternsTollFreePage.checkingNameFirstPattern(PatternsData.VANITY);
+        patternsTollFreePage.searchPattern(PatternsData.RED_BULL_MUSIC.getNamePatterns());
+        patternsTollFreePage.checkingNameFirstPattern(PatternsData.RED_BULL_MUSIC);
     }
 
     @Test
@@ -104,6 +118,7 @@ public class PatternTollFree extends TestBase {
         patternsTollFreePage.checkingSuccessSorting(valueBeforeSorting, valueAfterSorting);
     }
 
+    @Ignore
     @Test
     public void test4CorrectSortingTypeColumn() throws InterruptedException, IOException, JSONException {
         patternsTollFreePage.open();
@@ -127,9 +142,9 @@ public class PatternTollFree extends TestBase {
     @Test
     public void test5SDeleteButton() throws InterruptedException, IOException, JSONException {
         patternsTollFreePage.open();
-        patternsTollFreePage.searchPattern(PatternsData.VANITY.getNamePatterns());
+        patternsTollFreePage.searchPattern(PatternsData.RED_BULL_MUSIC.getNamePatterns());
         patternsTollFreePage.clickDeleteIconFirstPattern();
-        patternsTollFreePage.checkingNameFirstPattern(PatternsData.VANITY);
+        patternsTollFreePage.clickDeleteIconFirstPattern();
         patternsTollFreePage.checkingSuccessDeleted();
     }
 }

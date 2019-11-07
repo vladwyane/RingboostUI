@@ -1,11 +1,8 @@
 package adminPanel.sprint_4_OwnersAndPriceMatrix;
 
 import data.CategoriesData;
-import data.OwnersData;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.admin.*;
 import testBase.TestBase;
 
@@ -20,7 +17,7 @@ public class CategoriesLocal extends TestBase {
     private CategoryLocal categoryLocal;
 
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         categoryLocal = new CategoryLocal(app.getDriver());
@@ -28,7 +25,7 @@ public class CategoriesLocal extends TestBase {
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }
@@ -129,7 +126,6 @@ public class CategoriesLocal extends TestBase {
         categoryLocal.open();
         categoryLocal.searchCategory(CategoriesData.UPDATE_QUALITY.getName());
         categoryLocal.clickDeleteIconFirstCategory();
-        categoryLocal.checkingNameFirstCategory(CategoriesData.UPDATE_QUALITY);
         categoryLocal.checkingSuccessDeleted();
     }
 }

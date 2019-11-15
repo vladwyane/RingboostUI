@@ -26,6 +26,7 @@ public class TermSpare extends TestBase{
     private BuyingRegularVanityNumber buyingRegularVanityNumber;
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
+    String tabName = "Term - Spare";
 
 
     @BeforeClass
@@ -55,7 +56,7 @@ public class TermSpare extends TestBase{
     public void test1SuccessCreatingNewSpareTerm() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Spare");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddTermButton();
         pricingTollFreePage.createNewPremiumTerm(PricingTollFreeSettings.TERM_SPARE_TEST);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.TERM_SPARE_TEST);
@@ -65,7 +66,7 @@ public class TermSpare extends TestBase{
     public void test1ErrorCreatingNewSpareTermAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Spare");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddTermButton();
         pricingTollFreePage.clickSaveButton();
         pricingTollFreePage.checkingErrorMessagesCreatingPremiumTermEmptyFields();
@@ -97,7 +98,7 @@ public class TermSpare extends TestBase{
     public void test3EditSpareTerm() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Spare");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.TERM_SPARE_TEST);
         pricingTollFreePage.editRule(PricingTollFreeSettings.TERM_SPARE_UPDATE);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.TERM_SPARE_UPDATE);
@@ -107,8 +108,8 @@ public class TermSpare extends TestBase{
     public void test4DeleteSpareTerm() throws InterruptedException, IOException, JSONException {
     //    login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Spare");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.TERM_SPARE_UPDATE);
-        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.TERM_SPARE_UPDATE);
+        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.TERM_SPARE_UPDATE, tabName);
     }
 }

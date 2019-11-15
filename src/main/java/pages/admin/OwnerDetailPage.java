@@ -35,6 +35,10 @@ public class OwnerDetailPage extends BasePage {
     @FindBys( {@FindBy(xpath = "//div[contains(text(), 'Files')]/ancestor::nav/following-sibling::div//td")} )
     private List<WebElement> listTdFile;
 
+    @Name("List of column header")
+    @FindBys( {@FindBy(xpath = "//th[@role='columnheader']")} )
+    private List<WebElement> listColumnHeader;
+
     @FindBy(css = "textarea")
     private TextInput notes;
 
@@ -160,7 +164,7 @@ public class OwnerDetailPage extends BasePage {
     public String getNameLastFile() {
         waitUntilElementAppeared(buttonAddFile);
         waitUntilElementWillBeClickable(buttonAddFile);
-        return listTdFile.get(listTdFile.size() - 3).getText();
+        return listTdFile.get(listTdFile.size() - listColumnHeader.size()).getText();
     }
 
     public void checkingAddedMoreThan2Files() {
@@ -174,7 +178,7 @@ public class OwnerDetailPage extends BasePage {
         waitUntilElementAppeared(buttonAddFile);
         waitUntilElementWillBeClickable(buttonAddFile);
         softAssert.assertEquals(editorAgreement.getText(), agreement);
-        softAssert.assertEquals("Owner's agreement", labelCheckboxAgreement.getText());
+        softAssert.assertEquals("Owner's Agreement Active", labelCheckboxAgreement.getText());
         softAssert.assertAll();
     }
 

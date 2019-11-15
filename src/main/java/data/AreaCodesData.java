@@ -5,11 +5,11 @@ package data;
  */
 public enum AreaCodesData {
 
-    AREA_CODES_FLORIDA ("239", "305", "786", "352", "1.1", "Bundle Florida"),
-    AREA_CODES_239 ("239", "305", "786", "352", "1.1", "239"),
-    AREA_CODES_FLORIDA_UPDATE ("352", "305", "786", "352", "1.1", "352"),
-    AREA_CODES_FLORIDA_199 ("199", "305", "786", "352", "1.1", "Bundle Florida"),
-    AREA_CODES_FLORIDA_1000 ("1000", "305", "786", "352", "1.1", "Bundle Florida"),
+    AREA_CODES_ALASKA("905", "908", "911", "352", "1.1", "Bundle Alaska"),
+    AREA_CODES_905("905", "908", "911", "352", "1.1", "905"),
+    AREA_CODES_ALASKA_UPDATE("905", "908", "911", "352", "1.1", "352"),
+    AREA_CODES_ALASKA_199("199", "908", "911", "352", "1.1", "Bundle Alaska"),
+    AREA_CODES_ALASKA_1000("1000", "908", "911", "352", "1.1", "Bundle Alaska"),
     AREA_CODES_INDIANA ("317", "812", "930", "931", "1.3", "Bundle Indiana");
 
 

@@ -2,9 +2,7 @@ package adminPanel;
 
 import data.Carriers;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.admin.*;
 import testBase.TestBase;
 
@@ -20,7 +18,7 @@ public class Sprint_2_Carriers extends TestBase {
     private CarriersListingPage carriersListingPage;
     private APIListingPage apiListingPage;
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -30,7 +28,7 @@ public class Sprint_2_Carriers extends TestBase {
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }

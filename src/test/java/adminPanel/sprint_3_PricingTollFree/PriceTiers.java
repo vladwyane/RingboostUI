@@ -16,6 +16,7 @@ public class PriceTiers extends TestBase {
     private Login login;
     private Admin admin;
     private PricingTollFreePage pricingTollFreePage;
+    String tabName = "Price Tiers";
 
     @BeforeClass
     public void initPageObjects() {
@@ -76,6 +77,6 @@ public class PriceTiers extends TestBase {
  //       login.open();
         admin.clickPricingTollFreeLink();
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.PRICE_TIER_UPDATE);
-        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.PRICE_TIER_UPDATE);
+        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.PRICE_TIER_UPDATE, tabName);
     }
 }

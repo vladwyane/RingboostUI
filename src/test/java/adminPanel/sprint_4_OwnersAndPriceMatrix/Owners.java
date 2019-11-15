@@ -2,9 +2,7 @@ package adminPanel.sprint_4_OwnersAndPriceMatrix;
 
 import data.OwnersData;
 import org.json.JSONException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.admin.*;
 import testBase.TestBase;
 
@@ -20,7 +18,7 @@ public class Owners extends TestBase {
     private OwnersListingPage ownersListingPage;
     private OwnerDetailPage ownerDetailPage;
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -30,7 +28,7 @@ public class Owners extends TestBase {
         login.fillLoginForm();
     }
 
-    @AfterClass
+    @AfterMethod
     public void clearAllCookies() {
         app.delleteAllCookies();
     }

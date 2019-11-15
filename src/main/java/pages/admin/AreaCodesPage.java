@@ -188,8 +188,11 @@ public class AreaCodesPage extends BasePage {
     public void clickEditIcon(AreaCodesData areaCodesData) {
         waiting2seconds();
         for (int i = 0; i < areaCodesTable.getListTd().size(); i++) {
+            String a = areaCodesTable.getListTd().get(i).getText();
+            String b = areaCodesData.getGroupName();
             if(areaCodesTable.getListTd().get(i).getText().equals(areaCodesData.getGroupName())){
                 int index = Math.round(i/ areaCodesTable.getListColumnHeader().size()) * 2;
+                scrollToElement(areaCodesTable.getListOfActions().get(index));
                 areaCodesTable.getListOfActions().get(index).click();
                 break;
             }

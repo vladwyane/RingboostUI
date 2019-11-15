@@ -25,7 +25,7 @@ public class BuyingLocalPortNumbers extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
 
     private String boughtNumber;
-    private String searchRequest = "0987";
+    private String searchRequest = "6555";
     private String planName = "Port A Number";
 
     @BeforeMethod

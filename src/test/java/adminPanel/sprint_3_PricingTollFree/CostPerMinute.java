@@ -25,6 +25,7 @@ public class CostPerMinute extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
     private BuyingRegularVanityNumber buyingRegularVanityNumber;
+    String tabName = "Cost Per Minute";
 
 
     @BeforeClass
@@ -55,7 +56,7 @@ public class CostPerMinute extends TestBase {
     public void test1SuccessCreatingNewCostPerMinute() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Cost Per Minute");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddPriceMinutesButton();
         pricingTollFreePage.createNewPriceMinutes(PricingTollFreeSettings.MINUTES_TEST);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.MINUTES_TEST);
@@ -65,7 +66,7 @@ public class CostPerMinute extends TestBase {
     public void test1ErrorCreatingNewCostPerMinuteAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Cost Per Minute");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddPriceMinutesButton();
         pricingTollFreePage.clickSaveButton();
         pricingTollFreePage.checkingErrorMessagesCreatingPriceMinutesEmptyFields();
@@ -96,7 +97,7 @@ public class CostPerMinute extends TestBase {
     public void test3EditCostPerMinute() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Cost Per Minute");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MINUTES_TEST);
         pricingTollFreePage.editRule(PricingTollFreeSettings.MINUTES_UPDATE);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.MINUTES_UPDATE);
@@ -106,9 +107,9 @@ public class CostPerMinute extends TestBase {
     public void test4DeleteCostPerMinute() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Cost Per Minute");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.MINUTES_UPDATE);
-        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.MINUTES_UPDATE);
+        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.MINUTES_UPDATE, tabName);
     }
 
 

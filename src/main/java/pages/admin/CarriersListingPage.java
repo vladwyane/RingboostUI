@@ -165,7 +165,7 @@ public class CarriersListingPage extends BasePage {
 
     public void checkingSuccessDeleted() {
         waitUntilElementAppeared(carriersTable.getSuccessAlert());
-        boolean result = isElementInvisible(carriersTable.getSuccessAlert());
+        boolean result = isElementContainsAttributeValue(carriersTable.getSuccessAlert(), "style", "display");
         softAssert.assertFalse(result);
         softAssert.assertEquals(carriersTable.getListTd().get(0).getText(), "No matching records found");
         softAssert.assertAll();

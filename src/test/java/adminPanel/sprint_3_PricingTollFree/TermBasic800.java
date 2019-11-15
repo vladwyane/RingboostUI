@@ -25,6 +25,7 @@ public class TermBasic800 extends TestBase {
     private Checkout checkout;
     private BasicIndexPage basicIndexPage;
     private BuyingBasic800Number buyingBasic800Number;
+    String tabName = "Term - Basic 800";
 
 
     @BeforeClass
@@ -53,7 +54,7 @@ public class TermBasic800 extends TestBase {
     public void test1SuccessCreatingNewBasic800Term() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Basic 800");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddTermButton();
         pricingTollFreePage.createNewTermBasic800(PricingTollFreeSettings.TERM_BASIC800_TEST);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.TERM_BASIC800_TEST);
@@ -63,7 +64,7 @@ public class TermBasic800 extends TestBase {
     public void test2ErrorCreatingNewBasic800TermAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
     //    login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Basic 800");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddTermButton();
         pricingTollFreePage.clickSaveButton();
         pricingTollFreePage.checkingErrorMessagesCreatingBasic800TermEmptyFields();
@@ -92,7 +93,7 @@ public class TermBasic800 extends TestBase {
     public void test3EditBasic800Term() throws InterruptedException, IOException, JSONException {
    //     login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Basic 800");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.TERM_BASIC800_TEST);
         pricingTollFreePage.editRule(PricingTollFreeSettings.TERM_BASIC800_UPDATE);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.TERM_BASIC800_UPDATE);
@@ -102,8 +103,8 @@ public class TermBasic800 extends TestBase {
     public void test4DeleteBasic800Term() throws InterruptedException, IOException, JSONException {
      //   login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Basic 800");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.TERM_BASIC800_UPDATE);
-        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.TERM_BASIC800_UPDATE);
+        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.TERM_BASIC800_UPDATE, tabName);
     }
 }

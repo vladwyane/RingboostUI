@@ -41,17 +41,17 @@ public class AreaCodes extends TestBase {
     public void test1SuccessAddingNewAreaCode() throws InterruptedException, IOException, JSONException {
   //      login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
+        areaCodesPage.chooseState("Alaska");
         areaCodesPage.clickAddAreaCodesButton();
-        areaCodesPage.addNewAreaCode(AreaCodesData.AREA_CODES_FLORIDA);
-        areaCodesPage.checkingSuccessAddingNewAreaCode(AreaCodesData.AREA_CODES_FLORIDA);
+        areaCodesPage.addNewAreaCode(AreaCodesData.AREA_CODES_ALASKA);
+        areaCodesPage.checkingSuccessAddingNewAreaCode(AreaCodesData.AREA_CODES_ALASKA);
     }
 
     @Test
     public void test1ErrorAddingNewAreaCodeAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
  //       login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
+        areaCodesPage.chooseState("Alaska");
         areaCodesPage.clickAddAreaCodesButton();
         areaCodesPage.clickSaveButton();
         areaCodesPage.checkingErrorMessagesAddingAreaCodeEmptyFields();
@@ -61,9 +61,9 @@ public class AreaCodes extends TestBase {
     public void test1ErrorAddingNewAreaCodeLessThan200() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
+        areaCodesPage.chooseState("Alaska");
         areaCodesPage.clickAddAreaCodesButton();
-        areaCodesPage.addNewAreaCode(AreaCodesData.AREA_CODES_FLORIDA_199);
+        areaCodesPage.addNewAreaCode(AreaCodesData.AREA_CODES_ALASKA_199);
         areaCodesPage.checkingErrorMessagesAddingAreaCodeLessThan200();
     }
 
@@ -71,9 +71,9 @@ public class AreaCodes extends TestBase {
     public void test1ErrorAddingNewAreaCodeMoreThan999() throws InterruptedException, IOException, JSONException {
      //   login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
+        areaCodesPage.chooseState("Alaska");
         areaCodesPage.clickAddAreaCodesButton();
-        areaCodesPage.addNewAreaCode(AreaCodesData.AREA_CODES_FLORIDA_1000);
+        areaCodesPage.addNewAreaCode(AreaCodesData.AREA_CODES_ALASKA_1000);
         areaCodesPage.checkingErrorMessagesAddingAreaCodeMoreThan999();
     }
 
@@ -81,59 +81,59 @@ public class AreaCodes extends TestBase {
     public void test2ErrorAddingNewAreaCodeAlreadyUsed() throws InterruptedException, IOException, JSONException {
      //   login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
+        areaCodesPage.chooseState("Alaska");
         areaCodesPage.clickAddAreaCodesButton();
-        areaCodesPage.addNewAreaCode(AreaCodesData.AREA_CODES_FLORIDA);
-        areaCodesPage.checkingErrorMessagesAddingAreaCodeAlreadyUsed(AreaCodesData.AREA_CODES_FLORIDA);
+        areaCodesPage.addNewAreaCode(AreaCodesData.AREA_CODES_ALASKA);
+        areaCodesPage.checkingErrorMessagesAddingAreaCodeAlreadyUsed(AreaCodesData.AREA_CODES_ALASKA);
     }
 
     @Test
     public void test3SuccessAddingNewBundleAreaCodes() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
+        areaCodesPage.chooseState("Alaska");
         areaCodesPage.clickAddAreaCodesButton();
-        areaCodesPage.addNewBundleAreaCodes(AreaCodesData.AREA_CODES_FLORIDA);
-        areaCodesPage.checkingSuccessAddingNewBundle(AreaCodesData.AREA_CODES_FLORIDA);
+        areaCodesPage.addNewBundleAreaCodes(AreaCodesData.AREA_CODES_ALASKA);
+        areaCodesPage.checkingSuccessAddingNewBundle(AreaCodesData.AREA_CODES_ALASKA);
     }
 
     @Test
     public void test3SuccessEditAreaCodes() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
-        areaCodesPage.clickEditIcon(AreaCodesData.AREA_CODES_239);
-        areaCodesPage.editAreaCode(AreaCodesData.AREA_CODES_FLORIDA_UPDATE);
-        areaCodesPage.checkingSuccessEditName(AreaCodesData.AREA_CODES_FLORIDA_UPDATE);
+        areaCodesPage.chooseState("Alaska");
+        areaCodesPage.clickEditIcon(AreaCodesData.AREA_CODES_905);
+        areaCodesPage.editAreaCode(AreaCodesData.AREA_CODES_ALASKA_UPDATE);
+        areaCodesPage.checkingSuccessEditName(AreaCodesData.AREA_CODES_ALASKA_UPDATE);
     }
 
     @Test
     public void test4ErrorAddingUsedBundleAreaCodes() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
+        areaCodesPage.chooseState("Alaska");
         areaCodesPage.clickAddAreaCodesButton();
-        areaCodesPage.addNewBundleAreaCodes(AreaCodesData.AREA_CODES_FLORIDA);
-        areaCodesPage.checkingErrorMessagesAddingBundleAlreadyUsed(AreaCodesData.AREA_CODES_FLORIDA);
+        areaCodesPage.addNewBundleAreaCodes(AreaCodesData.AREA_CODES_ALASKA);
+        areaCodesPage.checkingErrorMessagesAddingBundleAlreadyUsed(AreaCodesData.AREA_CODES_ALASKA);
     }
 
     @Test
     public void test4ErrorEditBundleWithUsedAreaCodes() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
-        areaCodesPage.clickEditIcon(AreaCodesData.AREA_CODES_FLORIDA);
-        areaCodesPage.editBundle(AreaCodesData.AREA_CODES_FLORIDA);
-        areaCodesPage.checkingErrorMessagesAddingAreaCodeAlreadyUsed(AreaCodesData.AREA_CODES_FLORIDA);
+        areaCodesPage.chooseState("Alaska");
+        areaCodesPage.clickEditIcon(AreaCodesData.AREA_CODES_ALASKA);
+        areaCodesPage.editBundle(AreaCodesData.AREA_CODES_ALASKA);
+        areaCodesPage.checkingErrorMessagesAddingAreaCodeAlreadyUsed(AreaCodesData.AREA_CODES_ALASKA);
     }
 
     @Test
     public void test5SuccessDeleteBundle() throws InterruptedException, IOException, JSONException {
         //  login.open();
         admin.clickAreaCodesLink();
-        areaCodesPage.chooseState("Florida");
-        areaCodesPage.clickDeleteIcon(AreaCodesData.AREA_CODES_FLORIDA);
-        areaCodesPage.clickDeleteIcon(AreaCodesData.AREA_CODES_FLORIDA_UPDATE);
-        areaCodesPage.checkingSuccessDeleted(AreaCodesData.AREA_CODES_FLORIDA_UPDATE);
+        areaCodesPage.chooseState("Alaska");
+        areaCodesPage.clickDeleteIcon(AreaCodesData.AREA_CODES_ALASKA);
+        areaCodesPage.clickDeleteIcon(AreaCodesData.AREA_CODES_ALASKA_UPDATE);
+        areaCodesPage.checkingSuccessDeleted(AreaCodesData.AREA_CODES_ALASKA_UPDATE);
     }
 }

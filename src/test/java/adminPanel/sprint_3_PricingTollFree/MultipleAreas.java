@@ -25,7 +25,7 @@ public class MultipleAreas extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
     private ContactUsPage contactUsPage;
-
+    String tabName = "Multiple Areas";
 
     @BeforeClass
     public void initPageObjects() {
@@ -38,6 +38,7 @@ public class MultipleAreas extends TestBase {
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
         contactUsPage = new ContactUsPage(app.getDriver());
+
     }
 
     @BeforeMethod
@@ -55,7 +56,7 @@ public class MultipleAreas extends TestBase {
     public void test1SuccessCreatingNewMultipleAreas() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddPriceMultipleAreasButton();
         pricingTollFreePage.createNewPriceMultipleAreas(PricingTollFreeSettings.MULTIPLE_AREA_TEST);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.MULTIPLE_AREA_TEST);
@@ -65,7 +66,7 @@ public class MultipleAreas extends TestBase {
     public void test1ErrorCreatingNewMultipleAreasAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddPriceMultipleAreasButton();
         pricingTollFreePage.clickSaveButton();
         pricingTollFreePage.checkingErrorMessagesCreatingMultipleAreasEmptyFields();
@@ -75,7 +76,7 @@ public class MultipleAreas extends TestBase {
     public void test2ErrorCreatingNewMultipleAreasSameName() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddPriceMultipleAreasButton();
         pricingTollFreePage.createNewPriceMultipleAreas(PricingTollFreeSettings.MULTIPLE_AREA_TEST);
         pricingTollFreePage.checkingErrorMessagesCreatingMultipleAreasNameHasBeenUsed();
@@ -85,7 +86,7 @@ public class MultipleAreas extends TestBase {
     public void test3CheckingChosen3AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MULTIPLE_3_AREA);
         pricingTollFreePage.editMultipleAreas(PricingTollFreeSettings.MULTIPLE_3_AREA);
         homePage.open();
@@ -126,7 +127,7 @@ public class MultipleAreas extends TestBase {
     public void test5ReturnToDefaultState() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MULTIPLE_3_AREA);
         pricingTollFreePage.editMultipleAreas(PricingTollFreeSettings.MULTIPLE_3_AREA);
     }
@@ -135,7 +136,7 @@ public class MultipleAreas extends TestBase {
     public void test6EditMultipleAreas() throws InterruptedException, IOException, JSONException {
         // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MULTIPLE_AREA_TEST);
         pricingTollFreePage.editMultipleAreas(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
@@ -145,9 +146,9 @@ public class MultipleAreas extends TestBase {
     public void test7DeleteMultipleAreas() throws InterruptedException, IOException, JSONException {
         // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Multiple Areas");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
-        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE);
+        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.MULTIPLE_AREA_UPDATE, tabName);
     }
 
 }

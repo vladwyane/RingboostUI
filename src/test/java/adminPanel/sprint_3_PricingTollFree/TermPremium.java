@@ -26,6 +26,7 @@ public class TermPremium extends TestBase {
     private BuyingPremiumVanityNumber buyingPremiumVanityNumber;
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
+    String tabName = "Term - Premium";
 
 
     @BeforeClass
@@ -55,7 +56,7 @@ public class TermPremium extends TestBase {
     public void test1SuccessCreatingNewPremiumTerm() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Premium");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddTermButton();
         pricingTollFreePage.createNewPremiumTerm(PricingTollFreeSettings.TERM_PREMIUM_TEST);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.TERM_PREMIUM_TEST);
@@ -65,7 +66,7 @@ public class TermPremium extends TestBase {
     public void test1ErrorCreatingNewPremiumTermAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Premium");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickAddTermButton();
         pricingTollFreePage.clickSaveButton();
         pricingTollFreePage.checkingErrorMessagesCreatingPremiumTermEmptyFields();
@@ -104,7 +105,7 @@ public class TermPremium extends TestBase {
     public void test3EditPremiumTerm() throws InterruptedException, IOException, JSONException {
       //  login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Premium");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.TERM_PREMIUM_TEST);
         pricingTollFreePage.editRule(PricingTollFreeSettings.TERM_PREMIUM_UPDATE);
         pricingTollFreePage.checkingSuccessCreatingNewRule(PricingTollFreeSettings.TERM_PREMIUM_UPDATE);
@@ -114,8 +115,8 @@ public class TermPremium extends TestBase {
     public void test4DeletePremiumTerm() throws InterruptedException, IOException, JSONException {
        // login.open();
         admin.clickPricingTollFreeLink();
-        pricingTollFreePage.clickTab("Term - Premium");
+        pricingTollFreePage.clickTab(tabName);
         pricingTollFreePage.clickDeleteIcon(PricingTollFreeSettings.TERM_PREMIUM_UPDATE);
-        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.TERM_PREMIUM_UPDATE);
+        pricingTollFreePage.checkingSuccessDeleted(PricingTollFreeSettings.TERM_PREMIUM_UPDATE, tabName);
     }
 }

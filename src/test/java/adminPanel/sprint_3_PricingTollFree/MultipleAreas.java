@@ -3,10 +3,10 @@ package adminPanel.sprint_3_PricingTollFree;
 import data.PricingTollFreeSettings;
 import org.json.JSONException;
 import org.testng.annotations.*;
-import pages.*;
 import pages.admin.Admin;
 import pages.admin.Login;
 import pages.admin.PricingTollFreePage;
+import pages.front.*;
 import testBase.TestBase;
 
 import java.io.IOException;

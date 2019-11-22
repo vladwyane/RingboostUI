@@ -84,4 +84,23 @@ public class Admin extends BasePage {
         waitUntilElementAppeared(sidebarNavigation.getPriceMatrixLink());
         sidebarNavigation.getPriceMatrixLink().click();
     }
+
+    public void clickCustomersLink() {
+        waitUntilElementAppeared(sidebarNavigation.getCustomersLink());
+        sidebarNavigation.getCustomersLink().click();
+    }
+
+    public void clickOrdersLocal() {
+        waitUntilElementAppeared(sidebarNavigation.getOrdersLink());
+        sidebarNavigation.getOrdersLink().click();
+        waitUntilElementAppeared(sidebarNavigation.getOrdersLocalLink());
+        sidebarNavigation.getOrdersLocalLink().click();
+    }
+
+    public void clickOrdersTollFree() {
+        waitUntilElementAppeared(sidebarNavigation.getOrdersLink());
+        sidebarNavigation.getOrdersLink().click();
+        waitUntilElementAppeared(sidebarNavigation.getOrdersTollFreeLink());
+        sidebarNavigation.getOrdersTollFreeLink().click();
+    }
 }

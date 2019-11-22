@@ -5,10 +5,13 @@ import data.PricingTollFreeSettings;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.*;
-import pages.*;
 import pages.admin.Admin;
 import pages.admin.PricingTollFreePage;
 import pages.admin.Login;
+import pages.front.BasicIndexPage;
+import pages.front.BuyingBasic800Number;
+import pages.front.Checkout;
+import pages.front.OrderConfirmationPage;
 import testBase.TestBase;
 
 import java.io.IOException;
@@ -85,7 +88,7 @@ public class TermBasic800 extends TestBase {
         buyingBasic800Number.enterRingToNumber("8722413731");
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseBasic800Number(priceActivationFee, pricePlan);
     }
 

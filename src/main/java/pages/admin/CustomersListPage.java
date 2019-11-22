@@ -3,6 +3,7 @@ package pages.admin;
 import blocks.admin.customers.CustomersTable;
 import blocks.admin.customers.NewCustomerPopup;
 import data.OwnersData;
+import data.Users;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
@@ -43,16 +44,16 @@ public class CustomersListPage extends BasePage {
         newCustomerPopup.getButtonCancel().click();
     }
 
-    public void fillNewCustomerForm(OwnersData ownersData) {
+    public void fillNewCustomerForm(Users users) {
         waitUntilElementAppeared(newCustomerPopup.getButtonSave());
-        type(newCustomerPopup.getFirstNameField(), ownersData.getContactName());
-        type(newCustomerPopup.getLastNameField(), ownersData.getPhone());
-        type(newCustomerPopup.getEmailField(), ownersData.getEmail());
-        type(newCustomerPopup.getCompanyField(), ownersData.getCompany());
+        type(newCustomerPopup.getFirstNameField(), users.getFirstName());
+        type(newCustomerPopup.getLastNameField(), users.getLastName());
+        type(newCustomerPopup.getEmailField(), users.getEmail());
+        type(newCustomerPopup.getCompanyField(), users.getCompany());
     }
 
-    public void createNewCustomer(OwnersData ownersData) {
-        fillNewCustomerForm(ownersData);
+    public void createNewCustomer(Users users) {
+        fillNewCustomerForm(users);
         waitUntilElementWillBeClickable(newCustomerPopup.getButtonSave());
         newCustomerPopup.getButtonSave().click();
     }
@@ -122,8 +123,8 @@ public class CustomersListPage extends BasePage {
         softAssert.assertAll();
     }
 
-    public void checkingEmailFirstCustomer(OwnersData ownersData) {
-        softAssert.assertEquals(customersTable.getListTd().get(3).getText(), ownersData.getEmail());
+    public void checkingEmailFirstCustomer(Users users) {
+        softAssert.assertEquals(customersTable.getListTd().get(3).getText(), users.getEmail());
         softAssert.assertAll();
     }
 

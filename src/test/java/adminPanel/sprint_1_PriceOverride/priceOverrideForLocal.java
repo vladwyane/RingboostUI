@@ -5,8 +5,8 @@ import data.PromoCodes;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.*;
-import pages.*;
 import pages.admin.*;
+import pages.front.*;
 import testBase.TestBase;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class priceOverrideForLocal extends TestBase{
         buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
     }
 
@@ -85,7 +85,7 @@ public class priceOverrideForLocal extends TestBase{
         double pricePlan = buyingLocalNumber.choosePlan("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithFixedPromoCode(price, pricePlan, displayedName);
     }
 
@@ -122,7 +122,7 @@ public class priceOverrideForLocal extends TestBase{
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithPercentPromoCode(price, pricePlan, displayedName);
     }
 
@@ -144,7 +144,7 @@ public class priceOverrideForLocal extends TestBase{
         buyingLocalNumber.enterRingToNumber("9968843478");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithHighFixedPromoCode(price, pricePlan, displayedName);
     }
 
@@ -210,7 +210,7 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.clickLinkContinueToCheckout();
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
     }
 
@@ -228,8 +228,8 @@ public class priceOverrideForLocal extends TestBase{
     public void test9CheckingDeactivateStatusIfNumberSoldFromSite() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-       // inventoryLocal.searchNumber(0,"0987");
-        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(9).substring(3, 10);
+        inventoryLocal.searchNumber(0,"655560");
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(7).substring(3, 10);
         System.out.println(phoneNumber);
         for (int i = 0; i < 3; i++) {
             linksListingPage.clickCreateNewURLButton();
@@ -242,11 +242,12 @@ public class priceOverrideForLocal extends TestBase{
         buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.choosePlan("Port A Number");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
+        orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0987");
-        inventoryLocal.clickCreateNewLinkByNumber(9);
+        inventoryLocal.searchNumber(0,"655560");
+        inventoryLocal.clickCreateNewLinkByNumber(7);
         linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
 
     }

@@ -5,10 +5,10 @@ import data.PricingTollFreeSettings;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.*;
-import pages.*;
 import pages.admin.Admin;
 import pages.admin.PricingTollFreePage;
 import pages.admin.Login;
+import pages.front.*;
 import testBase.TestBase;
 
 import java.io.IOException;
@@ -97,7 +97,7 @@ public class TermPremium extends TestBase {
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose5000MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 

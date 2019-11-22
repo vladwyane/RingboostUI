@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.front.*;
 import testBase.TestBase;
 
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -65,6 +65,14 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         homePage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.checkingRegionStatus();
+    }
+
+    @Test
+    public void test2OrderPremiumVanityNumberCheckingNationwideStatus() throws InterruptedException {
+        homePage.open();
+        homePage.searchTollFreeNumbers(searchRequest);
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(3);
+        buyingPremiumVanityNumber.checkingNationWideStatus();
     }
 
     @Test
@@ -81,7 +89,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_27, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -97,7 +105,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -113,7 +121,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -121,16 +129,16 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     public void test3OrderPremiumVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(1);
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(2);
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.
-                chooseSeveralAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama", "Vermont"}, new int[] {3, 2, 1});
+                chooseSeveralAreaCodesFromSeveralStates(new String[] {"Kansas", "Vermont"}, new int[] {3, 1});
         int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("2 years");
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
@@ -138,7 +146,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     public void test4checkingStatusLicensed() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.checkingStatusLicensedByIndex(1);
+        vanitySearchResult.checkingStatusLicensedByIndex(2);
     }
 
     @Test
@@ -154,7 +162,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.choose5000MonthlyMinutes();
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_28, CreditCards.ERROR_EXPIRED_CARD_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.ERROR_EXPIRED_CARD_STRIPE, true);
         checkout.checkingPaymentError();
     }
 

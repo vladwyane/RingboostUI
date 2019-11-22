@@ -1,11 +1,10 @@
 package pages;
 
-import blocks.HeaderBlock;
+import blocks.front.HeaderBlock;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,8 +12,6 @@ import org.testng.asserts.SoftAssert;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,10 +39,10 @@ public abstract class BasePage {
     public abstract void open();
 
     @FindBy(css = ".load-more")
-    WebElement buttonMoreNumbers;
+    protected WebElement buttonMoreNumbers;
 
     @FindBy(css = "h1")
-    WebElement titleH1;
+    protected WebElement titleH1;
 
     public void refreshPage() {
         driver.navigate().refresh();

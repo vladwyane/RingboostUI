@@ -4,7 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.front.*;
 import testBase.TestBase;
 
 public class VanityCategoriesTests extends TestBase {
@@ -42,7 +42,7 @@ public class VanityCategoriesTests extends TestBase {
     @Test
     public void testSelectedCategoryFromCategoryIndexPage() {
         vanityIndexPage.open();
-        String nameCategory = "Banking";
+        String nameCategory = "Accident";
         vanityIndexPage.chooseVanityCategory(nameCategory);
         vanityCategoryDetail.checkingSelectedCategoryFromCategoryIndexPage(nameCategory);
     }
@@ -56,7 +56,7 @@ public class VanityCategoriesTests extends TestBase {
     @Test
     public void testButtonsClearAllFilters() {
         vanityIndexPage.open();
-        String nameCategory = "Quality Assurance";
+        String nameCategory = "Music";
         vanityIndexPage.chooseVanityCategory(nameCategory);
         vanityCategoryDetail.clickButtonClearAllFilters();
         vanityCategoryDetail.checkingDefaultState();
@@ -66,7 +66,7 @@ public class VanityCategoriesTests extends TestBase {
     public void testFilterNumbersByCategories() {
         vanityIndexPage.open();
         String nameCategoryInSelect = "Sports Related";
-        String firstNumberInListBefore = vanityIndexPage.chooseVanityCategory("Banking");
+        String firstNumberInListBefore = vanityIndexPage.chooseVanityCategory("Accident");
         String firstNumberInListAfter = vanityCategoryDetail.chooseCategoryInSelect(nameCategoryInSelect);
         vanityCategoryDetail.checkingSelectCategories(firstNumberInListBefore, firstNumberInListAfter, nameCategoryInSelect);
     }
@@ -74,9 +74,9 @@ public class VanityCategoriesTests extends TestBase {
     @Test
     public void testFilterNumbersByPrefix() {
         vanityCategoryDetail.open();
-        String prefix = "866";
-        String firstNumberInListBefore = vanityCategoryDetail.choosePrefixInSelect(prefix);
-        vanityCategoryDetail.checkingSelectPrefix(firstNumberInListBefore, prefix);
+        String prefix = "833";
+        String[] numbersInListAfter = vanityCategoryDetail.choosePrefixInSelect(prefix);
+        vanityCategoryDetail.checkingSelectPrefix(numbersInListAfter, prefix);
     }
 
     @Test

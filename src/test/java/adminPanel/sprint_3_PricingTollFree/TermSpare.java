@@ -5,10 +5,10 @@ import data.PricingTollFreeSettings;
 import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.*;
-import pages.*;
 import pages.admin.Admin;
 import pages.admin.PricingTollFreePage;
 import pages.admin.Login;
+import pages.front.*;
 import testBase.TestBase;
 
 import java.io.IOException;
@@ -90,7 +90,7 @@ public class TermSpare extends TestBase{
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength(PricingTollFreeSettings.TERM_SPARE_TEST.getName());
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_26, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 

@@ -7,7 +7,8 @@ public enum PromoCodes {
 
     FIXED_PROMOCODE("springsale", 5.0),
     HIGH_FIXED_PROMOCODE("summersale", 4000.0),
-    PERCENT_PROMOCODE("wintersale", 10.0);
+    PERCENT_PROMOCODE("wintersale", 10.0),
+    EMPTY_VALUE("", 0);
 
     private String name;
     private double value;

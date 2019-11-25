@@ -130,7 +130,7 @@ public class CustomersListPage extends BasePage {
 
     public void checkingSuccessDeleted() {
         waitUntilElementAppeared(customersTable.getSuccessAlert());
-        boolean result = isElementContainsAttributeValue(customersTable.getSuccessAlert(), "style", "display");;
+        boolean result = isElementContainsAttributeValue(customersTable.getSuccessAlert(), "style", "display");
         softAssert.assertFalse(result);
         softAssert.assertEquals(customersTable.getListTd().get(0).getText(), "No matching records found");
         softAssert.assertAll();

@@ -71,4 +71,10 @@ public class OrderListingPage extends BasePage {
         softAssert.assertEquals(ordersTable.getListColumnHeader().get(12).getText(), "Resporg");
         softAssert.assertAll();
     }
+
+    public void clickEditIconFirstOrder() {
+        waitUntilElementAppeared(ordersTable.getListOfActions().get(0));
+        waitUntilElementWillBeClickable(ordersTable.getListOfActions().get(0));
+        ordersTable.getListOfActions().get(0).click();
+    }
 }

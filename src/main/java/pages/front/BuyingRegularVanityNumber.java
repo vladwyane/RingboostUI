@@ -40,6 +40,10 @@ public class BuyingRegularVanityNumber extends BasePage {
     @FindBy(css= ".main-number-holder")
     private WebElement phoneNumber;
 
+    public WebElement getPhoneNumber() {
+        return phoneNumber;
+    }
+
     public double choose5000MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
@@ -70,6 +74,33 @@ public class BuyingRegularVanityNumber extends BasePage {
         return price;
     }
 
+    public int getAmountMinutes(double priceOfMinute) {
+        int amountMinute;
+        switch((int)priceOfMinute) {
+            case 15:
+                amountMinute = 250;
+                break;
+            case 30:
+                amountMinute = 500;
+                break;
+            case 45:
+                amountMinute = 750;
+                break;
+            case 50:
+                amountMinute = 1000;
+                break;
+            case 100:
+                amountMinute = 2000;
+                break;
+            case 255:
+                amountMinute = 5000;
+                break;
+            default:
+                amountMinute = 0;
+        }
+        return amountMinute;
+    }
+
     public void checkingCreatedPriceMinuteFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
@@ -94,6 +125,21 @@ public class BuyingRegularVanityNumber extends BasePage {
         termLengthBlock.listCardButtons.get(0).click();
         discount = 0;
         return discount;
+    }
+
+    public int getPricePlanDuration(int pricePlanSale) {
+        int duration;
+        switch(pricePlanSale) {
+            case 10:
+                duration = 12;
+                break;
+            case 20:
+                duration = 24;
+                break;
+            default:
+                duration = 0;
+        }
+        return duration;
     }
 
     public void checkingCreatedTermFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {

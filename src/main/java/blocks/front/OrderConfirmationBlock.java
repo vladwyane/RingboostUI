@@ -41,6 +41,18 @@ public class OrderConfirmationBlock extends HtmlElement {
     @FindBy(xpath= "//div[@class='number-type']//preceding::strong")
     private WebElement phoneNumber;
 
+    @FindBy(css= ".order-number")
+    private WebElement orderNumber;
+
+    public WebElement getOrderNumberWithException() {
+        try {
+            return orderNumber;
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
+
     public WebElement getPriceTotalDueTodayWithException() {
         try {
             return priceTotalDueToday;
@@ -48,7 +60,6 @@ public class OrderConfirmationBlock extends HtmlElement {
         catch (Exception e) {
             return null;
         }
-
     }
 
     public WebElement getPricePayTodayWithException() {
@@ -100,6 +111,7 @@ public class OrderConfirmationBlock extends HtmlElement {
 
     private JSONObject generateOrdersDetailDataWithPromo() throws JSONException {
         JSONObject orderDetail = new JSONObject();
+        orderDetail.put("order number", getOrderNumberWithException().getText());
         orderDetail.put("phoneNumber", getPhoneNumberWithException().getText());
         orderDetail.put("currentDate", new Date().toString());
         orderDetail.put("priceTotalDueToday", getPriceTotalDueTodayWithException().getText());
@@ -110,6 +122,7 @@ public class OrderConfirmationBlock extends HtmlElement {
 
     private JSONObject generateOrdersDetailData() throws JSONException {
         JSONObject orderDetail = new JSONObject();
+        orderDetail.put("order number", getOrderNumberWithException().getText());
         orderDetail.put("phoneNumber", getPhoneNumberWithException().getText());
         orderDetail.put("currentDate", new Date().toString());
         orderDetail.put("priceTotalDueToday", getPriceTotalDueTodayWithException().getText());

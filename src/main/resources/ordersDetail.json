@@ -1344,4 +1344,31 @@
     "currentDate": "Fri Nov 22 17:03:20 EET 2019",
     "priceTotalDueToday": "$4,520.11"
   }
+}{
+  "map": {
+    "phoneNumber": "1-833-A04-4A0437k1234",
+    "pricePayToday": "$4,489.19",
+    "currentDate": "Mon Nov 25 09:29:18 EET 2019",
+    "priceAfterAppliedPromoCode": "-$498.80",
+    "priceTotalDueToday": "$4,987.99",
+    "order number": "1574667603"
+  }
+}{
+  "map": {
+    "phoneNumber": "Z8Z-ZZZ-88Z4-ABCD-EFG",
+    "pricePayToday": "$0.00",
+    "currentDate": "Mon Nov 25 09:31:22 EET 2019",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$223.98",
+    "order number": "1574667726"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-Z37-ZZZ870Z-EST",
+    "pricePayToday": "$99.80",
+    "currentDate": "Mon Nov 25 09:32:29 EET 2019",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$104.80",
+    "order number": "1574667797"
+  }
 }

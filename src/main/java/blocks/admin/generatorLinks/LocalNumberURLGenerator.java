@@ -31,6 +31,9 @@ public class LocalNumberURLGenerator extends HtmlElement{
     @FindBy(xpath = "//input[@aria-label='Price']")
     private TextInput priceOverride;
 
+    @FindBy(xpath = "//input[@aria-label='Price']")
+    private WebElement oldPriceField;
+
     @FindBy(xpath = "//input[@aria-label='Displayed phone number']")
     private TextInput displayedNumberOnFE;
 

@@ -54,7 +54,6 @@ public class LicensingBasic800Numbers extends TestBase {
     public void orderBasic800NumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("basic-numbers");
-        basicIndexPage.open();
         basicIndexPage.chooseFirstNumberFromBasic800List();
         double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan("Premium");
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();

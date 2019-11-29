@@ -54,6 +54,15 @@ public abstract class BasePage {
         softAssert.assertAll();
     }
 
+    protected String getAttributeValue(WebElement element) {
+        String value = null;
+        try {
+            return value = element.getAttribute("value");
+        } catch (NoSuchElementException e) {
+            return value;
+        }
+    }
+
     protected void type(TextInput webElement, String text) {
         webElement.clear();
         webElement.sendKeys(text);

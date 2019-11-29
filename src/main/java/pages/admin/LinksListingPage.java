@@ -176,6 +176,48 @@ public class LinksListingPage extends BasePage {
         return enteredText;
     }
 
+    public double getSumOldPriceChosenAreaCodes() {
+        double sum = 0.0;
+        for (int i = 0; i < premiumNumberURLGenerator.getListOfChosenAreaCodes().size(); i++) {
+            double priceAreaCode = Double.parseDouble(premiumNumberURLGenerator.getListOfChosenAreaCodes().get(i).getText()
+                            .substring(premiumNumberURLGenerator.getListOfChosenAreaCodes().get(i).getText().indexOf("$") + 1));
+            sum = sum + priceAreaCode;
+        }
+        return sum;
+    }
+
+    public int getAmountOfMinute() {
+        return Integer.parseInt(premiumNumberURLGenerator.getSelectMinutes().getText());
+    }
+
+    public double getPriceMonthlyMinute() {
+        return Double.parseDouble(premiumNumberURLGenerator.getPriceMonthlyMinutes().getText()
+                .substring(premiumNumberURLGenerator.getPriceMonthlyMinutes().getText().indexOf("$") + 1));
+    }
+
+    public double getSaleSelectedPlan() {
+        return Double.parseDouble(premiumNumberURLGenerator.getSaleSelectedPlan().getText()
+                .substring(premiumNumberURLGenerator.getSaleSelectedPlan().getText().indexOf("$") + 2));
+    }
+
+    public int getPricePlanDuration(String termLength) {
+        int duration;
+        switch(termLength) {
+            case "1 year":
+                duration = 12;
+                break;
+            case "2 years":
+                duration = 24;
+                break;
+            case "3 years":
+                duration = 36;
+                break;
+            default:
+                duration = 0;
+        }
+        return duration;
+    }
+
     public String generateLinkWithoutPromoCodePremiumFlow(String priceOverride, String state,
                                                           int amountAreaCodes, String termLength, String minutes) {
         waitUntilElementAppeared(premiumNumberURLGenerator.getButtonGenerateLink());
@@ -222,7 +264,12 @@ public class LinksListingPage extends BasePage {
         }
         price = Double.parseDouble(localNumberURLGenerator.getPriceOverride().getEnteredText());
         return price;
+    }
 
+    public double getOldPrice() {
+        waitUntilElementAppeared(localNumberURLGenerator.getOldPriceField());
+        double price = Double.parseDouble(localNumberURLGenerator.getOldPriceField().getAttribute("placeholder").substring(1));
+        return price;
     }
 
     public double clickGenerateLinkButtonPremiumFlow() {

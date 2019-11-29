@@ -24,6 +24,15 @@ public class CheckoutSidebar extends HtmlElement {
     @FindBy(xpath= "//*[contains(text(),'Pay Today')]/following::div[1]")
     private WebElement pricePayToday;
 
+    @FindBy(xpath= "//*[contains(text(),'Promo Code')]/following::div[1]")
+    private WebElement discountFromPromoCode;
+
+    @FindBy(xpath= "//*[contains(text(),'Take')]/following::div[1]")
+    private WebElement discountPriceAmountAreaCodes;
+
+    @FindBy(css= ".switcher-title")
+    private WebElement switchTitle;
+
     @FindBy(css= ".have-promocode")
     private WebElement linkHavePromoCode;
 

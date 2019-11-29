@@ -34,6 +34,9 @@ public class BuyingRegularVanityNumber extends BasePage {
     @FindBy(css= ".text-center button")
     private WebElement continueButton;
 
+    @FindBy(css= ".step-details p")
+    private WebElement stepDetailDescription;
+
     @FindBy(css= ".title-price")
     private WebElement priceNumber;
 
@@ -41,6 +44,7 @@ public class BuyingRegularVanityNumber extends BasePage {
     private WebElement phoneNumber;
 
     public WebElement getPhoneNumber() {
+        waitUntilElementAppeared(phoneNumber);
         return phoneNumber;
     }
 
@@ -100,6 +104,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         }
         return amountMinute;
     }
+
 
     public void checkingCreatedPriceMinuteFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());

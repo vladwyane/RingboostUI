@@ -29,4 +29,16 @@ public class PickYourMonthlyPlanBlock extends HtmlElement {
     @Name("ArrayList of per month price")
     @FindBys( {@FindBy(xpath = "//*[@class='plan-name']//following-sibling::p")} )
     public List<WebElement> listOfPerMonthPrice;
+
+    @Name("ArrayList of description plan")
+    @FindBys( {@FindBy(xpath = "//*[@class='plan-name']//ancestor::div[1]//following-sibling::div//h3")} )
+    public List<WebElement> listOfPlanDescription;
+
+    @Name("ArrayList of additional cost")
+    @FindBys( {@FindBy(xpath = "//*[@class='plan-features']//p")} )
+    public List<WebElement> listOfAdditionalCost;
+
+    @Name("ArrayList of minutes")
+    @FindBys( {@FindBy(xpath = "//*[@class='plan-features']//h3")} )
+    public List<WebElement> listOfMinutes;
 }

@@ -29,100 +29,106 @@ public class OrderDetail extends HtmlElement {
     @FindBys( {@FindBy(css = ".v-subheader")} )
     private List<WebElement> listOfSubHeaders;
 
-    @FindBy(xpath = "//div[contains(text(), 'Public ID')]/following::div[1]/strong")
+    @FindBy(xpath = "//label[contains(text(), 'Public ID')]/following::input[1]")
     private WebElement publicID;
 
-    @FindBy(xpath = "//div[contains(text(), 'Status')]/following::div[1]/strong")
+    @FindBy(xpath = "//label[contains(text(), 'Status')]/following::input[1]")
     private WebElement status;
 
-    @FindBy(xpath = "//div[contains(text(), 'Customer price')]/following::div[1]/strong")
-    private WebElement customerPrice;
-
-    @FindBy(xpath = "//div[contains(text(), 'Subscription price')]/following::div[1]/strong")
-    private WebElement subscriptionPrice;
-
-    @FindBy(xpath = "//div[contains(text(), 'Price plan')]/following::div[1]/strong")
-    private WebElement pricePlan;
-
-    @FindBy(xpath = "//div[contains(text(), 'Price plan duration')]/following::div[1]/strong")
-    private WebElement pricePlanDuration;
-
-    @FindBy(xpath = "//div[contains(text(), 'Price plan additional cost')]/following::div[1]/strong")
-    private WebElement pricePlanAdditionalCost;
-
-    @FindBy(xpath = "//div[contains(text(), 'Price plan activation fee')]/following::div[1]/strong")
-    private WebElement pricePlanActivationFee;
-
-    @FindBy(xpath = "//div[contains(text(), 'Price subscription payment')]/following::div[1]/strong")
-    private WebElement priceSubscriptionPayment;
-
-    @FindBy(xpath = "//div[contains(text(), 'Phone')]/following::div[1]/strong")
-    private WebElement phone;
-
-    @FindBy(xpath = "//div[contains(text(), 'Vanity')]/following::div[1]/strong")
-    private WebElement vanity;
-
-    @FindBy(xpath = "//div[contains(text(), 'Category')]/following::div[1]/strong")
-    private WebElement category;
-
-    @FindBy(xpath = "//div[contains(text(), 'Phone type')]/following::div[1]/strong")
-    private WebElement phoneType;
-
-    @FindBy(xpath = "//div[contains(text(), 'Flow type')]/following::div[1]/strong")
-    private WebElement flowType;
-
-    @FindBy(xpath = "//div[contains(text(), 'Sub type')]/following::div[1]/strong")
-    private WebElement subType;
-
-    @FindBy(xpath = "//div[contains(text(), 'Ring To Phone Number')]/following::div[1]/strong")
-    private WebElement ringToPhoneNumber;
-
-    @FindBy(xpath = "//div[contains(text(), 'Bearer')]/following::div[1]/strong")
-    private WebElement bearer;
-
-    @FindBy(xpath = "//div[contains(text(), 'API partner')]/following::div[1]/strong")
-    private WebElement apiPartner;
-
-    @FindBy(xpath = "//div[contains(text(), 'API partner commission %')]/following::div[1]/strong")
-    private WebElement apiPartnerCommission;
-
-    @FindBy(xpath = "//div[contains(text(), 'Owner')]/following::div[1]/strong")
-    private WebElement owner;
-
-    @FindBy(xpath = "//div[contains(text(), 'Owner commission %')]/following::div[1]/strong")
-    private WebElement ownerCommission;
-
-    @FindBy(xpath = "//div[contains(text(), 'Carrier')]/following::div[1]/strong")
-    private WebElement carrier;
-
-    @FindBy(xpath = "//div[contains(text(), 'Promo Code')]/following::div[1]/strong")
-    private WebElement promoCode;
-
-    @FindBy(xpath = "//div[contains(text(), 'Discount value')]/following::div[1]/strong")
-    private WebElement discountValue;
-
-    @FindBy(xpath = "//div[contains(text(), 'Nationwide')]/following::div[1]/strong")
-    private WebElement nationwide;
-
-    @FindBy(xpath = "//div[contains(text(), 'Regional')]/following::div[1]/strong")
-    private WebElement regional;
-
-    @FindBy(xpath = "//div[contains(text(), 'Auction')]/following::div[1]/strong")
-    private WebElement auction;
-
-    @FindBy(xpath = "//div[contains(text(), 'Feature')]/following::div[1]/strong")
-    private WebElement feature;
-
-    @FindBy(xpath = "//div[contains(text(), 'Premium')]/following::div[1]/strong")
-    private WebElement premium;
-
-    @FindBy(xpath = "//div[contains(text(), 'Country ISO')]/following::div[1]/strong")
+    @FindBy(xpath = "//label[contains(text(), 'Country ISO')]/following::input[1]")
     private WebElement countryISO;
 
-    @FindBy(xpath = "//div[contains(text(), 'Completed at')]/following::div[1]/strong")
-    private WebElement completedAt;
+    @FindBy(xpath = "//label[contains(text(), 'State')]/following::input[1]")
+    private WebElement state;
 
-    @FindBy(xpath = "//div[contains(text(), 'Failed at')]/following::div[1]/strong")
-    private WebElement failedAt;
+    @FindBy(xpath = "//label[contains(text(), 'Carrier')]/following::input[1]")
+    private WebElement carrier;
+
+    @FindBy(xpath = "//label[contains(text(), 'Completed at')]/following::input[1]")
+    private WebElement timeStamps;
+
+    @FindBy(xpath = "//label[contains(text(), 'Phone')]/following::input[1]")
+    private WebElement phoneName;
+
+    @FindBy(xpath = "//label[contains(text(), 'Vanity')]/following::input[1]")
+    private WebElement vanityPhoneName;
+
+    @FindBy(xpath = "//label[contains(text(), 'Category')]/following::input[1]")
+    private WebElement category;
+
+    @FindBy(xpath = "//label[contains(text(), 'Phone type')]/following::input[1]")
+    private WebElement phoneType;
+
+    @FindBy(xpath = "//label[contains(text(), 'Flow type')]/following::input[1]")
+    private WebElement flowType;
+
+    @FindBy(xpath = "//label[contains(text(), 'Sub type')]/following::input[1]")
+    private WebElement subType;
+
+    @FindBy(xpath = "//label[contains(text(), 'Bearer')]/following::input[1]")
+    private WebElement bearer;
+
+    @FindBy(xpath = "//label[contains(text(), 'Payment Price')]/following::input[1]")
+    private WebElement paymentPrice;
+
+    @FindBy(xpath = "//label[contains(text(), 'Customer Price')]/following::input[1]")
+    private WebElement customerPrice;
+
+    @FindBy(xpath = "//label[contains(text(), 'Customer Subscription Price')]/following::input[1]")
+    private WebElement customerSubscriptionPrice;
+
+    @FindBy(xpath = "//label[contains(text(), 'Phone Upsell Name')]/following::input[1]")
+    private WebElement phoneUpsellName;
+
+    @FindBy(xpath = "//label[contains(text(), 'Phone Upsell Price')]/following::input[1]")
+    private WebElement phoneUpsellPrice;
+
+    @FindBy(xpath = "//label[contains(text(), 'Price one plan payment')]/following::input[1]")
+    private WebElement priceOnePlanPayment;
+
+    @FindBy(xpath = "//label[contains(text(), 'Price subscription payment')]/following::input[1]")
+    private WebElement priceSubscriptionPayment;
+
+    @FindBy(xpath = "//label[contains(text(), 'Price One time payment')]/following::input[1]")
+    private WebElement priceOneTimePayment;
+
+    @FindBy(xpath = "//label[contains(text(), 'Subscription price')]/following::input[1]")
+    private WebElement subscriptionPrice;
+
+    @FindBy(xpath = "//label[contains(text(), 'Coupon')]/following::input[1]")
+    private WebElement promoCodeName;
+
+    @FindBy(xpath = "//label[contains(text(), 'Discount value')]/following::input[1]")
+    private WebElement discountValue;
+
+    @FindBy(xpath = "//label[contains(text(), 'Discount type')]/following::input[1]")
+    private WebElement discountType;
+
+    @FindBy(xpath = "//label[contains(text(), 'API partner')]/following::input[1]")
+    private WebElement apiPartner;
+
+    @FindBy(xpath = "//label[contains(text(), 'Minutes')]/following::input[1]")
+    private WebElement minutes;
+
+    @FindBy(xpath = "//label[contains(text(), 'Minutes Price')]/following::input[1]")
+    private WebElement minutesPrice;
+
+    @FindBy(xpath = "//label[contains(text(), 'Zendesk Task ID')]/following::input[1]")
+    private WebElement zendeskId;
+
+    @FindBy(xpath = "//label[contains(text(), 'Nationwide')]/following::input[1]")
+    private WebElement isNationwide;
+
+    @FindBy(xpath = "//label[contains(text(), 'Regional')]/following::input[1]")
+    private WebElement isRegional;
+
+    @FindBy(xpath = "//label[contains(text(), 'Feature')]/following::input[1]")
+    private WebElement isFeature;
+
+    @FindBy(xpath = "//label[contains(text(), 'Auction')]/following::input[1]")
+    private WebElement isAuction;
+
+    @FindBy(xpath = "//label[contains(text(), 'Premium')]/following::input[1]")
+    private WebElement isPremium;
 
 }

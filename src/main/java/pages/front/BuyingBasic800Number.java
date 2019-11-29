@@ -33,6 +33,11 @@ public class BuyingBasic800Number extends BasePage {
     @FindBy(css= ".main-number-holder")
     private WebElement phoneNumber;
 
+    public WebElement getPhoneNumber() {
+        waitUntilElementAppeared(phoneNumber);
+        return phoneNumber;
+    }
+
     public void goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
         orderSummaryBlock.getButtonProceedToCheckout().click();
@@ -53,6 +58,30 @@ public class BuyingBasic800Number extends BasePage {
         pickYourMonthlyPlanBlock.listCardButtons.get(0).click();
         perMonthPrice = 0.0;
         return perMonthPrice;
+    }
+
+    public String getAdditionalCost(String planName) {
+        waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
+        String additionalCost = null;
+        for (int i = 0; i < pickYourMonthlyPlanBlock.listPlaneName.size(); i++) {
+            if(pickYourMonthlyPlanBlock.listPlaneName.get(i).getText().equals(planName)) {
+                additionalCost = pickYourMonthlyPlanBlock.getListOfAdditionalCost().get(i).getText().replaceAll("[^0-9?!\\\\.]","");
+                return additionalCost;
+            }
+        }
+        return additionalCost;
+    }
+
+    public String getAmountMinutes(String planName) {
+        waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
+        String amountMinutes = null;
+        for (int i = 0; i < pickYourMonthlyPlanBlock.listPlaneName.size(); i++) {
+            if(pickYourMonthlyPlanBlock.listPlaneName.get(i).getText().equals(planName)) {
+                amountMinutes = pickYourMonthlyPlanBlock.getListOfMinutes().get(i).getText().replaceAll("[^0-9?!\\\\.]","");
+                return amountMinutes;
+            }
+        }
+        return amountMinutes;
     }
 
     public void checkingCreatedTermFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {

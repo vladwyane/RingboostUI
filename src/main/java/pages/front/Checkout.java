@@ -88,6 +88,26 @@ public class Checkout extends BasePage {
         else return false;
     }
 
+    public String getDiscountPromoCode() {
+        return checkoutSidebar.getDiscountFromPromoCode().getText();
+    }
+
+    public double getPricePayToday() {
+        return Double.parseDouble(checkoutSidebar.getPricePayToday().getText());
+    }
+
+    public double getDiscountAmountAreacodes() {
+        try {
+            waitUntilElementAppeared(checkoutSidebar.getSwitchTitle());
+            checkoutSidebar.getSwitchTitle().click();
+            waitUntilElementAppeared(checkoutSidebar.getDiscountPriceAmountAreaCodes());
+            return Double.parseDouble(checkoutSidebar.getDiscountPriceAmountAreaCodes().getText()
+                    .substring(checkoutSidebar.getDiscountPriceAmountAreaCodes().getText().indexOf("$") + 1));
+        } catch (Exception e) {
+            return 0.0;
+        }
+    }
+
     public void addPromoCodeAndAfterRemove(String promocode) throws InterruptedException {
         checkoutSidebar.getLinkHavePromoCode().click();
         waitUntilElementAppeared(checkoutSidebar.getButtonApply());

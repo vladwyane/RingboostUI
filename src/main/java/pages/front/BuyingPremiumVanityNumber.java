@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
 
 import java.text.DecimalFormat;
@@ -33,6 +34,13 @@ public class BuyingPremiumVanityNumber extends BasePage {
 
     @FindBy(xpath= "//button[contains(text(), 'continue')]")
     private WebElement continueButton;
+
+    @FindBy(css= ".main-number-holder")
+    private WebElement phoneNumber;
+
+    public WebElement getPhoneNumber() {
+        return phoneNumber;
+    }
 
     public void clickButtonChooseMyAreas() {
         waitUntilElementWillBeClickable(availableByMarketOrNationwide.getButtonSelectMyAreas());
@@ -223,6 +231,24 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return discount;
     }
 
+    public int getPricePlanDuration(int pricePlanSale) {
+        int duration;
+        switch(pricePlanSale) {
+            case 10:
+                duration = 12;
+                break;
+            case 20:
+                duration = 24;
+                break;
+            case 30:
+                duration = 36;
+                break;
+            default:
+                duration = 0;
+        }
+        return duration;
+    }
+
     public void checkingCreatedTermFromAdmin(PricingTollFreeSettings pricingTollFreeSettings) {
         waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
         String discount = null;
@@ -278,6 +304,33 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return price;
     }
 
+    public int getAmountMinutes(double priceOfMinute) {
+        int amountMinute;
+        switch((int)priceOfMinute) {
+            case 15:
+                amountMinute = 250;
+                break;
+            case 30:
+                amountMinute = 500;
+                break;
+            case 45:
+                amountMinute = 750;
+                break;
+            case 50:
+                amountMinute = 1000;
+                break;
+            case 100:
+                amountMinute = 2000;
+                break;
+            case 255:
+                amountMinute = 5000;
+                break;
+            default:
+                amountMinute = 0;
+        }
+        return amountMinute;
+    }
+
     public void chooseCheckboxMultipleRingToNumber() {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
         waitUntilElementWillBeClickable(continueButton);
@@ -322,6 +375,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
     }
+
 
     public void goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());

@@ -10,6 +10,7 @@ import pages.front.*;
 import testBase.TestBase;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 /**
  * Created by bigdrop on 11/29/2019.
@@ -77,26 +78,34 @@ public class Orders extends TestBase {
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1).substring(0, 10);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
-        String displayedName = linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
+        double defaultSubsPrice = 19.95;
+        String displayedName = linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10.01");
         double priceOverride = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
         int amountMinutes = buyingRegularVanityNumber.getAmountMinutes(priceMonthlyMinutes);
-        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 years");
+        String pricePlanName = "2 years";
+        int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength(pricePlanName);
+        String pricePlan = pricePlanName + " - " + discountPriceSelectedPlan + "%";
         int planDuration = buyingRegularVanityNumber.getPricePlanDuration(discountPriceSelectedPlan);
         String ringToNumber = "0668843471";
-        double priceNumber = buyingRegularVanityNumber.enterRingToNumber(ringToNumber);
-        double subscriptionPrice = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
+        buyingRegularVanityNumber.enterRingToNumber(ringToNumber);
         buyingRegularVanityNumber.goToCheckout();
+        double subsPrice = Math.round((priceMonthlyMinutes + defaultSubsPrice - (priceMonthlyMinutes + defaultSubsPrice) * discountPriceSelectedPlan * 0.01) * 100.0) / 100.0;
+        double customSubsPrice = Math.round((priceMonthlyMinutes + priceOverride - (priceMonthlyMinutes + priceOverride) * discountPriceSelectedPlan * 0.01) * 100.0) / 100.0;
+        double payToday = customSubsPrice;
+        boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.VISA_STRIPE, false);
-        orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, priceOverride, isPromocode, displayedName);
+/*        orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, priceOverride, priceMonthlyMinutes, amountMinutes,
-                planDuration, ringToNumber, subscriptionPrice, "-", "-");
+        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, customSubsPrice, subsPrice, pricePlan, discountPriceSelectedPlan,
+                priceMonthlyMinutes, amountMinutes, planDuration, ringToNumber, payToday, "", "");*/
     }
 
     @Test
@@ -108,20 +117,28 @@ public class Orders extends TestBase {
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.
                 chooseSeveralAreaCodesFromSeveralStates(new String[] {"Kansas", "Vermont"}, new int[] {3, 1});
-        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("month");
+        String pricePlanName = "Month-To-Month";
+        int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength(pricePlanName);
+        String pricePlan = pricePlanName + " - " + discountPriceSelectedPlan + "%";
         int planDuration = buyingPremiumVanityNumber.getPricePlanDuration(discountPriceSelectedPlan);
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose5000MonthlyMinutes();
-        int amountOfMinute = buyingPremiumVanityNumber.getAmountMinutes(priceMonthlyMinutes);
+        int amountMinutes = buyingPremiumVanityNumber.getAmountMinutes(priceMonthlyMinutes);
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         String discountPromoCode = Double.toString(PromoCodes.FIXED_PROMOCODE.getValue());
-        double discountAmountAreaCodes = checkout.getDiscountAmountAreacodes();
-        double subscriptionPrice = priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount -
-                (priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount) * discountPriceSelectedPlan * 0.01 ;
+        double subsPrice = Math.round((priceFromAmountAreaCodesWithDiscount + priceMonthlyMinutes - (priceFromAmountAreaCodesWithDiscount + priceMonthlyMinutes) * discountPriceSelectedPlan * 0.01) * 100.0) / 100.0;
+        double payToday = subsPrice;
         checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
-        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, 0.0, priceFromAmountAreaCodesWithDiscount + discountAmountAreaCodes,
-                priceMonthlyMinutes, amountOfMinute, planDuration, "", subscriptionPrice, discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName());
+        orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
+/*        orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
+        login.open();
+        admin.clickOrdersTollFree();
+        orderListingPage.clickEditIconFirstOrder();
+        orderDetailPage.clickTab("Additional details");
+        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, 0.00, subsPrice, pricePlan, discountPriceSelectedPlan,
+                priceMonthlyMinutes, amountMinutes, planDuration, "", payToday, discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName());*/
     }
 
     @Test
@@ -132,16 +149,24 @@ public class Orders extends TestBase {
         String pricePlanName = "Business Pro";
         String additionalCost = buyingBasic800Number.getAdditionalCost(pricePlanName);
         String amountMinutes = buyingBasic800Number.getAmountMinutes(pricePlanName);
-        double pricePlan = buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName);
+        double subsPrice = Math.round(buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName) * 100.0) / 100.0;
+        String pricePlan = pricePlanName + " - " + amountMinutes;
         String ringToNumber = "8722413731";
         buyingBasic800Number.enterRingToNumber(ringToNumber);
-        double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
+        double priceActivationFee = Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0;
         buyingBasic800Number.goToCheckout();
         String discountPromoCode = Double.toString(PromoCodes.PERCENT_PROMOCODE.getValue());
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
-        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName, pricePlan, amountMinutes,
-                additionalCost, priceActivationFee, "-", discountPromoCode, PromoCodes.PERCENT_PROMOCODE.getName(), "Success");
+        orderConfirmationPage.checkingYourPurchaseBasic800NumberWithPercentPromoCode(priceActivationFee, subsPrice);
+        /*orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
+        login.open();
+        admin.clickOrdersTollFree();
+        orderListingPage.clickEditIconFirstOrder();
+        orderDetailPage.clickTab("Additional details");
+        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, subsPrice, amountMinutes,
+                additionalCost, priceActivationFee, ringToNumber, discountPromoCode, PromoCodes.PERCENT_PROMOCODE.getName(), "Success");*/
     }
 
     @Test
@@ -160,10 +185,12 @@ public class Orders extends TestBase {
         String phoneUpsellName = "Port A Number";
         double phoneUpsellPrice = buyingLocalNumber.choosePlan(phoneUpsellName);
         buyingLocalNumber.goToCheckout();
+        boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
-        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, customerPrice, 0, 0, 0,
+        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(customerPrice, isPromocode);
+/*        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, customerPrice, 0, 0, 0,
                 phoneUpsellName, phoneUpsellPrice, "", "", 0, 0, 0, 0, "",
-                "-", "-", "Success");
+                "-", "-", "Success");*/
     }
 
     @Test
@@ -185,9 +212,10 @@ public class Orders extends TestBase {
         String discountPromoCode = Double.toString(PromoCodes.FIXED_PROMOCODE.getValue());
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
-        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, customerPrice, 0, 0, 0,
+        orderConfirmationPage.checkingGeneratedLinParkNumberWithFixedPromoCode(customerPrice, phoneUpsellPrice, displayedName);
+/*        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, customerPrice, 0, 0, 0,
                 phoneUpsellName, phoneUpsellPrice, "", "", 0, 0, 0, 0, "",
-                discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName(), "Success");
+                discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName(), "Success");*/
     }
 
     @Test
@@ -208,9 +236,10 @@ public class Orders extends TestBase {
         String discountPromoCode = Double.toString(PromoCodes.PERCENT_PROMOCODE.getValue());
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
-        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, 0, subscriptionPrice, 0, 0,
+        orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(oldPrice, phoneUpsellPrice);
+/*        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, 0, subscriptionPrice, 0, 0,
                 phoneUpsellName, phoneUpsellPrice, planName, planDescription, 0, 0, 0, 0, "",
-                discountPromoCode, PromoCodes.PERCENT_PROMOCODE.getName(), "Success");
+                discountPromoCode, PromoCodes.PERCENT_PROMOCODE.getName(), "Success");*/
     }
 
 }

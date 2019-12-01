@@ -39,6 +39,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
     private WebElement phoneNumber;
 
     public WebElement getPhoneNumber() {
+        waitUntilElementAppeared(phoneNumber);
         return phoneNumber;
     }
 

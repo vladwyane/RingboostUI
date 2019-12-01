@@ -101,8 +101,8 @@ public class OrdersTollFreeRegular extends TestBase {
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, priceOverride, priceMonthlyMinutes, amountMinutes,
-                planDuration, ringToNumber, subscriptionPrice, "-", "-");
+        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, 0, 0, null, 0, priceMonthlyMinutes, amountMinutes,
+                planDuration, ringToNumber, 0, "-", "-");
     }
 
     @Test
@@ -132,8 +132,8 @@ public class OrdersTollFreeRegular extends TestBase {
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, priceOverride, priceMonthlyMinutes, amountMinutes, planDuration,
-                "-", subscriptionPrice, discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName());
+        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, 0, 0, null, 0, priceMonthlyMinutes, amountMinutes, planDuration,
+                "-", 0, discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName());
     }
 
     @Test
@@ -157,8 +157,8 @@ public class OrdersTollFreeRegular extends TestBase {
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, 0.0, priceMonthlyMinutes, amountMinutes,
-                planDuration, "-", subscriptionPrice, discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName());
+        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, 0, 0, null, 0, priceMonthlyMinutes, amountMinutes,
+                planDuration, "-", 0, discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName());
     }
 
 }

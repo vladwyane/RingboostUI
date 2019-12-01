@@ -94,8 +94,8 @@ public class OrdersTollFreePremium extends TestBase {
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, priceOverride, oldPriceChosenAreaCodes, priceMonthlyMinute, amountOfMinute,
-                 pricePlanDuration, "-", subscriptionPrice, discountPromoCode, PromoCodes.PERCENT_PROMOCODE.getName());
+/*        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, priceOverride, oldPriceChosenAreaCodes, priceMonthlyMinute, amountOfMinute,
+                 pricePlanDuration, "-", subscriptionPrice, discountPromoCode, PromoCodes.PERCENT_PROMOCODE.getName());*/
     }
 
     @Test
@@ -125,8 +125,8 @@ public class OrdersTollFreePremium extends TestBase {
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, priceOverride, oldPriceChosenAreaCodes, priceMonthlyMinute, amountOfMinute,
-                pricePlanDuration, "-", subscriptionPrice, "-", "-");
+/*        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, priceOverride, oldPriceChosenAreaCodes, priceMonthlyMinute, amountOfMinute,
+                pricePlanDuration, "-", subscriptionPrice, "-", "-");*/
     }
 
     @Test
@@ -155,7 +155,7 @@ public class OrdersTollFreePremium extends TestBase {
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, 0.0, priceFromAmountAreaCodesWithDiscount + discountAmountAreaCodes,
-                priceMonthlyMinutes, amountOfMinute, planDuration, "", subscriptionPrice, discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName());
+/*        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, 0.0, priceFromAmountAreaCodesWithDiscount + discountAmountAreaCodes,
+                priceMonthlyMinutes, amountOfMinute, planDuration, "", subscriptionPrice, discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName());*/
     }
 }

@@ -24,7 +24,9 @@ public class TestBase {
                 getClass().getName().equals("adminPanel.sprint_3_PricingTollFree.TermPremium") ||
                 getClass().getName().equals("adminPanel.sprint_3_PricingTollFree.CostPerMinute") ||
                 getClass().getName().equals("adminPanel.sprint_3_PricingTollFree.MultipleAreas") ||
-                getClass().getName().equals("adminPanel.sprint_5_CustomersOrder.OrdersTollFreePremium"))
+                getClass().getName().equals("adminPanel.sprint_5_CustomersOrder.OrdersTollFreePremium") ||
+                getClass().getName().equals("adminPanel.sprint_5_CustomersOrder.Orders")
+        )
             app.unitMobileView();
         else app.unit();
         context.setAttribute("app", app);

@@ -77,7 +77,7 @@ public class BuyingBasic800Number extends BasePage {
         String amountMinutes = null;
         for (int i = 0; i < pickYourMonthlyPlanBlock.listPlaneName.size(); i++) {
             if(pickYourMonthlyPlanBlock.listPlaneName.get(i).getText().equals(planName)) {
-                amountMinutes = pickYourMonthlyPlanBlock.getListOfMinutes().get(i).getText().replaceAll("[^0-9?!\\\\.]","");
+                amountMinutes = pickYourMonthlyPlanBlock.getListOfMinutes().get(i).getText();
                 return amountMinutes;
             }
         }

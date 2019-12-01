@@ -92,6 +92,14 @@ public abstract class BasePage {
         }
     }
 
+    protected void waiting5seconds() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     protected boolean isElementInvisible(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 2);
         try {

@@ -25,6 +25,10 @@ public class OrderConfirmationPage extends BasePage {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
     }
 
+    public void wait5SecUntilOrderAddedInAdmin() {
+        waiting5seconds();
+    }
+
     public void checkingYourPurchase (double priceMonthlyMinutes, int discountPriceSelectedPlan, double priceNumber) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());

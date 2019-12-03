@@ -41,6 +41,9 @@ public class OrderDetail extends HtmlElement {
     @FindBy(xpath = "//label[contains(text(), 'State')]/following::input[1]")
     private WebElement state;
 
+    @FindBy(xpath = "//label[contains(text(), 'Local Area')]/following::input[1]")
+    private WebElement localArea;
+
     @FindBy(xpath = "//label[contains(text(), 'Carrier')]/following::input[1]")
     private WebElement carrier;
 
@@ -76,6 +79,9 @@ public class OrderDetail extends HtmlElement {
 
     @FindBy(xpath = "//label[contains(text(), 'Customer Subscription Price')]/following::input[1]")
     private WebElement customerSubscriptionPrice;
+
+    @FindBy(xpath = "//label[contains(text(), 'Pay Today')]/following::input[1]")
+    private WebElement payToday;
 
     @FindBy(xpath = "//label[contains(text(), 'Phone Upsell Name')]/following::input[1]")
     private WebElement phoneUpsellName;

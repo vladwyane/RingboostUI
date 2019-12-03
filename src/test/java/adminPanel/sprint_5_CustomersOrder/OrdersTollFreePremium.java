@@ -88,7 +88,7 @@ public class OrdersTollFreePremium extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -119,7 +119,7 @@ public class OrdersTollFreePremium extends TestBase {
         double subscriptionPrice = priceMonthlyMinute + priceOverride - saleSelectedPlan;
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
-        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -149,7 +149,7 @@ public class OrdersTollFreePremium extends TestBase {
         double discountAmountAreaCodes = checkout.getDiscountAmountAreacodes();
         double subscriptionPrice = priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount -
                 (priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount) * discountPriceSelectedPlan * 0.01 ;
-        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();

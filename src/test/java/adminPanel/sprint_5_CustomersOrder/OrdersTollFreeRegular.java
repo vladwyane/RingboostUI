@@ -95,7 +95,7 @@ public class OrdersTollFreeRegular extends TestBase {
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber(ringToNumber);
         double subscriptionPrice = priceMonthlyMinutes + priceNumber - (priceMonthlyMinutes + priceNumber) * discountPriceSelectedPlan * 0.01 ;
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -126,7 +126,7 @@ public class OrdersTollFreeRegular extends TestBase {
         String discountPromoCode = Double.toString(PromoCodes.FIXED_PROMOCODE.getValue());
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -151,7 +151,7 @@ public class OrdersTollFreeRegular extends TestBase {
         String discountPromoCode = Double.toString(Math.round(subscriptionPrice * PromoCodes.PERCENT_PROMOCODE.getValue() / 100 * 100.0) / 100.0);
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();

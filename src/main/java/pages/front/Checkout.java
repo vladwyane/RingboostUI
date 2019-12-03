@@ -92,8 +92,13 @@ public class Checkout extends BasePage {
         return checkoutSidebar.getDiscountFromPromoCode().getText();
     }
 
-    public double getPricePayToday() {
-        return Double.parseDouble(checkoutSidebar.getPricePayToday().getText());
+    public String getPricePayToday() {
+        waitUntilElementAppeared(checkoutSidebar.getPricePayToday());
+        if(isElementPresent(checkoutSidebar.getPricePayToday())) {
+            return checkoutSidebar.getPricePayToday().getText();
+        }
+        else return checkoutSidebar.getPriceTotalDueToday().getText();
+
     }
 
     public double getDiscountAmountAreacodes() {

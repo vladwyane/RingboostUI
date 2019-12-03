@@ -64,7 +64,7 @@ public class OrdersBasic800 extends TestBase {
         buyingBasic800Number.enterRingToNumber(ringToNumber);
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -89,7 +89,7 @@ public class OrdersBasic800 extends TestBase {
         String discountPromoCode = Double.toString(PromoCodes.FIXED_PROMOCODE.getValue());
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -114,7 +114,7 @@ public class OrdersBasic800 extends TestBase {
         String discountPromoCode = Double.toString(PromoCodes.HIGH_FIXED_PROMOCODE.getValue());
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -140,7 +140,7 @@ public class OrdersBasic800 extends TestBase {
         String discountPromoCode = Double.toString(Math.round((priceActivationFee + pricePlanPrice) * PromoCodes.PERCENT_PROMOCODE.getValue() / 100 * 100.0) / 100.0);
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_30, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -164,7 +164,7 @@ public class OrdersBasic800 extends TestBase {
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_31, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();
@@ -186,7 +186,7 @@ public class OrdersBasic800 extends TestBase {
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_29, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickOrdersTollFree();

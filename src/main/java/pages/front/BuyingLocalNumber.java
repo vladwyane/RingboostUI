@@ -73,18 +73,6 @@ public class BuyingLocalNumber extends BasePage {
         return boughtNumber;
     }
 
-    public String getDescriptionPlan(String planName) {
-        waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
-        String perMonthPrice = null;
-        for (int i = 0; i < pickYourMonthlyPlanBlock.listPlaneName.size(); i++) {
-            if(pickYourMonthlyPlanBlock.listPlaneName.get(i).getText().equals(planName)) {
-                perMonthPrice = pickYourMonthlyPlanBlock.listOfPlanDescription.get(i).getText();
-                return perMonthPrice;
-            }
-        }
-        return perMonthPrice;
-    }
-
     public double choosePickYourMonthlyPlan(String planName) {
         waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
         double perMonthPrice;
@@ -100,6 +88,32 @@ public class BuyingLocalNumber extends BasePage {
         pickYourMonthlyPlanBlock.listCardButtons.get(0).click();
         perMonthPrice = 0.0;
         return perMonthPrice;
+    }
+
+    public double getAdditionalCoast(String planName) {
+        waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
+        double additionalCoast;
+        for (int i = 0; i < pickYourMonthlyPlanBlock.listPlaneName.size(); i++) {
+            if(pickYourMonthlyPlanBlock.listPlaneName.get(i).getText().equals(planName)) {
+                additionalCoast = Double.parseDouble(getNumbersFromString(pickYourMonthlyPlanBlock.listOfAdditionalCost.get(i).getText()));
+                return additionalCoast;
+            }
+        }
+        additionalCoast = 0.0;
+        return additionalCoast;
+    }
+
+    public String getDescriptionPlan(String planName) {
+        waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
+        String description;
+        for (int i = 0; i < pickYourMonthlyPlanBlock.listPlaneName.size(); i++) {
+            if(pickYourMonthlyPlanBlock.listPlaneName.get(i).getText().equals(planName)) {
+                description = pickYourMonthlyPlanBlock.listOfPlanDescription.get(i).getText();
+                return description;
+            }
+        }
+        description = null;
+        return description;
     }
 
     public double chooseCheckboxMultipleRingToNumber() {

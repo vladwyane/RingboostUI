@@ -30,7 +30,7 @@ public class OrdersTable extends HtmlElement {
     private List<WebElement> listOfActions;
 
     @Name("List of column header")
-    @FindBys( {@FindBy(xpath = "//th[@role='columnheader']")} )
+    @FindBys( {@FindBy(xpath = "//th/p")} )
     private List<WebElement> listColumnHeader;
 
     @Name("List of Td")

@@ -61,19 +61,23 @@ public class OrderListingPage extends BasePage {
 
     public void checkingCorrectColumnOrdersTollFreeListing() {
         waitUntilElementAppeared(ordersTable.getListColumnHeader().get(0));
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(0).getText(), "Actions");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(1).getText(), "Phone Number");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(2).getText(), "Carrier");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(3).getText(), "Amount Per Month");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(4).getText(), "Public IDarrow_upward");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(5).getText(), "Status");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(6).getText(), "Date");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(7).getText(), "Customer company");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(8).getText(), "Customer name");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(9).getText(), "Customer email");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(10).getText(), "Source");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(11).getText(), "Sales rep");
-        softAssert.assertEquals(ordersTable.getListColumnHeader().get(12).getText(), "Resporg");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(0).getText(), "Phone number");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(1).getText(), "Vanity");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(2).getText(), "Total amount");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(3).getText(), "Public ID#");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(4).getText(), "Date");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(5).getText(), "Customer company");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(6).getText(), "Contact");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(7).getText(), "Customer Email");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(8).getText(), "Coupon");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(9).getText(), "Sales Rep");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(10).getText(), "API Partner");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(11).getText(), "DID State");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(12).getText(), "DID Origin");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(13).getText(), "Resporg");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(14).getText(), "Ticket");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(15).getText(), "Source");
+        softAssert.assertEquals(ordersTable.getListColumnHeader().get(16).getText(), "Status");
         softAssert.assertAll();
     }
 

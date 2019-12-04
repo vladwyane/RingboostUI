@@ -1501,4 +1501,13 @@
     "priceTotalDueToday": "$273.99",
     "order number": "1575299506"
   }
+}{
+  "map": {
+    "phoneNumber": "1-833-A04-4A0437k1234",
+    "pricePayToday": "$2,881.43",
+    "currentDate": "Wed Dec 04 17:52:20 EET 2019",
+    "priceAfterAppliedPromoCode": "-$320.16",
+    "priceTotalDueToday": "$3,201.59",
+    "order number": "1575475399"
+  }
 }

@@ -142,7 +142,7 @@ public class BuyingRegularVanityNumber extends BasePage {
                 duration = 24;
                 break;
             default:
-                duration = 0;
+                duration = 1;
         }
         return duration;
     }

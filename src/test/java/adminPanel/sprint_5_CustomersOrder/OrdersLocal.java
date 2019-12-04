@@ -1,20 +1,20 @@
 package adminPanel.sprint_5_CustomersOrder;
 
-import data.CreditCards;
-import data.PromoCodes;
-import data.Users;
-import org.json.JSONException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import pages.admin.*;
-import pages.front.*;
-import testBase.TestBase;
+        import data.CreditCards;
+        import data.PromoCodes;
+        import data.Users;
+        import org.json.JSONException;
+        import org.openqa.selenium.By;
+        import org.openqa.selenium.JavascriptExecutor;
+        import org.openqa.selenium.WebElement;
+        import org.testng.annotations.AfterMethod;
+        import org.testng.annotations.BeforeMethod;
+        import org.testng.annotations.Test;
+        import pages.admin.*;
+        import pages.front.*;
+        import testBase.TestBase;
 
-import java.io.IOException;
+        import java.io.IOException;
 
 /**
  * Created by bigdrop on 11/26/2019.
@@ -104,7 +104,7 @@ public class OrdersLocal extends TestBase {
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, customerPrice, "", payToday, phoneUpsellName,
-        phoneUpsellPrice, "", "", "","", "", "", "", "Completed");
+                phoneUpsellPrice, "", "", "","", "", "", "", "Completed");
     }
 
     @Test
@@ -117,7 +117,7 @@ public class OrdersLocal extends TestBase {
         linksListingPage.clickCreateNewURLButton();
         String pricePayment = "$" + String.valueOf(linksListingPage.getOldPrice());
         String displayedName = linksListingPage
-                    .generateLinkWithPromoCodeRegularFlow("601", "-TEST");
+                .generateLinkWithPromoCodeRegularFlow("601", "-TEST");
         String customerPrice = "$" + String.valueOf(linksListingPage.clickGenerateLinkButtonRegularFlow());
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);

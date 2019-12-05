@@ -238,10 +238,10 @@ public class BuyingPremiumVanityNumber extends BasePage {
             case 10:
                 duration = 12;
                 break;
-            case 20:
+            case 15:
                 duration = 24;
                 break;
-            case 30:
+            case 20:
                 duration = 36;
                 break;
             default:

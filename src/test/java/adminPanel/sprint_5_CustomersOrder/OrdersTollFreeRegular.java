@@ -75,7 +75,7 @@ public class OrdersTollFreeRegular extends TestBase {
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(3).substring(0, 10);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
-        String displayedName = linksListingPage.generateLinkWithoutPromoCodeRegularFlow("99.9");
+        String displayedName = linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10.01");
         double priceOverride = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
@@ -88,8 +88,8 @@ public class OrdersTollFreeRegular extends TestBase {
         String ringToNumber = "0668843471";
         buyingRegularVanityNumber.enterRingToNumber(ringToNumber);
         buyingRegularVanityNumber.goToCheckout();
-        String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceOverride - (priceMonthlyMinutes + 19.95) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
-        String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceOverride - (priceMonthlyMinutes + 19.95) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
+        String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + 19.95 - (priceMonthlyMinutes + 19.95) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
+        String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceOverride - (priceMonthlyMinutes + priceOverride) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
@@ -111,7 +111,7 @@ public class OrdersTollFreeRegular extends TestBase {
         String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(4).substring(0, 10);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
-        String displayedName = linksListingPage.generateLinkWithPromoCodeRegularFlow("10.01", "-EST");
+        String displayedName = linksListingPage.generateLinkWithPromoCodeRegularFlow("99.9", "-EST");
         double priceOverride = linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);

@@ -1510,4 +1510,54 @@
     "priceTotalDueToday": "$3,201.59",
     "order number": "1575475399"
   }
+}{
+  "map": {
+    "phoneNumber": "1-833-208-ORDERS",
+    "currentDate": "Thu Dec 05 12:30:13 EET 2019",
+    "priceTotalDueToday": "$44.01",
+    "order number": "1575542468"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-207-ORDERS",
+    "pricePayToday": "$334.60",
+    "currentDate": "Thu Dec 05 13:36:04 EET 2019",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$339.60",
+    "order number": "1575546421"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-100-1004",
+    "pricePayToday": "$144.89",
+    "currentDate": "Thu Dec 05 13:44:29 EET 2019",
+    "priceAfterAppliedPromoCode": "-$16.10",
+    "priceTotalDueToday": "$160.99",
+    "order number": "1575546929"
+  }
+}{
+  "map": {
+    "phoneNumber": "217-8OR-DERS",
+    "currentDate": "Thu Dec 05 13:47:05 EET 2019",
+    "priceTotalDueToday": "$10.00",
+    "order number": "1575547083"
+  }
+}{
+  "map": {
+    "phoneNumber": "A18-ORD-E377-TEST",
+    "pricePayToday": "$600.99",
+    "currentDate": "Thu Dec 05 13:49:09 EET 2019",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$605.99",
+    "order number": "1575547214"
+  }
+}{
+  "map": {
+    "phoneNumber": "989-9998050",
+    "pricePayToday": "$246.59",
+    "currentDate": "Thu Dec 05 13:51:16 EET 2019",
+    "priceAfterAppliedPromoCode": "-$27.40",
+    "priceTotalDueToday": "$273.99",
+    "order number": "1575547339"
+  }
 }

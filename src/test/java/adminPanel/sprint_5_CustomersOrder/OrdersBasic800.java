@@ -57,21 +57,23 @@ public class OrdersBasic800 extends TestBase {
         basicIndexPage.chooseFirstNumberFromBasic800List();
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Business Pro";
-        String additionalCost = buyingBasic800Number.getAdditionalCost(pricePlanName);
+        String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
         String amountMinutes = buyingBasic800Number.getAmountMinutes(pricePlanName);
-        double pricePlanPrice = buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName);
+        String pricePlanPrice = "$" + String.valueOf(Math.round(buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName)* 100.0) / 100.0);
         String ringToNumber = "8722413731";
         buyingBasic800Number.enterRingToNumber(ringToNumber);
-        double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
+        String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         buyingBasic800Number.goToCheckout();
+        String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName, pricePlanPrice, amountMinutes,
-                additionalCost, priceActivationFee, ringToNumber, "", "-", "Success");
+        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
+                priceActivationFee, ringToNumber, "", "", "", "Completed");
     }
 
     @Test
@@ -81,22 +83,25 @@ public class OrdersBasic800 extends TestBase {
         basicIndexPage.chooseFirstNumberFromBasic800List();
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Premium";
-        String additionalCost = buyingBasic800Number.getAdditionalCost(pricePlanName);
+        String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
         String amountMinutes = buyingBasic800Number.getAmountMinutes(pricePlanName);
-        double pricePlanPrice = buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName);
+        String pricePlanPrice = "$" + String.valueOf(Math.round(buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName)* 100.0) / 100.0);
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
-        double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
-        String discountPromoCode = Double.toString(PromoCodes.FIXED_PROMOCODE.getValue());
+        String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         buyingBasic800Number.goToCheckout();
-        checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
+        String discountPromoCode = Integer.toString((int)PromoCodes.FIXED_PROMOCODE.getValue());
+        String promoCodeName = PromoCodes.FIXED_PROMOCODE.getName();
+        checkout.addPromoCode(promoCodeName);
+        String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName, pricePlanPrice, amountMinutes,
-                additionalCost, priceActivationFee, "-", discountPromoCode, PromoCodes.FIXED_PROMOCODE.getName(), "Success");
+        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
+                priceActivationFee, "", discountPromoCode, promoCodeName, "$", "Completed");
     }
 
     @Test
@@ -105,23 +110,27 @@ public class OrdersBasic800 extends TestBase {
         basicIndexPage.chooseFirstNumberFromBasic800List();
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Starter";
-        String additionalCost = buyingBasic800Number.getAdditionalCost(pricePlanName);
+        String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
         String amountMinutes = buyingBasic800Number.getAmountMinutes(pricePlanName);
-        double pricePlanPrice = buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName);
+        String pricePlanPrice = "$" + String.valueOf(Math.round(buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName)* 100.0) / 100.0);
         String ringToNumber = "0668843478";
         buyingBasic800Number.enterRingToNumber(ringToNumber);
-        double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
-        String discountPromoCode = Double.toString(PromoCodes.HIGH_FIXED_PROMOCODE.getValue());
+        buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
+        String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
+        String discountPromoCode = Integer.toString((int)PromoCodes.HIGH_FIXED_PROMOCODE.getValue());
+        String promoCodeName = PromoCodes.HIGH_FIXED_PROMOCODE.getName();
         buyingBasic800Number.goToCheckout();
-        checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
+        checkout.addPromoCode(promoCodeName);
+        String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName, pricePlanPrice, amountMinutes,
-                additionalCost, priceActivationFee, ringToNumber, discountPromoCode, PromoCodes.HIGH_FIXED_PROMOCODE.getName(), "Success");
+        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
+                priceActivationFee, ringToNumber, discountPromoCode, promoCodeName, "$", "Completed");
     }
 
     @Test
@@ -131,23 +140,26 @@ public class OrdersBasic800 extends TestBase {
         basicIndexPage.chooseFirstNumberFromBasic800List();
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Business Pro";
-        String additionalCost = buyingBasic800Number.getAdditionalCost(pricePlanName);
+        String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
         String amountMinutes = buyingBasic800Number.getAmountMinutes(pricePlanName);
-        double pricePlanPrice = buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName);
+        String pricePlanPrice = "$" + String.valueOf(Math.round(buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName)* 100.0) / 100.0);
         String ringToNumber = "8722413731";
-        buyingBasic800Number.enterRingToNumber(ringToNumber);
-        double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
-        String discountPromoCode = Double.toString(Math.round((priceActivationFee + pricePlanPrice) * PromoCodes.PERCENT_PROMOCODE.getValue() / 100 * 100.0) / 100.0);
+        buyingBasic800Number.enterRingToNumberWithMultipleCheckbox(ringToNumber);
+        String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
+        String discountPromoCode = Integer.toString((int)PromoCodes.PERCENT_PROMOCODE.getValue());
+        String promoCodeName = PromoCodes.PERCENT_PROMOCODE.getName();
         buyingBasic800Number.goToCheckout();
-        checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
+        checkout.addPromoCode(promoCodeName);
+        String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName, pricePlanPrice, amountMinutes,
-                additionalCost, priceActivationFee, "-", discountPromoCode, PromoCodes.PERCENT_PROMOCODE.getName(), "Success");
+        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
+                priceActivationFee, ringToNumber, discountPromoCode, promoCodeName, "%", "Completed");
     }
 
     @Test
@@ -156,22 +168,24 @@ public class OrdersBasic800 extends TestBase {
         basicIndexPage.chooseFirstNumberFromBasic800List();
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Starter";
-        String additionalCost = buyingBasic800Number.getAdditionalCost(pricePlanName);
+        String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
         String amountMinutes = buyingBasic800Number.getAmountMinutes(pricePlanName);
-        double pricePlanPrice = buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName);
-        String ringToNumber = "0668843478";
-        buyingBasic800Number.enterRingToNumber(ringToNumber);
-        double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
+        String pricePlanPrice = "$" + String.valueOf(Math.round(buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName)* 100.0) / 100.0);
+        buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
+        String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
+        checkout.wait2SecUntilPromoRemove();
+        String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName, pricePlanPrice, amountMinutes,
-                additionalCost, priceActivationFee, "-", "-", "-", "Success");
+        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
+                priceActivationFee, "", "", "", "", "Completed");
     }
 
     @Test
@@ -180,19 +194,21 @@ public class OrdersBasic800 extends TestBase {
         basicIndexPage.chooseFirstNumberFromBasic800List();
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Premium";
-        String additionalCost = buyingBasic800Number.getAdditionalCost(pricePlanName);
+        String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
         String amountMinutes = buyingBasic800Number.getAmountMinutes(pricePlanName);
-        double pricePlanPrice = buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName);
+        String pricePlanPrice = "$" + String.valueOf(Math.round(buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName)* 100.0) / 100.0);
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
-        double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
+        String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         buyingBasic800Number.goToCheckout();
+        String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
-        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName, pricePlanPrice, amountMinutes,
-                additionalCost, priceActivationFee, "-", "", "-", "Error");
+        orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
+                priceActivationFee, "", "", "", "", "Failed");
     }
 }

@@ -80,7 +80,7 @@ public class OrderDetailPage extends BasePage {
 
     public void checkingCorrectDataOrderPremiumFlow(String displayedName, String subPriceOverride, String subPrice, String pricePlan, String pricePlanDiscount, String priceMonthlyMinutes,
                                                     String amountMinutes, String pricePerMinute, String planDuration, String ringToNumber, String payToday,
-                                                    String promoCodeValue, String promoCodeName, String promoCodeType, String statusPay) {
+                                                    String promoCodeValue, String promoCodeName, String promoCodeType, String owner, String ownerComm, String statusPay) {
         waiting2seconds();
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPublicID()), "", "PublicID");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getZendeskId()), "", "ZendeskId");
@@ -113,20 +113,21 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getDiscountType()), promoCodeType, "DiscountType");
         softAssert.assertEquals(getAttributeValue(orderDetail.getApiPartner()), "", "ApiPartner");
         softAssert.assertEquals(getAttributeValue(orderDetail.getApiPartnerCommission()), "", "ApiPartnerCommission");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getOwner()), owner, "Owner");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getOwnerCommission()), ownerComm, "OwnerCommission");
         softAssert.assertEquals(getAttributeValue(orderDetail.getMinutes()), amountMinutes, "Minutes");
         softAssert.assertEquals(getAttributeValue(orderDetail.getMinutesPrice()), priceMonthlyMinutes, "MinutesPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPricePerMinute()), pricePerMinute, "PricePerMinute");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPricePerMinute()), "0.05", "PricePerMinute");
         softAssert.assertEquals(getAttributeValue(orderDetail.getRingToNumber()), ringToNumber, "RingToNumber");
         softAssert.assertAll();
     }
 
-    public void checkingCorrectDataOrderBasic800Flow(String displayedName, String pricePlan, double subsPrice, String amountMinutes, String additionalCost,
-                                                     double priceActivationFee, String ringToNumber, String promoCodeValue, String promoCodeName, String statusPay) {
+    public void checkingCorrectDataOrderBasic800Flow(String displayedName, String pricePlan, String subsPrice, String payToday, String additionalCost, String priceActivationFee,
+                                                     String ringToNumber, String promoCodeValue, String promoCodeName, String promoCodeType, String statusPay) {
         waiting2seconds();
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPublicID()), "", "PublicID");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getZendeskId()), "", "ZendeskId");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getStatus()), "Completed", "Status");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getStatus()), statusPay, "Status");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getCountryISO()), "", "CountryISO");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getTimeStamps()), "", "TimeStamps");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPhoneName()), "", "PhoneName");
@@ -140,18 +141,19 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsFeature()), "no", "IsFeature");
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsAuction()), "no", "IsAuction");
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsPremium()), "no", "IsPremium");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), String.valueOf(priceActivationFee), "PaymentPrice");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), "0.00", "CustomerPrice");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getSubscriptionPrice()), String.valueOf(subsPrice), "SubscriptionPrice");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerSubscriptionPrice()), "0.00", "CustomerSubscriptionPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), priceActivationFee, "PaymentPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), "", "CustomerPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getSubscriptionPrice()), subsPrice, "SubscriptionPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerSubscriptionPrice()), "", "CustomerSubscriptionPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getPayToday()), payToday, "PayToday");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlan()), pricePlan, "PricePlan");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanDuration()), "1", "PricePlanDuration");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanDiscount()), "0", "PricePlanDiscount");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanAdditionalCost()), String.valueOf(additionalCost), "PricePlanAdditionalCost");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanActivationFee()), String.valueOf(priceActivationFee), "PricePlanActivationFee");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanAdditionalCost()), additionalCost, "PricePlanAdditionalCost");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanActivationFee()), priceActivationFee, "PricePlanActivationFee");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPromoCodeName()), promoCodeName, "PromoCodeName");
         softAssert.assertEquals(getAttributeValue(orderDetail.getDiscountValue()), promoCodeValue, "DiscountValue");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getDiscountType()), "%", "DiscountType");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getDiscountType()), promoCodeType, "DiscountType");
         softAssert.assertEquals(getAttributeValue(orderDetail.getApiPartner()), "", "ApiPartner");
         softAssert.assertEquals(getAttributeValue(orderDetail.getApiPartnerCommission()), "", "ApiPartnerCommission");
         softAssert.assertEquals(getAttributeValue(orderDetail.getOwner()), "", "Owner");

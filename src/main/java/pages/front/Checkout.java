@@ -92,6 +92,10 @@ public class Checkout extends BasePage {
         return checkoutSidebar.getDiscountFromPromoCode().getText();
     }
 
+    public void wait2SecUntilPromoRemove() {
+        waiting2seconds();
+    }
+
     public String getPricePayToday() {
         waitUntilElementAppeared(checkoutSidebar.getPricePayToday());
         if(isElementPresent(checkoutSidebar.getPricePayToday())) {

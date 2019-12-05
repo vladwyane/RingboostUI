@@ -221,7 +221,7 @@ public class Orders extends TestBase {
     public void orderLocalNumberPickPlanWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("9998050");
-        localSearchResult.chooseNumberFromLocalNumbersList(2);
+        localSearchResult.chooseNumberFromLocalNumbersList(1);
         String displayedName = buyingRegularVanityNumber.getPhoneNumber().getText();
         double oldPrice = buyingLocalNumber.getPriceNumber();
         String phoneUpsellName = "Pick A Plan";

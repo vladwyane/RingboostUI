@@ -54,8 +54,8 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsFeature()), "no", "IsFeature");
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsAuction()), "no", "IsAuction");
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsPremium()), "no", "IsPremium");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), "", "PaymentPrice");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), "", "CustomerPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), "$0.00", "PaymentPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), "$0.00", "CustomerPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getSubscriptionPrice()), subPrice, "SubscriptionPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerSubscriptionPrice()), subPriceOverride, "CustomerSubscriptionPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPayToday()), payToday, "PayToday");
@@ -98,8 +98,8 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsFeature()), "no", "IsFeature");
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsAuction()), "no", "IsAuction");
         softAssert.assertEquals(getAttributeValue(orderDetail.getIsPremium()), "yes", "IsPremium");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), "", "PaymentPrice");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), "", "CustomerPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), "$0.00", "PaymentPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), "$0.00", "CustomerPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getSubscriptionPrice()), subPrice, "SubscriptionPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerSubscriptionPrice()), subPriceOverride, "CustomerSubscriptionPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPayToday()), payToday, "PayToday");
@@ -150,7 +150,7 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanDuration()), "1", "PricePlanDuration");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanDiscount()), "0", "PricePlanDiscount");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanAdditionalCost()), additionalCost, "PricePlanAdditionalCost");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanActivationFee()), priceActivationFee, "PricePlanActivationFee");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlanActivationFee()), priceActivationFee.substring(0, 4), "PricePlanActivationFee");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPromoCodeName()), promoCodeName, "PromoCodeName");
         softAssert.assertEquals(getAttributeValue(orderDetail.getDiscountValue()), promoCodeValue, "DiscountValue");
         softAssert.assertEquals(getAttributeValue(orderDetail.getDiscountType()), promoCodeType, "DiscountType");
@@ -186,7 +186,7 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), oldPrice, "PaymentPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), customerPrice, "CustomerPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getSubscriptionPrice()), subscriptionPrice, "SubscriptionPrice");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerSubscriptionPrice()), "", "CustomerSubscriptionPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerSubscriptionPrice()), "$0.00", "CustomerSubscriptionPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPayToday()), payToday, "PayToday");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPhoneUpsellName()).toLowerCase(), phoneUpsellName.toLowerCase(), "PhoneUpsellName");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPhoneUpsellPrice()), phoneUpsellPrice, "PhoneUpsellPrice");

@@ -95,7 +95,7 @@ public class Orders extends TestBase {
         double customSubsPrice = Math.round((priceMonthlyMinutes + priceOverride - (priceMonthlyMinutes + priceOverride) * discountPriceSelectedPlan * 0.01) * 100.0) / 100.0;
         double payToday = customSubsPrice;
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, priceOverride, isPromocode, displayedName);
 /*        orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
@@ -128,7 +128,7 @@ public class Orders extends TestBase {
         String discountPromoCode = Double.toString(PromoCodes.FIXED_PROMOCODE.getValue());
         double subsPrice = Math.round((priceFromAmountAreaCodesWithDiscount + priceMonthlyMinutes - (priceFromAmountAreaCodesWithDiscount + priceMonthlyMinutes) * discountPriceSelectedPlan * 0.01) * 100.0) / 100.0;
         double payToday = subsPrice;
-        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_37, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
 /*        orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
@@ -156,7 +156,7 @@ public class Orders extends TestBase {
         buyingBasic800Number.goToCheckout();
         String discountPromoCode = Double.toString(PromoCodes.PERCENT_PROMOCODE.getValue());
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberWithPercentPromoCode(priceActivationFee, subsPrice);
         /*orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
@@ -182,10 +182,10 @@ public class Orders extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         String phoneUpsellName = "Port A Number";
-        double phoneUpsellPrice = buyingLocalNumber.choosePlan(phoneUpsellName);
+        double phoneUpsellPrice = buyingLocalNumber.getPhoneUpsellPrice(phoneUpsellName);
         buyingLocalNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_37, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(customerPrice, isPromocode);
 /*        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, customerPrice, 0, 0, 0,
                 phoneUpsellName, phoneUpsellPrice, "", "", 0, 0, 0, 0, "",
@@ -206,11 +206,11 @@ public class Orders extends TestBase {
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         String phoneUpsellName = "Park A Number";
-        double phoneUpsellPrice = buyingLocalNumber.choosePlan(phoneUpsellName);
+        double phoneUpsellPrice = buyingLocalNumber.getPhoneUpsellPrice(phoneUpsellName);
         buyingLocalNumber.goToCheckout();
         String discountPromoCode = Double.toString(PromoCodes.FIXED_PROMOCODE.getValue());
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithFixedPromoCode(customerPrice, phoneUpsellPrice, displayedName);
 /*        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, customerPrice, 0, 0, 0,
                 phoneUpsellName, phoneUpsellPrice, "", "", 0, 0, 0, 0, "",
@@ -221,11 +221,12 @@ public class Orders extends TestBase {
     public void orderLocalNumberPickPlanWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers("9998050");
-        localSearchResult.chooseNumberFromLocalNumbersList(1);
+        localSearchResult.chooseNumberFromLocalNumbersList(2);
         String displayedName = buyingRegularVanityNumber.getPhoneNumber().getText();
         double oldPrice = buyingLocalNumber.getPriceNumber();
         String phoneUpsellName = "Pick A Plan";
-        double phoneUpsellPrice = buyingLocalNumber.choosePlan(phoneUpsellName);
+        double phoneUpsellPrice = buyingLocalNumber.getPhoneUpsellPrice(phoneUpsellName);
+        double pricePlan = buyingLocalNumber.choosePickYourMonthlyPlan(phoneUpsellName);
         String planName = "Preferred";
         String planDescription = buyingLocalNumber.getDescriptionPlan(planName);
         double subscriptionPrice = buyingLocalNumber.choosePickYourMonthlyPlan(planName);
@@ -234,8 +235,8 @@ public class Orders extends TestBase {
         buyingLocalNumber.goToCheckout();
         String discountPromoCode = Double.toString(PromoCodes.PERCENT_PROMOCODE.getValue());
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
-        orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(oldPrice, phoneUpsellPrice);
+        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        orderConfirmationPage.checkingYourPurchaseParkNumberWithPercentPromoCode(oldPrice, pricePlan);
 /*        orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, oldPrice, 0, subscriptionPrice, 0, 0,
                 phoneUpsellName, phoneUpsellPrice, planName, planDescription, 0, 0, 0, 0, "",
                 discountPromoCode, PromoCodes.PERCENT_PROMOCODE.getName(), "Success");*/

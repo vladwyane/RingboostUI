@@ -91,10 +91,10 @@ public class OrdersTollFreePremium extends TestBase {
         linksListingPage.goToGeneratedLink(generatedLink);
         String promoCodeName = PromoCodes.PERCENT_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
-        String subPrice = "$" + String.valueOf(priceMonthlyMinute + priceOverride - saleSelectedPlan);
-        String cusSubPrice = "$" + String.valueOf(priceMonthlyMinute + oldPriceChosenAreaCodes - saleSelectedPlan);
+        String subPrice = "$" + String.valueOf(priceMonthlyMinute + oldPriceChosenAreaCodes - saleSelectedPlan) + "0";
+        String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + priceOverride - saleSelectedPlan)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -102,7 +102,7 @@ public class OrdersTollFreePremium extends TestBase {
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, cusSubPrice, subPrice, pricePlan, pricePlanDiscount,  "$" + String.valueOf((int)priceMonthlyMinute),
-                amountMinutes, "$0.07", pricePlanDuration, "", payToday, discountPromoCode, promoCodeName, "%", "", "", "Completed");
+                amountMinutes, "$0.06", pricePlanDuration, "", payToday, discountPromoCode, promoCodeName, "%", "", "", "Completed");
     }
 
     @Test
@@ -128,10 +128,10 @@ public class OrdersTollFreePremium extends TestBase {
         linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
-        String subPrice = "$" + String.valueOf(priceMonthlyMinute + priceOverride - saleSelectedPlan);
-        String cusSubPrice = "$" + String.valueOf(priceMonthlyMinute + oldPriceChosenAreaCodes - saleSelectedPlan);
+        String subPrice = "$" + String.valueOf(priceMonthlyMinute + oldPriceChosenAreaCodes - saleSelectedPlan) + "0";
+        String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + priceOverride - saleSelectedPlan)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -167,7 +167,7 @@ public class OrdersTollFreePremium extends TestBase {
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount -
                 (priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0) + "0";
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_37, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -201,9 +201,9 @@ public class OrdersTollFreePremium extends TestBase {
         checkout.addPromoCode(promoCodeName);
         String discountPromoCode = Integer.toString((int)PromoCodes.HIGH_FIXED_PROMOCODE.getValue());
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount -
-                (priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
+                (priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0) + "0";
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_37, CreditCards.ERROR_EXPIRED_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -212,6 +212,6 @@ public class OrdersTollFreePremium extends TestBase {
         orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
                 "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.07", planDuration, ringToNumber, payToday,
-                discountPromoCode, promoCodeName, "$", "", "", "Failed");
+                discountPromoCode, promoCodeName, "$", "Lebron James", "1%", "Failed");
     }
 }

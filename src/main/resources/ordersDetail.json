@@ -1560,4 +1560,22 @@
     "priceTotalDueToday": "$273.99",
     "order number": "1575547339"
   }
+}{
+  "map": {
+    "phoneNumber": "1-833-207-ORDERS",
+    "pricePayToday": "$447.40",
+    "currentDate": "Fri Dec 06 09:41:46 EET 2019",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$452.40",
+    "order number": "1575618764"
+  }
+}{
+  "map": {
+    "phoneNumber": "743-9998050",
+    "pricePayToday": "$246.59",
+    "currentDate": "Fri Dec 06 09:51:11 EET 2019",
+    "priceAfterAppliedPromoCode": "-$27.40",
+    "priceTotalDueToday": "$273.99",
+    "order number": "1575619333"
+  }
 }

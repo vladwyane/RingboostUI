@@ -100,7 +100,7 @@ public class BuyingRegularVanityNumber extends BasePage {
                 amountMinute = 5000;
                 break;
             default:
-                amountMinute = 0;
+                amountMinute = 100;
         }
         return amountMinute;
     }

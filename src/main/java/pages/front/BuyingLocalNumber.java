@@ -40,7 +40,7 @@ public class BuyingLocalNumber extends BasePage {
         return phoneNumber;
     }
 
-    public double choosePlan(String planName) {
+    public double getPhoneUpsellPrice(String planName) {
         waiting2seconds();
         double pricePlan = 0;
         for (int i = 0; i < localSupportSolutionBlock.getListTitlesSolutionItems().size(); i++) {

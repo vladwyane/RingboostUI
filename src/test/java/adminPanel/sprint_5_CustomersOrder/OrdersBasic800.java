@@ -65,7 +65,7 @@ public class OrdersBasic800 extends TestBase {
         String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         buyingBasic800Number.goToCheckout();
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_37, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -93,7 +93,7 @@ public class OrdersBasic800 extends TestBase {
         String promoCodeName = PromoCodes.FIXED_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -115,14 +115,13 @@ public class OrdersBasic800 extends TestBase {
         String pricePlanPrice = "$" + String.valueOf(Math.round(buyingBasic800Number.choosePickYourMonthlyPlan(pricePlanName)* 100.0) / 100.0);
         String ringToNumber = "0668843478";
         buyingBasic800Number.enterRingToNumber(ringToNumber);
-        buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
         String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         String discountPromoCode = Integer.toString((int)PromoCodes.HIGH_FIXED_PROMOCODE.getValue());
         String promoCodeName = PromoCodes.HIGH_FIXED_PROMOCODE.getName();
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -151,7 +150,7 @@ public class OrdersBasic800 extends TestBase {
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_33, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -177,7 +176,7 @@ public class OrdersBasic800 extends TestBase {
         checkout.addPromoCodeAndAfterRemove(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.wait2SecUntilPromoRemove();
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_34, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -201,7 +200,7 @@ public class OrdersBasic800 extends TestBase {
         String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         buyingBasic800Number.goToCheckout();
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_32, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();

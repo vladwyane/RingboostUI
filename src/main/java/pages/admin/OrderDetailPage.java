@@ -178,7 +178,7 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getTimeStamps()), "", "TimeStamps");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPhoneName()), "", "PhoneName");
         softAssert.assertEquals(getAttributeValue(orderDetail.getVanityPhoneName()), displayedName, "VanityPhoneName");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getCategory()), "", "Category");
+        softAssert.assertNotEquals(getAttributeValue(orderDetail.getCategory()), "", "Category");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPhoneType()), "local", "PhoneType");
         softAssert.assertEquals(getAttributeValue(orderDetail.getFlowType()), "local", "FlowType");
         softAssert.assertEquals(getAttributeValue(orderDetail.getSubType()), "", "SubType");

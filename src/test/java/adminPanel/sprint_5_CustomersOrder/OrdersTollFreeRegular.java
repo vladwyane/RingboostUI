@@ -91,7 +91,7 @@ public class OrdersTollFreeRegular extends TestBase {
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + 19.95 - (priceMonthlyMinutes + 19.95) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
         String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceOverride - (priceMonthlyMinutes + priceOverride) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -129,7 +129,7 @@ public class OrdersTollFreeRegular extends TestBase {
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + 19.95 - (priceMonthlyMinutes + 19.95) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
         String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceOverride - (priceMonthlyMinutes + priceOverride) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -155,14 +155,13 @@ public class OrdersTollFreeRegular extends TestBase {
         String planDuration = String.valueOf(buyingRegularVanityNumber.getPricePlanDuration(discountPriceSelectedPlan));
         String ringToNumber = "0668843478";
         buyingRegularVanityNumber.enterRingToNumber(ringToNumber);
-        buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         String discountPromoCode = Integer.toString((int)PromoCodes.PERCENT_PROMOCODE.getValue());
         buyingRegularVanityNumber.goToCheckout();
         String promoCodeName = PromoCodes.PERCENT_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + 19.95 - (priceMonthlyMinutes + 19.95) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_37, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_40, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -193,7 +192,7 @@ public class OrdersTollFreeRegular extends TestBase {
         checkout.addPromoCode(promoCodeName);
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + 19.95 - (priceMonthlyMinutes + 19.95) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.ERROR_LOST_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.ERROR_LOST_CARD_STRIPE, false);
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();

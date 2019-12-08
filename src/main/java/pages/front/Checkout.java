@@ -51,6 +51,7 @@ public class Checkout extends BasePage {
         WebElement cvvField = driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[name='__privateStripeFrame6']")))
                 .findElement(By.cssSelector("input[name='cvc']"));
         sendKeysSlowly(cvvField, creditCards.getCardCVV());
+        waiting2seconds();
         driver.switchTo().defaultContent();
     }
 

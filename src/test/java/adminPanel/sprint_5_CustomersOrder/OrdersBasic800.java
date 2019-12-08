@@ -65,7 +65,7 @@ public class OrdersBasic800 extends TestBase {
         String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         buyingBasic800Number.goToCheckout();
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_37, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_40, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -93,7 +93,7 @@ public class OrdersBasic800 extends TestBase {
         String promoCodeName = PromoCodes.FIXED_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -121,7 +121,7 @@ public class OrdersBasic800 extends TestBase {
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -150,7 +150,7 @@ public class OrdersBasic800 extends TestBase {
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -158,7 +158,7 @@ public class OrdersBasic800 extends TestBase {
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
-                priceActivationFee, ringToNumber, discountPromoCode, promoCodeName, "%", "Completed");
+                priceActivationFee, "", discountPromoCode, promoCodeName, "%", "Completed");
     }
 
     @Test
@@ -176,7 +176,7 @@ public class OrdersBasic800 extends TestBase {
         checkout.addPromoCodeAndAfterRemove(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
         checkout.wait2SecUntilPromoRemove();
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -200,7 +200,7 @@ public class OrdersBasic800 extends TestBase {
         String priceActivationFee = "$" + String.valueOf(Math.round(buyingBasic800Number.getPriceActivationFee()* 100.0) / 100.0) + "0";
         buyingBasic800Number.goToCheckout();
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();

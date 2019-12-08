@@ -93,7 +93,7 @@ public class OrdersLocal extends TestBase {
         String phoneUpsellPrice = "$" + String.valueOf(buyingLocalNumber.getPhoneUpsellPrice(phoneUpsellName)) + "0";
         buyingLocalNumber.goToCheckout();
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -126,7 +126,7 @@ public class OrdersLocal extends TestBase {
         String promoCodeName = PromoCodes.FIXED_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -152,7 +152,7 @@ public class OrdersLocal extends TestBase {
         String promoCodeName = PromoCodes.HIGH_FIXED_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -171,7 +171,6 @@ public class OrdersLocal extends TestBase {
         String displayedName = buyingLocalNumber.getPhoneNumber().getText();
         String pricePayment = "$" + String.valueOf(Math.round(buyingLocalNumber.getPriceNumber()* 100.0) / 100.0) + "0";
         String phoneUpsellName = "Pick A Plan";
-
         String pricePlan = "Preferred";
         String phoneUpsellPrice = "$" + String.valueOf(buyingLocalNumber.getPhoneUpsellPrice(phoneUpsellName));
         int value = (int)Math.round(buyingLocalNumber.getAdditionalCoast(pricePlan) * 100);
@@ -180,13 +179,12 @@ public class OrdersLocal extends TestBase {
         String subsPrice = "$" + String.valueOf(buyingLocalNumber.choosePickYourMonthlyPlan(pricePlan));
         String ringToNumber = "0668843478";
         buyingLocalNumber.enterRingToNumber(ringToNumber);
-        buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         String discountPromoCode = Integer.toString((int)PromoCodes.PERCENT_PROMOCODE.getValue());
         String promoCodeName = PromoCodes.PERCENT_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -194,7 +192,7 @@ public class OrdersLocal extends TestBase {
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, payToday, phoneUpsellName,
-                phoneUpsellPrice, pricePlanName, "1", addCoast, "", discountPromoCode, promoCodeName, "%", "Completed");
+                phoneUpsellPrice, pricePlanName, "1", addCoast, ringToNumber, discountPromoCode, promoCodeName, "%", "Completed");
     }
 
     @Test
@@ -215,8 +213,9 @@ public class OrdersLocal extends TestBase {
         buyingLocalNumber.enterRingToNumber(ringToNumber);
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.PERCENT_PROMOCODE.getName());
+        checkout.wait2SecUntilPromoRemove();
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_35, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -240,7 +239,7 @@ public class OrdersLocal extends TestBase {
         String promoCodeName = PromoCodes.PERCENT_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_37, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_40, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
@@ -265,7 +264,7 @@ public class OrdersLocal extends TestBase {
         String promoCodeName = PromoCodes.FIXED_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_36, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();

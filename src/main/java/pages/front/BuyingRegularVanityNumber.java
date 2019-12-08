@@ -224,6 +224,7 @@ public class BuyingRegularVanityNumber extends BasePage {
 
     public void goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
+        scrollToElement(orderSummaryBlock.getButtonProceedToCheckout());
         orderSummaryBlock.getButtonProceedToCheckout().click();
     }
 

@@ -29,7 +29,19 @@ public class OrderDetail extends HtmlElement {
     @FindBys( {@FindBy(css = ".v-subheader")} )
     private List<WebElement> listOfSubHeaders;
 
-    @FindBy(xpath = "//label[contains(text(), 'Public ID')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'Company')]/following::input[1]")
+    private WebElement company;
+
+    @FindBy(xpath = "//label[contains(text(), 'First Name')]/following::input[1]")
+    private WebElement firstName;
+
+    @FindBy(xpath = "//label[contains(text(), 'Last Name')]/following::input[1]")
+    private WebElement lastName;
+
+    @FindBy(xpath = "//label[contains(text(), 'Phone number')]/following::input[1]")
+    private WebElement phoneNumber;
+
+    @FindBy(xpath = "//label[contains(text(), 'Order ID')]/following::input[1]")
     private WebElement publicID;
 
     @FindBy(xpath = "//label[contains(text(), 'Status')]/following::input[1]")
@@ -140,7 +152,7 @@ public class OrderDetail extends HtmlElement {
     @FindBy(xpath = "//label[contains(text(), 'Price Per Minute')]/following::input[1]")
     private WebElement pricePerMinute;
 
-    @FindBy(xpath = "//label[contains(text(), 'Ring To Phone Number')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'Ring-To Number')]/following::input[1]")
     private WebElement ringToNumber;
 
     @FindBy(xpath = "//label[contains(text(), 'Zendesk Task ID')]/following::input[1]")

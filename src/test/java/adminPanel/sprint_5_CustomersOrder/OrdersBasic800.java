@@ -71,7 +71,6 @@ public class OrdersBasic800 extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
                 priceActivationFee, ringToNumber, "", "", "", "Completed");
     }
@@ -99,7 +98,6 @@ public class OrdersBasic800 extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
                 priceActivationFee, "", discountPromoCode, promoCodeName, "$", "Completed");
     }
@@ -127,7 +125,6 @@ public class OrdersBasic800 extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
                 priceActivationFee, ringToNumber, discountPromoCode, promoCodeName, "$", "Completed");
     }
@@ -156,7 +153,6 @@ public class OrdersBasic800 extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
                 priceActivationFee, "", discountPromoCode, promoCodeName, "%", "Completed");
     }
@@ -182,7 +178,6 @@ public class OrdersBasic800 extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
                 priceActivationFee, "", "", "", "", "Completed");
     }
@@ -206,7 +201,6 @@ public class OrdersBasic800 extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlanName + " - " + amountMinutes, pricePlanPrice, payToday, additionalCost,
                 priceActivationFee, "", "", "", "", "Failed");
     }

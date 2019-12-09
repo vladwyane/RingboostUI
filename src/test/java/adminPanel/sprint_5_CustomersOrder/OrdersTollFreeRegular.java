@@ -97,7 +97,6 @@ public class OrdersTollFreeRegular extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, cusSubPrice, subPrice, pricePlan, discountPriceSelectedPlan + "%",
                 "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.05", planDuration, ringToNumber, payToday,
                 "", "", "", "Completed");
@@ -135,7 +134,6 @@ public class OrdersTollFreeRegular extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, cusSubPrice, subPrice, pricePlan, discountPriceSelectedPlan + "%",
                 "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.07", planDuration, "", payToday,
                 discountPromoCode, promoCodeName, "$", "Completed");
@@ -167,7 +165,6 @@ public class OrdersTollFreeRegular extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
                 "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.07", planDuration, ringToNumber, payToday,
                 discountPromoCode, promoCodeName, "%", "Completed");
@@ -197,7 +194,6 @@ public class OrdersTollFreeRegular extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
                 "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.06", planDuration, "", payToday,
                 discountPromoCode, promoCodeName, "$", "Failed");

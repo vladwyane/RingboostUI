@@ -99,7 +99,6 @@ public class OrdersLocal extends TestBase {
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, customerPrice, "$0.00", payToday, phoneUpsellName,
                 phoneUpsellPrice, "", "", "","", "", "", "", "Completed");
     }
@@ -132,7 +131,6 @@ public class OrdersLocal extends TestBase {
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, customerPrice, subsPrice, payToday, phoneUpsellName,
                 phoneUpsellPrice, "", "", "","", discountPromoCode, promoCodeName, "$", "Completed");
     }
@@ -158,7 +156,6 @@ public class OrdersLocal extends TestBase {
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, payToday, phoneUpsellName,
                 phoneUpsellPrice, "", "", "","", discountPromoCode, promoCodeName, "$", "Completed");
     }
@@ -190,7 +187,6 @@ public class OrdersLocal extends TestBase {
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, payToday, phoneUpsellName,
                 phoneUpsellPrice, pricePlanName, "1", addCoast, ringToNumber, discountPromoCode, promoCodeName, "%", "Completed");
     }
@@ -221,7 +217,6 @@ public class OrdersLocal extends TestBase {
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, payToday, phoneUpsellName,
                 phoneUpsellPrice, pricePlanName, "1", addCoast, ringToNumber, "", "", "", "Completed");
     }
@@ -245,7 +240,6 @@ public class OrdersLocal extends TestBase {
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", "", payToday, phoneUpsellName,
                 "0", "", "", "", "", discountPromoCode, promoCodeName, "%", "Completed");
     }
@@ -270,7 +264,6 @@ public class OrdersLocal extends TestBase {
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", "", payToday, phoneUpsellName,
                 phoneUpsellPrice, "", "", "", "", discountPromoCode, promoCodeName, "$", "Failed");
     }

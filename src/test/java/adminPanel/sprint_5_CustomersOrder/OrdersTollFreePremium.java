@@ -100,7 +100,6 @@ public class OrdersTollFreePremium extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, cusSubPrice, subPrice, pricePlan, pricePlanDiscount,  "$" + String.valueOf((int)priceMonthlyMinute),
                 amountMinutes, "$0.06", pricePlanDuration, "", payToday, discountPromoCode, promoCodeName, "%", "", "", "Completed");
     }
@@ -137,7 +136,6 @@ public class OrdersTollFreePremium extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, cusSubPrice, subPrice, pricePlan, pricePlanDiscount,  "$" + String.valueOf((int)priceMonthlyMinute),
                 amountMinutes, "$0.08", pricePlanDuration, "", payToday, "", "", "", "", "", "Completed");
     }
@@ -173,7 +171,6 @@ public class OrdersTollFreePremium extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
                 "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.05", planDuration, ringToNumber, payToday,
                 discountPromoCode, promoCodeName, "$", "Lebron James", "1%", "Completed");
@@ -209,7 +206,6 @@ public class OrdersTollFreePremium extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.clickTab("Additional details");
         orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
                 "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.07", planDuration, ringToNumber, payToday,
                 discountPromoCode, promoCodeName, "$", "Lebron James", "1%", "Failed");

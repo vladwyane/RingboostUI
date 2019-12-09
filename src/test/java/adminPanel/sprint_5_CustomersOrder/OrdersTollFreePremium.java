@@ -91,7 +91,9 @@ public class OrdersTollFreePremium extends TestBase {
         linksListingPage.goToGeneratedLink(generatedLink);
         String promoCodeName = PromoCodes.PERCENT_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
-        String subPrice = "$" + String.valueOf(priceMonthlyMinute + oldPriceChosenAreaCodes - saleSelectedPlan) + "0";
+        String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + oldPriceChosenAreaCodes -
+                (priceMonthlyMinute + oldPriceChosenAreaCodes) * ((priceMonthlyMinute + priceOverride)/saleSelectedPlan) * 0.01)* 100.0) / 100.0) + "0";
+
         String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + priceOverride - saleSelectedPlan)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.DISCOVER_STRIPE, false);
@@ -128,7 +130,8 @@ public class OrdersTollFreePremium extends TestBase {
         linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
-        String subPrice = "$" + String.valueOf(priceMonthlyMinute + oldPriceChosenAreaCodes - saleSelectedPlan) + "0";
+        String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + oldPriceChosenAreaCodes -
+                (priceMonthlyMinute + oldPriceChosenAreaCodes) * ((priceMonthlyMinute + priceOverride)/saleSelectedPlan) * 0.01)* 100.0) / 100.0) + "0";
         String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + priceOverride - saleSelectedPlan)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.MASTERCART_STRIPE, false);

@@ -38,8 +38,32 @@ public class OrderDetail extends HtmlElement {
     @FindBy(xpath = "//label[contains(text(), 'Last Name')]/following::input[1]")
     private WebElement lastName;
 
-    @FindBy(xpath = "//label[contains(text(), 'Phone number')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'Email')]/following::input[1]")
+    private WebElement email;
+
+    @FindBy(xpath = "(//label[contains(text(), 'Phone number')])[1]/following::input[1]")
+    private WebElement contactPhoneNumber;
+
+    @FindBy(xpath = "(//label[contains(text(), 'Phone number')])[2]/following::input[1]")
     private WebElement phoneNumber;
+
+    @FindBy(xpath = "//label[contains(text(), 'Payment Method')]/following::input[1]")
+    private WebElement paymentMethod;
+
+    @FindBy(xpath = "//label[contains(text(), 'Billing City')]/following::input[1]")
+    private WebElement billingCity;
+
+    @FindBy(xpath = "//label[contains(text(), 'Billing Name')]/following::input[1]")
+    private WebElement billingName;
+
+    @FindBy(xpath = "//label[contains(text(), 'Billing State')]/following::input[1]")
+    private WebElement billingState;
+
+    @FindBy(xpath = "//label[contains(text(), 'Billing Address')]/following::input[1]")
+    private WebElement billingAddress;
+
+    @FindBy(xpath = "//label[contains(text(), 'Billing ZIP')]/following::input[1]")
+    private WebElement billingZIP;
 
     @FindBy(xpath = "//label[contains(text(), 'Order ID')]/following::input[1]")
     private WebElement publicID;

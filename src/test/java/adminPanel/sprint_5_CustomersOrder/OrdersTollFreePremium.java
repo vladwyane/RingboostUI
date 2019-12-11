@@ -93,7 +93,6 @@ public class OrdersTollFreePremium extends TestBase {
         checkout.addPromoCode(promoCodeName);
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + oldPriceChosenAreaCodes -
                 (priceMonthlyMinute + oldPriceChosenAreaCodes) * ((priceMonthlyMinute + priceOverride)/saleSelectedPlan) * 0.01)* 100.0) / 100.0) + "0";
-
         String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + priceOverride - saleSelectedPlan)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
         checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.DISCOVER_STRIPE, false);

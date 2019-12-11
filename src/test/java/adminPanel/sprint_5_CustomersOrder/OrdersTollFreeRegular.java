@@ -97,9 +97,9 @@ public class OrdersTollFreeRegular extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, cusSubPrice, subPrice, pricePlan, discountPriceSelectedPlan + "%",
-                "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.05", planDuration, ringToNumber, payToday,
-                "", "", "", "Completed");
+        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, cusSubPrice, subPrice, "", "", pricePlan,
+                discountPriceSelectedPlan + "%", "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes,
+                "$0.05", planDuration, ringToNumber, payToday, "", "", "", "Completed", Users.VLADYSLAV_38);
     }
 
     @Test
@@ -134,9 +134,9 @@ public class OrdersTollFreeRegular extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, cusSubPrice, subPrice, pricePlan, discountPriceSelectedPlan + "%",
-                "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.07", planDuration, "", payToday,
-                discountPromoCode, promoCodeName, "$", "Completed");
+        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, cusSubPrice, subPrice, "", "", pricePlan,
+                discountPriceSelectedPlan + "%", "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes,
+                "$0.07", planDuration, "", payToday, discountPromoCode, promoCodeName, "$", "Completed", Users.VLADYSLAV_39);
     }
 
     @Test
@@ -165,9 +165,9 @@ public class OrdersTollFreeRegular extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
-                "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.07", planDuration, ringToNumber, payToday,
-                discountPromoCode, promoCodeName, "%", "Completed");
+        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, "", subPrice, "", "", pricePlan,
+                discountPriceSelectedPlan + "%", "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes,
+                "$0.07", planDuration, ringToNumber, payToday, discountPromoCode, promoCodeName, "%", "Completed", Users.VLADYSLAV_40);
     }
 
     @Test
@@ -194,9 +194,9 @@ public class OrdersTollFreeRegular extends TestBase {
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
-                "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.06", planDuration, "", payToday,
-                discountPromoCode, promoCodeName, "$", "Failed");
+        orderDetailPage.checkingCorrectDataOrderRegularFlow(displayedName, "", subPrice, "", "", pricePlan,
+                discountPriceSelectedPlan + "%", "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes,
+                "$0.06", planDuration, "", payToday, discountPromoCode, promoCodeName, "$", "Failed", Users.VLADYSLAV_38);
     }
 
 }

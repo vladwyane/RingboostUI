@@ -46,7 +46,7 @@ public class Customers extends TestBase {
     }
 
      @Test
-    public void test2ErrorCreateNewPatternAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
+    public void test2ErrorCreateNewCustomerAllFieldsEmpty() throws InterruptedException, IOException, JSONException {
          admin.clickCustomersLink();
          customersListPage.clickAddNewCustomer();
          customersListPage.clickSaveButton();
@@ -54,7 +54,7 @@ public class Customers extends TestBase {
     }
 
     @Test
-    public void test2ErrorCreateNewPatternSameName() throws InterruptedException, IOException, JSONException {
+    public void test2ErrorCreateNewCustomerSameEmail() throws InterruptedException, IOException, JSONException {
         admin.clickCustomersLink();
         customersListPage.clickAddNewCustomer();
         customersListPage.createNewCustomer(Users.CUSTOMER);

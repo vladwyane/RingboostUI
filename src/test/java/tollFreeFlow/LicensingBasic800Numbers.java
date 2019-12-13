@@ -45,7 +45,7 @@ public class LicensingBasic800Numbers extends TestBase {
         buyingBasic800Number.enterRingToNumber("8722413731");
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_40, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_46, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseBasic800Number(priceActivationFee, pricePlan);
     }
 
@@ -59,7 +59,7 @@ public class LicensingBasic800Numbers extends TestBase {
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberWithFixedPromoCode(priceActivationFee, pricePlan);
     }
 
@@ -72,7 +72,7 @@ public class LicensingBasic800Numbers extends TestBase {
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_44, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberWithHighFixedPromoCode(priceActivationFee, pricePlan);
     }
 
@@ -86,7 +86,7 @@ public class LicensingBasic800Numbers extends TestBase {
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberWithPercentPromoCode(priceActivationFee, pricePlan);
     }
 
@@ -99,7 +99,7 @@ public class LicensingBasic800Numbers extends TestBase {
         double priceActivationFee = buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_40, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_46, CreditCards.JCB, false);
         orderConfirmationPage.checkingYourPurchaseBasic800NumberAfterRemovePromoCode(priceActivationFee, pricePlan);
     }
 
@@ -111,7 +111,7 @@ public class LicensingBasic800Numbers extends TestBase {
         buyingBasic800Number.chooseCheckboxMultipleRingToNumber();
         buyingBasic800Number.getPriceActivationFee();
         buyingBasic800Number.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.ERROR_INSUFFICIENT_FUNDS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_44, CreditCards.ERROR_INSUFFICIENT_FUNDS_STRIPE, false);
         checkout.checkingPaymentError();
     }
 

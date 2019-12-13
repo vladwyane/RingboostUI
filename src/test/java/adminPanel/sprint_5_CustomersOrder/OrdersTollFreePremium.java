@@ -33,7 +33,7 @@ public class OrdersTollFreePremium extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
 
-    private String searchRequest = "orders";
+    private String searchRequest = "phone";
 
     @BeforeMethod
     public void initPageObjects() {
@@ -79,34 +79,35 @@ public class OrdersTollFreePremium extends TestBase {
                 .generateLinkWithPromoCodePremiumFlow(Double.toString(priceOverride), "Texas", 2,
                         termLength, "100", "1234");
         double oldPriceChosenAreaCodes = linksListingPage.getSumOldPriceChosenAreaCodes();
-        String pricePlan = termLength + " - 15%";
-        String pricePlanDiscount = "15%";
+        String pricePlanDiscount = "Save 15%";
         String amountMinutes = String.valueOf(linksListingPage.getAmountOfMinute());
-        String pricePlanDuration = String.valueOf(linksListingPage.getPricePlanDuration(termLength));
         double priceMonthlyMinute = linksListingPage.getPriceMonthlyMinute();
         double saleSelectedPlan = linksListingPage.getSaleSelectedPlan();
-        String discountPromoCode = Integer.toString((int)PromoCodes.PERCENT_PROMOCODE.getValue());
+        String discountPromoCode = Integer.toString((int) PromoCodes.PERCENT_PROMOCODE.getValue());
         linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
         String promoCodeName = PromoCodes.PERCENT_PROMOCODE.getName();
         checkout.addPromoCode(promoCodeName);
-        String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + oldPriceChosenAreaCodes -
-                (priceMonthlyMinute + oldPriceChosenAreaCodes) * ((priceMonthlyMinute + priceOverride)/saleSelectedPlan) * 0.01)* 100.0) / 100.0) + "0";
-        String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + priceOverride - saleSelectedPlan)* 100.0) / 100.0);
+        double oldSale = (saleSelectedPlan / (priceMonthlyMinute + priceOverride)) * (priceMonthlyMinute + oldPriceChosenAreaCodes);
+        String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + oldPriceChosenAreaCodes - oldSale) * 100.0) / 100.0);
+        String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + priceOverride - saleSelectedPlan) * 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_39, CreditCards.DISCOVER_STRIPE, false);
+        String promoCode = promoCodeName + " - " + discountPromoCode + " %";
+        String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int) priceMonthlyMinute);
+        String pricePlan = termLength + " - " + pricePlanDiscount;
+        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, cusSubPrice, subPrice, pricePlan, pricePlanDiscount,  "$" + String.valueOf((int)priceMonthlyMinute),
-                amountMinutes, "$0.06", pricePlanDuration, "", payToday, discountPromoCode, promoCodeName, "%", "", "", "Completed");
+        orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, cusSubPrice, subPrice, "$0.00", "$0.00", pricePlan,
+                minutesPackage, "$0.06", "", payToday, promoCode, "Completed", Users.VLADYSLAV_45, "", "");
     }
 
     @Test
-    public void test1orderPremiumNumberWithoutPromoCode() throws InterruptedException, IOException, JSONException {
+    public void test2OrderPremiumNumberWithoutPromoCode() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, searchRequest);
@@ -115,35 +116,36 @@ public class OrdersTollFreePremium extends TestBase {
         linksListingPage.clickCreateNewURLButton();
         double priceOverride = 10.01;
         String termLength = "1 year";
-        String pricePlan = termLength + " - 10%";
-        String pricePlanDiscount = "10%";
+        String pricePlanDiscount = "Save Now 10%";
         String displayedName = linksListingPage
                 .generateLinkWithoutPromoCodePremiumFlow(Double.toString(priceOverride), "Kansas", 1,
                         termLength, "750");
         double oldPriceChosenAreaCodes = linksListingPage.getSumOldPriceChosenAreaCodes();
         String amountMinutes = String.valueOf(linksListingPage.getAmountOfMinute());
-        String pricePlanDuration = String.valueOf(linksListingPage.getPricePlanDuration(termLength));
         double priceMonthlyMinute = linksListingPage.getPriceMonthlyMinute();
         double saleSelectedPlan = linksListingPage.getSaleSelectedPlan();
         linksListingPage.clickGenerateLinkButtonRegularFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
         linksListingPage.goToGeneratedLink(generatedLink);
-        String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + oldPriceChosenAreaCodes -
-                (priceMonthlyMinute + oldPriceChosenAreaCodes) * ((priceMonthlyMinute + priceOverride)/saleSelectedPlan) * 0.01)* 100.0) / 100.0) + "0";
+        double oldSale = (saleSelectedPlan / (priceMonthlyMinute + priceOverride)) * (priceMonthlyMinute + oldPriceChosenAreaCodes);
+        String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + oldPriceChosenAreaCodes - oldSale) * 100.0) / 100.0) + "0";
         String cusSubPrice = "$" + String.valueOf(Math.round((priceMonthlyMinute + priceOverride - saleSelectedPlan)* 100.0) / 100.0);
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_38, CreditCards.MASTERCART_STRIPE, false);
+        String promoCode = "";
+        String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int) priceMonthlyMinute);
+        String pricePlan = termLength + " - " + pricePlanDiscount;
+        checkout.fillCheckout(Users.VLADYSLAV_44, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, cusSubPrice, subPrice, pricePlan, pricePlanDiscount,  "$" + String.valueOf((int)priceMonthlyMinute),
-                amountMinutes, "$0.08", pricePlanDuration, "", payToday, "", "", "", "", "", "Completed");
+        orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, cusSubPrice, subPrice, "$0.00", "$0.00", pricePlan,
+                minutesPackage, "$0.08", "", payToday, promoCode, "Completed", Users.VLADYSLAV_44, "", "");
     }
 
     @Test
-    public void test1OrderPremiumVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
+    public void test3OrderPremiumVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         vanityIndexPage.open();
         vanityIndexPage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -153,9 +155,9 @@ public class OrdersTollFreePremium extends TestBase {
         double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseSeveralAreaCodesFromList(2);
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.getPriceFromAmountAreaCodesWithDiscount(priceFromAmountAreaCodes);
         String pricePlanName = "3 years";
+        String description = buyingPremiumVanityNumber.getPricePlanDescription(pricePlanName);
+        String additionalText = buyingPremiumVanityNumber.getPricePlanAdText(pricePlanName);
         int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength(pricePlanName);
-        String pricePlan = pricePlanName + " - " + discountPriceSelectedPlan + "%";
-        String planDuration = String.valueOf(buyingPremiumVanityNumber.getPricePlanDuration(discountPriceSelectedPlan));
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose5000MonthlyMinutes();
         String amountMinutes = String.valueOf(buyingPremiumVanityNumber.getAmountMinutes(priceMonthlyMinutes));
         String ringToNumber = "8001234560";
@@ -167,19 +169,21 @@ public class OrdersTollFreePremium extends TestBase {
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount -
                 (priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0) + "0";
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_40, CreditCards.VISA_STRIPE, false);
+        String promoCode = promoCodeName + " - " + discountPromoCode + " $";
+        String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int) priceMonthlyMinutes);
+        String pricePlan = pricePlanName + " - " + additionalText + " " + description;
+        checkout.fillCheckout(Users.VLADYSLAV_46, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
-                "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.05", planDuration, ringToNumber, payToday,
-                discountPromoCode, promoCodeName, "$", "Lebron James", "1%", "Completed");
+        orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, "", subPrice, "$0.00", "", pricePlan,
+                minutesPackage, "$0.05", ringToNumber, payToday, promoCode, "Completed", Users.VLADYSLAV_46, "Lebron James", "1%");
     }
 
     @Test
-    public void test1OrderRegularVanityNumberPaymentError() throws InterruptedException {
+    public void test4OrderRegularVanityNumberPaymentError() throws InterruptedException, IOException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
@@ -188,9 +192,9 @@ public class OrdersTollFreePremium extends TestBase {
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.
                 chooseSeveralAreaCodesFromSeveralStates(new String[] {"Kansas", "Vermont"}, new int[] {3, 1});
         String pricePlanName = "Month-To-Month";
+        String description = buyingPremiumVanityNumber.getPricePlanDescription(pricePlanName);
+        String additionalText = buyingPremiumVanityNumber.getPricePlanAdText(pricePlanName);
         int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength(pricePlanName);
-        String pricePlan = pricePlanName + " - " + discountPriceSelectedPlan + "%";
-        String planDuration = String.valueOf(buyingPremiumVanityNumber.getPricePlanDuration(discountPriceSelectedPlan));
         double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
         String amountMinutes = String.valueOf(buyingPremiumVanityNumber.getAmountMinutes(priceMonthlyMinutes));
         String ringToNumber = "8001234560";
@@ -202,14 +206,16 @@ public class OrdersTollFreePremium extends TestBase {
         String subPrice = "$" + String.valueOf(Math.round((priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount -
                 (priceMonthlyMinutes + priceFromAmountAreaCodesWithDiscount) * discountPriceSelectedPlan * 0.01)* 100.0) / 100.0) + "0";
         String payToday = checkout.getPricePayToday();
-        checkout.fillCheckout(Users.VLADYSLAV_40, CreditCards.ERROR_EXPIRED_CARD_STRIPE, false);
+        String promoCode = promoCodeName + " - " + discountPromoCode + " $";
+        String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int) priceMonthlyMinutes);
+        String pricePlan = pricePlanName + " - " + additionalText + " " + description;
+        checkout.fillCheckout(Users.VLADYSLAV_46, CreditCards.ERROR_EXPIRED_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
-        orderDetailPage.checkingCorrectDataOrderPremiumFlow(displayedName, "", subPrice, pricePlan, discountPriceSelectedPlan + "%",
-                "$" + String.valueOf((int)priceMonthlyMinutes), amountMinutes, "$0.07", planDuration, ringToNumber, payToday,
-                discountPromoCode, promoCodeName, "$", "Lebron James", "1%", "Failed");
+        orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, "", subPrice, "$0.00", "", pricePlan,
+                minutesPackage, "$0.07", ringToNumber, payToday, promoCode, "Failed", Users.VLADYSLAV_46, "Lebron James", "1%");
     }
 }

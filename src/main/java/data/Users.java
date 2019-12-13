@@ -5,9 +5,9 @@ package data;
  */
 public enum Users {
 
-    VLADYSLAV_38("Vladyslav38", "Chesalov38", "vladyslav.chesalov+38@bigdropinc.com", "", "3275 NW 24th Street Rd", "apt Suit", "Miami", "FL", "33101", "0123456789"),
-    VLADYSLAV_39("Vladyslav39", "Chesalov39", "vladyslav.chesalov+39@bigdropinc.com", "Bigdrop", "103 North Perry St.", "", "Montgomery", "AL", "36043", "0987654321"),
-    VLADYSLAV_40("Vladyslav40", "Chesalov40", "vladyslav.chesalov+40@bigdropinc.com", "Bigdrop", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478"),
+    VLADYSLAV_44("Vladyslav44", "Chesalov44", "vladyslav.chesalov+44@bigdropinc.com", "", "3275 NW 24th Street Rd", "apt Suit", "Miami", "FL", "33101", "0123456789"),
+    VLADYSLAV_45("Vladyslav45", "Chesalov45", "vladyslav.chesalov+45@bigdropinc.com", "Bigdrop", "103 North Perry St.", "", "Montgomery", "AL", "36043", "0987654321"),
+    VLADYSLAV_46("Vladyslav46", "Chesalov46", "vladyslav.chesalov+46@bigdropinc.com", "Bigdrop", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478"),
     CUSTOMER("Customer", "Customer", "customer@bigdropinc.com", "Bigdrop", "29 Puerto Rico Addresses", "", "Montgomery", "PR", "00908", "0668843478"),
     CUSTOMER_ONLY_EMAIL("", "", "customer@bigdropinc.com", "", "", "", "", "", "", "");
 

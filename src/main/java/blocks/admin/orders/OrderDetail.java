@@ -84,7 +84,10 @@ public class OrderDetail extends HtmlElement {
     private WebElement carrier;
 
     @FindBy(xpath = "//label[contains(text(), 'Completed at')]/following::input[1]")
-    private WebElement timeStamps;
+    private WebElement completedAt;
+
+    @FindBy(xpath = "//label[contains(text(), 'Failed at')]/following::input[1]")
+    private WebElement failedAt;
 
     @FindBy(xpath = "//label[contains(text(), 'Phone')]/following::input[1]")
     private WebElement phoneName;

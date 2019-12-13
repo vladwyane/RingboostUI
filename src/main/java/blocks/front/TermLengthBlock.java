@@ -30,4 +30,8 @@ public class TermLengthBlock extends HtmlElement {
     @FindBys( {@FindBy(css = "h3")} )
     public List<WebElement> listOfDiscount;
 
+    @Name("ArrayList of additional text")
+    @FindBys( {@FindBy(css = ".plan-features p")} )
+    public List<WebElement> listOfAdText;
+
 }

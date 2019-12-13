@@ -132,6 +132,30 @@ public class BuyingRegularVanityNumber extends BasePage {
         return discount;
     }
 
+    public String getPricePlanDescription(String term) {
+        waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
+        String description = "";
+        for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
+            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(term.toLowerCase())) {
+                description = termLengthBlock.getListOfDiscount().get(i).getText();
+                return description;
+            }
+        }
+        return description;
+    }
+
+    public String getPricePlanAdText(String term) {
+        waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
+        String adText = "";
+        for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
+            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(term.toLowerCase())) {
+                adText = termLengthBlock.getListOfAdText().get(i).getText();
+                return adText;
+            }
+        }
+        return adText;
+    }
+
     public int getPricePlanDuration(int pricePlanSale) {
         int duration;
         switch(pricePlanSale) {

@@ -31,7 +31,7 @@ public class OrdersTollFreeRegular extends TestBase {
     private HomePage homePage;
     private VanitySearchResult vanitySearchResult;
 
-    private String searchRequest = "phone";
+    private String searchRequest = "apple";
 
 
     @BeforeMethod
@@ -97,14 +97,14 @@ public class OrdersTollFreeRegular extends TestBase {
         String promoCode = "";
         String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int)priceMonthlyMinutes);
         String pricePlan = pricePlanName + " - " + additionalText + " " + description;
-        checkout.fillCheckout(Users.VLADYSLAV_44, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_50, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, cusSubPrice, subPrice, "$0.00", "$0.00", pricePlan,
-                minutesPackage, "$0.05", ringToNumber, payToday, promoCode, "Completed", Users.VLADYSLAV_44, "", "");
+                minutesPackage, "$0.05", ringToNumber, payToday, promoCode, "Completed", Users.VLADYSLAV_50, "", "");
     }
 
     @Test
@@ -136,14 +136,14 @@ public class OrdersTollFreeRegular extends TestBase {
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int)priceMonthlyMinutes);
         String pricePlan = pricePlanName + " - " + additionalText + " " + description;
-        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_48, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, cusSubPrice, subPrice, "$0.00", "$0.00",
-                pricePlan, minutesPackage, "$0.07", "", payToday, promoCode, "Completed", Users.VLADYSLAV_45, "", "");
+                pricePlan, minutesPackage, "$0.07", "", payToday, promoCode, "Completed", Users.VLADYSLAV_48, "", "");
     }
 
     @Test
@@ -169,14 +169,14 @@ public class OrdersTollFreeRegular extends TestBase {
         String promoCode = promoCodeName + " - " + discountPromoCode + " %";
         String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int)priceMonthlyMinutes);
         String pricePlan = pricePlanName + " - " + additionalText + " " + description;
-        checkout.fillCheckout(Users.VLADYSLAV_46, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_49, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, "", subPrice, "$0.00", "", pricePlan,
-                minutesPackage,"$0.07", ringToNumber, payToday, promoCode, "Completed", Users.VLADYSLAV_46, "", "");
+                minutesPackage,"$0.07", ringToNumber, payToday, promoCode, "Completed", Users.VLADYSLAV_49, "", "");
     }
 
     @Test
@@ -201,13 +201,13 @@ public class OrdersTollFreeRegular extends TestBase {
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int)priceMonthlyMinutes);
         String pricePlan = pricePlanName + " - " + additionalText + " " + description;
-        checkout.fillCheckout(Users.VLADYSLAV_44, CreditCards.ERROR_LOST_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_50, CreditCards.ERROR_LOST_CARD_STRIPE, false);
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, "", subPrice, "$0.00", "", pricePlan,
-                minutesPackage, "$0.06", "", payToday, promoCode, "Failed", Users.VLADYSLAV_44, "", "");
+                minutesPackage, "$0.06", "", payToday, promoCode, "Failed", Users.VLADYSLAV_50, "", "");
     }
 
 }

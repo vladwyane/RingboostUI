@@ -6,6 +6,7 @@ import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.admin.Admin;
 import pages.admin.Login;
@@ -51,6 +52,7 @@ public class OrdersBasic800 extends TestBase {
         app.delleteAllCookies();
     }
 
+    @Ignore
     @Test
     public void orderBasic800Number() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
@@ -68,16 +70,17 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_46, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_49, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_46);
+                priceActivationFee, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_49);
     }
 
+    @Ignore
     @Test
     public void orderBasic800NumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
@@ -98,14 +101,14 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_48, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_45);
+                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_48);
     }
 
     @Test
@@ -128,14 +131,14 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_44, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_50, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_44);
+                priceActivationFee, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_50);
     }
 
     @Test
@@ -159,14 +162,14 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " %";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_48, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_45);
+                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_48);
     }
 
     @Test
@@ -187,14 +190,14 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_44, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_50, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_44);
+                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_50);
     }
 
     @Test
@@ -213,13 +216,13 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_48, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, "", promoCode, "Failed", Users.VLADYSLAV_45);
+                priceActivationFee, "", promoCode, "Failed", Users.VLADYSLAV_48);
     }
 }

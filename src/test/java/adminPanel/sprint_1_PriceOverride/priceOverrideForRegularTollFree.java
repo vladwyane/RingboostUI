@@ -70,7 +70,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_44, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_50, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, isPromocode, displayedName);
     }
 
@@ -106,7 +106,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_48, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithFixedPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
 
@@ -142,7 +142,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_45, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_48, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithPercentPromoCodeRegularFlow(priceMonthlyMinutes, discountPriceSelectedPlan, price, displayedName);
     }
 
@@ -177,7 +177,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_46, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_49, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, price);
     }
 
@@ -203,7 +203,7 @@ public class priceOverrideForRegularTollFree extends TestBase {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(2).substring(3, 10);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(4).substring(3, 10);
         System.out.println(phoneNumber);
         for (int i = 0; i < 3; i++) {
             linksListingPage.clickCreateNewURLButton();
@@ -211,18 +211,18 @@ public class priceOverrideForRegularTollFree extends TestBase {
             linksListingPage.clickGenerateLinkButtonRegularFlow();
         }
         homePage.open();
-        homePage.searchTollFreeNumbers("9998709");
-        vanitySearchResult.chooseIndexNumberFromRegularVanityList(2);
+        homePage.searchTollFreeNumbers(phoneNumber);
+        vanitySearchResult.chooseIndexNumberFromRegularVanityList(0);
         buyingRegularVanityNumber.choose5000MonthlyMinutes();
         buyingRegularVanityNumber.chooseTermLength("1 year");
         buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_46, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_49, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, "9998709");
-        inventoryTollfree.clickCreateNewLinkByNumber(2);
+        inventoryTollfree.clickCreateNewLinkByNumber(4);
         linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
 
     }

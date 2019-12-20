@@ -52,7 +52,7 @@ public class CheckoutSteps extends HtmlElement {
     @FindBy(css= "input[name='street']")
     private TextInput streetAddressField;
 
-    @FindBy(css= "input[name='apt_suite']")
+    @FindBy(css= "input[name='suite']")
     private TextInput aptSuiteField;
 
     @FindBy(css= "input[name='city']")

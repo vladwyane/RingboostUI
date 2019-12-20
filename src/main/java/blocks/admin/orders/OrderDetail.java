@@ -107,13 +107,13 @@ public class OrderDetail extends HtmlElement {
     @FindBy(xpath = "//label[contains(text(), 'Sub type')]/following::input[1]")
     private WebElement subType;
 
-    @FindBy(xpath = "//label[contains(text(), 'Bearer')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'DID Source')]/following::input[1]")
     private WebElement bearer;
 
-    @FindBy(xpath = "//label[contains(text(), 'Payment Price')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'Retail Price')]/following::input[1]")
     private WebElement paymentPrice;
 
-    @FindBy(xpath = "//label[contains(text(), 'Customer Price')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'Price Override')]/following::input[1]")
     private WebElement customerPrice;
 
     @FindBy(xpath = "//label[contains(text(), 'Customer Subscription Price')]/following::input[1]")
@@ -122,7 +122,7 @@ public class OrderDetail extends HtmlElement {
     @FindBy(xpath = "//label[contains(text(), 'Pay Today')]/following::input[1]")
     private WebElement payToday;
 
-    @FindBy(xpath = "//label[contains(text(), 'Phone Upsell Name')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'Service Option')]/following::input[1]")
     private WebElement phoneUpsellName;
 
     @FindBy(xpath = "//label[contains(text(), 'Phone Upsell Price')]/following::input[1]")
@@ -140,7 +140,7 @@ public class OrderDetail extends HtmlElement {
     @FindBy(xpath = "//label[contains(text(), 'Price Plan Discount')]/following::input[1]")
     private WebElement pricePlanDiscount;
 
-    @FindBy(xpath = "//label[contains(text(), 'Price Plan Additional Cost')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'Overage CPM')]/following::input[1]")
     private WebElement pricePlanAdditionalCost;
 
     @FindBy(xpath = "//label[contains(text(), 'Price Plan Activation Fee')]/following::input[1]")

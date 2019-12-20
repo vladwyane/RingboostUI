@@ -52,13 +52,14 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getEmail()), users.getEmail(), "Email");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPhoneNumber()), "", "PhoneNumber");
         softAssert.assertEquals(getAttributeValue(orderDetail.getVanityPhoneName()), displayedName, "VanityPhoneName");
+        softAssert.assertNotEquals(getAttributeValue(orderDetail.getBearer()), "", "DID Source");
         softAssert.assertEquals(getAttributeValue(orderDetail.getRingToNumber()), ringToNumber, "RingToNumber");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), paymentPrice, "PaymentPrice");
+        softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), paymentPrice, "Retail Price");
         softAssert.assertEquals(getAttributeValue(orderDetail.getSubscriptionPrice()).replaceAll(",", ""), subPrice, "SubscriptionPrice");
         if(subPriceOverride.equals("") && customerPrice.equals("")) {}
         else {
             softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerSubscriptionPrice()).replaceAll(",", ""), subPriceOverride, "CustomerSubscriptionPrice");
-            softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), customerPrice, "CustomerPrice");
+            softAssert.assertEquals(getAttributeValue(orderDetail.getCustomerPrice()), customerPrice, "Price Override");
         }
         softAssert.assertEquals(getAttributeValue(orderDetail.getPayToday()), payToday, "PayToday");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPricePlan()), pricePlan, "PricePlan");
@@ -72,7 +73,6 @@ public class OrderDetailPage extends BasePage {
             softAssert.assertEquals(getAttributeValue(orderDetail.getBillingAddress()), users.getStreetAddress(), "BillingAddress");
             softAssert.assertEquals(getAttributeValue(orderDetail.getBillingZIP()), users.getZipCode(), "BillingZIP");
         }
-        clickTab("Order details");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPublicID()), "", "PublicID");
         //softAssert.assertNotEquals(getAttributeValue(orderDetail.getZendeskId()), "", "ZendeskId");
         softAssert.assertEquals(getAttributeValue(orderDetail.getStatus()), statusPay, "Status");
@@ -108,6 +108,7 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getEmail()), users.getEmail(), "Email");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPhoneNumber()), "", "PhoneNumber");
         softAssert.assertEquals(getAttributeValue(orderDetail.getVanityPhoneName()), displayedName, "VanityPhoneName");
+        softAssert.assertNotEquals(getAttributeValue(orderDetail.getBearer()), "", "DID Source");
         softAssert.assertEquals(getAttributeValue(orderDetail.getRingToNumber()), ringToNumber, "RingToNumber");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), paymentPrice, "PaymentPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getSubscriptionPrice()).replaceAll(",", ""), subsPrice, "SubscriptionPrice");
@@ -123,7 +124,6 @@ public class OrderDetailPage extends BasePage {
             softAssert.assertEquals(getAttributeValue(orderDetail.getBillingAddress()), users.getStreetAddress(), "BillingAddress");
             softAssert.assertEquals(getAttributeValue(orderDetail.getBillingZIP()), users.getZipCode(), "BillingZIP");
         }
-        clickTab("Order details");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPublicID()), "", "PublicID");
         //softAssert.assertNotEquals(getAttributeValue(orderDetail.getZendeskId()), "", "ZendeskId");
         softAssert.assertEquals(getAttributeValue(orderDetail.getStatus()), statusPay, "Status");
@@ -146,7 +146,7 @@ public class OrderDetailPage extends BasePage {
 
 
     public void checkingCorrectDataOrderLocalFlow(String displayedName, String oldPrice, String customerPrice, String subscriptionPrice, String subPriceOverride, String payToday,
-                                                  String phoneUpsellName, String phoneUpsellPrice, String pricePlan, String additionalCost, String ringToNumber,
+                                                  String phoneUpsellName, String pricePlan, String additionalCost, String ringToNumber,
                                                   String promoCode, String statusPay, Users users) throws IOException {
         waiting2seconds();
         generateOrdersDetailFile(displayedName, subPriceOverride, subscriptionPrice, oldPrice, customerPrice, pricePlan, "", payToday, promoCode);
@@ -157,10 +157,10 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getEmail()), users.getEmail(), "Email");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPhoneNumber()), "", "PhoneNumber");
         softAssert.assertEquals(getAttributeValue(orderDetail.getVanityPhoneName()), displayedName, "VanityPhoneName");
+        softAssert.assertNotEquals(getAttributeValue(orderDetail.getBearer()), "", "DID Source");
         softAssert.assertEquals(getAttributeValue(orderDetail.getRingToNumber()), ringToNumber, "RingToNumber");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), oldPrice, "PaymentPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPhoneUpsellName()).toLowerCase(), phoneUpsellName.toLowerCase(), "PhoneUpsellName");
-        softAssert.assertEquals(getAttributeValue(orderDetail.getPhoneUpsellPrice()), phoneUpsellPrice, "PhoneUpsellPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getSubscriptionPrice()).replaceAll(",", ""), subscriptionPrice, "SubscriptionPrice");
         if(customerPrice.equals("")) {}
         else {
@@ -181,7 +181,6 @@ public class OrderDetailPage extends BasePage {
             softAssert.assertEquals(getAttributeValue(orderDetail.getBillingAddress()), users.getStreetAddress(), "BillingAddress");
             softAssert.assertEquals(getAttributeValue(orderDetail.getBillingZIP()), users.getZipCode(), "BillingZIP");
         }
-        clickTab("Order details");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPublicID()), "", "PublicID");
         //softAssert.assertNotEquals(getAttributeValue(orderDetail.getZendeskId()), "", "ZendeskId");
         softAssert.assertEquals(getAttributeValue(orderDetail.getStatus()), statusPay, "Status");

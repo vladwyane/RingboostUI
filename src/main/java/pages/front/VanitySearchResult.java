@@ -216,7 +216,7 @@ public class VanitySearchResult extends BasePage {
                 searchResult = false;
             }
         }
-        softAssert.assertFalse(searchResult);
+        softAssert.assertFalse(searchResult, "Search result is not correct");
         softAssert.assertAll();
     }
 

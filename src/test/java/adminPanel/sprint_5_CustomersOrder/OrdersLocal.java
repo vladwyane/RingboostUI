@@ -35,7 +35,7 @@ public class OrdersLocal extends TestBase {
     private LocalSearchResult localSearchResult;
     private InventoryLocal inventoryLocal;
 
-    private String searchRequest = "apple";
+    private String searchRequest = "8888030";
 
 
     @BeforeMethod

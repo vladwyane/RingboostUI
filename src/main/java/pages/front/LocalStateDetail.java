@@ -83,11 +83,11 @@ public class LocalStateDetail extends BasePage {
     public void checkingDefaultState() {
         softAssert.assertEquals(titleH1.getText(), "All Local Numbers");
         softAssert.assertEquals(filtersBlock.getSelectStates().getText(), "All");
-        softAssert.assertEquals(filtersBlock.getSelectAreaCode().getText(), "Area Code");
+        softAssert.assertTrue(isElementContainsAttributeValue(filtersBlock.getSelectAreaCode(), "placeholder", "Area Code"),"Placeholder Area Code absent");
         softAssert.assertTrue(isElementContainsAttributeValue(filtersBlock.getPlaceholderSelectPattern(), "placeholder", "Pattern"), "Placeholder Pattern absent");
         softAssert.assertNotEquals(localNumbersBlock.getListPricesLocalNumbers(), 0, "Numbers are null");
         softAssert.assertTrue(isElementPresent(filtersBlock.getButtonClearAllFilters()), "Clear All is absent");
-        softAssert.assertEquals(filtersBlock.getSelectSortBy().getText(), "Featured");
+        softAssert.assertEquals(filtersBlock.getSelectSortBy().getText(), "", "Sort By is incorrect");
         softAssert.assertEquals(filtersBlock.getRangeTooltipStart().getText(), "1");
         softAssert.assertEquals(filtersBlock.getRangeTooltipFinish().getText(), "10000");
         softAssert.assertAll();

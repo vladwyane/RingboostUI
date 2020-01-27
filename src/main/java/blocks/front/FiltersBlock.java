@@ -28,7 +28,7 @@ public class FiltersBlock extends HtmlElement {
     @FindBy(css = "div[name='states-select'] input")
     private WebElement placeholderSelectState;
 
-    @FindBy(css = "div[name='area-select']")
+    @FindBy(css = "div[name='area-select'] input")
     private WebElement selectAreaCode;
 
     @FindBy(css = "div[name='area-select'] input")

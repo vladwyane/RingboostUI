@@ -2835,4 +2835,36 @@
     "priceTotalDueToday": "$101.99",
     "order number": "1580065098"
   }
+}{
+  "map": {
+    "phoneNumber": "1-800-200-0555",
+    "currentDate": "Tue Jan 28 14:41:49 EET 2020",
+    "priceTotalDueToday": "$160.99",
+    "order number": "1580216039"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-100-1004",
+    "pricePayToday": "$0.00",
+    "currentDate": "Tue Jan 28 14:44:25 EET 2020",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$101.99",
+    "order number": "1580216193"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-367-6251",
+    "pricePayToday": "$144.89",
+    "currentDate": "Tue Jan 28 14:45:15 EET 2020",
+    "priceAfterAppliedPromoCode": "-$16.10",
+    "priceTotalDueToday": "$160.99",
+    "order number": "1580216248"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-372-4453",
+    "currentDate": "Tue Jan 28 14:45:55 EET 2020",
+    "priceTotalDueToday": "$101.99",
+    "order number": "1580216287"
+  }
 }

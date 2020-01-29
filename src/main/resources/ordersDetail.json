@@ -2867,4 +2867,77 @@
     "priceTotalDueToday": "$101.99",
     "order number": "1580216287"
   }
+}{
+  "map": {
+    "phoneNumber": "1-866-5340-333",
+    "currentDate": "Wed Jan 29 13:40:36 EET 2020",
+    "priceTotalDueToday": "$90.95",
+    "order number": "1580298769"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-4346-333",
+    "pricePayToday": "$438.99",
+    "currentDate": "Wed Jan 29 13:48:06 EET 2020",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$443.99",
+    "order number": "1580299220"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-4346-333",
+    "pricePayToday": "$0.00",
+    "currentDate": "Wed Jan 29 13:51:36 EET 2020",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$77.05",
+    "order number": "1580299428"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-4346-333",
+    "pricePayToday": "$178.85",
+    "currentDate": "Wed Jan 29 14:00:23 EET 2020",
+    "priceAfterAppliedPromoCode": "-$19.87",
+    "priceTotalDueToday": "$198.72",
+    "order number": "1580299953"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-5440-333",
+    "currentDate": "Wed Jan 29 14:01:24 EET 2020",
+    "priceTotalDueToday": "$231.25",
+    "order number": "1580300018"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-60-ERROR",
+    "currentDate": "Wed Jan 29 14:41:34 EET 2020",
+    "priceTotalDueToday": "$219.96",
+    "order number": "1580302357"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-49-ERROR",
+    "pricePayToday": "$0.00",
+    "currentDate": "Wed Jan 29 15:25:02 EET 2020",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$19.95",
+    "order number": "1580305003"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-50-ERROR",
+    "pricePayToday": "$40.46",
+    "currentDate": "Wed Jan 29 15:25:54 EET 2020",
+    "priceAfterAppliedPromoCode": "-$4.50",
+    "priceTotalDueToday": "$44.96",
+    "order number": "1580305090"
+  }
+}{
+  "map": {
+    "phoneNumber": "978-233-5580",
+    "currentDate": "Wed Jan 29 16:33:51 EET 2020",
+    "priceTotalDueToday": "$10.00",
+    "order number": "1580309157"
+  }
 }

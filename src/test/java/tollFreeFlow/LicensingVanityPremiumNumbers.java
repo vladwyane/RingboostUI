@@ -23,7 +23,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     private OrderConfirmationPage orderConfirmationPage;
     private LocalSearchResult localSearchResult;
 
-    private String searchRequest = "error";
+    private String searchRequest = "333";
 
     @BeforeMethod
     public void initPageObjects() {
@@ -46,7 +46,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     public void test1OrderPremiumVanityNumber() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(1);
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         buyingPremiumVanityNumber.chooseState("Kansas");
         double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseSeveralAreaCodesFromList(1);
@@ -63,7 +63,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
     public void test2OrderPremiumVanityNumberCheckingRegionStatus() throws InterruptedException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(1);
         buyingPremiumVanityNumber.checkingRegionStatus();
     }
 
@@ -162,7 +162,7 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.choose5000MonthlyMinutes();
         buyingPremiumVanityNumber.enterRingToNumber("8001234560");
         buyingPremiumVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.ERROR_EXPIRED_CARD_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.ERROR_CVC_STRIPE, true);
         checkout.checkingPaymentError();
     }
 

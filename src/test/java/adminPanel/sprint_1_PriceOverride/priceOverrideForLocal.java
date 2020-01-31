@@ -47,22 +47,32 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test1GenerateLinkWithoutPromoCode() throws InterruptedException, IOException, JSONException {
+    public void test1CheckingDeactivateStatusIfNumberSoldFromSite() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0ZUPO");
-        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(0);
+        //inventoryLocal.searchNumber(0,"655560");
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(0).substring(3, 10);
         System.out.println(phoneNumber);
-        linksListingPage.clickCreateNewURLButton();
-        linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
-        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
-        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
-        linksListingPage.goToGeneratedLink(generatedLink);
+        for (int i = 0; i < 3; i++) {
+            linksListingPage.clickCreateNewURLButton();
+            linksListingPage.generateLinkWithoutPromoCodeRegularFlow("4520.11");
+            linksListingPage.clickGenerateLinkButtonRegularFlow();
+        }
+        localIndexPage.open();
+        localIndexPage.searchLocalNumbers(phoneNumber);
+        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.getPhoneUpsellPrice("Port A Number");
         buyingLocalNumber.goToCheckout();
-        boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.VISA_STRIPE, false);
-        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
+        orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        orderConfirmationPage.waitUntilConfirmationMessageAppears();
+        login.open();
+        admin.clickLocalInventoryLink();
+        // inventoryLocal.searchNumber(0,"655560");
+        inventoryLocal.clickCreateNewLinkByNumber(0);
+        linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
+
     }
 
     @Test
@@ -225,31 +235,24 @@ public class priceOverrideForLocal extends TestBase{
     }
 
     @Test
-    public void test9CheckingDeactivateStatusIfNumberSoldFromSite() throws InterruptedException, IOException, JSONException {
+    public void test9GenerateLinkWithoutPromoCode() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"655560");
-        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(7).substring(3, 10);
+        //inventoryLocal.searchNumber(0,"0ZUPO");
+        String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(7);
         System.out.println(phoneNumber);
-        for (int i = 0; i < 3; i++) {
-            linksListingPage.clickCreateNewURLButton();
-            linksListingPage.generateLinkWithoutPromoCodeRegularFlow("4520.11");
-            linksListingPage.clickGenerateLinkButtonRegularFlow();
-        }
-        localIndexPage.open();
-        localIndexPage.searchLocalNumbers(phoneNumber);
-        localSearchResult.chooseFirstNumberFromLocalNumbersList();
-        buyingLocalNumber.getPriceNumber();
+        linksListingPage.clickCreateNewURLButton();
+        linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10");
+        double price = linksListingPage.clickGenerateLinkButtonRegularFlow();
+        String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
+        linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.getPhoneUpsellPrice("Port A Number");
         buyingLocalNumber.goToCheckout();
+        boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
         checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.VISA_STRIPE, false);
-        orderConfirmationPage.waitUntilConfirmationMessageAppears();
-        login.open();
-        admin.clickLocalInventoryLink();
-       // inventoryLocal.searchNumber(0,"655560");
-        inventoryLocal.clickCreateNewLinkByNumber(7);
-        linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
-
+        orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
     }
+
+
 
 }

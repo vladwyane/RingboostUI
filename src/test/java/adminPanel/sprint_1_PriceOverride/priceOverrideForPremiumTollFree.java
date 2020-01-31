@@ -94,7 +94,7 @@ public class priceOverrideForPremiumTollFree extends TestBase {
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         String displayedName = linksListingPage
-                .generateLinkWithPromoCodePremiumFlow("890", "Alabama", 2,
+                .generateLinkWithPromoCodePremiumFlow("890", "Alabama", 4,
                         "Month-To-Month", "5000", "-BUG");
         double payToday = linksListingPage.clickGenerateLinkButtonPremiumFlow();
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());

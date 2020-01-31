@@ -31,6 +31,10 @@ public class InventoryLocal extends BasePage {
     @FindBys( {@FindBy(css = "th form input")} )
     public List<TextInput> listSearchFieldTh;
 
+    @Name("ArrayList of search input in th WebElement")
+    @FindBys( {@FindBy(css = "th form input")} )
+    public List<WebElement> listSearchFieldThWebElement;
+
     @Name("ArrayList of search icon in th")
     @FindBys( {@FindBy(css = "th form .v-input__icon")} )
     public List<WebElement> listSearchIconTh;
@@ -60,5 +64,19 @@ public class InventoryLocal extends BasePage {
         listActionsOfTable.get(indexNumber * 2).click();
         waitUntilElementAppeared(listGeneratedURL.getButtonCreateNewURL());
         return phoneNumber;
+    }
+
+    public void searchNumberByAriaLabel(String areaLabel, String text) {
+        waitUntilElementAppeared(listSearchIconTh.get(0));
+        int index = 0;
+        for (int i = 0; i < listSearchFieldThWebElement.size(); i++) {
+            if(isElementContainsAttributeValue(listSearchFieldThWebElement.get(i), "aria-label", areaLabel)) {
+                index = i;
+                break;
+            }
+        }
+        type(listSearchFieldTh.get(index),text);
+        listSearchIconTh.get(index).click();
+        waiting2seconds();
     }
 }

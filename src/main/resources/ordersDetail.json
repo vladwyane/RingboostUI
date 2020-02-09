@@ -3065,4 +3065,22 @@
     "priceTotalDueToday": "$11.99",
     "order number": "1580465347"
   }
+}{
+  "map": {
+    "phoneNumber": "A18-416-7788-TEST",
+    "pricePayToday": "$600.99",
+    "currentDate": "Sun Feb 09 22:07:50 EET 2020",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$605.99",
+    "order number": "1581278846"
+  }
+}{
+  "map": {
+    "phoneNumber": "A31-A16-7788-ABCD-EFG",
+    "pricePayToday": "$0.00",
+    "currentDate": "Sun Feb 09 22:35:17 EET 2020",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$223.98",
+    "order number": "1581280490"
+  }
 }

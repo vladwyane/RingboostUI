@@ -60,7 +60,7 @@ public class InventoryLocal extends BasePage {
 
     public String clickCreateNewLinkByNumber(int indexNumber) {
         waitUntilElementAppeared(listActionsOfTable.get(0));
-        String phoneNumber = listTdOfTable.get(indexNumber * listColumnHeader.size()).getText();
+        String phoneNumber = listTdOfTable.get((indexNumber * listColumnHeader.size()) + 1).getText();
         listActionsOfTable.get(indexNumber * 2).click();
         waitUntilElementAppeared(listGeneratedURL.getButtonCreateNewURL());
         return phoneNumber;

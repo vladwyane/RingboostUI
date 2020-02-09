@@ -50,7 +50,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test1CheckingDeactivateStatusIfNumberSoldFromSite() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"655560");
+        inventoryLocal.searchNumber(0,"167788");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(0).substring(3, 10);
         System.out.println(phoneNumber);
         for (int i = 0; i < 3; i++) {
@@ -69,7 +69,7 @@ public class priceOverrideForLocal extends TestBase{
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
         admin.clickLocalInventoryLink();
-        // inventoryLocal.searchNumber(0,"655560");
+        inventoryLocal.searchNumber(0,"167788");
         inventoryLocal.clickCreateNewLinkByNumber(0);
         linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
 
@@ -79,7 +79,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test2GenerateLinkWithPromoCode() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.searchNumber(0,"167788");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
         double price = 0;
@@ -104,7 +104,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test3CheckingDeactivatedStatus() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.searchNumber(0,"167788");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
         linksListingPage.checkingStatusDeactivateOfAllLinks("Status");
@@ -114,7 +114,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test3GenerateLinkAndEdit() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.searchNumber(0,"167788");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(2);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
@@ -140,7 +140,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test4CopyLink() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.searchNumber(0,"167788");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(3);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
@@ -162,7 +162,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test5CheckingErrorMessageIsSold() throws InterruptedException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.searchNumber(0,"167788");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(3);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
@@ -175,7 +175,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test5DeleteLink() throws InterruptedException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.searchNumber(0,"167788");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(4);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
@@ -191,14 +191,14 @@ public class priceOverrideForLocal extends TestBase{
     public void test6inVisibleCreateNewURL() throws InterruptedException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.searchNumber(0,"167788");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(5);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage.generateLinkWithoutPromoCodeRegularFlow("1123");
         linksListingPage.clickGenerateLinkButtonRegularFlow();
         linksListingPage.clickBreadcrunbsLink("Local");
-        //inventoryLocal.searchNumber(0,"0987");
+        inventoryLocal.searchNumber(0,"167788");
         inventoryLocal.clickCreateNewLinkByNumber(5);
         linksListingPage.checkingInvisibleCreateNewURL();
     }
@@ -207,7 +207,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test7GenerateLinkWithoutPickPlan() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0ZUP");
+        inventoryLocal.searchNumber(0,"1OSPUT");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(6);
         System.out.println(phoneNumber);
         double price = 0;
@@ -228,7 +228,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test8CheckingCompleteStatus() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0ZUPOTE");
+        inventoryLocal.searchNumber(0,"1OSPUT");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(6);
         System.out.println(phoneNumber);
         linksListingPage.checkingStatusComplete("Status", linksListingPage.returnIndexLastGeneratedLink());
@@ -238,7 +238,7 @@ public class priceOverrideForLocal extends TestBase{
     public void test9GenerateLinkWithoutPromoCode() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickLocalInventoryLink();
-        //inventoryLocal.searchNumber(0,"0ZUPO");
+        inventoryLocal.searchNumber(0,"1OSPUT");
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(7);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();

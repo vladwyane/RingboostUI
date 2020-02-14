@@ -22,7 +22,8 @@ import java.util.List;
 public class LocalNumbersBlock extends HtmlElement {
 
     @Name("ArrayList of available local numbers")
-    @FindBys( {@FindBy(xpath = "//li[@class='available']/a[@class='phone-card']")} )
+    //@FindBys( {@FindBy(xpath = "//li[@class='available']/a[@class='phone-card']")} )
+    @FindBys( {@FindBy(xpath = "//a[@class='phone-card']")} )
     public List<WebElement> listOfAvailableLocalNumbers;
 
     @Name("ArrayList of local numbers li")
@@ -32,4 +33,8 @@ public class LocalNumbersBlock extends HtmlElement {
     @Name("ArrayList of price local numbers")
     @FindBys( {@FindBy(css = ".price")} )
     public List<WebElement> listPricesLocalNumbers;
+
+    @Name("ArrayList of make offer links")
+    @FindBys( {@FindBy(css = ".make-offer")} )
+    public List<WebElement> listMakeOfferLinks;
 }

@@ -33,7 +33,7 @@ public class OrdersTollFreePremium extends TestBase {
     private Checkout checkout;
     private OrderConfirmationPage orderConfirmationPage;
 
-    private String searchRequest = "apple";
+    private String searchRequest = "877767APPLE";
 
     @BeforeMethod
     public void initPageObjects() {
@@ -65,7 +65,7 @@ public class OrdersTollFreePremium extends TestBase {
         login.open();
         admin.clickToolFreInventoryLink();
         inventoryTollfree.searchNumber(0, searchRequest);
-        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(1);
+        String phoneNumber = inventoryTollfree.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
         linksListingPage.clickCreateNewURLButton();
         linksListingPage
@@ -96,14 +96,14 @@ public class OrdersTollFreePremium extends TestBase {
         String promoCode = promoCodeName + " - " + discountPromoCode + " %";
         String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int) priceMonthlyMinute);
         String pricePlan = termLength + " - " + pricePlanDiscount;
-        checkout.fillCheckout(Users.VLADYSLAV_51, CreditCards.DISCOVER_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.DISCOVER_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, cusSubPrice, subPrice, "$0.00", "$0.00", pricePlan,
-                minutesPackage, "$0.06", "", payToday, promoCode, "Completed", Users.VLADYSLAV_51, "", "");
+                minutesPackage, "$0.06", "", payToday, promoCode, "Completed", Users.VLADYSLAV_54, "", "");
     }
 
     @Test
@@ -134,14 +134,14 @@ public class OrdersTollFreePremium extends TestBase {
         String promoCode = "";
         String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int) priceMonthlyMinute);
         String pricePlan = termLength + " - " + pricePlanDiscount;
-        checkout.fillCheckout(Users.VLADYSLAV_53, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, cusSubPrice, subPrice, "$0.00", "$0.00", pricePlan,
-                minutesPackage, "$0.08", "", payToday, promoCode, "Completed", Users.VLADYSLAV_53, "", "");
+                minutesPackage, "$0.08", "", payToday, promoCode, "Completed", Users.VLADYSLAV_56, "", "");
     }
 
     @Test
@@ -172,14 +172,14 @@ public class OrdersTollFreePremium extends TestBase {
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int) priceMonthlyMinutes);
         String pricePlan = pricePlanName + " - " + additionalText + " " + description;
-        checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, "", subPrice, "$0.00", "", pricePlan,
-                minutesPackage, "$0.05", ringToNumber, payToday, promoCode, "Completed", Users.VLADYSLAV_52, "Lebron James", "1%");
+                minutesPackage, "$0.05", ringToNumber, payToday, promoCode, "Completed", Users.VLADYSLAV_55, "Lebron James", "1%");
     }
 
     @Test
@@ -209,13 +209,13 @@ public class OrdersTollFreePremium extends TestBase {
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String minutesPackage = amountMinutes + " minutes - $" + String.valueOf((int) priceMonthlyMinutes);
         String pricePlan = pricePlanName + " - " + additionalText + " " + description;
-        checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.ERROR_EXPIRED_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.ERROR_EXPIRED_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderVanityNumbers(displayedName, "", subPrice, "$0.00", "", pricePlan,
-                minutesPackage, "$0.07", ringToNumber, payToday, promoCode, "Failed", Users.VLADYSLAV_52, "Lebron James", "1%");
+                minutesPackage, "$0.07", ringToNumber, payToday, promoCode, "Failed", Users.VLADYSLAV_55, "Lebron James", "1%");
     }
 }

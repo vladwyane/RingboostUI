@@ -1,5 +1,6 @@
-package localFlow;
+package frontSite.localFlow;
 
+import io.qameta.allure.Story;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,13 +30,15 @@ public class LocalStatesTests extends TestBase {
         app.delleteAllCookies();
     }
 
-    @Test
+    @Test(description = "Filter Categories On Vanity Index Page")
+    @Story("Filter Categories On Vanity Index Page")
     public void testFilterCategoriesOnVanityIndexPage() throws InterruptedException {
         localIndexPage.open();
         localIndexPage.checkingFilterLocalStates("W");
     }
 
-    @Test
+    @Test(description = "Selected States From Local Index Page")
+    @Story("Selected States From Local Index Page")
     public void testSelectedStatesFromLocalIndexPage() {
         localIndexPage.open();
         String nameState = "Alabama";
@@ -43,7 +46,8 @@ public class LocalStatesTests extends TestBase {
         localStateDetail.checkingSelectedStateFromStateIndexPage(nameState);
     }
 
-    @Test
+    @Test(description = "Local State Detail Page Default State")
+    @Story("Local State Detail Page Default State")
     public void testLocalStateDetailPageDefaultState() {
         localStateDetail.open();
         localStateDetail.checkingDefaultState();

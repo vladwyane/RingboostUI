@@ -51,8 +51,11 @@ public class InventoryLocal extends BasePage {
     @FindBys( {@FindBy(xpath = "//th [not (contains(@class, 'column'))]")} )
     public List<WebElement> listColumnHeader;
 
+    @FindBy(css = ".v-toolbar__title")
+    private WebElement tableTitle;
+
     public void searchNumber(int index, String text) {
-        waitUntilElementAppeared(listSearchIconTh.get(0));
+        waitUntilElementAppeared(tableTitle);
         type(listSearchFieldTh.get(index),text);
         listSearchIconTh.get(index).click();
         waiting2seconds();

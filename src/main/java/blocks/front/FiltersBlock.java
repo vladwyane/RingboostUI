@@ -22,7 +22,7 @@ import java.util.List;
 @Block(@FindBy(className = "form-filters"))
 public class FiltersBlock extends HtmlElement {
 
-    @FindBy(css = "div[name='states-select']")
+    @FindBy(css = "div[name='states-select'] input")
     private WebElement selectStates;
 
     @FindBy(css = "div[name='states-select'] input")

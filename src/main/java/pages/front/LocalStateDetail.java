@@ -2,10 +2,12 @@ package pages.front;
 
 import blocks.front.FiltersBlock;
 import blocks.front.LocalNumbersBlock;
+import blocks.front.SearchBlock;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 import utils.ConfigProperties;
 
 /**
@@ -15,11 +17,13 @@ public class LocalStateDetail extends BasePage {
 
     FiltersBlock filtersBlock;
     LocalNumbersBlock localNumbersBlock;
+    SearchBlock searchBlock;
 
     public LocalStateDetail(WebDriver driver) {
         super(driver);
     }
 
+    @Step("Open State Detail Page")
     @Override
     public void open() {
         driver.get(ConfigProperties.getProperty("localStateDetail.url"));
@@ -27,6 +31,12 @@ public class LocalStateDetail extends BasePage {
 
     @FindBy(css = "h1")
     private WebElement titleH1;
+
+    @Step("Search local number with request: {0}")
+    public void searchLocalNumbers(String request) {
+        type(searchBlock.getLocalSearchField(), request);
+        waiting2seconds();
+    }
 
     public void clickButtonClearAllFilters() {
         filtersBlock.getButtonClearAllFilters().click();
@@ -72,6 +82,7 @@ public class LocalStateDetail extends BasePage {
         return filtersBlock.getListOfPatternsInSelectDropDown().get(0).getText();
     }
 
+    @Step("Сhecking Selected State From State Index Page")
     public void checkingSelectedStateFromStateIndexPage(String nameState) {
         waitUntilElementAppeared(localNumbersBlock);
         softAssert.assertTrue(titleH1.getText().contains(nameState), "Title incorrect");
@@ -80,9 +91,10 @@ public class LocalStateDetail extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Сhecking Default State")
     public void checkingDefaultState() {
-        softAssert.assertEquals(titleH1.getText(), "All Local Numbers");
-        softAssert.assertEquals(filtersBlock.getSelectStates().getText(), "All");
+        softAssert.assertEquals(titleH1.getText(), "Local Numbers");
+        softAssert.assertTrue(isElementContainsAttributeValue(filtersBlock.getSelectStates(), "placeholder", "State"),"Placeholder State absent");
         softAssert.assertTrue(isElementContainsAttributeValue(filtersBlock.getSelectAreaCode(), "placeholder", "Area Code"),"Placeholder Area Code absent");
         softAssert.assertTrue(isElementContainsAttributeValue(filtersBlock.getPlaceholderSelectPattern(), "placeholder", "Pattern"), "Placeholder Pattern absent");
         softAssert.assertNotEquals(localNumbersBlock.getListPricesLocalNumbers(), 0, "Numbers are null");

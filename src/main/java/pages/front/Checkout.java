@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 
 public class Checkout extends BasePage {
 
@@ -66,17 +67,19 @@ public class Checkout extends BasePage {
         chooseState(users.getState());
     }
 
+    @Step("Fill checkout forms users: {0}, credit card: {1}, subscribe checkbox: {2}")
     public void fillCheckout(Users users, CreditCards creditCards, boolean subscribe) throws InterruptedException {
         fillCheckoutInformationForm(users);
         fillCreditCardInformationForm(creditCards);
         fillCheckoutBillingAddressForm(users);
         clickCheckboxIAgreeToTheTerms();
-        if(subscribe)
+        if(!subscribe)
             clickCheckboxIWouldLikeToReceiveEmail();
         waitUntilElementWillBeClickable(checkoutSteps.getButtonPlaceOrder());
         checkoutSteps.getButtonPlaceOrder().click();
     }
 
+    @Step("Add Promo Code: {0}")
     public boolean addPromoCode(String promocode) throws InterruptedException {
         if(isElementPresent(checkoutSidebar.getLinkHavePromoCode())) {
             checkoutSidebar.getLinkHavePromoCode().click();
@@ -87,6 +90,12 @@ public class Checkout extends BasePage {
             return true;
         }
         else return false;
+    }
+
+    @Step("Checking invisibility coupon field")
+    public void checkingDisableCouponField() throws InterruptedException {
+        softAssert.assertFalse(isElementPresent(checkoutSidebar.getLinkHavePromoCode()), "Link have promo code is present");
+        softAssert.assertAll();
     }
 
     public String getDiscountPromoCode() {
@@ -156,6 +165,7 @@ public class Checkout extends BasePage {
         }
     }
 
+    @Step("Checking error message")
     public void checkingPaymentError() {
         waitUntilElementAppeared(checkoutSteps.getPaymentError());
         softAssert.assertTrue(isElementPresent(checkoutSteps.getPaymentError()), "Error message is absent");
@@ -168,6 +178,7 @@ public class Checkout extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Checking Correct Info In Sidebar priceNumberFirst: {0}, priceNumberSecond: {1}")
     public void checkingCorrectInfoInSidebar(double priceNumberFirst, double priceNumberLast) {
         waitUntilElementAppeared(checkoutSidebar.getPriceTotalDueToday());
         double priceInSidebar = Double.parseDouble(getNumbersFromString(checkoutSidebar.getPriceTotalDueToday().getText().replaceAll(",","")));

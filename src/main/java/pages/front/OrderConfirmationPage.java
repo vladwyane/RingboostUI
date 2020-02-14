@@ -4,6 +4,7 @@ import blocks.front.OrderConfirmationBlock;
 import org.json.JSONException;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -251,6 +252,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Order confirmation, checking your purchase price number: {0}, price plan: {1}")
     public void checkingYourPurchaseParkNumber (double priceNumber, double pricePlan) throws IOException, JSONException{
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
@@ -269,6 +271,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Order confirmation, checking your purchase price number: {0}, price plan: {1}")
     public void checkingYourPurchaseParkNumberWithFixedPromoCode(double priceNumber, double pricePlan) throws JSONException, IOException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
@@ -292,6 +295,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Order confirmation, checking your purchase price number: {0}, price plan: {1}")
     public void checkingYourPurchaseParkNumberWithHighFixedPromoCode(double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
@@ -315,6 +319,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Order confirmation, checking your purchase price number: {0}, price plan: {1}")
     public void checkingYourPurchaseParkNumberWithPercentPromoCode(double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());
@@ -338,6 +343,7 @@ public class OrderConfirmationPage extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Order confirmation, checking your purchase price number: {0}, price plan: {1}")
     public void checkingYourPurchaseParkNumberAfterRemovePromoCode (double priceNumber, double pricePlan) throws IOException, JSONException {
         waitUntilElementAppeared(orderConfirmationBlock.getOrderTitle());
         waitUntilElementWillBeClickable(orderConfirmationBlock.getLinkOrderDetails());

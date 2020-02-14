@@ -5,6 +5,7 @@ import blocks.front.RelatedVanityBlock;
 import blocks.front.SearchBlock;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 import utils.ConfigProperties;
 
 /**
@@ -43,11 +44,20 @@ public class LocalSearchResult extends BasePage {
         localNumbersBlock.getListOfAvailableLocalNumbers().get(localNumbersBlock.getListOfAvailableLocalNumbers().size()- 1).click();
     }
 
+    @Step("Choose phone number {0}st from local numbers list")
     public void chooseNumberFromLocalNumbersList(int numberOrder) {
         waitUntilElementAppeared(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
         waitUntilElementWillBeClickable(localNumbersBlock.getListOfAvailableLocalNumbers().get(numberOrder - 1));
         scrollToElement(localNumbersBlock.getListOfAvailableLocalNumbers().get(numberOrder - 1));
         localNumbersBlock.getListOfAvailableLocalNumbers().get(numberOrder - 1).click();
+    }
+
+    @Step("Click make offer link {0}st by local number")
+    public void clickMakeOfferLink(int linkOrder) {
+        waitUntilElementAppeared(localNumbersBlock.getListMakeOfferLinks().get(0));
+        waitUntilElementWillBeClickable(localNumbersBlock.getListMakeOfferLinks().get(linkOrder - 1));
+        scrollToElement(localNumbersBlock.getListMakeOfferLinks().get(linkOrder - 1));
+        localNumbersBlock.getListMakeOfferLinks().get(linkOrder - 1).click();
     }
 
     public void chooseFirstNumberFromRelatedVanityList() {
@@ -61,11 +71,12 @@ public class LocalSearchResult extends BasePage {
         relatedVanityBlock.getLisRelatedVanityNumbers().get(relatedVanityBlock.getLisRelatedVanityNumbers().size()- 1).click();
     }
 
+    @Step("Checking status Sold on site")
     public void checkingStatusSold () {
-        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(localNumbersBlock.getListLocalNumbersLi().size() - 1));
-        softAssert.assertTrue(isElementContainsAttributeValue(localNumbersBlock.getListLocalNumbersLi().get(localNumbersBlock.getListLocalNumbersLi().size() - 1), "class", "sold"),
+        waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(0));
+        softAssert.assertTrue(isElementContainsAttributeValue(localNumbersBlock.getListLocalNumbersLi().get(0), "class", "sold"),
                 "Number is available");
-        softAssert.assertTrue(waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(localNumbersBlock.getListLocalNumbersLi().size() - 1)));
+        softAssert.assertTrue(waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(0)));
         softAssert.assertAll();
     }
 }

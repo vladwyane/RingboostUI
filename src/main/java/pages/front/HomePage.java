@@ -3,6 +3,7 @@ package pages.front;
 import blocks.front.SearchBlock;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 import utils.ConfigProperties;
 
 /**
@@ -16,6 +17,7 @@ public class HomePage extends BasePage {
 
     SearchBlock searchBlock;
 
+    @Step("Open Home Page")
     @Override
     public void open() {
         driver.get(ConfigProperties.getProperty("home.url"));
@@ -26,6 +28,7 @@ public class HomePage extends BasePage {
         searchBlock.getButtonFindNumber().click();
     }
 
+    @Step("Search local number with request: {0}")
     public void searchLocalNumbers(String request) {
         searchBlock.getSwitcherLocalPart().click();
         type(searchBlock.getLocalSearchField(), request);

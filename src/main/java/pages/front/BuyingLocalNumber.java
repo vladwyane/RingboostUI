@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 
 /**
  * Created by bigdrop on 6/14/2019.
@@ -35,11 +36,18 @@ public class BuyingLocalNumber extends BasePage {
     @FindBy(css= ".main-number-holder")
     private WebElement phoneNumber;
 
+    @FindBy(css= ".make-offer-heading")
+    private WebElement makeOfferHeading;
+
+    @FindBy(css= ".make-offer-wrap form")
+    private WebElement makeOfferForm;
+
     public WebElement getPhoneNumber() {
         waitUntilElementAppeared(phoneNumber);
         return phoneNumber;
     }
 
+    @Step("Select upsell plan: {0}")
     public double getPhoneUpsellPrice(String planName) {
         waiting2seconds();
         double pricePlan = 0;
@@ -65,14 +73,16 @@ public class BuyingLocalNumber extends BasePage {
     }
 
 
+    @Step("Click continue to checkout")
     public String goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
         String boughtNumber = phoneNumber.getText();
-        boughtNumber = boughtNumber.replaceAll("\\D+","").substring(3);
+        boughtNumber = boughtNumber.replaceAll("\\D+","");
         orderSummaryBlock.getButtonProceedToCheckout().click();
         return boughtNumber;
     }
 
+    @Step("Select your monthly plan: {0}")
     public double choosePickYourMonthlyPlan(String planName) {
         waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
         double perMonthPrice;
@@ -116,6 +126,7 @@ public class BuyingLocalNumber extends BasePage {
         return description;
     }
 
+    @Step("Choose checkbox Multiple Ring To Number")
     public double chooseCheckboxMultipleRingToNumber() {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
         waitUntilElementWillBeClickable(continueButton);
@@ -123,6 +134,7 @@ public class BuyingLocalNumber extends BasePage {
         return Double.parseDouble(getNumbersFromString(priceNumber.getText().replaceAll(",", "")));
     }
 
+    @Step("Enter your ring-to-number: {0}")
     public double enterRingToNumber(String number) {
         char[] array = number.toCharArray();
         for (int i = 0; i < ringToNumberBlock.listInputRingToNumber.size(); i++) {
@@ -164,8 +176,16 @@ public class BuyingLocalNumber extends BasePage {
         return Double.parseDouble(getNumbersFromString(priceNumber.getText()));
     }
 
+    @Step("Click Link Continue To Checkout")
     public void clickLinkContinueToCheckout() {
         waitUntilElementWillBeClickable(localSupportSolutionBlock.getLinkToCheckout());
         localSupportSolutionBlock.getLinkToCheckout().click();
+    }
+
+    @Step("Checking Visibility Make Offer Form")
+    public void checkingVisibilityMakeOfferForm() throws InterruptedException {
+        softAssert.assertTrue(isElementPresent(makeOfferHeading), "Make Offer Heading is absent");
+        softAssert.assertTrue(isElementPresent(makeOfferForm), "Make Offer Form is absent");
+        softAssert.assertAll();
     }
 }

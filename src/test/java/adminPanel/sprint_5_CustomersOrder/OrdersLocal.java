@@ -97,14 +97,14 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_51, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, customerPrice, "$0.00", "$0.00", payToday,
-                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_51);
+                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_54);
     }
 
     @Test
@@ -131,14 +131,14 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_53, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, customerPrice, subsPrice, subsPrice, payToday,
-                phoneUpsellName,  pricePlan, "","", promoCode, "Completed", Users.VLADYSLAV_53);
+                phoneUpsellName,  pricePlan, "","", promoCode, "Completed", Users.VLADYSLAV_56);
     }
 
     @Test
@@ -158,14 +158,14 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_53, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, subsPrice, payToday,
-                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_53);
+                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_56);
     }
 
     @Test
@@ -190,14 +190,14 @@ public class OrdersLocal extends TestBase {
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " %";
-        checkout.fillCheckout(Users.VLADYSLAV_51, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, "", payToday,
-                phoneUpsellName, pricePlanName, addCoast, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_51);
+                phoneUpsellName, pricePlanName, addCoast, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_54);
     }
 
     @Test
@@ -221,14 +221,14 @@ public class OrdersLocal extends TestBase {
         checkout.wait2SecUntilPromoRemove();
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
-        checkout.fillCheckout(Users.VLADYSLAV_53, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, "", payToday,
-                phoneUpsellName, pricePlanName, addCoast, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_53);
+                phoneUpsellName, pricePlanName, addCoast, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_56);
     }
 
     @Test
@@ -246,14 +246,14 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " %";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", "$0.00", "", payToday,
-                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_52);
+                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_55);
     }
 
     @Test
@@ -272,13 +272,13 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_51, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", "$0.00", "", payToday,
-                phoneUpsellName, pricePlan, "","", promoCode, "Failed", Users.VLADYSLAV_51);
+                phoneUpsellName, pricePlan, "","", promoCode, "Failed", Users.VLADYSLAV_54);
     }
 }

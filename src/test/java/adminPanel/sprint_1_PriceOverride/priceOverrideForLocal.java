@@ -41,11 +41,6 @@ public class priceOverrideForLocal extends TestBase{
         login.fillLoginForm();
     }
 
-    @AfterClass
-    public void clearAllCookies() {
-        app.delleteAllCookies();
-    }
-
     @Test
     public void test1CheckingDeactivateStatusIfNumberSoldFromSite() throws InterruptedException, IOException, JSONException {
         login.open();
@@ -64,7 +59,7 @@ public class priceOverrideForLocal extends TestBase{
         buyingLocalNumber.getPriceNumber();
         buyingLocalNumber.getPhoneUpsellPrice("Port A Number");
         buyingLocalNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         login.open();
@@ -95,7 +90,7 @@ public class priceOverrideForLocal extends TestBase{
         double pricePlan = buyingLocalNumber.getPhoneUpsellPrice("Park A Number");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_53, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithFixedPromoCode(price, pricePlan, displayedName);
     }
 
@@ -132,7 +127,7 @@ public class priceOverrideForLocal extends TestBase{
         buyingLocalNumber.chooseCheckboxMultipleRingToNumber();
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_51, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithPercentPromoCode(price, pricePlan, displayedName);
     }
 
@@ -154,7 +149,7 @@ public class priceOverrideForLocal extends TestBase{
         buyingLocalNumber.enterRingToNumber("9968843478");
         buyingLocalNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_53, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinParkNumberWithHighFixedPromoCode(price, pricePlan, displayedName);
     }
 
@@ -220,7 +215,7 @@ public class priceOverrideForLocal extends TestBase{
         linksListingPage.goToGeneratedLink(generatedLink);
         buyingLocalNumber.clickLinkContinueToCheckout();
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
     }
 
@@ -249,7 +244,7 @@ public class priceOverrideForLocal extends TestBase{
         buyingLocalNumber.getPhoneUpsellPrice("Port A Number");
         buyingLocalNumber.goToCheckout();
         boolean isPromocode = checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_52, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.checkingGeneratedLinkWithoutPromoCodePortNumber(price, isPromocode);
     }
 

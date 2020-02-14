@@ -4,6 +4,7 @@ import blocks.front.SearchBlock;
 import blocks.front.StateCatalogBlock;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 import utils.ConfigProperties;
 
 /**
@@ -15,6 +16,7 @@ public class LocalIndexPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open Local Index Page")
     @Override
     public void open() {
         driver.get(ConfigProperties.getProperty("localIndex.url"));
@@ -23,12 +25,20 @@ public class LocalIndexPage extends BasePage {
     private SearchBlock searchBlock;
     private StateCatalogBlock stateCatalogBlock;
 
+    @Step("Enter Area Code: {0}")
+    public void enterAreaCode(String areaCode) {
+        waitUntilTextInElementAppear(searchBlock.getTitleH1(), "Buy a Local Phone Number");
+        type(searchBlock.getAreaCodeField(), areaCode);
+    }
+
+    @Step("Search local number with request: {0}")
     public void searchLocalNumbers(String request) {
         waitUntilTextInElementAppear(searchBlock.getTitleH1(), "Buy a Local Phone Number");
         type(searchBlock.getLocalSearchField(), request);
         searchBlock.getButtonFindNumber().click();
     }
 
+    @Step("Сhecking Filter Local States")
     public void checkingFilterLocalStates(String letter) {
         boolean firstStateOptions = false;
         boolean lettersOptionsIs27 = false;
@@ -71,6 +81,7 @@ public class LocalIndexPage extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Сhoose Local State")
     public String chooseLocalState(String nameState) {
         searchBlock.getStateLink().click();
         waiting2seconds();

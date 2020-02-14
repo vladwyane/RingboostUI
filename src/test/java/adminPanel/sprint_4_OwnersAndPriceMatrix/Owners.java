@@ -97,7 +97,7 @@ public class Owners extends TestBase {
     }
 
     @Test
-    public void test4ActivateCustomAgreement() throws InterruptedException, IOException, JSONException {
+    public void test5ActivateCustomAgreement() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickOwnersLink();
         ownersListingPage.searchOwner(OwnersData.JAMES.getEmail());
@@ -109,7 +109,7 @@ public class Owners extends TestBase {
     }
 
     @Test
-    public void test4ErrorMessageNotVisibleWhenCreateNewOwner() throws InterruptedException, IOException, JSONException {
+    public void test5ErrorMessageNotVisibleWhenCreateNewOwner() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickOwnersLink();
         ownersListingPage.clickAddNewOwnerButton();
@@ -120,7 +120,7 @@ public class Owners extends TestBase {
     }
 
     @Test
-    public void test5EditSaveFunctional() throws InterruptedException, IOException, JSONException {
+    public void test6EditSaveFunctional() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickOwnersLink();
         ownersListingPage.searchOwner(OwnersData.JAMES.getEmail());
@@ -132,7 +132,7 @@ public class Owners extends TestBase {
     }
 
     @Test
-    public void test6SDeleteButton() throws InterruptedException, IOException, JSONException {
+    public void test7SDeleteButton() throws InterruptedException, IOException, JSONException {
         login.open();
         admin.clickOwnersLink();
         ownersListingPage.searchOwner(OwnersData.VLADYSLAV.getEmail());

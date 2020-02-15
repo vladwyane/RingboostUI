@@ -22,13 +22,13 @@ import java.util.List;
 @Block(@FindBy(className = "form-filters"))
 public class FiltersBlock extends HtmlElement {
 
-    @FindBy(css = "div[name='states-select'] input")
+    @FindBy(css = "div[name='states-select']")
     private WebElement selectStates;
 
     @FindBy(css = "div[name='states-select'] input")
     private WebElement placeholderSelectState;
 
-    @FindBy(css = "div[name='area-select'] input")
+    @FindBy(css = "div[name='area-select']")
     private WebElement selectAreaCode;
 
     @FindBy(css = "div[name='area-select'] input")
@@ -57,6 +57,10 @@ public class FiltersBlock extends HtmlElement {
 
     @FindBy(css = "div[name='sort-select']")
     private WebElement selectSortBy;
+
+    @Name("ArrayList of Sort By")
+    @FindBys( {@FindBy(css = "div[name='sort-select'] .dropdown-menu li")} )
+    private List<WebElement> listOfSortByInSelectDropDown;
 
     @FindBy(xpath = "(//span[@class='vue-slider-dot-tooltip-text'])[1]")
     private WebElement rangeTooltipStart;

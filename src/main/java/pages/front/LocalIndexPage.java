@@ -81,7 +81,7 @@ public class LocalIndexPage extends BasePage {
         softAssert.assertAll();
     }
 
-    @Step("Сhoose Local State")
+    @Step("Сhoose Local State: {0}")
     public String chooseLocalState(String nameState) {
         searchBlock.getStateLink().click();
         waiting2seconds();

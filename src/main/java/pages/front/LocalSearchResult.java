@@ -79,4 +79,68 @@ public class LocalSearchResult extends BasePage {
         softAssert.assertTrue(waitUntilElementWillBeClickable(localNumbersBlock.getListLocalNumbersLi().get(0)));
         softAssert.assertAll();
     }
+
+    @Step("Checking Search Result Seven Symbols, request: {0}")
+    public void checkingSearchResultSevenSymbols(String request) {
+        waitUntilElementAppeared(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        scrollToElement(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        boolean searchResultLocal = false;
+        for (int i = 0; i < localNumbersBlock.getListOfAvailableLocalNumbers().size(); i++) {
+            if (localNumbersBlock.getListOfAvailableLocalNumbers().get(i).getText()
+                    .substring(4, 11).equals(request)) {
+                searchResultLocal = true;
+            } else {
+                searchResultLocal = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(searchResultLocal, "Search result local is incorrect");
+        softAssert.assertEquals(relatedVanityBlock.getTitleSection().getText(), "The Following Related Vanity Numbers are Available for");
+        boolean searchResultTollFree = false;
+        for (int i = 0; i < relatedVanityBlock.getLisRelatedVanityNumbers().size(); i++) {
+            if (relatedVanityBlock.getLisRelatedVanityNumbers().get(i).getText()
+                    .replaceAll("-","").substring(7).equals(request) ||
+                    relatedVanityBlock.getLisRelatedVanityNumbers().get(i).getText()
+                            .replaceAll("-","").substring(4).equals(request)) {
+                searchResultTollFree = true;
+            } else {
+                searchResultTollFree = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(searchResultTollFree, "Search result toll-free is incorrect");
+        softAssert.assertAll();
+    }
+
+    @Step("Checking Search Result Eight Symbols, request: {0}")
+    public void checkingSearchResultEightLetters(String request) {
+        waitUntilElementAppeared(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        scrollToElement(localNumbersBlock.getListOfAvailableLocalNumbers().get(0));
+        boolean searchResultLocal = false;
+        for (int i = 0; i < localNumbersBlock.getListOfAvailableLocalNumbers().size(); i++) {
+            if (localNumbersBlock.getListOfAvailableLocalNumbers().get(i).getText()
+                    .substring(4, 11).toLowerCase().equals(request.substring(0, 7).toLowerCase())) {
+                searchResultLocal = true;
+            } else {
+                searchResultLocal = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(searchResultLocal, "Search result local is incorrect");
+        softAssert.assertEquals(relatedVanityBlock.getTitleSection().getText(), "The Following Related Vanity Numbers are Available for");
+        boolean searchResultTollFree = false;
+        for (int i = 0; i < relatedVanityBlock.getLisRelatedVanityNumbers().size(); i++) {
+            if (relatedVanityBlock.getLisRelatedVanityNumbers().get(i).getText()
+                    .replaceAll("-","").substring(7).toLowerCase().equals(request.substring(0, 7).toLowerCase()) ||
+                    relatedVanityBlock.getLisRelatedVanityNumbers().get(i).getText()
+                            .replaceAll("-","").substring(4).toLowerCase().equals(request.substring(0, 7).toLowerCase())) {
+                searchResultTollFree = true;
+            } else {
+                searchResultTollFree = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(searchResultTollFree, "Search result toll-free is incorrect");
+        softAssert.assertAll();
+    }
 }

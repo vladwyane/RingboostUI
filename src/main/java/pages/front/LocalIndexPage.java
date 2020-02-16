@@ -83,6 +83,7 @@ public class LocalIndexPage extends BasePage {
 
     @Step("Сhoose Local State: {0}")
     public String chooseLocalState(String nameState) {
+        scrollToElement(searchBlock.getStateLink());
         searchBlock.getStateLink().click();
         waiting2seconds();
         for (int i = 0; i < stateCatalogBlock.getListStates().size(); i++) {

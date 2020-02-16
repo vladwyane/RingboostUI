@@ -3,6 +3,7 @@ package pages.front;
 import blocks.front.FiltersBlock;
 import blocks.front.LocalNumbersBlock;
 import blocks.front.SearchBlock;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -180,7 +181,12 @@ public class LocalStateDetail extends BasePage {
     @Step("Сhecking Load More")
     public void checkingLoadMore () {
         waitUntilElementWillBeClickable(buttonMoreNumbers);
-        buttonMoreNumbers.click();
+        try {
+            buttonMoreNumbers.click();
+        }
+        catch (NoSuchElementException e) {
+            e.getMessage();
+        }
         waiting2seconds();
         softAssert.assertTrue(localNumbersBlock.getListLocalNumbersLi().size() > 32, "Load More is not working");
         softAssert.assertAll();

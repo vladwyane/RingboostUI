@@ -22,7 +22,7 @@ public class RelatedVanityBlock extends HtmlElement {
     private WebElement titleSection;
 
     @Name("ArrayList of related vanity numbers")
-    @FindBys( {@FindBy(css = "li")} )
+    @FindBys( {@FindBy(css = ".number")} )
     public List<WebElement> lisRelatedVanityNumbers;
 
 

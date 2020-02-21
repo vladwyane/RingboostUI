@@ -38,69 +38,59 @@ public class SearchLocalNumbers extends TestBase {
     }
 
    @Test
-    public void testSearchEnterEightSLetters() throws InterruptedException {
+    public void test2SearchEnterEightSLetters() throws InterruptedException {
         localIndexPage.open();
         String request = "AbcJklJA";
         localIndexPage.searchLocalNumbers(request);
         localSearchResult.checkingSearchResultEightLetters(request);
     }
-/*
+
     @Test
-    public void testSearchEnterSixDigits() throws InterruptedException {
-        homePage.open();
-        tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
+    public void test3SearchEnterSixDigits() throws InterruptedException {
+        localStateDetail.open();
         String request = "994276";
-        tollFreeIndexPage.searchTollFreeNumbers(request);
-        vanitySearchResult.checkingSearchResultFourAndMoreSymbols(request.toUpperCase());
+        localStateDetail.searchLocalNumbers(request);
+        localSearchResult.checkingSearchResultSixSymbols(request);
     }
 
     @Test
-    public void testSearchEnterFiveLettersWithDigits() throws InterruptedException {
-        tollFreeIndexPage.open();
+    public void test4SearchEnterFiveLettersWithDigits() throws InterruptedException {
+        homePage.open();
         String request = "5FIVE";
-        tollFreeIndexPage.searchTollFreeNumbers(request);
-        vanitySearchResult.checkingSearchResultFourAndMoreSymbols(request.toUpperCase());
+        homePage.searchLocalNumbers(request);
+        localSearchResult.checkingSearchResultFiveSymbolsSymbols(request);
     }
 
     @Test
-    public void testSearchEnterFourLetters() throws InterruptedException {
-        vanityCategoryDetail.open();
+    public void test5SearchEnterFourLetters() throws InterruptedException {
+        localSearchResult.open();
         String request = "post";
-        vanityCategoryDetail.searchTollFreeNumbers(request);
-        vanitySearchResult.clickButtonLoadMore();
-        vanitySearchResult.checkingSearchResultFourAndMoreSymbolsFromCategoryDetailPage(request.toUpperCase());
+        localSearchResult.searchLocalNumbers(request);
+        localSearchResult.clickButtonLoadMore();
+        localSearchResult.checkingSearchResultFourSymbolsSymbols(request);
     }
 
     @Test
-    public void testSearchEnterThreeDigits() throws InterruptedException {
-        vanityIndexPage.open();
+    public void test6SearchEnterThreeDigits() throws InterruptedException {
+        localIndexPage.open();
         String request = "911";
-        vanityIndexPage.searchTollFreeNumbers(request);
-        vanitySearchResult.checkingSearchResult3Symbols(request.toUpperCase());
+        localIndexPage.searchLocalNumbers(request);
+        localSearchResult.checkingSearchResultThreeSymbolsSymbols(request);
     }
 
     @Test
-    public void testSearchEnterMoreThan14Symbols() throws InterruptedException {
-        vanitySearchResult.open();
-        String request = "TestBallet More Than 14 Symbols";
-        vanitySearchResult.searchTollFreeNumbers(request);
-        vanitySearchResult.checkingSearchResultMoreThen14Symbols(request.toUpperCase());
-    }
-
-    @Test
-    public void testSearchEnterSpecialSymbols() throws InterruptedException {
-        homePage.open();
-        homePage.searchTollFreeNumbers("");
+    public void test7SearchEnterSpecialSymbols() throws InterruptedException {
+        localSearchResult.open();
         String request = "№;#@ров.,";
-        vanitySearchResult.searchTollFreeNumbers(request);
-        vanitySearchResult.checkingSearchResultSpecialSymbols(request.toUpperCase());
+        localSearchResult.searchLocalNumbers(request);
+        localSearchResult.checkingSearchResultSpecialSymbols(request);
     }
 
     @Test
-    public void testLoadMoreInSearchResult() {
+    public void test8LoadMoreInSearchResult() {
         homePage.open();
-        homePage.searchTollFreeNumbers("");
-        vanitySearchResult.checkingLoadMore();
+        homePage.searchLocalNumbers("");
+        localSearchResult.checkingLoadMore();
     }
-*/
+
 }

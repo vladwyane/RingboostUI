@@ -11,6 +11,7 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.text.DecimalFormat;
 
@@ -47,7 +48,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         waitUntilElementAppeared(phoneNumber);
         return phoneNumber;
     }
-
+    @Step("Choose 5000 Monthly Minutes")
     public double choose5000MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
@@ -59,6 +60,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         return price;
     }
 
+    @Step("Choose 250 Monthly Minutes")
     public double choose250MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         Actions move = new Actions(driver);
@@ -70,6 +72,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         return price;
     }
 
+    @Step("Choose 100 Monthly Minutes")
     public double choose100MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         changeAttributeValueWithJS(sliderMonthlyMinutesBlock.getSliderTooltip(), "class", "vue-slider-dot-tooltip-show");
@@ -78,6 +81,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         return price;
     }
 
+    @Step("Get Amount Minutes: {0}")
     public int getAmountMinutes(double priceOfMinute) {
         int amountMinute;
         switch((int)priceOfMinute) {
@@ -117,6 +121,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Choose Term Length")
     public int chooseTermLength(String term) {
         waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
         int discount;
@@ -187,6 +192,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Choose Checkbox Multiple Ring To Number")
     public double chooseCheckboxMultipleRingToNumber() {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
         waitUntilElementWillBeClickable(continueButton);
@@ -194,6 +200,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         return Double.parseDouble(getNumbersFromString(priceNumber.getText().replaceAll("[^0-9?!\\\\.]","")));
     }
 
+    @Step("Enter Ring To Number: {0}")
     public double enterRingToNumber(String number) {
         char[] array = number.toCharArray();
         for (int i = 0; i < ringToNumberBlock.listInputRingToNumber.size(); i++) {
@@ -246,6 +253,7 @@ public class BuyingRegularVanityNumber extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Click button Proceed to Checkout")
     public void goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
         scrollToElement(orderSummaryBlock.getButtonProceedToCheckout());

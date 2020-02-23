@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 
 /**
  * Created by bigdrop on 6/19/2019.
@@ -38,11 +39,13 @@ public class BuyingBasic800Number extends BasePage {
         return phoneNumber;
     }
 
+    @Step("Click Link Continue To Checkout")
     public void goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
         orderSummaryBlock.getButtonProceedToCheckout().click();
     }
 
+    @Step("Choose Pick Your Monthly Plan: {0}")
     public double choosePickYourMonthlyPlan(String planName) {
         waitUntilElementWillBeClickable(pickYourMonthlyPlanBlock.listCardButtons.get(0));
         double perMonthPrice;
@@ -100,12 +103,14 @@ public class BuyingBasic800Number extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Choose Checkbox Multiple Ring To Number")
     public void chooseCheckboxMultipleRingToNumber() {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
     }
 
+    @Step("Enter your ring-to-number: {0}")
     public void enterRingToNumber(String number) {
         char[] array = number.toCharArray();
         for (int i = 0; i < ringToNumberBlock.listInputRingToNumber.size(); i++) {

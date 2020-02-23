@@ -70,6 +70,7 @@ public class LocalSearchResult extends BasePage {
         localNumbersBlock.getListMakeOfferLinks().get(linkOrder - 1).click();
     }
 
+    @Step("Choose First Number From Related Vanity List")
     public void chooseFirstNumberFromRelatedVanityList() {
         waitUntilElementWillBeClickable(relatedVanityBlock.getLisRelatedVanityNumbers().get(0));
         relatedVanityBlock.getLisRelatedVanityNumbers().get(0).click();

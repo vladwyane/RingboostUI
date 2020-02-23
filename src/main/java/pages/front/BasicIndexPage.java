@@ -3,6 +3,7 @@ package pages.front;
 import blocks.front.Basic800NumbersBlock;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 import utils.ConfigProperties;
 
 /**
@@ -14,6 +15,7 @@ public class BasicIndexPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open Basic800 Index Page")
     @Override
     public void open() {
         driver.get(ConfigProperties.getProperty("basicIndex.url"));
@@ -24,6 +26,14 @@ public class BasicIndexPage extends BasePage {
     public void chooseFirstNumberFromBasic800List() {
         waitUntilElementAppeared(basic800NumbersBlock.listAvailableBasic800Numbers.get(0));
         basic800NumbersBlock.listAvailableBasic800Numbers.get(0).click();
+    }
+
+    @Step("Choose phone number {0}st from basic800 numbers list")
+    public void chooseNumberFromBasic800List(int numberOrder) {
+        waitUntilElementAppeared(basic800NumbersBlock.getListBasic800Numbers().get(0));
+        waitUntilElementWillBeClickable(basic800NumbersBlock.getListBasic800Numbers().get(numberOrder - 1));
+        scrollToElement(basic800NumbersBlock.getListBasic800Numbers().get(numberOrder - 1));
+        basic800NumbersBlock.getListBasic800Numbers().get(numberOrder - 1).click();
     }
 
     public void chooseLastNumberFromBasic800ListAfterLoadMore() {

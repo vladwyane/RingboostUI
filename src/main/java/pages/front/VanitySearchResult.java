@@ -5,6 +5,7 @@ import blocks.front.RegularVanityNumbersBlock;
 import blocks.front.SmallSearchBlock;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 import utils.ConfigProperties;
 
 /**
@@ -105,10 +106,11 @@ public class VanitySearchResult extends BasePage {
         regularVanityNumbersBlock.getListRegularVanityNumbers().get(regularVanityNumbersBlock.getListRegularVanityNumbers().size() - 1).click();
     }
 
-    public void chooseIndexNumberFromRegularVanityList(int index) {
+    @Step("Choose phone number {0}st from toll-free regular numbers list")
+    public void chooseIndexNumberFromRegularVanityList(int numberOrder) {
         waitUntilElementAppeared(regularVanityNumbersBlock.getTitleSection());
-        scrollToElement(regularVanityNumbersBlock.getListRegularVanityNumbers().get(index));
-        regularVanityNumbersBlock.getListRegularVanityNumbers().get(index).click();
+        scrollToElement(regularVanityNumbersBlock.getListRegularVanityNumbers().get(numberOrder - 1));
+        regularVanityNumbersBlock.getListRegularVanityNumbers().get(numberOrder - 1).click();
     }
 
     public void chooseFirstNumberFromPremiumVanityList() {
@@ -117,10 +119,11 @@ public class VanitySearchResult extends BasePage {
         premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(0).click();
     }
 
-    public void chooseIndexNumberFromPremiumVanityList(int index) {
+    @Step("Choose phone number {0}st from toll-free premium numbers list")
+    public void chooseIndexNumberFromPremiumVanityList(int numberOrder) {
         waitUntilElementAppeared(premiumVanityNumbersBlock.getTitleSection());
-        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(index));
-        premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(index).click();
+        scrollToElement(premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(numberOrder - 1));
+        premiumVanityNumbersBlock.getListPremiumVanityNumbers().get(numberOrder - 1).click();
     }
 
     public void chooseLastNumberFromPremiumVanityList() {
@@ -249,9 +252,10 @@ public class VanitySearchResult extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Checking Status Licensed By Index")
     public void checkingStatusLicensedByIndex(int index) {
-        waitUntilElementAppeared(premiumVanityNumbersBlock.getListStatusPremiumVanityNumbers().get(index));
-        softAssert.assertEquals(premiumVanityNumbersBlock.getListStatusPremiumVanityNumbers().get(index).getText(), "Licensed");
+        waitUntilElementAppeared(premiumVanityNumbersBlock.getListStatusPremiumVanityNumbers().get(index - 1));
+        softAssert.assertEquals(premiumVanityNumbersBlock.getListStatusPremiumVanityNumbers().get(index - 1).getText(), "Licensed");
         softAssert.assertAll();
     }
 

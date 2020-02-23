@@ -6,6 +6,7 @@ import blocks.front.VanityCategoryBlock;
 import blocks.front.VanityCategoryDetailBlock;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 import utils.ConfigProperties;
 
 /**
@@ -22,11 +23,13 @@ public class VanityIndexPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open Vanity Index Page")
     @Override
     public void open() {
         driver.get(ConfigProperties.getProperty("vanityIndex.url"));
     }
 
+    @Step("Search toll-free number with request: {0}")
     public void searchTollFreeNumbers(String request) {
         waitUntilTextInElementAppear(searchBlock.getTitleH1(), "Toll-Free Vanity Numbers");
         type(searchBlock.getTollFreeSearchField(), request);

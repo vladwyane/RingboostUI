@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
+import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
@@ -176,6 +177,7 @@ public abstract class BasePage {
         return (matcher.group());
     }
 
+    @Step("Click SubNav Item TollFree: {0}")
     public void clickSubNavItemTollFree (String nameOfItem) {
         hoverElementUsingJS(headerBlock.getTollFreeLinInMainNav());
         waitUntilElementWillBeClickable(headerBlock.getListSubMenuTollFree().get(0));

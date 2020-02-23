@@ -23,6 +23,7 @@ public class HomePage extends BasePage {
         driver.get(ConfigProperties.getProperty("home.url"));
     }
 
+    @Step("Search toll-free number with request: {0}")
     public void searchTollFreeNumbers(String request) {
         type(searchBlock.getTollFreeSearchField(), request);
         searchBlock.getButtonFindNumber().click();

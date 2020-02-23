@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.text.DecimalFormat;
 
@@ -43,6 +44,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return phoneNumber;
     }
 
+    @Step("Click button Choose My Areas")
     public void clickButtonChooseMyAreas() {
         waitUntilElementWillBeClickable(availableByMarketOrNationwide.getButtonSelectMyAreas());
         availableByMarketOrNationwide.getButtonSelectMyAreas().click();
@@ -53,6 +55,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         availableByMarketOrNationwide.getButtonSelectNationwide().click();
     }
 
+    @Step("Choose state: {0}")
     public void chooseState(String stateName) {
         waitUntilElementAppeared(dragAndDropBlock.getSelectState());
         scrollToElement(dragAndDropBlock.getSelectState());
@@ -67,6 +70,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         dragAndDropBlock.getListStates().get(0).click();
     }
 
+    @Step("Choose By One Area Codes From Several States: {0}")
     public double chooseByOneAreaCodesFromSeveralStates(String[] stateNames) {
         double priceFromAmountAreaCodes = 0.0;
         for (int i = 0; i < stateNames.length; i++) {
@@ -113,6 +117,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return Double.parseDouble(dx);
     }
 
+    @Step("Choose Several Area Codes From Several States: {0}")
     public double chooseSeveralAreaCodesFromSeveralStates(String[] stateNames, int[] quantity) {
         double priceFromAmountAreaCodes = 0.0;
         for (int i = 0; i < stateNames.length; i++) {
@@ -172,6 +177,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return price;
     }
 
+    @Step("Choose Several Area Codes From List: {0}")
     public double chooseSeveralAreaCodesFromList(int amount) {
         waitUntilElementAppeared(availableAreaCodesBlock.getDragBoxTitle());
         waitUntilElementWillBeClickable(availableAreaCodesBlock.getListAreaCodes().get(0));
@@ -187,6 +193,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return price;
     }
 
+    @Step("Get Price From Amount Area Codes With Discount: {0}")
     public double getPriceFromAmountAreaCodesWithDiscount(double priceFromAmountAreaCodes) {
         if(dragAndDropBlock.getListSalesAreaCodes().isEmpty())
             Integer.parseInt(selectedAreaCodes.getQuantityAreaCodes().getText());
@@ -215,6 +222,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return Double.parseDouble(dx);
     }
 
+    @Step("Choose Term Length: {0}")
     public int chooseTermLength(String term) {
         waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
         int discount;
@@ -290,12 +298,29 @@ public class BuyingPremiumVanityNumber extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Checking Inactive Term Length: {0}")
+    public void checkingInactiveTermLength(String termLength) {
+        waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
+        boolean termPresent = false;
+        for (int i = 0; i < termLengthBlock.listPlaneName.size(); i++) {
+            String ff = termLengthBlock.listPlaneName.get(i).getText().toLowerCase();
+            if(termLengthBlock.listPlaneName.get(i).getText().toLowerCase().equals(termLength)) {
+                termPresent = true;
+                break;
+            }
+        }
+        softAssert.assertNotEquals(termLengthBlock.listPlaneName.size(), 4);
+        softAssert.assertFalse(termPresent, "Term is still present");
+        softAssert.assertAll();
+    }
+
     public void checkingFirstTermLength() {
         waitUntilElementWillBeClickable(termLengthBlock.listCardButtons.get(0));
         softAssert.assertEquals(termLengthBlock.listPlaneName.get(0).getText().toLowerCase(), "month-to-month");
         softAssert.assertAll();
     }
 
+    @Step("Choose 5000 Monthly Minutes")
     public double choose5000MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         scrollToElement(sliderMonthlyMinutesBlock.getBulletOfSlider());
@@ -308,6 +333,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return price;
     }
 
+    @Step("Choose 750 Monthly Minutes")
     public double choose750MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         scrollToElement(sliderMonthlyMinutesBlock.getBulletOfSlider());
@@ -320,6 +346,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return price;
     }
 
+    @Step("Choose 100 Monthly Minutes")
     public double choose100MonthlyMinutes() {
         waitUntilElementWillBeClickable(sliderMonthlyMinutesBlock.getBulletOfSlider());
         scrollToElement(sliderMonthlyMinutesBlock.getBulletOfSlider());
@@ -356,12 +383,14 @@ public class BuyingPremiumVanityNumber extends BasePage {
         return amountMinute;
     }
 
+    @Step("Choose Checkbox Multiple Ring to Number")
     public void chooseCheckboxMultipleRingToNumber() {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
     }
 
+    @Step("Enter Ring to Number: {0}")
     public void enterRingToNumber(String number) {
         char[] array = number.toCharArray();
         for (int i = 0; i < ringToNumberBlock.listInputRingToNumber.size(); i++) {
@@ -401,12 +430,13 @@ public class BuyingPremiumVanityNumber extends BasePage {
         continueButton.click();
     }
 
-
+    @Step("Click button Proceed to Checkout")
     public void goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
         orderSummaryBlock.getButtonProceedToCheckout().click();
     }
 
+    @Step("Checking Region Status: My Areas button is available, Nationwide button is disabled")
     public void checkingRegionStatus() {
         waitUntilElementAppeared(availableByMarketOrNationwide.getButtonSelectNationwide());
         scrollToElement(availableByMarketOrNationwide.getButtonSelectMyAreas());
@@ -418,6 +448,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("Checking Nationwide Status: My Areas button is disabled, Nationwide button is available")
     public void checkingNationWideStatus() {
         waitUntilElementAppeared(availableByMarketOrNationwide.getButtonSelectNationwide());
         scrollToElement(availableByMarketOrNationwide.getButtonSelectMyAreas());

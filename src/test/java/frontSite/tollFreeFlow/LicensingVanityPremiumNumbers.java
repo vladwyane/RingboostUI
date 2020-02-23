@@ -3,6 +3,7 @@ package frontSite.tollFreeFlow;
 import data.CreditCards;
 import data.PromoCodes;
 import data.Users;
+import io.qameta.allure.Story;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -42,7 +43,8 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         app.delleteAllCookies();
     }
 
-    @Test
+    @Test(description = "Order Premium Vanity Number without Promo Code")
+    @Story("status: 32, regional: true, nationwide: true, weight: 20, resporg: Carrier resporg, resporg2: Just resporg, premium: true, price_tier_id: 37, type: vanity, easy_dial")
     public void test1OrderPremiumVanityNumber() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
@@ -59,7 +61,8 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
-    @Test
+    @Test(description = "Checking status only Regional by phone number")
+    @Story("Checking status only Regional by phone number")
     public void test2OrderPremiumVanityNumberCheckingRegionStatus() throws InterruptedException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
@@ -67,19 +70,21 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         buyingPremiumVanityNumber.checkingRegionStatus();
     }
 
-    @Test
+    @Test(description = "Checking status only Nationwide by phone number")
+    @Story("Checking status only Nationwide by phone number")
     public void test2OrderPremiumVanityNumberCheckingNationwideStatus() throws InterruptedException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(3);
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(4);
         buyingPremiumVanityNumber.checkingNationWideStatus();
     }
 
-    @Test
+    @Test(description = "Order Premium Vanity Number with Promo Code")
+    @Story("status: 32, regional: true, nationwide: true, weight: 20, resporg: Carrier resporg, resporg2: Just resporg, premium: true, price_tier_id: 37, type: vanity, easy_dial")
     public void test3OrderPremiumVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         vanityIndexPage.open();
         vanityIndexPage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(1);
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         buyingPremiumVanityNumber.chooseState("Texas");
         double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseSeveralAreaCodesFromList(2);
@@ -93,11 +98,12 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
-    @Test
+    @Test(description = "Order Premium Vanity Number with High Promo Code")
+    @Story("status: 32, regional: true, nationwide: true, weight: 20, resporg: Carrier resporg, resporg2: Just resporg, premium: true, price_tier_id: 37, type: vanity, easy_dial")
     public void test3OrderPremiumVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
         tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(1);
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.chooseByOneAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama"});
         int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("3 years");
@@ -109,11 +115,12 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
-    @Test
+    @Test(description = "Order Premium Vanity Number with Percent Promo Code")
+    @Story("status: 32, regional: true, nationwide: true, weight: 18, premium: true, price_tier_id: 37, type: vanity, easy_dial, zip_code_routed: true, national_price: 20")
     public void test3OrderPremiumVanityNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
         tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(2);
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.chooseByOneAreaCodesFromSeveralStates(new String[] {"Kansas", "Alabama", "Vermont"});
         int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("1 year");
@@ -125,16 +132,17 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
-    @Test
+    @Test(description = "Order Premium Vanity Number After Remove Promo Code")
+    @Story("status: 32, regional: true, nationwide: false, weight: 16, premium: true, price_tier_id: 37, type: vanity, easy_dial")
     public void test3OrderPremiumVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(2);
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(3);
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         double priceFromAmountAreaCodesWithDiscount = buyingPremiumVanityNumber.
                 chooseSeveralAreaCodesFromSeveralStates(new String[] {"Kansas", "Vermont"}, new int[] {3, 1});
         int discountPriceSelectedPlan = buyingPremiumVanityNumber.chooseTermLength("2 years");
-        double priceMonthlyMinutes = buyingPremiumVanityNumber.choose750MonthlyMinutes();
+        double priceMonthlyMinutes = buyingPremiumVanityNumber.choose100MonthlyMinutes();
         buyingPremiumVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingPremiumVanityNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.PERCENT_PROMOCODE.getName());
@@ -142,15 +150,17 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceFromAmountAreaCodesWithDiscount);
     }
 
-    @Test
+    @Test(description = "Checking Status Licensed")
+    @Story("Checking Status Licensed")
     public void test4checkingStatusLicensed() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.checkingStatusLicensedByIndex(2);
+        vanitySearchResult.checkingStatusLicensedByIndex(3);
     }
 
-    @Test
-    public void test5OrderRegularVanityNumberPaymentError() throws InterruptedException {
+    @Test(description = "Order Premium Vanity Payment Error CVC Stripe")
+    @Story("Order Premium Vanity Payment Error CVC Stripe")
+    public void test5OrderPremiumVanityNumberPaymentError() throws InterruptedException {
         homePage.open();
         homePage.searchLocalNumbers(searchRequest);
         localSearchResult.chooseFirstNumberFromRelatedVanityList();
@@ -166,4 +176,16 @@ public class LicensingVanityPremiumNumbers extends TestBase {
         checkout.checkingPaymentError();
     }
 
+    @Test(description = "Checking Invisible Price Plan 1 years")
+    @Story("status: 32, regional: true, nationwide: false, weight: 11, premium: true, price_tier_id: 37, type: vanity, easy_dial, price plane 1 year - inactive")
+    public void test6CheckingInvisiblePricePlan() throws InterruptedException {
+        tollFreeIndexPage.open();
+        tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
+        vanitySearchResult.chooseIndexNumberFromPremiumVanityList(5);
+        buyingPremiumVanityNumber.clickButtonChooseMyAreas();
+        buyingPremiumVanityNumber.chooseState("Alabama");
+        double priceFromAmountAreaCodes = buyingPremiumVanityNumber.chooseFirstAreaCodeFromList();
+        buyingPremiumVanityNumber.getPriceFromAmountAreaCodesWithDiscount(priceFromAmountAreaCodes);
+        buyingPremiumVanityNumber.checkingInactiveTermLength("1 year");
+    }
 }

@@ -3,6 +3,7 @@ package frontSite.tollFreeFlow;
 import data.CreditCards;
 import data.PromoCodes;
 import data.Users;
+import io.qameta.allure.Story;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -42,12 +43,13 @@ public class LicensingVanityRegularNumbers extends TestBase {
         app.delleteAllCookies();
     }
 
-    @Test
-    public void orderRegularVanityNumber() throws InterruptedException, IOException, JSONException {
+    @Test(description = "Order Regular Vanity Number without Promo Code")
+    @Story("status: 32, weight: 10, nationwide: true, owner_id: 46, premium: false, type: vanity, easy_dial, basic800")
+    public void test1OrderRegularVanityNumber() throws InterruptedException, IOException, JSONException {
         homePage.open();
         tollFreeIndexPage.openTollFreeIndexPageFromMainNav();
         tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
+        vanitySearchResult.chooseIndexNumberFromRegularVanityList(1);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose5000MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("0668843471");
@@ -56,12 +58,13 @@ public class LicensingVanityRegularNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
-    @Test
-    public void orderRegularVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
+    @Test(description = "Order Regular Vanity Number with fixed Promo Code")
+    @Story("status: 32, weight: 9, nationwide: true, owner_id: 48, premium: false, type: vanity, easy_dial, basic800")
+    public void test2OrderRegularVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("vanity-numbers");
         vanityIndexPage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
+        vanitySearchResult.chooseIndexNumberFromRegularVanityList(2);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
@@ -71,11 +74,12 @@ public class LicensingVanityRegularNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
-    @Test
-    public void orderRegularVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
+    @Test(description = "Order Regular Vanity Number with high fixed Promo Code")
+    @Story("status: 32, weight: 8, nationwide: true, owner_id: null, premium: false, type: vanity, easy_dial, basic800")
+    public void test3OrderRegularVanityNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         tollFreeIndexPage.open();
         tollFreeIndexPage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
+        vanitySearchResult.chooseIndexNumberFromRegularVanityList(3);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("month");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
@@ -85,11 +89,12 @@ public class LicensingVanityRegularNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
-    @Test
-    public void orderRegularVanityNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
+    @Test(description = "Order Regular Vanity Number with percent Promo Code")
+    @Story("status: 32, weight: 7, nationwide: true, owner_id: 48, premium: false, type: vanity, easy_dial, basic800")
+    public void test4OrderRegularVanityNumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         vanitySearchResult.open();
         vanitySearchResult.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
+        vanitySearchResult.chooseIndexNumberFromRegularVanityList(4);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("1 year");
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
@@ -99,11 +104,12 @@ public class LicensingVanityRegularNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
-    @Test
-    public void orderRegularVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException, JSONException {
+    @Test(description = "Order Regular Vanity Number after remove Promo Code")
+    @Story("status: 32, weight: 6, nationwide: true, owner_id: 48, premium: false, type: vanity, easy_dial, basic800")
+    public void test5OrderRegularVanityNumberAfterRemovePromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
+        vanitySearchResult.chooseIndexNumberFromRegularVanityList(5);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose100MonthlyMinutes();
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
@@ -113,11 +119,12 @@ public class LicensingVanityRegularNumbers extends TestBase {
         orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
     }
 
-    @Test
-    public void orderRegularVanityNumberPaymentError() throws InterruptedException {
+    @Test(description = "Order Regular Vanity Number after remove Promo Code")
+    @Story("status: 32, weight: 5, nationwide: true, owner_id: 48, premium: false, type: vanity, easy_dial, basic800")
+    public void test6OrderRegularVanityNumberPaymentError() throws InterruptedException {
         homePage.open();
         homePage.searchTollFreeNumbers(searchRequest);
-        vanitySearchResult.chooseFirstNumberFromRegularVanityList();
+        vanitySearchResult.chooseIndexNumberFromRegularVanityList(6);
         buyingRegularVanityNumber.choose5000MonthlyMinutes();
         buyingRegularVanityNumber.chooseTermLength("month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();

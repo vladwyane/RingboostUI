@@ -127,6 +127,7 @@ public class Checkout extends BasePage {
         }
     }
 
+    @Step("Add Promo Code And After Remove")
     public void addPromoCodeAndAfterRemove(String promocode) throws InterruptedException {
         checkoutSidebar.getLinkHavePromoCode().click();
         waitUntilElementAppeared(checkoutSidebar.getButtonApply());

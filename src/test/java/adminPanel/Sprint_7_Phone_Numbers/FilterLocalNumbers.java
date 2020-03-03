@@ -6,6 +6,7 @@ import data.Users;
 import org.json.JSONException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.admin.Admin;
 import pages.admin.InventoryLocal;
@@ -31,7 +32,7 @@ public class FilterLocalNumbers extends TestBase{
     private LocalIndexPage localIndexPage;
     private LocalSearchResult localSearchResult;
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -51,9 +52,10 @@ public class FilterLocalNumbers extends TestBase{
         app.delleteAllCookies();
     }
 
+
     @Test
     public void test1CheckingCorrectFilterByVanityField() throws InterruptedException, IOException, JSONException {
-        login.open();
+        //login.open();
         inventoryLocal.open();
         inventoryLocal.filterByVanity("wood");
         inventoryLocal.checkingCorrectFiltrationStaticTable("wood","Vanity");
@@ -61,7 +63,7 @@ public class FilterLocalNumbers extends TestBase{
 
     @Test
     public void test1CheckingCorrectFilterByPhoneNumberField() throws InterruptedException, IOException, JSONException {
-        login.open();
+       // login.open();
         inventoryLocal.open();
         inventoryLocal.filterByPhoneNumbers("9663");
         inventoryLocal.checkingCorrectFiltrationStaticTable("9663","Phone numbers");
@@ -69,7 +71,7 @@ public class FilterLocalNumbers extends TestBase{
 
     @Test
     public void test1CheckingCorrectFilterByPhoneNumberFieldWord() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         inventoryLocal.open();
         inventoryLocal.filterByPhoneNumbers("Buddy");
         inventoryLocal.checkingCorrectFiltrationStaticTable("Buddy","Phone numbers");
@@ -77,7 +79,7 @@ public class FilterLocalNumbers extends TestBase{
 
     @Test
     public void test1CheckingCorrectFilterByNPAField() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         inventoryLocal.open();
         inventoryLocal.filterByNPA("818");
         inventoryLocal.checkingCorrectFiltrationStaticTable("818","NPA");
@@ -85,7 +87,7 @@ public class FilterLocalNumbers extends TestBase{
 
     @Test
     public void test1CheckingCorrectFilterByNXXField() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         inventoryLocal.open();
         inventoryLocal.filterByNXX("605");
         inventoryLocal.checkingCorrectFiltrationStaticTable("605","NXX");
@@ -93,7 +95,7 @@ public class FilterLocalNumbers extends TestBase{
 
     @Test
     public void test1CheckingCorrectFilterByLast4DigitField() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         inventoryLocal.open();
         inventoryLocal.filterByLast4Digit("6555");
         inventoryLocal.checkingCorrectFiltrationStaticTable("6555","Last 4 Digit");
@@ -101,10 +103,42 @@ public class FilterLocalNumbers extends TestBase{
 
     @Test
     public void test1CheckingCorrectFilterByCarrier() throws InterruptedException, IOException, JSONException {
-        login.open();
+      //  login.open();
         inventoryLocal.open();
         inventoryLocal.filterByCarrier("alphabet");
         inventoryLocal.checkingCorrectFiltrationStaticTable("alphabet","Carrier");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByStatus() throws InterruptedException, IOException, JSONException {
+      //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByStatus("Sold");
+        inventoryLocal.checkingCorrectFiltrationStaticTable("Sold","Status");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByDidSource() throws InterruptedException, IOException, JSONException {
+      //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByDidSource("VIVO");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("VIVO","DID Source");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByDidOrigin() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByDidSOrigin("RINGBOOST");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("RINGBOOST","DID Origin");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByCategories() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByCategory("Top 4 Digit");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Top 4 Digit","Categories");
     }
 
 

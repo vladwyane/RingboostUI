@@ -1,8 +1,6 @@
 package pages.admin;
 
 import blocks.admin.generatorLinks.ListGeneratedURL;
-import data.PricingTollFreeSettings;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -65,13 +63,29 @@ public class InventoryLocal extends BasePage {
     @FindBys( {@FindBy(css = ".action-first table td")} )
     public List<WebElement> listTdOfStaticTable;
 
+    @Name("List of th scroll table")
+    @FindBys( {@FindBy(css = ".additional-table table th")} )
+    public List<WebElement> listThScrollcTable;
+
+    @Name("ArrayList td of stcroll table")
+    @FindBys( {@FindBy(css = ".additional-table table td")} )
+    public List<WebElement> listTdOfScrollTable;
+
     @FindBy(xpath = "//input[@aria-label='Select role']/ancestor::div[@class='v-select__selections']")
     private WebElement selectOfRole;
 
     @Name("List of states")
     @FindBys( {@FindBy(xpath = "//div[contains(@class, 'menuable__content__active')]//div[@class='v-list__tile__title']")} )
-    private List<WebElement> listOfRoles;
+    private List<WebElement> listOfActiveDropDown;
 
+    @FindBy(xpath = "(//p[contains(text(), 'Status')]/following::div)[1]")
+    private WebElement selectOfStatus;
+
+    @FindBy(xpath = "(//p[contains(text(), 'DID Source')]/following::div)[1]")
+    private WebElement selectOfDidSource;
+
+    @FindBy(xpath = "(//p[contains(text(), 'DID Origin')]/following::div)[1]")
+    private WebElement selectOfDidOrigin;
 
     @FindBy(xpath = "(//p[contains(text(), 'Phone number')]/following::form//input)[1]")
     private TextInput inputPhoneNumbers;
@@ -90,6 +104,9 @@ public class InventoryLocal extends BasePage {
 
     @FindBy(xpath = "(//p[contains(text(), 'Carrier')]/following::form//input)[1]")
     private TextInput inputCarrier;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Categories')]/following::form//input)[1]")
+    private TextInput inputCategories;
 
 
     public void filterByVanity(String searchRequest) {
@@ -129,8 +146,34 @@ public class InventoryLocal extends BasePage {
 
     public void filterByCarrier(String searchRequest) {
         waitUntilElementAppeared(tableTitle);
-        chooseElementFromSelectInAdminPanel(selectOfRole, listOfRoles, "Support");
+        chooseElementFromSelectInAdminPanel(selectOfRole, listOfActiveDropDown, "Support");
         type(inputCarrier, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByStatus(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfRole, listOfActiveDropDown, "Support");
+        chooseElementFromSelectInAdminPanel(selectOfStatus, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByDidSource(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfDidSource, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByDidSOrigin(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfDidOrigin, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByCategory(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputCategories, searchRequest);
         listSearchIconTh.get(0).click();
         waiting5seconds();
     }
@@ -186,6 +229,30 @@ public class InventoryLocal extends BasePage {
         }
         softAssert.assertTrue(correctFilter, "Filtration is incorrect");
         softAssert.assertTrue(listTdOfStaticTable.size() > 0, "Not found");
+        softAssert.assertAll();
+    }
+
+    public void checkingCorrectFiltrationScrollTable(String searchRequest, String filterParameter) {
+        waitUntilElementAppeared(tableTitle);
+        int index = 1;
+        for (int i = 0; i < listThScrollcTable.size(); i++) {
+            if(listThScrollcTable.get(i).getText().contains(filterParameter)){
+                index = i;
+                break;
+            }
+        }
+        boolean correctFilter = false;
+        for (int i = index; i < listTdOfScrollTable.size(); i+=listThScrollcTable.size() - 1) {
+            String er = listTdOfScrollTable.get(i).getText();
+            if(listTdOfScrollTable.get(i).getText().toLowerCase().contains(searchRequest.toLowerCase())){
+                correctFilter = true;
+            } else {
+                correctFilter = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(correctFilter, "Filtration is incorrect");
+        softAssert.assertTrue(listTdOfScrollTable.size() > 0, "Not found");
         softAssert.assertAll();
     }
 }

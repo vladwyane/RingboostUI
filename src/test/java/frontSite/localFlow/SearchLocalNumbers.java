@@ -37,15 +37,17 @@ public class SearchLocalNumbers extends TestBase {
         localSearchResult.checkingSearchResultSevenSymbols(request);
     }
 
-   @Test
-    public void test2SearchEnterEightSLetters() throws InterruptedException {
+    @Test(description = "Search Enter Eight Letters")
+    @Story("Search Enter Eight Letters")
+    public void test2SearchEnterEightLetters() throws InterruptedException {
         localIndexPage.open();
         String request = "AbcJklJA";
         localIndexPage.searchLocalNumbers(request);
         localSearchResult.checkingSearchResultEightLetters(request);
     }
 
-    @Test
+    @Test(description = "Search Enter Six Digits")
+    @Story("Search Enter Six Digits")
     public void test3SearchEnterSixDigits() throws InterruptedException {
         localStateDetail.open();
         String request = "994276";
@@ -53,7 +55,8 @@ public class SearchLocalNumbers extends TestBase {
         localSearchResult.checkingSearchResultSixSymbols(request);
     }
 
-    @Test
+    @Test(description = "Search Enter Five Letters With Digits")
+    @Story("Search Enter Five Letters With Digits")
     public void test4SearchEnterFiveLettersWithDigits() throws InterruptedException {
         homePage.open();
         String request = "5FIVE";
@@ -61,7 +64,8 @@ public class SearchLocalNumbers extends TestBase {
         localSearchResult.checkingSearchResultFiveSymbolsSymbols(request);
     }
 
-    @Test
+    @Test(description = "Search Enter Four Letters")
+    @Story("Search Enter Five Letters Four Letters")
     public void test5SearchEnterFourLetters() throws InterruptedException {
         localSearchResult.open();
         String request = "post";
@@ -70,7 +74,8 @@ public class SearchLocalNumbers extends TestBase {
         localSearchResult.checkingSearchResultFourSymbolsSymbols(request);
     }
 
-    @Test
+    @Test(description = "Search Enter Three Digits")
+    @Story("Search Enter Five Letters Three Digits")
     public void test6SearchEnterThreeDigits() throws InterruptedException {
         localIndexPage.open();
         String request = "911";
@@ -78,7 +83,8 @@ public class SearchLocalNumbers extends TestBase {
         localSearchResult.checkingSearchResultThreeSymbolsSymbols(request);
     }
 
-    @Test
+    @Test(description = "Search Enter Special Symbols")
+    @Story("Search Enter Five Letters Special Symbols")
     public void test7SearchEnterSpecialSymbols() throws InterruptedException {
         localSearchResult.open();
         String request = "№;#@ров.,";
@@ -86,7 +92,8 @@ public class SearchLocalNumbers extends TestBase {
         localSearchResult.checkingSearchResultSpecialSymbols(request);
     }
 
-    @Test
+    @Test(description = "Load More On Search Result")
+    @Story("Load More On Search Result")
     public void test8LoadMoreInSearchResult() {
         homePage.open();
         homePage.searchLocalNumbers("");

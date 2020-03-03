@@ -386,6 +386,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
     @Step("Choose Checkbox Multiple Ring to Number")
     public void chooseCheckboxMultipleRingToNumber() {
         ringToNumberBlock.getCheckboxMultipleRingToNumber().click();
+        scrollToElement(continueButton);
         waitUntilElementWillBeClickable(continueButton);
         continueButton.click();
     }
@@ -433,6 +434,7 @@ public class BuyingPremiumVanityNumber extends BasePage {
     @Step("Click button Proceed to Checkout")
     public void goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
+        scrollToElement(orderSummaryBlock.getButtonProceedToCheckout());
         orderSummaryBlock.getButtonProceedToCheckout().click();
     }
 

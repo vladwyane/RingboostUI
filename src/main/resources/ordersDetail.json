@@ -3776,4 +3776,86 @@
     "priceTotalDueToday": "$4.01",
     "order number": "1581692032"
   }
+}{
+  "map": {
+    "phoneNumber": "1-800-623-7877",
+    "currentDate": "Thu Feb 27 16:07:02 EET 2020",
+    "priceTotalDueToday": "$160.99",
+    "order number": "1582813194"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-100-1004",
+    "pricePayToday": "$214.99",
+    "currentDate": "Thu Feb 27 16:07:29 EET 2020",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$219.99",
+    "order number": "1582813225"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-372-4453",
+    "pricePayToday": "$144.89",
+    "currentDate": "Thu Feb 27 16:08:51 EET 2020",
+    "priceAfterAppliedPromoCode": "-$16.10",
+    "priceTotalDueToday": "$160.99",
+    "order number": "1582813307"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-800-3068-333",
+    "currentDate": "Thu Feb 27 16:12:37 EET 2020",
+    "priceTotalDueToday": "$205.75",
+    "order number": "1582813532"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-5440-333",
+    "pricePayToday": "$129.93",
+    "currentDate": "Thu Feb 27 16:15:11 EET 2020",
+    "priceAfterAppliedPromoCode": "-$14.44",
+    "priceTotalDueToday": "$144.37",
+    "order number": "1582813686"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-49-ERROR",
+    "currentDate": "Thu Feb 27 16:16:45 EET 2020",
+    "priceTotalDueToday": "$219.96",
+    "order number": "1582813781"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-51-ERROR",
+    "pricePayToday": "$44.95",
+    "currentDate": "Thu Feb 27 16:17:16 EET 2020",
+    "priceAfterAppliedPromoCode": "-$5.00",
+    "priceTotalDueToday": "$49.95",
+    "order number": "1582813811"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-207-ERROR",
+    "pricePayToday": "$0.00",
+    "currentDate": "Thu Feb 27 16:17:45 EET 2020",
+    "priceAfterAppliedPromoCode": "-$4,000.00",
+    "priceTotalDueToday": "$19.95",
+    "order number": "1582813839"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-209-ERROR",
+    "pricePayToday": "$40.46",
+    "currentDate": "Thu Feb 27 16:18:13 EET 2020",
+    "priceAfterAppliedPromoCode": "-$4.50",
+    "priceTotalDueToday": "$44.96",
+    "order number": "1582813868"
+  }
+}{
+  "map": {
+    "phoneNumber": "1-833-217-ERROR",
+    "currentDate": "Thu Feb 27 16:18:41 EET 2020",
+    "priceTotalDueToday": "$15.96",
+    "order number": "1582813895"
+  }
 }

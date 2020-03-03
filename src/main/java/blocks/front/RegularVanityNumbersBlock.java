@@ -29,6 +29,10 @@ public class RegularVanityNumbersBlock extends HtmlElement {
             "and (text()) = 'Available']/ancestor::li//div[@class='number']")} )
     public List<WebElement> listRegularVanityNumbers;
 
+    @Name("ArrayList of all regular vanity numbers")
+    @FindBys( {@FindBy(xpath = "//div[@class='all-numbers-wrapper']//div[@class='number']")} )
+    public List<WebElement> listRegularVanityNumbersAllNumbers;
+
     @Name("ArrayList of status vanity numbers")
     @FindBys( {@FindBy(css = ".status")} )
     public List<WebElement> listStatusNumbers;

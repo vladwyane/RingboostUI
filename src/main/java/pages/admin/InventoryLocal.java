@@ -1,6 +1,8 @@
 package pages.admin;
 
 import blocks.admin.generatorLinks.ListGeneratedURL;
+import data.PricingTollFreeSettings;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +10,7 @@ import org.openqa.selenium.support.FindBys;
 import pages.BasePage;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.TextInput;
+import utils.ConfigProperties;
 
 import java.util.List;
 
@@ -22,7 +25,7 @@ public class InventoryLocal extends BasePage {
 
     @Override
     public void open() {
-
+        driver.get(ConfigProperties.getProperty("adminInventoryLocal.url"));
     }
 
     ListGeneratedURL listGeneratedURL;
@@ -54,6 +57,85 @@ public class InventoryLocal extends BasePage {
     @FindBy(css = ".v-toolbar__title")
     private WebElement tableTitle;
 
+    @Name("List of th static table")
+    @FindBys( {@FindBy(css = ".action-first table th")} )
+    public List<WebElement> listThStaticTable;
+
+    @Name("ArrayList td of static table")
+    @FindBys( {@FindBy(css = ".action-first table td")} )
+    public List<WebElement> listTdOfStaticTable;
+
+    @FindBy(xpath = "//input[@aria-label='Select role']/ancestor::div[@class='v-select__selections']")
+    private WebElement selectOfRole;
+
+    @Name("List of states")
+    @FindBys( {@FindBy(xpath = "//div[contains(@class, 'menuable__content__active')]//div[@class='v-list__tile__title']")} )
+    private List<WebElement> listOfRoles;
+
+
+    @FindBy(xpath = "(//p[contains(text(), 'Phone number')]/following::form//input)[1]")
+    private TextInput inputPhoneNumbers;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Vanity')]/following::form//input)[1]")
+    private TextInput inputVanity;
+
+    @FindBy(xpath = "(//p[contains(text(), 'NPA')]/following::form//input)[1]")
+    private TextInput inputNPA;
+
+    @FindBy(xpath = "(//p[contains(text(), 'NXX')]/following::form//input)[1]")
+    private TextInput inputNXX;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Last 4 Digit')]/following::form//input)[1]")
+    private TextInput inputLast4Digit;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Carrier')]/following::form//input)[1]")
+    private TextInput inputCarrier;
+
+
+    public void filterByVanity(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputVanity, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByPhoneNumbers(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputPhoneNumbers, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByNPA(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputNPA, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByNXX(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputNXX, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByLast4Digit(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputLast4Digit, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByCarrier(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfRole, listOfRoles, "Support");
+        type(inputCarrier, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+
     public void searchNumber(int index, String text) {
         waitUntilElementAppeared(tableTitle);
         type(listSearchFieldTh.get(index),text);
@@ -81,5 +163,29 @@ public class InventoryLocal extends BasePage {
         type(listSearchFieldTh.get(index),text);
         listSearchIconTh.get(index).click();
         waiting2seconds();
+    }
+
+    public void checkingCorrectFiltrationStaticTable(String searchRequest, String filterParameter) {
+        waitUntilElementAppeared(tableTitle);
+        int index = 1;
+        for (int i = 0; i < listThStaticTable.size(); i++) {
+            if(listThStaticTable.get(i).getText().contains(filterParameter)){
+                index = i;
+                break;
+            }
+        }
+        boolean correctFilter = false;
+        for (int i = index; i < listTdOfStaticTable.size(); i+=listThStaticTable.size() - 1) {
+            String er = listTdOfStaticTable.get(i).getText();
+            if(listTdOfStaticTable.get(i).getText().toLowerCase().contains(searchRequest.toLowerCase())){
+                correctFilter = true;
+            } else {
+                correctFilter = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(correctFilter, "Filtration is incorrect");
+        softAssert.assertTrue(listTdOfStaticTable.size() > 0, "Not found");
+        softAssert.assertAll();
     }
 }

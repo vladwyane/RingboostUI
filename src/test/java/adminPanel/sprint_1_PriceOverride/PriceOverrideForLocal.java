@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by bigdrop on 8/2/2019.
  */
-public class priceOverrideForLocal extends TestBase{
+public class PriceOverrideForLocal extends TestBase{
 
     private Login login;
     private Admin admin;

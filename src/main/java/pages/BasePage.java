@@ -13,6 +13,7 @@ import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -194,6 +195,19 @@ public abstract class BasePage {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    protected void chooseElementFromSelectInAdminPanel(WebElement select, List<WebElement> listElements, String value) {
+        waitUntilElementAppeared(select);
+        select.click();
+        waiting2seconds();
+        for(WebElement element : listElements) {
+            if (element.getText().toLowerCase().equals(value.toLowerCase())) {
+                element.click();
+                return;
+            }
+        }
+        listElements.get(0).click();
     }
 
 }

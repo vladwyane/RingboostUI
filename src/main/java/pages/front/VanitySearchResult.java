@@ -109,8 +109,8 @@ public class VanitySearchResult extends BasePage {
     @Step("Choose phone number {0}st from toll-free regular numbers list")
     public void chooseIndexNumberFromRegularVanityList(int numberOrder) {
         waitUntilElementAppeared(regularVanityNumbersBlock.getTitleSection());
-        scrollToElement(regularVanityNumbersBlock.getListRegularVanityNumbers().get(numberOrder - 1));
-        regularVanityNumbersBlock.getListRegularVanityNumbers().get(numberOrder - 1).click();
+        scrollToElement(regularVanityNumbersBlock.getListRegularVanityNumbersAllNumbers().get(numberOrder - 1));
+        regularVanityNumbersBlock.getListRegularVanityNumbersAllNumbers().get(numberOrder - 1).click();
     }
 
     public void chooseFirstNumberFromPremiumVanityList() {

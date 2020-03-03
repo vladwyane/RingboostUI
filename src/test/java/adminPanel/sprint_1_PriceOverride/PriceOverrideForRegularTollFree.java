@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * Created by bigdrop on 8/2/2019.
  */
-public class priceOverrideForRegularTollFree extends TestBase {
+public class PriceOverrideForRegularTollFree extends TestBase {
 
     private Login login;
     private Admin admin;

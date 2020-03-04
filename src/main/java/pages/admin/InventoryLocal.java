@@ -75,7 +75,7 @@ public class InventoryLocal extends BasePage {
     private WebElement selectOfRole;
 
     @Name("List of states")
-    @FindBys( {@FindBy(xpath = "//div[contains(@class, 'menuable__content__active')]//div[@class='v-list__tile__title']")} )
+    @FindBys( {@FindBy(xpath = "//div[contains(@class, 'menuable__content__active')]//div[@role='listitem']")} )
     private List<WebElement> listOfActiveDropDown;
 
     @FindBy(xpath = "(//p[contains(text(), 'Status')]/following::div)[1]")
@@ -86,6 +86,37 @@ public class InventoryLocal extends BasePage {
 
     @FindBy(xpath = "(//p[contains(text(), 'DID Origin')]/following::div)[1]")
     private WebElement selectOfDidOrigin;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Call For Price')]/following::div)[1]")
+    private WebElement selectOfCallForPrice;
+
+    @FindBy(xpath = "(//p[contains(text(), 'State')]/following::div)[1]")
+    private WebElement selectOfState;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Sale Price')]/following::div)[1]")
+    private WebElement selectOfSalePrice;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Disable coupon')]/following::div)[1]")
+    private WebElement selectOfDisableCoupon;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Popular')]/following::div)[1]")
+    private WebElement selectOfPopular;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Featured')]/following::div)[1]")
+    private WebElement selectOfFeatured;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Port Status')]/following::div)[1]")
+    private WebElement selectOfPortStatus;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Call Forward')]/following::div)[1]")
+    private WebElement selectOfCallForward;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Order Date')]/following::div)[1]")
+    private WebElement datePickerOrderDate;
+
+    @Name("List of Dates in current month")
+    @FindBys( {@FindBy(xpath = "//div[@class='mx-datepicker-body']//td[not (contains(@class, 'not-current-month'))]")} )
+    private List<WebElement> listOfDateCurrentMonth;
 
     @FindBy(xpath = "(//p[contains(text(), 'Phone number')]/following::form//input)[1]")
     private TextInput inputPhoneNumbers;
@@ -108,6 +139,30 @@ public class InventoryLocal extends BasePage {
     @FindBy(xpath = "(//p[contains(text(), 'Categories')]/following::form//input)[1]")
     private TextInput inputCategories;
 
+    @FindBy(xpath = "(//p[contains(text(), 'Rate Center')]/following::form//input)[1]")
+    private TextInput inputRateCenter;
+
+    @FindBy(xpath = "(//p[contains(text(), 'City')]/following::form//input)[1]")
+    private TextInput inputCity;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Price override')]/following::form//input)[1]")
+    private TextInput inputPriceOverride;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Source')]/following::form//input)[5]")
+    private TextInput inputSource;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Rev Share')]/following::form//input)[1]")
+    private TextInput inputRevShare;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Weight')]/following::form//input)[1]")
+    private TextInput inputWeight;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Plan')]/following::form//input)[1]")
+    private TextInput inputPlan;
+
+    @FindBy(xpath = "(//p[contains(text(), 'Ticket#')]/following::form//input)[1]")
+    private TextInput inputTicket;
+
 
     public void filterByVanity(String searchRequest) {
         waitUntilElementAppeared(tableTitle);
@@ -127,6 +182,7 @@ public class InventoryLocal extends BasePage {
         waitUntilElementAppeared(tableTitle);
         type(inputNPA, searchRequest);
         listSearchIconTh.get(0).click();
+        waiting5seconds();
         waiting5seconds();
     }
 
@@ -171,12 +227,133 @@ public class InventoryLocal extends BasePage {
         waiting5seconds();
     }
 
+    public void filterByOrderDate() {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfRole, listOfActiveDropDown, "Support");
+        choosePeriodFromDatePickerInAdminPanel(datePickerOrderDate, listOfDateCurrentMonth, "1", "30");
+        waiting5seconds();
+    }
+
     public void filterByCategory(String searchRequest) {
         waitUntilElementAppeared(tableTitle);
         type(inputCategories, searchRequest);
         listSearchIconTh.get(0).click();
         waiting5seconds();
+        waiting5seconds();
     }
+
+    public void filterByRateCenter(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputRateCenter, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+        waiting5seconds();
+    }
+
+    public void filterByCity(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputCity, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByCallForPrice(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfCallForPrice, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByState(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfState, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterBySalePrice(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfSalePrice, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByPriceOverride(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputPriceOverride, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+        waiting5seconds();
+    }
+
+    public void filterByDisableCoupon(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfDisableCoupon, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterBySource(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputSource, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByRevShare(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputRevShare, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByPopular(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfPopular, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByFeatured(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfFeatured, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByWeight(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        type(inputWeight, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByPlan(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfRole, listOfActiveDropDown, "Support");
+        type(inputPlan, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+    public void filterByPortStatus(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfRole, listOfActiveDropDown, "Support");
+        chooseElementFromSelectInAdminPanel(selectOfPortStatus, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByCallForward(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfRole, listOfActiveDropDown, "Support");
+        chooseElementFromSelectInAdminPanel(selectOfCallForward, listOfActiveDropDown, searchRequest);
+        waiting5seconds();
+    }
+
+    public void filterByTicket(String searchRequest) {
+        waitUntilElementAppeared(tableTitle);
+        chooseElementFromSelectInAdminPanel(selectOfRole, listOfActiveDropDown, "Support");
+        type(inputTicket, searchRequest);
+        listSearchIconTh.get(0).click();
+        waiting5seconds();
+    }
+
+
+
 
 
     public void searchNumber(int index, String text) {
@@ -212,14 +389,13 @@ public class InventoryLocal extends BasePage {
         waitUntilElementAppeared(tableTitle);
         int index = 1;
         for (int i = 0; i < listThStaticTable.size(); i++) {
-            if(listThStaticTable.get(i).getText().contains(filterParameter)){
+            if(listThStaticTable.get(i).getText().toLowerCase().contains(filterParameter.toLowerCase())){
                 index = i;
                 break;
             }
         }
         boolean correctFilter = false;
         for (int i = index; i < listTdOfStaticTable.size(); i+=listThStaticTable.size() - 1) {
-            String er = listTdOfStaticTable.get(i).getText();
             if(listTdOfStaticTable.get(i).getText().toLowerCase().contains(searchRequest.toLowerCase())){
                 correctFilter = true;
             } else {
@@ -236,14 +412,29 @@ public class InventoryLocal extends BasePage {
         waitUntilElementAppeared(tableTitle);
         int index = 1;
         for (int i = 0; i < listThScrollcTable.size(); i++) {
-            if(listThScrollcTable.get(i).getText().contains(filterParameter)){
+            if(listThScrollcTable.get(i).getText().toLowerCase().contains(filterParameter.toLowerCase())){
                 index = i;
                 break;
             }
         }
         boolean correctFilter = false;
         for (int i = index; i < listTdOfScrollTable.size(); i+=listThScrollcTable.size() - 1) {
-            String er = listTdOfScrollTable.get(i).getText();
+            if(listTdOfScrollTable.get(i).getText().toLowerCase().contains(searchRequest.toLowerCase())){
+                correctFilter = true;
+            } else {
+                correctFilter = false;
+                break;
+            }
+        }
+        softAssert.assertTrue(correctFilter, "Filtration is incorrect");
+        softAssert.assertTrue(listTdOfScrollTable.size() > 1, "Not found");
+        softAssert.assertAll();
+    }
+
+    public void checkingCorrectFiltrationScrollTableByIndex(String searchRequest, int index) {
+        waitUntilElementAppeared(tableTitle);
+        boolean correctFilter = false;
+        for (int i = index; i < listTdOfScrollTable.size(); i+=listThScrollcTable.size() - 1) {
             if(listTdOfScrollTable.get(i).getText().toLowerCase().contains(searchRequest.toLowerCase())){
                 correctFilter = true;
             } else {
@@ -255,4 +446,13 @@ public class InventoryLocal extends BasePage {
         softAssert.assertTrue(listTdOfScrollTable.size() > 0, "Not found");
         softAssert.assertAll();
     }
+
+    public void checkingCorrectFiltrationScrollTableDatePicker() {
+        waitUntilElementAppeared(tableTitle);
+        int wewe = listTdOfScrollTable.size();
+        softAssert.assertTrue(listTdOfScrollTable.size() > 1, "Not found");
+        softAssert.assertAll();
+    }
+
+
 }

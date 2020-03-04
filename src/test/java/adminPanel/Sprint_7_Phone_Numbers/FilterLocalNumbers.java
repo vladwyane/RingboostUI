@@ -52,7 +52,6 @@ public class FilterLocalNumbers extends TestBase{
         app.delleteAllCookies();
     }
 
-
     @Test
     public void test1CheckingCorrectFilterByVanityField() throws InterruptedException, IOException, JSONException {
         //login.open();
@@ -140,6 +139,143 @@ public class FilterLocalNumbers extends TestBase{
         inventoryLocal.filterByCategory("Top 4 Digit");
         inventoryLocal.checkingCorrectFiltrationScrollTable("Top 4 Digit","Categories");
     }
+
+    @Test
+    public void test1CheckingCorrectFilterByRateCenter() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByRateCenter("NAMPA");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("NAMPA","Rate Center");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByCity() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByCity("Miami");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Miami","City");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByCallForPrice() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByCallForPrice("Yes");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Yes","Call For Price");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterBySalePrice() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterBySalePrice("Pattern - $549");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("$549","Sale Price");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByState() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByState("Alabama");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Al","State");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByPriceOverride() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByPriceOverride("23.5");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("$23.50","Price override");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByDisableCoupon() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByDisableCoupon("Yes");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Yes","Disable coupon");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterBySource() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterBySource("phone");
+        inventoryLocal.checkingCorrectFiltrationScrollTableByIndex("phone",11);
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByRevShare() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByRevShare("99");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("99","Rev Share");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByPopular() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByPopular("Yes");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Yes","Popular");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByFeatured() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByFeatured("Yes");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Yes","Featured");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByWeight() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByWeight("10");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("10","Weight");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByPlan() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByPlan("Starter");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Starter","Plan");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByPortStatus() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByPortStatus("Complete");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Complete","Port Status");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByCallForward() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByCallForward("Yes");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("Yes","Call Forward");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByTicket() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByTicket("1234");
+        inventoryLocal.checkingCorrectFiltrationScrollTable("1234","Ticket#");
+    }
+
+    @Test
+    public void test1CheckingCorrectFilterByOrderDate() throws InterruptedException, IOException, JSONException {
+        //  login.open();
+        inventoryLocal.open();
+        inventoryLocal.filterByOrderDate();
+        inventoryLocal.checkingCorrectFiltrationScrollTableDatePicker();
+    }
+
 
 
 }

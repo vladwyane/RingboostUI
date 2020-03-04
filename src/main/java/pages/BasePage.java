@@ -142,6 +142,11 @@ public abstract class BasePage {
         }
     }
 
+    protected void waitUntilPageLoadComplete() {
+        new WebDriverWait(driver, 30).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
+
 
     public boolean scrollToElement(WebElement element) {
 
@@ -208,6 +213,24 @@ public abstract class BasePage {
             }
         }
         listElements.get(0).click();
+    }
+
+    protected void choosePeriodFromDatePickerInAdminPanel(WebElement datepicker, List<WebElement> listOfDatesCurrentMonth, String dateStart, String dateFinish) {
+        waitUntilElementAppeared(datepicker);
+        datepicker.click();
+        waiting2seconds();
+        for(WebElement element : listOfDatesCurrentMonth) {
+            if (element.getText().toLowerCase().equals(dateStart.toLowerCase())) {
+                element.click();
+                break;
+            }
+        }
+        for(WebElement element : listOfDatesCurrentMonth) {
+            if (element.getText().toLowerCase().equals(dateFinish.toLowerCase())) {
+                element.click();
+                break;
+            }
+        }
     }
 
 }

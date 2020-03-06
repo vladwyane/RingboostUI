@@ -23,26 +23,13 @@ import java.io.IOException;
 public class FilterLocalNumbers extends TestBase{
 
     private Login login;
-    private Admin admin;
-    private LinksListingPage linksListingPage;
     private InventoryLocal inventoryLocal;
-    private BuyingLocalNumber buyingLocalNumber;
-    private Checkout checkout;
-    private OrderConfirmationPage orderConfirmationPage;
-    private LocalIndexPage localIndexPage;
-    private LocalSearchResult localSearchResult;
+
 
     @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
-        admin = new Admin(app.getDriver());
-        linksListingPage = new LinksListingPage(app.getDriver());
         inventoryLocal = new InventoryLocal(app.getDriver());
-        buyingLocalNumber = new BuyingLocalNumber(app.getDriver());
-        checkout = new Checkout(app.getDriver());
-        orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
-        localIndexPage = new LocalIndexPage(app.getDriver());
-        localSearchResult = new LocalSearchResult(app.getDriver());
         login.open();
         login.fillLoginForm();
     }

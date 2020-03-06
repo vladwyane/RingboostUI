@@ -74,7 +74,7 @@ public class InventoryLocal extends BasePage {
     @FindBy(xpath = "//input[@aria-label='Select role']/ancestor::div[@class='v-select__selections']")
     private WebElement selectOfRole;
 
-    @Name("List of states")
+    @Name("List of active drop down")
     @FindBys( {@FindBy(xpath = "//div[contains(@class, 'menuable__content__active')]//div[@role='listitem']")} )
     private List<WebElement> listOfActiveDropDown;
 
@@ -248,6 +248,7 @@ public class InventoryLocal extends BasePage {
         listSearchIconTh.get(0).click();
         waiting5seconds();
         waiting5seconds();
+        waiting5seconds();
     }
 
     public void filterByCity(String searchRequest) {
@@ -279,6 +280,7 @@ public class InventoryLocal extends BasePage {
         waitUntilElementAppeared(tableTitle);
         type(inputPriceOverride, searchRequest);
         listSearchIconTh.get(0).click();
+        waiting5seconds();
         waiting5seconds();
         waiting5seconds();
     }
@@ -351,10 +353,6 @@ public class InventoryLocal extends BasePage {
         listSearchIconTh.get(0).click();
         waiting5seconds();
     }
-
-
-
-
 
     public void searchNumber(int index, String text) {
         waitUntilElementAppeared(tableTitle);
@@ -449,7 +447,6 @@ public class InventoryLocal extends BasePage {
 
     public void checkingCorrectFiltrationScrollTableDatePicker() {
         waitUntilElementAppeared(tableTitle);
-        int wewe = listTdOfScrollTable.size();
         softAssert.assertTrue(listTdOfScrollTable.size() > 1, "Not found");
         softAssert.assertAll();
     }

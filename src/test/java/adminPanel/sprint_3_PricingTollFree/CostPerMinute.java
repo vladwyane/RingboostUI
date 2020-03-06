@@ -28,7 +28,7 @@ public class CostPerMinute extends TestBase {
     String tabName = "Cost Per Minute";
 
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -39,13 +39,10 @@ public class CostPerMinute extends TestBase {
         buyingPremiumVanityNumber = new BuyingPremiumVanityNumber(app.getDriver());
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
-    }
-
-    @BeforeMethod
-    public void login() {
         login.open();
         login.fillLoginForm();
     }
+
 
     @AfterMethod
     public void clearAllCookies() {
@@ -75,7 +72,7 @@ public class CostPerMinute extends TestBase {
     @Test
     public void test2CheckingCreatedTermFromAdminOnPremiumFlow() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchTollFreeNumbers("4204ER5");
+        homePage.searchTollFreeNumbers("5340333");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         buyingPremiumVanityNumber.chooseState("Kansas");

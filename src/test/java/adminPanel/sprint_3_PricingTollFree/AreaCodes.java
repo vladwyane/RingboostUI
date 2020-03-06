@@ -102,7 +102,7 @@ public class AreaCodes extends TestBase {
        // login.open();
         admin.clickAreaCodesLink();
         areaCodesPage.chooseState("Alaska");
-        areaCodesPage.clickEditIcon(AreaCodesData.AREA_CODES_905);
+        areaCodesPage.clickEditIcon(AreaCodesData.AREA_CODES_906);
         areaCodesPage.editAreaCode(AreaCodesData.AREA_CODES_ALASKA_UPDATE);
         areaCodesPage.checkingSuccessEditName(AreaCodesData.AREA_CODES_ALASKA_UPDATE);
     }

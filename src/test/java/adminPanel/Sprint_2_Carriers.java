@@ -110,6 +110,7 @@ public class Sprint_2_Carriers extends TestBase {
         carriersListingPage.checkingSuccessDeleted();
     }
 
+    @Ignore
     @Test
     public void test9EditAPI() throws InterruptedException, IOException, JSONException {
         apiListingPage.open();

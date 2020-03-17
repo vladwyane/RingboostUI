@@ -201,8 +201,8 @@ public class PricingTollFreePage extends BasePage {
     public void checkingSuccessDeleted(PricingTollFreeSettings pricingTollFreeSettings, String tabName) {
         waitUntilElementAppeared(pricingTollFreeTable.getSuccessAlert());
         boolean successAlert = isElementPresent(pricingTollFreeTable.getSuccessAlert());
-        refreshPage();
-        clickTab(tabName);
+/*        refreshPage();
+        clickTab(tabName);*/
         boolean rule = false;
         for (int i = 0; i < pricingTollFreeTable.getListTd().size(); i++) {
             if(pricingTollFreeTable.getListTd().get(i).getText().equals(pricingTollFreeSettings.getName())){

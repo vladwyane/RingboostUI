@@ -18,15 +18,11 @@ public class PriceTiers extends TestBase {
     private PricingTollFreePage pricingTollFreePage;
     String tabName = "Price Tiers";
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
         pricingTollFreePage = new PricingTollFreePage(app.getDriver());
-    }
-
-    @BeforeMethod
-    public void login() {
         login.open();
         login.fillLoginForm();
     }

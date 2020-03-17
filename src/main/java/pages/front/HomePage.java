@@ -25,13 +25,13 @@ public class HomePage extends BasePage {
 
     @Step("Search toll-free number with request: {0}")
     public void searchTollFreeNumbers(String request) {
+        searchBlock.getSwitcherLocalPart().click();
         type(searchBlock.getTollFreeSearchField(), request);
         searchBlock.getButtonFindNumber().click();
     }
 
     @Step("Search local number with request: {0}")
     public void searchLocalNumbers(String request) {
-        searchBlock.getSwitcherLocalPart().click();
         type(searchBlock.getLocalSearchField(), request);
         searchBlock.getButtonFindNumber().click();
     }

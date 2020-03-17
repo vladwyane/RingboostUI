@@ -27,7 +27,7 @@ public class MultipleAreas extends TestBase {
     private ContactUsPage contactUsPage;
     String tabName = "Multiple Areas";
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -38,13 +38,9 @@ public class MultipleAreas extends TestBase {
         checkout = new Checkout(app.getDriver());
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
         contactUsPage = new ContactUsPage(app.getDriver());
-
-    }
-
-    @BeforeMethod
-    public void login() {
         login.open();
         login.fillLoginForm();
+
     }
 
     @AfterMethod
@@ -90,7 +86,7 @@ public class MultipleAreas extends TestBase {
         pricingTollFreePage.clickEditIcon(PricingTollFreeSettings.MULTIPLE_3_AREA);
         pricingTollFreePage.editMultipleAreas(PricingTollFreeSettings.MULTIPLE_3_AREA);
         homePage.open();
-        homePage.searchTollFreeNumbers("4204ER5");
+        homePage.searchTollFreeNumbers("333");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         buyingPremiumVanityNumber.chooseState("Kansas");
@@ -102,7 +98,7 @@ public class MultipleAreas extends TestBase {
     @Test
     public void test4CheckingChosen4AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchTollFreeNumbers("4204ER5");
+        homePage.searchTollFreeNumbers("333");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         buyingPremiumVanityNumber.chooseState("Kansas");
@@ -114,7 +110,7 @@ public class MultipleAreas extends TestBase {
     @Test
     public void test4CheckingChosen2AreaCodesOnSite() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.searchTollFreeNumbers("4204ER5");
+        homePage.searchTollFreeNumbers("333");
         vanitySearchResult.chooseFirstNumberFromPremiumVanityList();
         buyingPremiumVanityNumber.clickButtonChooseMyAreas();
         buyingPremiumVanityNumber.chooseState("Kansas");

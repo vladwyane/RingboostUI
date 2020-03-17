@@ -31,7 +31,7 @@ public class TermBasic800 extends TestBase {
     String tabName = "Term - Basic 800";
 
 
-    @BeforeClass
+    @BeforeMethod
     public void initPageObjects() {
         login = new Login(app.getDriver());
         admin = new Admin(app.getDriver());
@@ -40,10 +40,6 @@ public class TermBasic800 extends TestBase {
         orderConfirmationPage = new OrderConfirmationPage(app.getDriver());
         basicIndexPage = new BasicIndexPage(app.getDriver());
         buyingBasic800Number = new BuyingBasic800Number(app.getDriver());
-    }
-
-    @BeforeMethod
-    public void login() {
         login.open();
         login.fillLoginForm();
     }

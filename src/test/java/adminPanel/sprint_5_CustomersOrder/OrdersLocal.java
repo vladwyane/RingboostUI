@@ -35,7 +35,8 @@ public class OrdersLocal extends TestBase {
     private LocalSearchResult localSearchResult;
     private InventoryLocal inventoryLocal;
 
-    private String searchRequest = "8888030";
+    private String searchRequest = "812288";
+    private String searchRequest2 = "POLOS";
 
 
     @BeforeMethod
@@ -80,13 +81,13 @@ public class OrdersLocal extends TestBase {
 
     @Test
     public void test1orderLocalPortNumberPriceOverrideWithoutPromoCode() throws InterruptedException, IOException, JSONException {
-        login.open();
-        admin.clickLocalInventoryLink();
+        inventoryLocal.open();
         inventoryLocal.searchNumber(0,searchRequest);
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(0);
         System.out.println(phoneNumber);
-        linksListingPage.clickCreateNewURLButton();
-        String pricePayment = "$" + String.valueOf((int) linksListingPage.getOldPrice()) + "0";
+        if(linksListingPage.getTdSize() > 1)
+            linksListingPage.clickCreateNewURLButton();
+        String pricePayment = "$" + String.valueOf((int) linksListingPage.getOldPrice()) + ".00";
         String displayedName = linksListingPage.generateLinkWithoutPromoCodeRegularFlow("10.99");
         String customerPrice = "$" + String.valueOf(linksListingPage.clickGenerateLinkButtonRegularFlow());
         String generatedLink = linksListingPage.getGeneratedLink(linksListingPage.returnIndexLastGeneratedLink());
@@ -97,24 +98,24 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_67, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, customerPrice, "$0.00", "$0.00", payToday,
-                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_54);
+                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_67);
     }
 
     @Test
     public void test2orderLocalParkANumberPriceOverrideWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
-        login.open();
-        admin.clickLocalInventoryLink();
+        inventoryLocal.open();
         inventoryLocal.searchNumber(0, searchRequest);
         String phoneNumber = inventoryLocal.clickCreateNewLinkByNumber(1);
         System.out.println(phoneNumber);
-        linksListingPage.clickCreateNewURLButton();
+        if(linksListingPage.getTdSize() > 1)
+            linksListingPage.clickCreateNewURLButton();
         String pricePayment = "$" + String.valueOf(linksListingPage.getOldPrice()) + "0";
         String displayedName = linksListingPage
                 .generateLinkWithPromoCodeRegularFlow("601.01", "-TEST");
@@ -131,21 +132,21 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_66, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, customerPrice, subsPrice, subsPrice, payToday,
-                phoneUpsellName,  pricePlan, "","", promoCode, "Completed", Users.VLADYSLAV_56);
+                phoneUpsellName,  pricePlan, "","", promoCode, "Completed", Users.VLADYSLAV_66);
     }
 
     @Test
     public void test3orderLocalParkNumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
         localIndexPage.searchLocalNumbers(searchRequest);
-        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        localSearchResult.chooseNumberFromLocalNumbersList(3);
         String displayedName = buyingLocalNumber.getPhoneNumber().getText();
         String pricePayment = "$" + String.valueOf(Math.round(buyingLocalNumber.getPriceNumber()* 100.0) / 100.0) + "0";
         String phoneUpsellName = "Park A Number";
@@ -158,21 +159,21 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_66, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, subsPrice, payToday,
-                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_56);
+                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_66);
     }
 
     @Test
     public void test4orderLocalNumberPickPlanWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers(searchRequest);
-        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        localIndexPage.searchLocalNumbers(searchRequest2);
+        localSearchResult.chooseNumberFromLocalNumbersList(1);
         String displayedName = buyingLocalNumber.getPhoneNumber().getText();
         String pricePayment = "$" + String.valueOf(Math.round(buyingLocalNumber.getPriceNumber()* 100.0) / 100.0) + "0";
         String phoneUpsellName = "Pick A Plan";
@@ -190,23 +191,23 @@ public class OrdersLocal extends TestBase {
         checkout.addPromoCode(promoCodeName);
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " %";
-        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_67, CreditCards.AMERICAN_EXPRESS_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, "", payToday,
-                phoneUpsellName, pricePlanName, addCoast, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_54);
+                phoneUpsellName, pricePlanName, addCoast, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_67);
     }
 
     @Test
     public void test5orderLocalNumberPickPlanAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers(searchRequest);
-        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        localIndexPage.searchLocalNumbers(searchRequest2);
+        localSearchResult.chooseNumberFromLocalNumbersList(2);
         String displayedName = buyingLocalNumber.getPhoneNumber().getText();
-        String pricePayment = "$" + String.valueOf(Math.round(buyingLocalNumber.getPriceNumber()* 100.0) / 100.0) + "0";
+        String pricePayment = "$" + String.valueOf(Math.round(buyingLocalNumber.getPriceNumber()* 100.0) / 100.0);
         String phoneUpsellName = "Pick A Plan";
         String phoneUpsellPrice = "$" + String.valueOf(buyingLocalNumber.getPhoneUpsellPrice(phoneUpsellName));
         String pricePlan = "Premium";
@@ -221,21 +222,21 @@ public class OrdersLocal extends TestBase {
         checkout.wait2SecUntilPromoRemove();
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
-        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_66, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", subsPrice, "", payToday,
-                phoneUpsellName, pricePlanName, addCoast, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_56);
+                phoneUpsellName, pricePlanName, addCoast, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_66);
     }
 
     @Test
     public void test6orderLocalPortNumberWithoutPickPlan() throws InterruptedException, IOException, JSONException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers(searchRequest);
-        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        localIndexPage.searchLocalNumbers(searchRequest2);
+        localSearchResult.chooseNumberFromLocalNumbersList(3);
         String displayedName = buyingLocalNumber.getPhoneNumber().getText();
         String pricePayment = "$" + String.valueOf(Math.round(buyingLocalNumber.getPriceNumber()* 100.0) / 100.0) + "0";
         String phoneUpsellName = "Port A Number";
@@ -246,21 +247,21 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " %";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_68, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", "$0.00", "", payToday,
-                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_55);
+                phoneUpsellName, pricePlan, "", "", promoCode, "Completed", Users.VLADYSLAV_68);
     }
 
     @Test
     public void test7orderLocalParkNumberPaymentError() throws InterruptedException, IOException {
         localIndexPage.open();
-        localIndexPage.searchLocalNumbers(searchRequest);
-        localSearchResult.chooseFirstNumberFromLocalNumbersList();
+        localIndexPage.searchLocalNumbers(searchRequest2);
+        localSearchResult.chooseNumberFromLocalNumbersList(4);
         String displayedName = buyingLocalNumber.getPhoneNumber().getText();
         String pricePayment = "$" + String.valueOf(Math.round(buyingLocalNumber.getPriceNumber()* 100.0) / 100.0) + "0";
         String phoneUpsellName = "Port A Number";
@@ -272,13 +273,13 @@ public class OrdersLocal extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = "";
-        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_67, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersLocal();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderLocalFlow(displayedName, pricePayment, "", "$0.00", "", payToday,
-                phoneUpsellName, pricePlan, "","", promoCode, "Failed", Users.VLADYSLAV_54);
+                phoneUpsellName, pricePlan, "","", promoCode, "Failed", Users.VLADYSLAV_67);
     }
 }

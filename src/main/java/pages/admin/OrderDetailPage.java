@@ -145,6 +145,43 @@ public class OrderDetailPage extends BasePage {
     }
 
 
+    public void checkingCorrectDataOrderLocalFlowTest() throws IOException {
+        waiting2seconds();
+        String getCompany = getAttributeValue(orderDetail.getCompany());
+        String getFirstName = getAttributeValue(orderDetail.getFirstName());
+        String getLastName = getAttributeValue(orderDetail.getLastName());
+        String getContactPhoneNumber = getAttributeValue(orderDetail.getContactPhoneNumber());
+        String getEmail = getAttributeValue(orderDetail.getEmail());
+        String getPhoneNumber = getAttributeValue(orderDetail.getPhoneNumber());
+        String getVanityPhoneName = getAttributeValue(orderDetail.getVanityPhoneName());
+        String getBearer = getAttributeValue(orderDetail.getBearer());
+        String getRingToNumber = getAttributeValue(orderDetail.getRingToNumber());
+        String getPaymentPrice = getAttributeValue(orderDetail.getPaymentPrice());
+        String getPhoneUpsellName = getAttributeValue(orderDetail.getPhoneUpsellName());
+        String getSubscriptionPrice = getAttributeValue(orderDetail.getSubscriptionPrice());
+        String getCustomerSubscriptionPrice = getAttributeValue(orderDetail.getCustomerSubscriptionPrice());
+        String getCustomerPrice = getAttributeValue(orderDetail.getCustomerPrice());
+        String getPayToday = getAttributeValue(orderDetail.getPayToday());
+        String getPricePlan = getAttributeValue(orderDetail.getPricePlan());
+        String getPricePlanAdditionalCost = getAttributeValue(orderDetail.getPricePlanAdditionalCost());
+        String getPaymentMethod = getAttributeValue(orderDetail.getPaymentMethod());
+        String getBillingCity = getAttributeValue(orderDetail.getBillingCity());
+        String getBillingName = getAttributeValue(orderDetail.getBillingName());
+        String getBillingState = getAttributeValue(orderDetail.getBillingState());
+        String getBillingAddress = getAttributeValue(orderDetail.getBillingAddress());
+        String getBillingZIP = getAttributeValue(orderDetail.getBillingZIP());
+        String getPublicID = getAttributeValue(orderDetail.getPublicID());
+        String getZendeskId = getAttributeValue(orderDetail.getZendeskId());
+        String getStatus = getAttributeValue(orderDetail.getStatus());
+        String getCountryISO = getAttributeValue(orderDetail.getCountryISO());
+        String getCompletedAt = getAttributeValue(orderDetail.getCompletedAt());
+        String getFailedAt = getAttributeValue(orderDetail.getFailedAt());
+        String getPromoCodeName = getAttributeValue(orderDetail.getPromoCodeName());
+        String getApiPartner = getAttributeValue(orderDetail.getApiPartner());
+        String getApiPartnerCommission = getAttributeValue(orderDetail.getApiPartnerCommission());
+    }
+
+
     public void checkingCorrectDataOrderLocalFlow(String displayedName, String oldPrice, String customerPrice, String subscriptionPrice, String subPriceOverride, String payToday,
                                                   String phoneUpsellName, String pricePlan, String additionalCost, String ringToNumber,
                                                   String promoCode, String statusPay, Users users) throws IOException {
@@ -157,7 +194,7 @@ public class OrderDetailPage extends BasePage {
         softAssert.assertEquals(getAttributeValue(orderDetail.getEmail()), users.getEmail(), "Email");
         softAssert.assertNotEquals(getAttributeValue(orderDetail.getPhoneNumber()), "", "PhoneNumber");
         softAssert.assertEquals(getAttributeValue(orderDetail.getVanityPhoneName()), displayedName, "VanityPhoneName");
-        softAssert.assertNotEquals(getAttributeValue(orderDetail.getBearer()), "", "DID Source");
+        softAssert.assertNotEquals(getAttributeValue(orderDetail.getBearer()), "", "DID Origin");
         softAssert.assertEquals(getAttributeValue(orderDetail.getRingToNumber()), ringToNumber, "RingToNumber");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPaymentPrice()), oldPrice, "PaymentPrice");
         softAssert.assertEquals(getAttributeValue(orderDetail.getPhoneUpsellName()).toLowerCase(), phoneUpsellName.toLowerCase(), "PhoneUpsellName");

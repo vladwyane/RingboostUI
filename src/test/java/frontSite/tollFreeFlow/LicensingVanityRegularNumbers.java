@@ -54,15 +54,15 @@ public class LicensingVanityRegularNumbers extends TestBase {
         int discountPriceSelectedPlan = buyingRegularVanityNumber.chooseTermLength("2 years");
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("0668843471");
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.VISA_STRIPE, false);
-        orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
+/*        checkout.fillCheckout(Users.VLADYSLAV_66, CreditCards.VISA_STRIPE, false);
+        orderConfirmationPage.checkingYourPurchase(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);*/
     }
 
     @Test(description = "Order Regular Vanity Number with fixed Promo Code")
     @Story("status: 32, weight: 9, nationwide: true, owner_id: 48, premium: false, type: vanity, easy_dial, basic800")
     public void test2OrderRegularVanityNumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
-        homePage.clickSubNavItemTollFree("vanity-numbers");
+        homePage.clickSubNavItemTollFree("vanity");
         vanityIndexPage.searchTollFreeNumbers(searchRequest);
         vanitySearchResult.chooseIndexNumberFromRegularVanityList(2);
         double priceMonthlyMinutes = buyingRegularVanityNumber.choose250MonthlyMinutes();
@@ -70,8 +70,8 @@ public class LicensingVanityRegularNumbers extends TestBase {
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.MASTERCART_STRIPE, false);
-        orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
+/*        checkout.fillCheckout(Users.VLADYSLAV_67, CreditCards.MASTERCART_STRIPE, false);
+        orderConfirmationPage.checkingYourPurchaseWithFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);*/
     }
 
     @Test(description = "Order Regular Vanity Number with high fixed Promo Code")
@@ -85,8 +85,8 @@ public class LicensingVanityRegularNumbers extends TestBase {
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.HIGH_FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
-        orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
+/*        checkout.fillCheckout(Users.VLADYSLAV_68, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        orderConfirmationPage.checkingYourPurchaseWithHighFixedPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);*/
     }
 
     @Test(description = "Order Regular Vanity Number with percent Promo Code")
@@ -100,8 +100,8 @@ public class LicensingVanityRegularNumbers extends TestBase {
         double priceNumber = buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCode(PromoCodes.PERCENT_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.DISCOVER_STRIPE, false);
-        orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
+/*        checkout.fillCheckout(Users.VLADYSLAV_67, CreditCards.DISCOVER_STRIPE, false);
+        orderConfirmationPage.checkingYourPurchaseWithPercentPromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);*/
     }
 
     @Test(description = "Order Regular Vanity Number after remove Promo Code")
@@ -115,8 +115,8 @@ public class LicensingVanityRegularNumbers extends TestBase {
         double priceNumber = buyingRegularVanityNumber.enterRingToNumber("8001234560");
         buyingRegularVanityNumber.goToCheckout();
         checkout.addPromoCodeAndAfterRemove(PromoCodes.FIXED_PROMOCODE.getName());
-        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.JCB, true);
-        orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);
+/*        checkout.fillCheckout(Users.VLADYSLAV_68, CreditCards.JCB, true);
+        orderConfirmationPage.checkingYourPurchaseAfterRemovePromoCode(priceMonthlyMinutes, discountPriceSelectedPlan, priceNumber);*/
     }
 
     @Test(description = "Order Regular Vanity Number after remove Promo Code")
@@ -129,7 +129,7 @@ public class LicensingVanityRegularNumbers extends TestBase {
         buyingRegularVanityNumber.chooseTermLength("month");
         buyingRegularVanityNumber.chooseCheckboxMultipleRingToNumber();
         buyingRegularVanityNumber.goToCheckout();
-        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.ERROR_CVC_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_66, CreditCards.ERROR_CVC_STRIPE, true);
         checkout.checkingPaymentError();
     }
 

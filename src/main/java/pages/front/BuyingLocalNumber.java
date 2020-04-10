@@ -77,7 +77,8 @@ public class BuyingLocalNumber extends BasePage {
     public String goToCheckout() {
         waitUntilElementAppeared(orderSummaryBlock.getButtonProceedToCheckout());
         String boughtNumber = phoneNumber.getText();
-        boughtNumber = boughtNumber.replaceAll("\\D+","");
+        boughtNumber = boughtNumber.replaceAll("-","");
+ //       boughtNumber = boughtNumber.replaceAll("\\D+","");
         orderSummaryBlock.getButtonProceedToCheckout().click();
         return boughtNumber;
     }

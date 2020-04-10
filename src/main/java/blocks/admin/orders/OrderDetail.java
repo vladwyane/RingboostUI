@@ -107,7 +107,7 @@ public class OrderDetail extends HtmlElement {
     @FindBy(xpath = "//label[contains(text(), 'Sub type')]/following::input[1]")
     private WebElement subType;
 
-    @FindBy(xpath = "//label[contains(text(), 'DID Source')]/following::input[1]")
+    @FindBy(xpath = "//label[contains(text(), 'DID Origin')]/following::input[1]")
     private WebElement bearer;
 
     @FindBy(xpath = "//label[contains(text(), 'Retail Price')]/following::input[1]")

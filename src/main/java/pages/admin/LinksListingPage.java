@@ -32,6 +32,11 @@ public class LinksListingPage extends BasePage {
 
     }
 
+    public int getTdSize() {
+        waiting2seconds();
+        return listGeneratedURL.getListTd().size();
+    }
+
     public void clickBreadcrunbsLink(String nameLink) {
         isElementInvisible(listGeneratedURL.getOverlay());
         waitUntilElementAppeared(breadcrumbs.getListOfBreadcrumbsLink().get(0));

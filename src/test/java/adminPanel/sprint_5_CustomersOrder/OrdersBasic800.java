@@ -56,7 +56,7 @@ public class OrdersBasic800 extends TestBase {
     @Test
     public void orderBasic800Number() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
-        basicIndexPage.chooseFirstNumberFromBasic800List();
+        basicIndexPage.chooseNumberFromBasic800List(1);
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Business Pro";
         String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
@@ -70,14 +70,14 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_55, CreditCards.VISA_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_68, CreditCards.VISA_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_55);
+                priceActivationFee, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_68);
     }
 
     @Ignore
@@ -85,7 +85,7 @@ public class OrdersBasic800 extends TestBase {
     public void orderBasic800NumberWithFixedPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("basic-numbers");
-        basicIndexPage.chooseFirstNumberFromBasic800List();
+        basicIndexPage.chooseNumberFromBasic800List(2);
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Premium";
         String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
@@ -101,20 +101,20 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_67, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_54);
+                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_67);
     }
 
     @Test
     public void orderBasic800NumberWithHighFixedPromoCode() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
-        basicIndexPage.chooseFirstNumberFromBasic800List();
+        basicIndexPage.chooseNumberFromBasic800List(3);
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Starter";
         String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
@@ -131,21 +131,21 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " $";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.MASTERCART_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_66, CreditCards.MASTERCART_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_56);
+                priceActivationFee, ringToNumber, promoCode, "Completed", Users.VLADYSLAV_66);
     }
 
     @Test
     public void orderBasic800NumberWithPercentPromoCode() throws InterruptedException, IOException, JSONException {
         homePage.open();
         homePage.clickSubNavItemTollFree("basic-numbers");
-        basicIndexPage.chooseFirstNumberFromBasic800List();
+        basicIndexPage.chooseNumberFromBasic800List(4);
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Business Pro";
         String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
@@ -162,20 +162,20 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = promoCodeName + " - " + discountPromoCode + " %";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
+        checkout.fillCheckout(Users.VLADYSLAV_67, CreditCards.AMERICAN_EXPRESS_STRIPE, true);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_54);
+                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_67);
     }
 
     @Test
     public void orderBasic800NumberAfterRemovePromoCodee() throws InterruptedException, IOException, JSONException {
         basicIndexPage.open();
-        basicIndexPage.chooseFirstNumberFromBasic800List();
+        basicIndexPage.chooseNumberFromBasic800List(5);
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Starter";
         String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
@@ -190,20 +190,20 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_56, CreditCards.JCB, false);
+        checkout.fillCheckout(Users.VLADYSLAV_66, CreditCards.JCB, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_56);
+                priceActivationFee, "", promoCode, "Completed", Users.VLADYSLAV_66);
     }
 
     @Test
     public void orderBasic800NumberPaymentError() throws InterruptedException, IOException {
         basicIndexPage.open();
-        basicIndexPage.chooseFirstNumberFromBasic800List();
+        basicIndexPage.chooseNumberFromBasic800List(6);
         String displayedName = buyingBasic800Number.getPhoneNumber().getText();
         String pricePlanName = "Premium";
         String additionalCost = "$" + buyingBasic800Number.getAdditionalCost(pricePlanName);
@@ -216,13 +216,13 @@ public class OrdersBasic800 extends TestBase {
         String payToday = checkout.getPricePayToday();
         String promoCode = "";
         String pricePlan = pricePlanName + " -  " + amountMinutes;
-        checkout.fillCheckout(Users.VLADYSLAV_54, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
+        checkout.fillCheckout(Users.VLADYSLAV_67, CreditCards.ERROR_STOLEN_CARD_STRIPE, false);
         orderConfirmationPage.waitUntilConfirmationMessageAppears();
         orderConfirmationPage.wait5SecUntilOrderAddedInAdmin();
         login.open();
         admin.clickOrdersTollFree();
         orderListingPage.clickEditIconFirstOrder();
         orderDetailPage.checkingCorrectDataOrderBasic800Flow(displayedName, pricePlan, pricePlanPrice, paymentPrice, payToday, additionalCost,
-                priceActivationFee, "", promoCode, "Failed", Users.VLADYSLAV_54);
+                priceActivationFee, "", promoCode, "Failed", Users.VLADYSLAV_67);
     }
 }

@@ -206,7 +206,7 @@ public class LocalSearchResult extends BasePage {
         boolean searchResultTollFree = false;
         for (int i = 0; i < relatedVanityBlock.getLisRelatedVanityNumbers().size(); i++) {
             if (relatedVanityBlock.getLisRelatedVanityNumbers().get(i).getText()
-                            .replaceAll("-","").substring(6).toLowerCase().equals(request.toLowerCase())) {
+                            .replaceAll("-","").substring(5).toLowerCase().equals(request.toLowerCase())) {
                 searchResultTollFree = true;
             } else {
                 searchResultTollFree = false;

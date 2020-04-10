@@ -106,7 +106,8 @@ public class OwnerDetailPage extends BasePage {
 
     public void addFile1(String contractDate) {
         waitUntilElementAppeared(addFilePopup.getButtonSaveFile());
-        addFilePopup.getUploadFile().sendKeys("F:\\projects\\RingboostUI\\src\\main\\resources\\ordersDetail.json");
+       // addFilePopup.getUploadFile().sendKeys("F:\\projects\\RingboostUI\\src\\main\\resources\\ordersDetail.json");
+        addFilePopup.getUploadFile().sendKeys("C:\\Users\\Vlad\\GitHub\\RingboostUI\\src\\main\\resources\\ordersDetail.json");
         chooseDateFromDatePicker(contractDate);
         waitUntilElementWillBeClickable(addFilePopup.getButtonSaveFile());
         addFilePopup.getButtonSaveFile().click();
@@ -115,7 +116,9 @@ public class OwnerDetailPage extends BasePage {
 
     public void addFile2(String contractDate) {
         waitUntilElementAppeared(addFilePopup.getButtonSaveFile());
-        addFilePopup.getUploadFile().sendKeys("F:\\projects\\RingboostUI\\src\\main\\resources\\TestAgreement");
+      //  addFilePopup.getUploadFile().sendKeys("F:\\projects\\RingboostUI\\src\\main\\resources\\TestAgreement");
+        addFilePopup.getUploadFile().sendKeys("C:\\Users\\Vlad\\GitHub\\RingboostUI\\src\\main\\resources\\TestAgreement");
+
         chooseDateFromDatePicker(contractDate);
         waitUntilElementWillBeClickable(addFilePopup.getButtonSaveFile());
         addFilePopup.getButtonSaveFile().click();
@@ -135,6 +138,7 @@ public class OwnerDetailPage extends BasePage {
     public void clickCheckboxActiveAgreement() {
         waitUntilElementAppeared(labelCheckboxAgreement);
         waitUntilElementWillBeClickable(labelCheckboxAgreement);
+        scrollToElement(labelCheckboxAgreement);
         labelCheckboxAgreement.click();
     }
 

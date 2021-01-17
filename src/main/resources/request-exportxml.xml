@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<rates>
+			<item>
+					<from>QWRUB</from>
+						<to>ETH</to>
+						<in>1</in>
+						<out>68.8703</out>
+						<amount>1084.0666</amount>
+						<minamount>10 ETH</minamount>
+						<maxamount>5000 ETH</maxamount>
+					</item>
+				<item>
+					<from>P24UAH</from>
+						<to>TRX</to>
+						<in>1</in>
+						<out>27.5</out>
+						<amount>400.4143</amount>
+						<minamount>10 TRX</minamount>
+						<maxamount>5000 TRX</maxamount>
+					</item>
+				<item>
+					<from>USDTERC</from>
+						<to>MONOBUAH</to>
+						<in>1</in>
+						<out>26.71</out>
+						<amount>0</amount>
+						<minamount>10 USDT</minamount>
+						<maxamount>500 USDT</maxamount>
+					</item>
+				<item>
+					<from>CARDUAH</from>
+						<to>CARDRUB</to>
+						<in>0.3955</in>
+						<out>1</out>
+						<amount>5287045.94</amount>
+						<fromfee>5 UAH, 1.5 %</fromfee>
+						<minamount>100 UAH</minamount>
+						<maxamount>25000 UAH</maxamount>
+					</item>
+				<item>
+					<from>USDTERC</from>
+						<to>TCSBRUB</to>
+						<in>1</in>
+						<out>71.9055</out>
+						<amount>5151113.5303</amount>
+						<minamount>10 USDT</minamount>
+						<maxamount>5000 USDT</maxamount>
+					</item>
+				<item>
+					<from>CARDUAH</from>
+						<to>SBERRUB</to>
+						<in>1</in>
+						<out>2.5539</out>
+						<amount>5291943.52</amount>
+						<fromfee>5 UAH, 1.5 %</fromfee>
+						<minamount>100 UAH</minamount>
+						<maxamount>25000 UAH</maxamount>
+					</item>
+				<item>
+					<from>TRX</from>
+						<to>SBERRUB</to>
+						<in>1</in>
+						<out>71.3576</out>
+						<amount>5774387.89</amount>
+						<minamount>10 TRX</minamount>
+						<maxamount>5000 TRX</maxamount>
+					</item>
+				<item>
+					<from>CARDUAH</from>
+						<to>QWRUB</to>
+						<in>0.3923</in>
+						<out>1</out>
+						<amount>3245.507</amount>
+						<fromfee>5 UAH, 1.5 %</fromfee>
+						<minamount>100 UAH</minamount>
+						<maxamount>25000 UAH</maxamount>
+					</item>
+				<item>
+					<from>CARDUAH</from>
+						<to>USDTTRX</to>
+						<in>1</in>
+						<out>2.5208</out>
+						<amount>5151113.5303</amount>
+						<fromfee>5 UAH, 1.5 %</fromfee>
+						<minamount>100 UAH</minamount>
+						<maxamount>25000 UAH</maxamount>
+					</item>
+				<item>
+					<from>USDTERC</from>
+						<to>CARDRUB</to>
+						<in>1</in>
+						<out>70.2094</out>
+						<amount>5788741.31</amount>
+						<minamount>10 USDT</minamount>
+						<maxamount>5000 USDT</maxamount>
+						<param>manual</param>
+					</item>
+				<item>
+					<from>USDT</from>
+						<to>YAMRUB</to>
+						<in>1</in>
+						<out>67.9875</out>
+						<amount>499.921</amount>
+						<minamount>10 USDT</minamount>
+						<maxamount>5000 USDT</maxamount>
+					</item>
+				<item>
+					<from>TCSBRUB</from>
+						<to>QWRUB</to>
+						<in>1.4286</in>
+						<out>1</out>
+						<amount>499.921</amount>
+						<fromfee>1.5 %</fromfee>
+						<minamount>5000 RUB</minamount>
+						<maxamount>49999 RUB</maxamount>
+					</item>
+				<item>
+					<from>USDTERC</from>
+						<to>TBRUB</to>
+						<in>1</in>
+						<out>70</out>
+						<amount>1518261</amount>
+						<minamount>10 USDT</minamount>
+						<maxamount>5000 USDT</maxamount>
+					</item>
+				<item>
+					<from>BTC</from>
+						<to>TBRUB</to>
+						<in>1</in>
+						<out>2343129</out>
+						<amount>733610</amount>
+						<minamount>0.0005 BTC</minamount>
+						<maxamount>1 BTC</maxamount>
+					</item>
+				<item>
+					<from>QWRUB</from>
+						<to>BTC</to>
+						<in>2497614.7748</in>
+						<out>1</out>
+						<amount>1</amount>
+						<fromfee>1 %</fromfee>
+						<minamount>5000 RUB</minamount>
+						<maxamount>1500000 RUB</maxamount>
+					</item>
+				<item>
+					<from>QWRUB</from>
+						<to>USDTERC</to>
+						<in>73.491</in>
+						<out>1</out>
+						<amount>5000</amount>
+						<fromfee>1 %</fromfee>
+						<minamount>5000 RUB</minamount>
+						<maxamount>2000000 RUB</maxamount>
+						<param>manual</param>
+					</item>
+				<item>
+					<from>ETH</from>
+						<to>MONOBUAH</to>
+						<in>1</in>
+						<out>27877.1696</out>
+						<amount>0</amount>
+						<minamount>0.01 ETH</minamount>
+						<maxamount>100 ETH</maxamount>
+					</item>
+				<item>
+					<from>ETH</from>
+						<to>P24UAH</to>
+						<in>1</in>
+						<out>28095.8355</out>
+						<amount>400.4143</amount>
+						<minamount>0.01 ETH</minamount>
+						<maxamount>100 ETH</maxamount>
+						<param>manual</param>
+					</item>
+
+				<item>
+					<from>ETH</from>
+						<to>YAMRUB</to>
+						<in>1</in>
+						<out>71690.0724</out>
+						<amount>746.6091</amount>
+						<minamount>0.01 ETH</minamount>
+						<maxamount>100 ETH</maxamount>
+					</item>
+				<item>
+					<from>LTC</from>
+						<to>MONOBUAH</to>
+						<in>1</in>
+						<out>3605.0294</out>
+						<amount>0</amount>
+						<minamount>0.01 LTC</minamount>
+						<maxamount>100 LTC</maxamount>
+					</item>
+			</rates>
+	
